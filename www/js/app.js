@@ -98,6 +98,46 @@ angular.module('starter', ['ionic',
     }
   })
 
+  .state('tab.fullfillawish', {
+    url: '/fullfillawish',
+    views: {
+      'tab-fullfillawish': {
+        templateUrl: 'templates/tab-fullfillawish.html',
+        controller: 'FullfillaWishCtrl'
+      }
+    }
+  })   
+
+  .state('tab.wishdescription', {
+    url: '/wishdescription',
+    views: {
+      'tab-fullfillawish': {
+        templateUrl: 'templates/tab-wishdescription.html',
+        controller: 'WishDescriptionCtrl'
+      }
+    }
+  })     
+  
+  .state('tab.mywishes', {
+    url: '/mywishes',
+    views: {
+      'tab-mywishes': {
+        templateUrl: 'templates/tab-mywishes.html',
+        controller: 'MyWishesCtrl'
+      }
+    }
+  })  
+
+  .state('tab.myfullfillments', {
+    url: '/myfullfillments',
+    views: {
+      'tab-myfullfillments': {
+        templateUrl: 'templates/tab-myfullfillments.html',
+        controller: 'MyFullfillmentsCtrl'
+      }
+    }
+  })  
+  
   .state('tab.chats', {
       url: '/chats',
       views: {
@@ -107,6 +147,7 @@ angular.module('starter', ['ionic',
         }
       }
     })
+    
     .state('tab.chat-detail', {
       url: '/chats/:chatId',
       views: {

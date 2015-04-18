@@ -9,9 +9,14 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('LandingCtrl', function($scope, CharityService, lodash) {
+.controller('MyWishesCtrl', function($scope) {
+	$scope.testValue = "test";
+})
 
-  
+
+//tab-landing
+
+.controller('LandingCtrl', function($scope, CharityService, lodash) {
   //populates the list of charities
   var promise = CharityService.all();
   promise.then(function(chars, err) {
@@ -92,8 +97,44 @@ angular.module('starter.controllers', [])
             }; //end of pay button click
   
              startup();
+             
+	//close sth
+	})// end of TreeCtrl
+.controller('LandingCtrl', function($scope, CharityService, lodash) {
+  
+  //populates the list of charities
+  var promise = CharityService.all();
+  promise.then(function(chars, err) {
+    // returns a list of users
+    if(!err){
+      // console.log('list is: ', chars);
+      $scope.charities = lodash.sortBy(chars.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
+      console.log('charities ', $scope.charities);
+    }
+    else {
+      console.log('error is: ', err);
+    }
 
-})
+  });
+  
+  // }); end of promise 
+
+	// $scope.MakeAWish = function(){
+
+	// }
+}) //end of promise
+
+
+
+//tab-fullfillawish
+.controller('FullfillaWishCtrl', function($scope) {})	
+.controller('WishDescriptionCtrl', function($scope) {})	
+
+
+.controller('MyFullfillmentsCtrl', function($scope) {})
+
+
+
 
 .controller('DashCtrl', function($scope) {})
 
@@ -102,7 +143,7 @@ angular.module('starter.controllers', [])
   $scope.remove = function(chat) {
     Chats.remove(chat);
   }
-})
+}) // end of ChatsCtrl
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
