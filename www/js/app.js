@@ -107,6 +107,16 @@ angular.module('starter', ['ionic',
       }
     }
   })   
+
+  .state('tab.wishdescription', {
+    url: '/wishdescription',
+    views: {
+      'tab-wishdescription': {
+        templateUrl: 'templates/tab-wishdescription.html',
+        controller: 'WishDescriptionCtrl'
+      }
+    }
+  })     
   
   .state('tab.mywishes', {
     url: '/mywishes',

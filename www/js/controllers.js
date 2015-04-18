@@ -102,6 +102,8 @@ angular.module('starter.controllers', [])
 
 .controller('FullfillaWishCtrl', function($scope) {})
 
+.controller('WishDescriptionCtrl', function($scope) {})
+
 .controller('MyFullfillmentsCtrl', function($scope) {})
 
 .controller('LandingCtrl', function($scope, CharityService, lodash) {
