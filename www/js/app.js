@@ -85,7 +85,15 @@ angular.module('starter', ['ionic',
       }
     }
   })
-
+  .state('tab.showinfo', {
+    url: '/showinfo',
+    views: {
+      'tab-showinfo': {
+        templateUrl: 'templates/tab-showinfo.html',
+        controller: 'ShowinfoCtrl'
+      }
+    }
+  })
   .state('tab.chats', {
       url: '/chats',
       views: {
