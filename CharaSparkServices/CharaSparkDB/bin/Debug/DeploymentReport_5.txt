@@ -1,0 +1,31 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [yIjkgMHAdqLogin_nobarrierswebsvc] (Login)
+       [nobarrierswebsvc] (Schema)
+       [yIjkgMHAdqLogin_nobarrierswebsvcUser] (User)
+       [dbo].[donation_status] (Table)
+       [dbo].[error_log] (Table)
+       [dbo].[user_type] (Table)
+       [dbo].[users] (Table)
+       [dbo].[wish_status] (Table)
+       [dbo].[wishes] (Table)
+       [dbo].[DF_error_log_constraint] (Default Constraint)
+       [dbo].[DF_users_create_date] (Default Constraint)
+       [dbo].[DF_users_created_by] (Default Constraint)
+       [dbo].[DF_wishes_create_date] (Default Constraint)
+       [dbo].[DF_wishes_created_by] (Default Constraint)
+       [dbo].[FK_wishes_users] (Foreign Key)
+       [dbo].[FK_wishes_wish_status] (Foreign Key)
+       Permission (Permission)
+
+** Supporting actions

@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[wish_status] (Table)
+       [dbo].[wishes] (Table)
+       [dbo].[DF_wishes_create_date] (Default Constraint)
+       [dbo].[DF_wishes_created_by] (Default Constraint)
+       [dbo].[FK_wishes_donation_status] (Foreign Key)
+       [dbo].[FK_wishes_users] (Foreign Key)
+       [dbo].[FK_wishes_wish_status] (Foreign Key)
+
+** Supporting actions

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="charasparkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="error_log">
+    <Key>
+      <PropertyRef Name="error_id" />
+    </Key>
+    <Property Name="error_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="error_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="error_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="middle_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="former_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="login_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="e_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+    <Property Name="is_donor" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="wishes" Relationship="Self.FK_wishes_users" FromRole="users" ToRole="wishes" />
+  </EntityType>
+  <EntityType Name="wish_status">
+    <Key>
+      <PropertyRef Name="wish_status_id" />
+    </Key>
+    <Property Name="wish_status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="wish_status1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="wishes" Relationship="Self.FK_wishes_wish_status" FromRole="wish_status" ToRole="wishes" />
+  </EntityType>
+  <EntityType Name="wish">
+    <Key>
+      <PropertyRef Name="wish_id" />
+    </Key>
+    <Property Name="wish_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="wish_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="wish_status_id" Type="Int32" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+    <Property Name="start_date" Type="DateTime" Precision="3" />
+    <Property Name="end_date" Type="DateTime" Precision="3" />
+    <Property Name="userid" Type="Int32" />
+    <NavigationProperty Name="user" Relationship="Self.FK_wishes_users" FromRole="wishes" ToRole="users" />
+    <NavigationProperty Name="wish_status" Relationship="Self.FK_wishes_wish_status" FromRole="wishes" ToRole="wish_status" />
+  </EntityType>
+  <Association Name="FK_wishes_users">
+    <End Role="users" Type="Self.user" Multiplicity="0..1" />
+    <End Role="wishes" Type="Self.wish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="wishes">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_wishes_wish_status">
+    <End Role="wish_status" Type="Self.wish_status" Multiplicity="0..1" />
+    <End Role="wishes" Type="Self.wish" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wish_status">
+        <PropertyRef Name="wish_status_id" />
+      </Principal>
+      <Dependent Role="wishes">
+        <PropertyRef Name="wish_status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="charasparkEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="error_log" EntityType="Self.error_log" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="wish_status" EntityType="Self.wish_status" />
+    <EntitySet Name="wishes" EntityType="Self.wish" />
+    <AssociationSet Name="FK_wishes_users" Association="Self.FK_wishes_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="wishes" EntitySet="wishes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_wishes_wish_status" Association="Self.FK_wishes_wish_status">
+      <End Role="wish_status" EntitySet="wish_status" />
+      <End Role="wishes" EntitySet="wishes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

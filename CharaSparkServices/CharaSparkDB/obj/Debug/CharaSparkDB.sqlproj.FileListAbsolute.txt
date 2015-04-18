@@ -1,0 +1,14 @@
+C:\Users\bkraider\Documents\GitHub\WebAPIandDatabase\CharaSpark\CharaSparkDB\bin\Debug\CharaSparkDB.dacpac
+C:\Users\bkraider\Documents\GitHub\WebAPIandDatabase\CharaSpark\CharaSparkDB\bin\Debug\CharaSparkDB.dll
+C:\Users\bkraider\Documents\GitHub\WebAPIandDatabase\CharaSpark\CharaSparkDB\bin\Debug\CharaSparkDB.pdb
+C:\Users\bkraider\Documents\GitHub\WebAPIandDatabase\CharaSpark\CharaSparkDB\obj\Debug\CharaSparkDB.dll
+C:\Users\bkraider\Documents\GitHub\WebAPIandDatabase\CharaSpark\CharaSparkDB\obj\Debug\CharaSparkDB.pdb
+C:\Users\bkraider\Documents\GitHub\CharaSpark\CharaSparkServices\CharaSparkDB\bin\Debug\CharaSparkDB.dacpac
+C:\Users\bkraider\Documents\GitHub\CharaSpark\CharaSparkServices\CharaSparkDB\obj\Debug\Model.xml
+C:\Users\bkraider\Documents\GitHub\CharaSpark\CharaSparkServices\CharaSparkDB\obj\Debug\refactor.xml
+C:\Users\bkraider\Documents\GitHub\CharaSpark\CharaSparkServices\CharaSparkDB\obj\Debug\postdeploy.sql
+C:\Users\bkraider\Documents\GitHub\CharaSpark\CharaSparkServices\CharaSparkDB\obj\Debug\predeploy.sql
+C:\Users\bkraider\Documents\GitHub\CharaSpark\CharaSparkServices\CharaSparkDB\obj\Debug\CharaSparkDB.dll
+C:\Users\bkraider\Documents\GitHub\CharaSpark\CharaSparkServices\CharaSparkDB\obj\Debug\CharaSparkDB.pdb
+C:\Users\bkraider\Documents\GitHub\CharaSpark\CharaSparkServices\CharaSparkDB\bin\Debug\CharaSparkDB.dll
+C:\Users\bkraider\Documents\GitHub\CharaSpark\CharaSparkServices\CharaSparkDB\bin\Debug\CharaSparkDB.pdb

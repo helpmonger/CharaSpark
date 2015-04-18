@@ -1,0 +1,29 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[wishes]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[wishes].[task_status_id] is being dropped, data loss could occur.
+
+** User actions
+     Drop
+       [dbo].[FK_wishes_wish_status] (Foreign Key)
+     Table rebuild
+       [dbo].[wishes] (Table)
+     Create
+       [dbo].[FK_wishes_wish_status] (Foreign Key)
+       Permission (Permission)
+
+** Supporting actions
+     Drop
+       [dbo].[DF_tasks_create_date] (Default Constraint)
+       [dbo].[DF_tasks_created_by] (Default Constraint)
+       [dbo].[FK_wishes_users] (Foreign Key)
+     Create
+       [dbo].[FK_wishes_users] (Foreign Key)
+
+The column [dbo].[wishes].[task_status_id] is being dropped, data loss could occur.
+

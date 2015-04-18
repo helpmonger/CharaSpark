@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="charasparkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="donation_status">
+    <Key>
+      <PropertyRef Name="donation_status_id" />
+    </Key>
+    <Property Name="donation_status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="donation_status_desc" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="donations">
+    <Key>
+      <PropertyRef Name="donation_id" />
+    </Key>
+    <Property Name="donation_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="donation_amount" Type="money" Nullable="false" />
+    <Property Name="donation_status_id" Type="int" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="start_date" Type="datetime" />
+    <Property Name="end_date" Type="datetime" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="charity_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="error_log">
+    <Key>
+      <PropertyRef Name="error_id" />
+    </Key>
+    <Property Name="error_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="error_desc" Type="varchar(max)" />
+    <Property Name="error_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="middle_name" Type="varchar" MaxLength="20" />
+    <Property Name="last_name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="former_name" Type="varchar" MaxLength="20" />
+    <Property Name="login_id" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="e_mail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="is_donor" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wish_status">
+    <Key>
+      <PropertyRef Name="wish_status_id" />
+    </Key>
+    <Property Name="wish_status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="wish_status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wishes">
+    <Key>
+      <PropertyRef Name="wish_id" />
+    </Key>
+    <Property Name="wish_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="wish_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="wish_status_id" Type="int" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="created_by" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="start_date" Type="datetime" />
+    <Property Name="end_date" Type="datetime" />
+    <Property Name="user_id" Type="int" />
+  </EntityType>
+  <Association Name="FK_donations_donation_status">
+    <End Role="donation_status" Type="Self.donation_status" Multiplicity="0..1" />
+    <End Role="donations" Type="Self.donations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="donation_status">
+        <PropertyRef Name="donation_status_id" />
+      </Principal>
+      <Dependent Role="donations">
+        <PropertyRef Name="donation_status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_donations_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="donations" Type="Self.donations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="donations">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_wishes_users">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="wishes" Type="Self.wishes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="wishes">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_wishes_wish_status">
+    <End Role="wish_status" Type="Self.wish_status" Multiplicity="0..1" />
+    <End Role="wishes" Type="Self.wishes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="wish_status">
+        <PropertyRef Name="wish_status_id" />
+      </Principal>
+      <Dependent Role="wishes">
+        <PropertyRef Name="wish_status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="charasparkModelStoreContainer">
+    <EntitySet Name="donation_status" EntityType="Self.donation_status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="donations" EntityType="Self.donations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="error_log" EntityType="Self.error_log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wish_status" EntityType="Self.wish_status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wishes" EntityType="Self.wishes" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_donations_donation_status" Association="Self.FK_donations_donation_status">
+      <End Role="donation_status" EntitySet="donation_status" />
+      <End Role="donations" EntitySet="donations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_donations_users" Association="Self.FK_donations_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="donations" EntitySet="donations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_wishes_users" Association="Self.FK_wishes_users">
+      <End Role="users" EntitySet="users" />
+      <End Role="wishes" EntitySet="wishes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_wishes_wish_status" Association="Self.FK_wishes_wish_status">
+      <End Role="wish_status" EntitySet="wish_status" />
+      <End Role="wishes" EntitySet="wishes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
