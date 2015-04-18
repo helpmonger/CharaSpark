@@ -1,5 +1,13 @@
 angular.module('starter.controllers', [])
 
+
+
+.controller('LandingCtrl', function($scope) {
+  
+  
+})
+
+
 .controller('DashCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {
