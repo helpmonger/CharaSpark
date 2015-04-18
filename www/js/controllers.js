@@ -13,6 +13,7 @@ angular.module('starter.controllers', [])
 =======
 .controller('LandingCtrl', function($scope, CharityService, lodash) {
   
+  //populates the list of charities
   var promise = CharityService.all();
   promise.then(function(chars, err) {
     // returns a list of users
@@ -24,8 +25,18 @@ angular.module('starter.controllers', [])
     else {
       console.log('error is: ', err);
     }
+<<<<<<< HEAD
   });
   
+>>>>>>> origin/master
+=======
+  // }); end of promise 
+
+	// $scope.MakeAWish = function(){
+
+	// }
+  }); //end of promise
+})
 >>>>>>> origin/master
 
 .controller('DashCtrl', function($scope) {})
