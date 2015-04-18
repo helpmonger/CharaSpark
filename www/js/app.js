@@ -48,6 +48,8 @@ angular.module('starter', ['ionic',
 
   // Each tab has its own nav history stack:
 
+
+// make a wish
 .state('tab.landing', {
     url: '/landing',
     views: {
@@ -58,6 +60,7 @@ angular.module('starter', ['ionic',
     }
   })
 
+  //make a payment with braintree
   .state('tab.tree', {
       url: "/",
       views: {
