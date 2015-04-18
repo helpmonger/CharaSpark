@@ -82,22 +82,6 @@ function processPayment(req, res, next){
 	});
 }
 
-function SignUp(req, res, next){
-	console.log('the params are: ', req.params);
-	
-	db.Users.insert({name: 'test', password: 'blah'}, function(err, doc){
-	  // no error, inserted new document, with _id=1
-	  	if(!err)
-	  	{
-	  		console.log('successfully inserted');
-	  	}
-	  	else {
-	  		cosole.log('doc is: ' + doc);
-	  	}
-	    // error occured since _id=1 already existed
-	  }); //end insert 
-	} //end of signUpUser
-
 
 function SignUp(req , res , next){
     var user = {};
