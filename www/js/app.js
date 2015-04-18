@@ -11,8 +11,9 @@ angular.module('starter', ['ionic',
                             'restangular',
                             'ngLodash',
                             'braintree-angular',
+                            'ngStorage',
                             ])
-
+.constant('clientTokenPath', 'http://localhost:8080/api/token')
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -57,6 +58,17 @@ angular.module('starter', ['ionic',
     }
   })
 
+  .state('tab.tree', {
+      url: "/",
+      views: {
+        'tab-landing': {
+          templateUrl: "templates/braintree/tree.html",
+          controller: 'TreeCtrl'
+        }
+      }
+    })
+
+
   .state('tab.dash', {
     url: '/dash',
     views: {
@@ -95,6 +107,8 @@ angular.module('starter', ['ionic',
       }
     }
   });
+
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/landing');
