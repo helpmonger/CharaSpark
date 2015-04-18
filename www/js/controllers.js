@@ -9,29 +9,37 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('LandingCtrl', function($scope, CharityService, lodash) {
-  
-  //populates the list of charities
-  var promise = CharityService.all();
-  promise.then(function(chars, err) {
-    // returns a list of users
-    if(!err){
-      // console.log('list is: ', chars);
-      $scope.charities = lodash.sortBy(chars.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
-      console.log('charities ', $scope.charities);
-    }
-    else {
-      console.log('error is: ', err);
-    }
+.controller('MyWishesCtrl', function($scope) {
+	$scope.testValue = "test";
+})
 
-  });
-  
-  // }); end of promise 
+.controller('MyFullfillmentsCtrl', function($scope) {})
 
-	// $scope.MakeAWish = function(){
+.controller('FullfillaWishCtrl', function($scope) {})
 
-	// }
-  }) //end of promise
+//.controller('LandingCtrl', function($scope, CharityService, lodash) {
+//  
+//  //populates the list of charities
+//  var promise = CharityService.all();
+//  promise.then(function(chars, err) {
+//    // returns a list of users
+//    if(!err){
+//      // console.log('list is: ', chars);
+//      $scope.charities = lodash.sortBy(chars.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
+//      console.log('charities ', $scope.charities);
+//    }
+//    else {
+//      console.log('error is: ', err);
+//    }
+//
+//  });
+//  
+//  // }); end of promise 
+//
+//	// $scope.MakeAWish = function(){
+//
+//	// }
+//  }) //end of promise
 
 .controller('DashCtrl', function($scope) {})
 

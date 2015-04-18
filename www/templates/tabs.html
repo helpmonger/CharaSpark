@@ -5,20 +5,24 @@ navigation history that also transitions its views in and out.
 -->
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
-  <!-- Dashboard Tab -->
-  <ion-tab title="Make a Wish" icon-off="ion-ios-home-outline" icon-on="ion-ios-home" href="#/tab/landing">
+  <!-- Home Tab -->
+  <ion-tab title="Home" icon-off="ion-ios-home-outline" icon-on="ion-ios-home" href="#/tab/landing">
     <ion-nav-view name="tab-landing"></ion-nav-view>
   </ion-tab>
 
- <!-- Dashboard Tab -->
-  <ion-tab title="Status" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/dash">
-    <ion-nav-view name="tab-dash"></ion-nav-view>
+  <!-- MyWishes Tab -->
+  <ion-tab title="My Wishes" icon-off="ion-ios-cloud-upload-outline" icon-on="ion-ios-cloud-upload" href="#/tab/mywishes">
+    <ion-nav-view name="tab-mywishes"></ion-nav-view>
+  </ion-tab>
+  
+  <!-- FullfillWish Tab -->
+  <ion-tab title="Fullfill a Wish" icon-off="ion-ios-people-outline" icon-on="ion-ios-people" href="#/tab/fullfillawish">
+    <ion-nav-view name="tab-fullfillawish"></ion-nav-view>
   </ion-tab>
 
-
-  <!-- Chats Tab -->
-  <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chats">
-    <ion-nav-view name="tab-chats"></ion-nav-view>
+  <!-- MyFullfillments Tab -->
+  <ion-tab title="My Fullfillments" icon-off="ion-ios-cloud-download-outline" icon-on="ion-ios-cloud-download" href="#/tab/myfullfillments">
+    <ion-nav-view name="tab-myfullfillments"></ion-nav-view>
   </ion-tab>
 
   <!-- Account Tab -->
@@ -26,4 +30,11 @@ navigation history that also transitions its views in and out.
     <ion-nav-view name="tab-account"></ion-nav-view>
   </ion-tab>
 
+  <!-- Chats Tab -->
+  <!--
+  <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chats">
+    <ion-nav-view name="tab-chats"></ion-nav-view>
+  </ion-tab>
+ -->
+   
 </ion-tabs>
