@@ -1,16 +1,10 @@
 angular.module('starter.controllers', [])
 
 
-<<<<<<< HEAD
-
-.controller('LandingCtrl', function($scope) {
-
-})
-
 .controller('LoginCtrl', function($scope) {
 
 })
-=======
+
 .controller('LandingCtrl', function($scope, CharityService, lodash) {
   
   //populates the list of charities
@@ -25,19 +19,15 @@ angular.module('starter.controllers', [])
     else {
       console.log('error is: ', err);
     }
-<<<<<<< HEAD
+
   });
   
->>>>>>> origin/master
-=======
   // }); end of promise 
 
 	// $scope.MakeAWish = function(){
 
 	// }
-  }); //end of promise
-})
->>>>>>> origin/master
+  }) //end of promise
 
 .controller('DashCtrl', function($scope) {})
 
