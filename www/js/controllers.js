@@ -2,8 +2,20 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('LandingCtrl', function($scope) {
+.controller('LandingCtrl', function($scope, CharityService, lodash) {
   
+  var promise = CharityService.all();
+  promise.then(function(chars, err) {
+    // returns a list of users
+    if(!err){
+      // console.log('list is: ', chars);
+      $scope.charities = lodash.sortBy(chars.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
+      console.log('charities ', $scope.charities);
+    }
+    else {
+      console.log('error is: ', err);
+    }
+  });
   
 })
 
