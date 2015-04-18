@@ -1,7 +1,16 @@
 angular.module('starter.controllers', [])
 
 
-.controller('LandingCtrl', function($scope, CharityService, lodash, $state, $localStorage) {
+.controller('LoginCtrl', function($scope) {
+
+})
+
+.controller('SignupCtrl', function($scope) {
+
+})
+
+.controller('LandingCtrl', function($scope, CharityService, lodash) {
+
   
   //populates the list of charities
   var promise = CharityService.all();
@@ -15,11 +24,13 @@ angular.module('starter.controllers', [])
     else {
       console.log('error is: ', err);
     }
-  // }); end of promise 
+
+  }); // end of promise 
 
 	$scope.MakeAWish = function(){
 		//var donationAmt
 		//var charityName
+
 
 		// if($localStorage.user && $localStorage.user.auth_token){ //if user is authenticated
 		// 	//direct to braintree page
@@ -27,8 +38,7 @@ angular.module('starter.controllers', [])
 
 		$state.go('tab.tree');
 	}
-  }); //end of promise
-})
+  }) //end of controller
 
 .controller('TreeCtrl', function($scope, $localStorage, $braintree, Restangular){
             console.log('donation amt is: ' + $localStorage.donationAmt);

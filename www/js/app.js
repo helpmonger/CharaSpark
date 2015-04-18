@@ -68,6 +68,25 @@ angular.module('starter', ['ionic',
       }
     })
 
+.state('tab.login', {
+    url: '/login',
+    views: {
+        'tab-landing': {
+          templateUrl: 'templates/tab-login.html',
+          controller: 'LoginCtrl'
+        }
+    }   
+  })
+  
+.state('tab.signup', {
+    url: '/signup',
+    views: {
+        'tab-landing': {
+          templateUrl: 'templates/signup.html',
+          controller: 'SignupCtrl'
+        }
+    }     
+  })
 
   .state('tab.dash', {
     url: '/dash',
