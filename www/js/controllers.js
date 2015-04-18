@@ -3,8 +3,7 @@ angular.module('starter.controllers', [])
 
 
 .controller('LandingCtrl', function($scope) {
-  
-  
+
 })
 
 

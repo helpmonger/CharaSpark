@@ -1,0 +1,35 @@
+<!-- Make a Wish Here -->
+
+<ion-view view-title="CharaSpark">
+  <ion-content class="padding">
+      <div class="list">
+      
+	     <label class="item item-input">
+         <span class="input-label">Landing Wish Title (less than 5 words)</span><br/>
+         <input type="text" ng-model="wish.title" value="{{test}}">
+         </label>
+         <label class="item item-input">
+         <span class="input-label">Wish Detail</span>
+         <input type="text" ng-model="wish.detail">
+         </label>
+         <label class="item item-input">
+         <span class="input-label">Select Charity</span>
+         <select>
+			  <option value="aa">AA</option>
+			  <option value="bb">BB</option>
+		 </select>
+         </label>        
+         
+         <label class="item item-input">
+         <span class="input-label">Enter Donation Amount: $</span>
+         <input type="text" ng-model="wish.amount">
+         </label>         
+         
+         <label class="item item-input">
+         <button class="button button-block button-positive" ng-click="postWish()">
+         Make a Wish
+         </button>
+         </label>
+      </div>
+  </ion-content>
+</ion-view>
