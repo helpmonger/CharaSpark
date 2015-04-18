@@ -1,8 +1,6 @@
 angular.module('starter.controllers', [])
 
 
-
-<<<<<<< HEAD
 .controller('LandingCtrl', function($scope, CharityService, lodash) {
   
   var promise = CharityService.all();
