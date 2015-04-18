@@ -42,7 +42,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/landing',
     views: {
       'tab-landing': {
-        templateUrl: 'templates/landing/landing.html',
+        templateUrl: 'templates/tab-landing.html',
         controller: 'LandingCtrl'
       }
     }
