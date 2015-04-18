@@ -1,0 +1,41 @@
+<ion-view view-title="Brain Tree">
+  <ion-content>
+     <form id="checkout">
+ <!-- <div id="dropin"></div> -->
+  <!-- <braintree-dropin></braintree-dropin> -->
+
+ <div class="list">
+            <label class="item item-input">
+              <span class="input-label">Credit Card Number</span>
+              <!-- <input type="text" ng-model="user.username"> -->
+              <input type="text" ng-model="creditCard.number" placeholder="4111111111111111" />
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Expiration</span>
+              <!-- <input type="password" ng-model="user.password"> -->
+                <input type="text" ng-model="creditCard.expirationDate" placeholder="10/18" />
+            </label>
+          </div>
+
+
+
+  <div class="row row-middle">
+ 	<div class="col col-center">
+ 		<button class="button button-positive" ng-click="payButtonClicked()">
+		  Pay ${{donationAmt}}
+		</button>
+ 	</div>
+</div>
+    
+
+</form>
+
+
+
+  </ion-content>
+
+</ion-view>
+
+
+
+

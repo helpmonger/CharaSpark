@@ -4,21 +4,24 @@
   <ion-content class="padding">
       <div class="list">
       
-	     <label class="item item-input">
+	    <!--  <label class="item item-input">
          <span class="input-label">Landing Wish Title (less than 5 words)</span><br/>
          <input type="text" ng-model="wish.title" value="{{test}}">
-         </label>
+         </label> -->
          <label class="item item-input">
          <span class="input-label">Wish Detail</span>
          <input type="text" ng-model="wish.detail">
          </label>
          <label class="item item-input">
          <span class="input-label">Select Charity</span>
-         <select>
-			  <option value="aa">AA</option>
-			  <option value="bb">BB</option>
-		 </select>
          </label>        
+         <label class="item item-radio" ng-repeat="charity in charities" ng-click="displayDetails(charity.charityId)">
+          <input type="radio" name="group">
+          <div class="item-content">
+            {{charity.name}}
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
          
          <label class="item item-input">
          <span class="input-label">Enter Donation Amount: $</span>
@@ -26,7 +29,7 @@
          </label>         
          
          <label class="item item-input">
-         <button class="button button-block button-positive" ng-click="postWish()">
+         <button class="button button-block button-positive" ng-click="MakeAWish()">
          Make a Wish
          </button>
          </label>
