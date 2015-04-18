@@ -111,7 +111,7 @@ angular.module('starter', ['ionic',
   .state('tab.wishdescription', {
     url: '/wishdescription',
     views: {
-      'tab-wishdescription': {
+      'tab-fullfillawish': {
         templateUrl: 'templates/tab-wishdescription.html',
         controller: 'WishDescriptionCtrl'
       }

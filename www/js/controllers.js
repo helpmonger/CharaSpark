@@ -13,9 +13,10 @@ angular.module('starter.controllers', [])
 	$scope.testValue = "test";
 })
 
-.controller('LandingCtrl', function($scope, CharityService, lodash) {
 
-  
+//tab-landing
+
+.controller('LandingCtrl', function($scope, CharityService, lodash) {
   //populates the list of charities
   var promise = CharityService.all();
   promise.then(function(chars, err) {
@@ -99,13 +100,6 @@ angular.module('starter.controllers', [])
              
 	//close sth
 	})// end of TreeCtrl
-
-.controller('FullfillaWishCtrl', function($scope) {})
-
-.controller('WishDescriptionCtrl', function($scope) {})
-
-.controller('MyFullfillmentsCtrl', function($scope) {})
-
 .controller('LandingCtrl', function($scope, CharityService, lodash) {
   
   //populates the list of charities
@@ -129,6 +123,18 @@ angular.module('starter.controllers', [])
 
 	// }
 }) //end of promise
+
+
+
+//tab-fullfillawish
+.controller('FullfillaWishCtrl', function($scope) {})	
+.controller('WishDescriptionCtrl', function($scope) {})	
+
+
+.controller('MyFullfillmentsCtrl', function($scope) {})
+
+
+
 
 .controller('DashCtrl', function($scope) {})
 
