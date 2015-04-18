@@ -5,6 +5,10 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('SignupCtrl', function($scope) {
+
+})
+
 .controller('LandingCtrl', function($scope, CharityService, lodash) {
   
   //populates the list of charities
