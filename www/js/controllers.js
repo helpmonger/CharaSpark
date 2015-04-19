@@ -44,7 +44,7 @@ console.log('in login');
 
 .controller('SignupCtrl', function($scope, AuthService, $localStorage, $state) {
 	// alert('we re in sign up');
-
+    console.log($localStorage.user);
     if ($localStorage.user) {
         $state.go('tabs.landing');
     }
