@@ -196,6 +196,7 @@ var geoLoc = {
 
 	    wish.geoLoc = geoLoc;
 	    wish.wishstatus = 'new';
+	    wish.haspaid = 'true';
 		wish.charityName = 'test charity';
 		console.log('the wish is: ', wish);
 
