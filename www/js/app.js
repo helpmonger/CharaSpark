@@ -118,7 +118,7 @@ angular.module('starter', ['ionic',
   .state('tab.acceptconfirm', {
     url: '/acceptconfirm',
     views: {
-      'tab-fullfillawish': {
+      'tab-landing': {
         templateUrl: 'templates/acceptconfirm.html',
         controller: ''
       }
@@ -175,6 +175,16 @@ angular.module('starter', ['ionic',
       }
     }
   })    
+  
+    .state('tab.fullfillacceptconfirm', {
+    url: '/fullfillacceptconfirm',
+    views: {
+      'tab-fullfillawish': {
+        templateUrl: 'templates/fullfillacceptconfirm.html',
+        controller: ''
+      }
+    }
+  }) 
 
   .state('tab.account', {
     url: '/account',
