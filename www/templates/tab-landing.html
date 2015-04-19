@@ -30,8 +30,8 @@
 		      Select Charity
 		    </div>
 		    <select>
-		      <option default>Choose One From List</option>
-		      <option ng-repeat="charity in charities" ng-click="displayDetails(charity.charityId)">{{charity.name}}</option>
+		      <option selected>Choose One From List</option>
+		      <option ng-repeat="charity in charities" ng-click="displayDetails(charity.charityId)" ng-model="wish.charity.name">{{charity.name}}</option>
 
 		    </select>
 		  </label>
