@@ -308,7 +308,8 @@ var geoLoc = {
 				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
 				'status':'published',
 				'donor':'David',
-				'fulfiller':''
+				'fulfiller':'',
+				'distance':1.5
 			},
 			"102":{
 				'title':'Looking for Run Partner 2',	
@@ -318,7 +319,8 @@ var geoLoc = {
 				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
 				'status':'published',
 				'donor':'David',
-				'fulfiller':''
+				'fulfiller':'',
+				'distance':2.2
 			},
 			"103":{
 				'title':'Looking for Run Partner 3',	
@@ -328,7 +330,8 @@ var geoLoc = {
 				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
 				'status':'published',
 				'donor':'David',
-				'fulfiller':''
+				'fulfiller':'',
+				'distance': 4
 			}
 		}
 	$scope.goToDetails = function(){
