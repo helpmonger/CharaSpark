@@ -180,7 +180,7 @@ console.log('in login');
   var selectedCharity = '';
 
  $scope.wish = {};
- $scope.wish.wishtitle = "My child is sick";
+ $scope.wish.wishtitle = "My autistic child needs training";
  $scope.wish.description = "My child is severely sick and I can't afford to take her to the hospital.";
  $scope.donationAmt = 4.5;
   $scope.selectCharity = function(charity){
@@ -335,7 +335,7 @@ var geoLoc = {
 
 
 //tab-fullfillawish
-.controller('FullfillaWishCtrl', function($scope,$state, WishService) {
+.controller('FullfillaWishCtrl', function($scope,$state, WishService, $localStorage) {
 	
 	// var promise = WishService.getWishesToFulfill({_id: 'jsfd'});
  //  	promise.then(function(wishes, err) {
@@ -351,9 +351,9 @@ var geoLoc = {
 
  //  }); // end of promise 
 
-		 $scope.wishes={
+		 $scope.wishes=[
 		
-			"103":{
+			{	'id': '103',
 				'title':'Wedding Accompany',	
 				'charity':'Salvation Army',
 				'amount':5,
@@ -364,7 +364,7 @@ var geoLoc = {
 				'fulfiller':'',
 				'distance':1.5
 			},
-			"104":{
+			{	'id': '104',
 				'title':'Resume Help',	
 				'charity':'Learning for Life',
 				'amount':5,
@@ -376,31 +376,34 @@ var geoLoc = {
 				'distance':2.2
 			},
 
-		};
+		];
 
-	$scope.goToDetails = function(){
+	$scope.goToDetails = function(wish){
 		//alert('in details');
+		$localStorage.wish = wish;
 		$state.go('tab.wishdescription');
 		//  {'id': '101'}
 	}
 	
 })	
 
-.controller('WishDescriptionCtrl', function($scope,$state) {
-	$scope.aWish={
+.controller('WishDescriptionCtrl', function($scope,$state, $localStorage) {
+	$scope.aWish= $localStorage.wish;
 
-				'title':'Wedding Accompany',	
-				'charity':'Salvation Army',
-				'amount':5,
-				'date':'4/10/15',
-				'description':'I\'m going to a friend\'s wedding next Saturday, but I hate to be there alone. Looking for a female to come with me',
-				'status':'new',
-				'donor':'David',
-				'fulfiller':'',
-				'distance':1.5
+	//{
+
+	// 			'title':'Wedding Accompany',	
+	// 			'charity':'Salvation Army',
+	// 			'amount':5,
+	// 			'date':'4/10/15',
+	// 			'description':'I\'m going to a friend\'s wedding next Saturday, but I hate to be there alone. Looking for a female to come with me',
+	// 			'status':'new',
+	// 			'donor':'David',
+	// 			'fulfiller':'',
+	// 			'distance':1.5
 
 
-	}
+	// }
 	$scope.accept = function(){
 		//alert('in details');
 		$state.go('tab.fullfillacceptconfirm');

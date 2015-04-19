@@ -2,7 +2,7 @@
   <ion-content class="padding">
   <div class="list">  
   
-	  <label class="item item-radio" ng-repeat="wish in wishes" ng-click="goToDetails()">
+	  <label class="item item-radio" ng-repeat="wish in wishes" ng-click="goToDetails(wish)">
           <input type="radio" name="wishgroup">
           <div class="item-content">
             {{wish.title}}  ||  {{wish.distance}} miles<br> 
