@@ -349,7 +349,7 @@ var geoLoc = {
 				'fulfiller':'',
 				'distance': 4
 			}
-		})
+		}
 
 	$scope.goToDetails = function(){
 		//alert('in details');
