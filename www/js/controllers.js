@@ -10,9 +10,10 @@ console.log('in login');
     }
 
 	$scope.LogIn = function(userObj){
-		console.log('scope user is: ', userObj);
+		// console.log('scope user is: ', userObj);
 		var promise = AuthService.signin(userObj);
 		promise.then(function(user, err) {
+			console.log('user is: ', user);
                                   // returns a list of users
 	      if(!err && user.success){
 	        console.log('user is: ', user);
@@ -135,8 +136,13 @@ console.log('in login');
 
 //tab-landing
 
-.controller('LandingCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading) {
+.controller('LandingCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading, WishService) {
   //populates the list of charities
+  var selectedCharity = '';
+
+  $scope.selectCharity = function(charity){
+  	console.log('charity is: ', charity)
+  };
   var promise = CharityService.all();
   promise.then(function(chars, err) {
     // returns a list of users
@@ -167,13 +173,41 @@ var geoLoc = {
         });
 
 
-	$scope.MakeAWish = function(){
-		if(!$localStorage.user){ //if user is authenticated
+	$scope.MakeAWish = function(wish){
+
+		wish.charityName = 'test charity';
+		console.log('the wish is: ', wish);
+
+		if(!$localStorage.user){ //if user is not authenticated
 			//direct to braintree page
 			console.log('!user');
 			$localStorage.prevPage = 'tab.tree';
 			$state.go('tab.login');
 			return;
+		} 
+		else {
+			//create wish
+			//rediret to tree for payment
+				var promise = WishService.addWish(wish);
+				promise.then(function(result, err) {
+	                                  // returns a list of results
+		      if(!err){
+		        console.log('wish successfully added: ', result);
+		        // if($localStorage.prevPage){
+		        // 	$state.go($localStorage.prevPage);
+		        // 	$localStorage.prevPage = '';
+		        // } else {
+		        // 	$state.go('tab.landing');
+		        // }
+
+		        // alert('charity email is: ' + user.emailAddress);
+		        //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
+		      }
+		      else {
+		        console.log('error is: ', err);
+		        $scope.error = "invalid credentials";
+		      }
+		    }); //end of then
 		}
 		console.log('clicked');
 		$state.go('tab.tree');
@@ -386,7 +420,7 @@ console.log('acct user is: ', $localStorage.user);
 
 	$scope.logOff = function(){
 		$localStorage.user = '';
-		$state.go('tab.signin');
+		$state.go('tab.login');
 	}
 
 })

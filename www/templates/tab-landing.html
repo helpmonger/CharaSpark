@@ -31,10 +31,24 @@
 		    </div>
 		    <select>
 		      <option selected>Choose One From List</option>
-		      <option ng-repeat="charity in charities" ng-click="displayDetails(charity.charityId)" ng-model="wish.charity.name">{{charity.name}}</option>
+		      <option ng-repeat="charity in charities" ng-click="selectCharity(charity)">{{charity.name}}</option>
 
 		    </select>
 		  </label>
+
+        <!-- <label class="item item-radio" ng-repeat="charity in charities" ng-click="displayDetails(charity.charityId)">
+        <input type="radio" name="group">
+        <div class="item-content">
+          {{charity.name}}
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label> -->
+
+     <label class="item item-input">
+        <span class="input-label">Donation Amt:</span>
+        <input type="text" ng-model="donationAmt">
+    </label>
+    
 		
 		
 		</div>         
@@ -44,7 +58,7 @@
          </label>         
          
          <label class="item item-input">
-         <button class="button button-block button-positive" ng-click="MakeAWish()">
+         <button class="button button-block button-positive" ng-click="MakeAWish(wish)">
          Make a Wish
          </button>
          </label>
