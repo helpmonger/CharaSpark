@@ -140,6 +140,10 @@ console.log('in login');
   //populates the list of charities
   var selectedCharity = '';
 
+ $scope.wish = {};
+ $scope.wish.wishtitle = "TestWishTitle";
+ $scope.wish.description = "TestWishDescription";
+ $scope.donationAmt = 10;
   $scope.selectCharity = function(charity){
   	console.log('charity is: ', charity)
   };
@@ -222,13 +226,15 @@ var geoLoc = {
   }) //end of controller
 
 .controller('TreeCtrl', function($scope, $localStorage, $state, $braintree, TreeService){
-            
+          $scope.creditCard = {}; 
 			$scope.paymentComplete = false;
             // console.log('donation amt is: ' + $localStorage.donationAmt);
             $scope.donationAmt = $localStorage.donationAmt;
           $localStorage.donationAmt = $localStorage.donationAmt;
-            
+          $scope.creditCard.number  = "4111111111111111";
+	  $scope.creditCard.expirationDate= "10/18";
 
+	  
             var client;
                 $scope.creditCard = {
                   number: '',
