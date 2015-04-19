@@ -1,21 +1,16 @@
 
 <ion-view view-title="Log In">
   <ion-content class="padding">
-  
 
 <div class="list">
-<form name="signinForm" novalidate="" ng-submit="signIn(signinForm)">
+
   <label class="item item-input item-stacked-label">
-    <span class="input-label">First Name</span>
-    <input type="text" placeholder="your first name">
+    <span class="input-label">Username</span>
+    <input type="text" placeholder="your username" ng-model="user.username">
   </label>
   <label class="item item-input item-stacked-label">
-    <span class="input-label">Last Name</span>
-    <input type="text" placeholder="your last name">
-  </label>
-  <label class="item item-input item-stacked-label">
-    <span class="input-label">Email</span>
-    <input type="text">
+    <span class="input-label">Password</span>
+    <input type="text" ng-model="user.password">
   </label>
 
   <label class="item item-input">
@@ -23,7 +18,16 @@
          Login
          </button>
   </label>
-</form>
+  
+  <label class="item item-input">
+  <p>Don't have an account yet? Get one in seconds.</p>
+  </label>
+  
+  <label class="item item-input">
+  <button class="button button-clear button-positive" ng-click="jumpTo()">
+  Sign Up
+  </button>
+  </label>
 
 </div>
   </ion-content>
