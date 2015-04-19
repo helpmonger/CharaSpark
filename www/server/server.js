@@ -8,12 +8,11 @@ var mongojs = require('mongojs');
 var connection_string = 'testuser:coconut1@ds061651.mongolab.com:61651/charaspark';
 var db = mongojs(connection_string, ['charaspark']);
 var users = db.collection("users");
-
-
+var wishes = db.collection("wishes");
 
 var server = restify.createServer();
 
-var portNumber = process.env.port || 5000;
+var portNumber = process.env.PORT || 8080;
 
 
 server.use(restify.acceptParser(server.acceptable));
@@ -34,12 +33,12 @@ server.post({path : PATH +'LogIn', version: '0.0.1'} , LogIn);
 // server.post({path : PATH +'Jobs', version: '0.0.1'} ,postNewJob);
 // server.del({path : PATH +'/:jobId' , version: '0.0.1'} ,deleteJob);
 
- //    var gateway = braintree.connect({
-	//   environment: braintree.Environment.Sandbox,
-	//   merchantId: "hnvj4t6ggkv8thmr",
-	//   publicKey: "5by28mt2pg8sdxmd",
-	//   privateKey: "f4fd03b4259013c3d29907f275b5da88"
-	// });
+    var gateway = braintree.connect({
+	  environment: braintree.Environment.Sandbox,
+	  merchantId: "hnvj4t6ggkv8thmr",
+	  publicKey: "5by28mt2pg8sdxmd",
+	  privateKey: "f4fd03b4259013c3d29907f275b5da88"
+	});
 
 function getToken(req, res , next){
     res.setHeader('Access-Control-Allow-Origin','*');
