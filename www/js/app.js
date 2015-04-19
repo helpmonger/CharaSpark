@@ -183,7 +183,17 @@ angular.module('starter', ['ionic',
       }
     }
   })
-
+  
+  .state('tab.relogin', {
+    url: '/relogin',
+    views: {
+        'tab-account': {
+          templateUrl: 'templates/tab-relogin.html',
+          controller: 'ReloginCtrl'
+        }
+    }   
+  })
+  
   .state('tab.changepassword', {
 	    url: '/changepassword',
 	    views: {

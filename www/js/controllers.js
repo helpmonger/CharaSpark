@@ -358,25 +358,24 @@ var geoLoc = {
 	
 })
 
-
 .controller('DashCtrl', function($scope) {})
 
 .controller('AccountCtrl', function($scope,$state, $localStorage) {
 
-console.log('in account ctrl');
-console.log('acct user is: ', $localStorage.user);
+	console.log('in account ctrl');
+	console.log('acct user is: ', $localStorage.user);
 	if(!$localStorage.user){ //if user is not authenticated
 			//direct to braintree page
 			console.log('!user');
 			$localStorage.prevPage = 'tab.account';
 			console.log('redirect');
-			$state.go('tab.login');
+			$state.go('tab.relogin');
 			return;
 		}
 
-  $scope.settings = {
-    enableFriends: true
-  };
+	$scope.settings = {
+			enableFriends: true
+    }
   
 	$scope.changePassword = function(){
 		//alert('in details');
@@ -386,9 +385,20 @@ console.log('acct user is: ', $localStorage.user);
 
 	$scope.logOff = function(){
 		$localStorage.user = '';
-		$state.go('tab.signin');
+		$state.go('tab.relogin');
 	}
 
+})
+
+.controller('ReloginCtrl', function($scope,$state, $localStorage) {
+	if(!$localStorage.user){ //if user is not authenticated
+		//direct to braintree page
+		console.log('!user');
+		$localStorage.prevPage = 'tab.account';
+		console.log('redirect');
+		$state.go('tab.relogin');
+		return;
+	}
 })
 
 .controller('ChangePasswordCtrl', function($scope){
