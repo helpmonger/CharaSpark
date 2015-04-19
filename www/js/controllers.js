@@ -240,7 +240,9 @@ var geoLoc = {
   }) //end of controller
 
 .controller('TreeCtrl', function($scope, $localStorage, $state, $braintree, TreeService){
-            console.log('donation amt is: ' + $localStorage.donationAmt);
+            
+			$scope.paymentComplete = false;
+            // console.log('donation amt is: ' + $localStorage.donationAmt);
             $scope.donationAmt = $localStorage.donationAmt;
           $localStorage.donationAmt = $localStorage.donationAmt;
             
@@ -258,6 +260,11 @@ var geoLoc = {
                 });
               });
             }
+
+            	$scope.GoToWish = function(){
+					$state.go('tab.mywishes');
+				}
+
 
             $scope.payButtonClicked = function(){
               client.tokenizeCard({
@@ -278,7 +285,7 @@ var geoLoc = {
                   if(!err && paymentComplete.success){
                     console.log('paymentComplete is: ', paymentComplete);
                     $scope.paymentComplete = paymentComplete;
-                    $state.go('tab.acceptconfirm');
+                    
                     // alert('charity email is: ' + clientToken.emailAddress);
                     //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
                   }
@@ -296,26 +303,34 @@ var geoLoc = {
 	})// end of TreeCtrl
 
 
+// .controller('AcceptConfirmCtrl', function($scope) {
+// 	alert('in ctrler');
+// 	$scope.GoToWish = function(){
+// 		$state.go('tab.mywishes');
+// 	}
+
+// })
+
 
 //tab-fullfillawish
 .controller('FullfillaWishCtrl', function($scope,$state, WishService) {
 	
-	var promise = WishService.getWishesToFulfill({_id: 'jsfd'});
-  	promise.then(function(wishes, err) {
-    // returns a list of users
-    if(!err){
-      // console.log('list is: ', wishes);
-      $scope.wishes = wishes;
-      console.log('wishes ', $scope.wishes);
-    }
-    else {
-      console.log('error is: ', err);
-    }
+	// var promise = WishService.getWishesToFulfill({_id: 'jsfd'});
+ //  	promise.then(function(wishes, err) {
+ //    // returns a list of users
+ //    if(!err){
+ //      // console.log('list is: ', wishes);
+ //      $scope.wishes = wishes;
+ //      console.log('wishes ', $scope.wishes);
+ //    }
+ //    else {
+ //      console.log('error is: ', err);
+ //    }
 
-  }); // end of promise 
+ //  }); // end of promise 
 
 		 $scope.wishes={
-			
+		
 			"101":{
 				'title':'Fulfill 111 for Run Partner',	
 				'charity':'Salvation Army',
@@ -349,7 +364,7 @@ var geoLoc = {
 				'fulfiller':'',
 				'distance': 4
 			}
-		}
+		};
 
 	$scope.goToDetails = function(){
 		//alert('in details');
