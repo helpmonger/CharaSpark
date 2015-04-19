@@ -13,7 +13,8 @@ angular.module('starter', ['ionic',
                             'ngLodash',
                             'braintree-angular',
                             'ngStorage',
-                            'ngMessages'
+                            'ngMessages',
+                            'ui.router',
                             ])
 .constant('clientTokenPath', 'http://charasparkservices.herokuapp.com/api/token')
 .run(function($ionicPlatform) {
@@ -62,6 +63,17 @@ angular.module('starter', ['ionic',
     }
   })
 
+// Login 
+.state('tab.login', {
+    url: '/login',
+    views: {
+      'tab-login': {
+        templateUrl: 'templates/tab-login.html',
+        controller: 'LoginCtrl'
+      }
+    }
+  })  
+  
   //make a payment with braintree
   .state('tab.tree', {
       url: "/tree",
@@ -72,16 +84,6 @@ angular.module('starter', ['ionic',
         }
       }
     })
-
-.state('tab.login', {
-    url: '/login',
-    views: {
-        'tab-landing': {
-          templateUrl: 'templates/tab-login.html',
-          controller: 'LoginCtrl'
-        }
-    }   
-  })
   
 .state('tab.signup', {
     url: '/signup',
@@ -116,7 +118,7 @@ angular.module('starter', ['ionic',
   .state('tab.acceptconfirm', {
     url: '/acceptconfirm',
     views: {
-      'tab-fullfillawish': {
+      'tab-landing': {
         templateUrl: 'templates/acceptconfirm.html',
         controller: ''
       }
@@ -173,6 +175,16 @@ angular.module('starter', ['ionic',
       }
     }
   })    
+  
+    .state('tab.fullfillacceptconfirm', {
+    url: '/fullfillacceptconfirm',
+    views: {
+      'tab-fullfillawish': {
+        templateUrl: 'templates/fullfillacceptconfirm.html',
+        controller: ''
+      }
+    }
+  }) 
 
   .state('tab.account', {
     url: '/account',
@@ -184,15 +196,6 @@ angular.module('starter', ['ionic',
     }
   })
   
-  .state('tab.relogin', {
-    url: '/relogin',
-    views: {
-        'tab-account': {
-          templateUrl: 'templates/tab-relogin.html',
-          controller: 'ReloginCtrl'
-        }
-    }   
-  })
   
   .state('tab.changepassword', {
 	    url: '/changepassword',

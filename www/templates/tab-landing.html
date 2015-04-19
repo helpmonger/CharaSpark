@@ -6,11 +6,13 @@
       
 	     <label class="item item-input">
          <span class="input-label">Landing Wish Title (less than 5 words)</span><br/>
-         <input type="text" ng-model="wish.title">
+         <input type="text" ng-model="wish.wishtitle">
+         <span class="input-label">Wish Title</span><br/>
+
          </label>
          <label class="item item-input">
          <span class="input-label">Wish Detail</span>
-         <input type="text" ng-model="wish.detail">
+         <input type="text" ng-model="wish.description">
          </label>  
          
         <!--      
@@ -31,7 +33,7 @@
 		    </div>
 		    <select>
 		      <option selected>Choose One From List</option>
-		      <option ng-repeat="charity in charities" ng-click="selectCharity(charity)">{{charity.name}}</option>
+		      <option ng-repeat="charity in charities" ng-click="alert('aa')">{{charity.name}}</option>
 
 		    </select>
 		  </label>
@@ -44,18 +46,12 @@
         <i class="radio-icon ion-checkmark"></i>
       </label> -->
 
-     <label class="item item-input">
-        <span class="input-label">Donation Amt:</span>
-        <input type="text" ng-model="donationAmt">
-    </label>
-    
-		
-		
-		</div>         
-         <label class="item item-input">
-         <span class="input-label">Enter Donation Amount: $</span>
-         <input type="text" ng-model="wish.amount">
-         </label>         
+	    <label class="item item-input">
+	       <span class="input-label">Donation Amt:</span>
+	       <input type="text" ng-model="donationAmt">
+	   </label>
+	</div>         
+       
          
          <label class="item item-input">
          <button class="button button-block button-positive" ng-click="MakeAWish(wish)">

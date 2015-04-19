@@ -31,7 +31,7 @@ server.post({path : PATH +'processPayment' , version : '0.0.1'} , processPayment
 server.post({path : PATH +'SignUp', version: '0.0.1'} , SignUp);
 server.post({path : PATH +'LogIn', version: '0.0.1'} , LogIn);
 server.post({path : PATH +'AddWish', version: '0.0.1'} , AddWish);
-server.get({path : PATH +'UserWishes', version: '0.0.1'} , GetUserWishes);
+server.get({path : PATH +'Wishes', version: '0.0.1'} , Wishes);
 server.post({path : PATH +'GetUserDonations', version: '0.0.1'} , GetUserDonations);
 server.post({path : PATH +'GetUserFulfillments', version: '0.0.1'} , GetUserFulfillments);
 server.post({path : PATH +'GetPaidWishes', version: '0.0.1'} , GetPaidWishes);
@@ -170,7 +170,7 @@ function AddWish(req , res , next){
 }
 
 
-function GetUserWishes(req , res , next){
+function Wishes(req , res , next){
     var user = {};
  
     res.setHeader('Access-Control-Allow-Origin','*');
@@ -184,7 +184,7 @@ function GetUserWishes(req , res , next){
 
     //var userwishesfromdb;
 
-        wishes.find({userid:req.params._id}, function(err, data){
+        wishes.find({haspaid:true, wishstatus: 'new'}, function(err, data){
     	if(err){
     		console.log('err is: ', err);
     		return next(err);
