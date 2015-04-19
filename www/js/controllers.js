@@ -76,40 +76,58 @@ console.log('in login');
 
 })
 
-.controller('MyWishesCtrl', function($scope, $state) {
-	$scope.wishes={
+.controller('MyWishesCtrl', function($scope, $state, WishService) {
+
+//to-do: add redirect if user doesn't have permission;
+	console.log('in wish ctrl');
+	var promise = WishService.getUserWishes({_id: 'jsfd'});
+  	promise.then(function(wishes, err) {
+    // returns a list of users
+    if(!err){
+      // console.log('list is: ', wishes);
+      $scope.wishes = wishes;
+      console.log('wishes ', $scope.wishes);
+    }
+    else {
+      console.log('error is: ', err);
+    }
+
+  }); // end of promise 
+
+
+	// $scope.wishes={
 			
-		"101":{
-			'title':'Looking for Run Partner',	
-			'charity':'Salvation Army',
-			'amount':10,
-			'date':'4/10/15',
-			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-			'status':'published',
-			'donor':'David',
-			'fulfiller':''
-		},
-		"102":{
-			'title':'Looking for Run Partner 2',	
-			'charity':'Salvation Army 2',
-			'amount':10,
-			'date':'4/10/15',
-			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-			'status':'published',
-			'donor':'David',
-			'fulfiller':''
-		},
-		"103":{
-			'title':'Looking for Run Partner 3',	
-			'charity':'Salvation Army 3',
-			'amount':10,
-			'date':'4/10/15',
-			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-			'status':'published',
-			'donor':'David',
-			'fulfiller':''
-		}
-	}
+	// 	"101":{
+	// 		'title':'Looking for Run Partner',	
+	// 		'charity':'Salvation Army',
+	// 		'amount':10,
+	// 		'date':'4/10/15',
+	// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+	// 		'status':'published',
+	// 		'donor':'David',
+	// 		'fulfiller':''
+	// 	},
+	// 	"102":{
+	// 		'title':'Looking for Run Partner 2',	
+	// 		'charity':'Salvation Army 2',
+	// 		'amount':10,
+	// 		'date':'4/10/15',
+	// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+	// 		'status':'published',
+	// 		'donor':'David',
+	// 		'fulfiller':''
+	// 	},
+	// 	"103":{
+	// 		'title':'Looking for Run Partner 3',	
+	// 		'charity':'Salvation Army 3',
+	// 		'amount':10,
+	// 		'date':'4/10/15',
+	// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+	// 		'status':'published',
+	// 		'donor':'David',
+	// 		'fulfiller':''
+	// 	}
+	// }
 	
 	$scope.goToDetails = function(){
 		//alert('in details');
@@ -178,21 +196,25 @@ var geoLoc = {
 		wish.charityName = 'test charity';
 		console.log('the wish is: ', wish);
 
-		if(!$localStorage.user){ //if user is not authenticated
-			//direct to braintree page
-			console.log('!user');
-			$localStorage.prevPage = 'tab.tree';
-			$state.go('tab.relogin');
-			return;
-		} 
-		else {
+		// if(!$localStorage.user){ //if user is not authenticated
+		// 	//direct to braintree page
+		// 	console.log('!user');
+		// 	$localStorage.prevPage = 'tab.tree';
+		// 	$state.go('tab.relogin');
+		// 	return;
+		// } 
+		// else {
 			//create wish
 			//rediret to tree for payment
 				var promise = WishService.addWish(wish);
 				promise.then(function(result, err) {
 	                                  // returns a list of results
 		      if(!err){
-		        console.log('wish successfully added: ', result);
+		        	console.log('wish successfully added: ', result);
+		    	}
+		    	else {
+		    		$state.go('tab.tree');
+		    	}
 		        // if($localStorage.prevPage){
 		        // 	$state.go($localStorage.prevPage);
 		        // 	$localStorage.prevPage = '';
@@ -202,13 +224,13 @@ var geoLoc = {
 
 		        // alert('charity email is: ' + user.emailAddress);
 		        //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
-		      }
-		      else {
-		        console.log('error is: ', err);
-		        $scope.error = "invalid credentials";
-		      }
+		      //}
+		      // else {
+		      //   console.log('error is: ', err);
+		      //   $scope.error = "invalid credentials";
+		      // }
 		    }); //end of then
-		}
+		// } //end of else
 		console.log('clicked');
 		$state.go('tab.tree');
 	}
@@ -396,16 +418,16 @@ var geoLoc = {
 
 .controller('AccountCtrl', function($scope,$state, $localStorage) {
 
-	console.log('in account ctrl');
-	console.log('acct user is: ', $localStorage.user);
-	if(!$localStorage.user){ //if user is not authenticated
-			//direct to braintree page
-			console.log('!user');
-			$localStorage.prevPage = 'tab.account';
-			console.log('redirect');
-			$state.go('tab.relogin');
-			return;
-		}
+	// console.log('in account ctrl');
+	// console.log('acct user is: ', $localStorage.user);
+	// if(!$localStorage.user){ //if user is not authenticated
+	// 		//direct to braintree page
+	// 		console.log('!user');
+	// 		$localStorage.prevPage = 'tab.account';
+	// 		console.log('redirect');
+	// 		$state.go('tab.relogin');
+	// 		return;
+	// 	}
 
 	$scope.settings = {
 			enableFriends: true

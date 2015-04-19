@@ -100,6 +100,7 @@ Restangular.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
           getUserWishes: function (form) {
               var baseUrl = 'http://charasparkservices.herokuapp.com/api';
               Restangular.setBaseUrl(baseUrl);
+              console.log('the form is: ', form);
               return Restangular.all('UserWishes').customGET("", $.param(form),  
                         {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
 
