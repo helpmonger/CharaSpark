@@ -120,7 +120,7 @@ angular.module('starter', ['ionic',
     views: {
       'tab-landing': {
         templateUrl: 'templates/acceptconfirm.html',
-        controller: ''
+        controller: 'AcceptConfirmCtrl'
       }
     }
   })  

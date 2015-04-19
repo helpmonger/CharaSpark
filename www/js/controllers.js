@@ -240,7 +240,9 @@ var geoLoc = {
   }) //end of controller
 
 .controller('TreeCtrl', function($scope, $localStorage, $state, $braintree, TreeService){
-            console.log('donation amt is: ' + $localStorage.donationAmt);
+            
+			$scope.paymentComplete = false;
+            // console.log('donation amt is: ' + $localStorage.donationAmt);
             $scope.donationAmt = $localStorage.donationAmt;
           $localStorage.donationAmt = $localStorage.donationAmt;
             
@@ -258,6 +260,11 @@ var geoLoc = {
                 });
               });
             }
+
+            	$scope.GoToWish = function(){
+					$state.go('tab.mywishes');
+				}
+
 
             $scope.payButtonClicked = function(){
               client.tokenizeCard({
@@ -278,7 +285,7 @@ var geoLoc = {
                   if(!err && paymentComplete.success){
                     console.log('paymentComplete is: ', paymentComplete);
                     $scope.paymentComplete = paymentComplete;
-                    $state.go('tab.acceptconfirm');
+                    
                     // alert('charity email is: ' + clientToken.emailAddress);
                     //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
                   }
@@ -295,6 +302,14 @@ var geoLoc = {
 	//close sth
 	})// end of TreeCtrl
 
+
+// .controller('AcceptConfirmCtrl', function($scope) {
+// 	alert('in ctrler');
+// 	$scope.GoToWish = function(){
+// 		$state.go('tab.mywishes');
+// 	}
+
+// })
 
 
 //tab-fullfillawish
@@ -314,42 +329,42 @@ var geoLoc = {
 
   }); // end of promise 
 
-		 $scope.wishes={
+		//  $scope.wishes={
 			
-			"101":{
-				'title':'Fulfill 111 for Run Partner',	
-				'charity':'Salvation Army',
-				'amount':10,
-				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
-				'donor':'David',
-				'fulfiller':'',
-				'distance':1.5
-			},
-			"102":{
-				'title':'Looking for Run Partner 2',	
-				'charity':'Salvation Army 2',
-				'amount':10,
-				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
-				'donor':'David',
-				'fulfiller':'',
-				'distance':2.2
-			},
-			"103":{
-				'title':'Looking for Run Partner 3',	
-				'charity':'Salvation Army 3',
-				'amount':10,
-				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
-				'donor':'David',
-				'fulfiller':'',
-				'distance': 4
-			}
-		})
+		// 	"101":{
+		// 		'title':'Fulfill 111 for Run Partner',	
+		// 		'charity':'Salvation Army',
+		// 		'amount':10,
+		// 		'date':'4/10/15',
+		// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+		// 		'status':'published',
+		// 		'donor':'David',
+		// 		'fulfiller':'',
+		// 		'distance':1.5
+		// 	},
+		// 	"102":{
+		// 		'title':'Looking for Run Partner 2',	
+		// 		'charity':'Salvation Army 2',
+		// 		'amount':10,
+		// 		'date':'4/10/15',
+		// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+		// 		'status':'published',
+		// 		'donor':'David',
+		// 		'fulfiller':'',
+		// 		'distance':2.2
+		// 	},
+		// 	"103":{
+		// 		'title':'Looking for Run Partner 3',	
+		// 		'charity':'Salvation Army 3',
+		// 		'amount':10,
+		// 		'date':'4/10/15',
+		// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+		// 		'status':'published',
+		// 		'donor':'David',
+		// 		'fulfiller':'',
+		// 		'distance': 4
+		// 	}
+		// })
 
 	$scope.goToDetails = function(){
 		//alert('in details');
