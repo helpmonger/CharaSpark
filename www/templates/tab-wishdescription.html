@@ -1,15 +1,25 @@
 <ion-view view-title="Wish Description">
   <ion-content class="padding" >
-      <div class="list" style="text-align:center">
-      {{aWish.title}} <br>
-      {{aWish.charity}} <br>
-      {{aWish.amount | currency}} <br>
-      {{aWish.date}} <br>
-      {{aWish.description}} <br>
-      {{aWish.status}} <br>
-      <button class="button button-positive">
-       Accept
-      </button>  
-      </div>
+	<div class="list card">
+	  <div class="item item-avatar">
+	    <img src="img/smile.png">
+	    <h2>{{aWish.title}}</h2>
+	    <p>{{aWish.donor}} -->  {{aWish.charity}} | {{aWish.amount | currency}} | {{aWish.date}}</p>
+	  </div>
+	  <div class="item item-body">
+	    <p>
+	      {{aWish.description}}
+	    </p>
+	  </div>
+	  <div class="item tabs tabs-secondary tabs-icon-left">
+		<button class="button button-positive ">
+		 Accept
+		</button>
+	  </div>
+	</div> <!-- {{aWish.status}} -->
   </ion-content>
 </ion-view>
+
+ 
+
+      

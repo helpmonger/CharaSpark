@@ -10,7 +10,39 @@ angular.module('starter.controllers', [])
 })
 
 .controller('MyWishesCtrl', function($scope) {
-	$scope.testValue = "test";
+	$scope.wishes={
+			
+		"101":{
+			'title':'Looking for Run Partner',	
+			'charity':'Salvation Army',
+			'amount':10,
+			'date':'4/10/15',
+			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+			'status':'published',
+			'donor':'David',
+			'fulfiller':''
+		},
+		"102":{
+			'title':'Looking for Run Partner 2',	
+			'charity':'Salvation Army 2',
+			'amount':10,
+			'date':'4/10/15',
+			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+			'status':'published',
+			'donor':'David',
+			'fulfiller':''
+		},
+		"103":{
+			'title':'Looking for Run Partner 3',	
+			'charity':'Salvation Army 3',
+			'amount':10,
+			'date':'4/10/15',
+			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+			'status':'published',
+			'donor':'David',
+			'fulfiller':''
+		}
+	}
 })
 
 
@@ -130,11 +162,11 @@ angular.module('starter.controllers', [])
 .controller('FullfillaWishCtrl', function($scope) {})	
 .controller('WishDescriptionCtrl', function($scope) {
 	$scope.aWish={
-		'title':'Run Partner',	
+		'title':'Looking for Run Partner',	
 		'charity':'Salvation Army',
 		'amount':10,
 		'date':'4/10/15',
-		'description':'Looking for a run parter',
+		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
 		'status':'published',
 		'donor':'David',
 		'fulfiller':''
