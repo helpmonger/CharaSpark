@@ -2,6 +2,13 @@ angular.module('starter.controllers', [])
 
 
 .controller('LoginCtrl', function($scope, AuthService, $state, $localStorage) {
+
+console.log('in login');
+//if logged in, go to landing
+	if ($localStorage.user) {
+        $state.go('tab.landing');
+    }
+
 	$scope.LogIn = function(userObj){
 		console.log('scope user is: ', userObj);
 		var promise = AuthService.signin(userObj);
@@ -9,7 +16,7 @@ angular.module('starter.controllers', [])
                                   // returns a list of users
 	      if(!err && user.success){
 	        console.log('user is: ', user);
-	        $scope.user = user;
+	        $localStorage.user = user;
 	        if($localStorage.prevPage){
 	        	$state.go($localStorage.prevPage);
 	        	$localStorage.prevPage = '';
@@ -37,6 +44,10 @@ angular.module('starter.controllers', [])
 .controller('SignupCtrl', function($scope, AuthService, $localStorage, $state) {
 	// alert('we re in sign up');
 
+    if ($localStorage.user) {
+        $state.go('tabs.landing');
+    }
+
 	$scope.SignUp = function(userObj){
 		console.log('scope user is: ', userObj);
 		var promise = AuthService.signup(userObj);
@@ -44,7 +55,7 @@ angular.module('starter.controllers', [])
                                   // returns a list of users
 	      if(!err){
 	        console.log('user is: ', user);
-	        $scope.user = user;
+	        $localStorage.user = user;
 	        if($localStorage.prevPage){
 	        	$state.go($localStorage.prevPage);
 	        	$localStorage.prevPage = '';
@@ -124,7 +135,7 @@ angular.module('starter.controllers', [])
 
 //tab-landing
 
-.controller('LandingCtrl', function($scope, CharityService, $state, lodash, $localStorage) {
+.controller('LandingCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading) {
   //populates the list of charities
   var promise = CharityService.all();
   promise.then(function(chars, err) {
@@ -140,8 +151,23 @@ angular.module('starter.controllers', [])
 
   }); // end of promise 
 
+//get geo location stuff
+var geoLoc = {
+	long: '',
+	lat: ''
+};
+
+	navigator.geolocation
+    .getCurrentPosition(function(pos) {
+            geoLoc.lat = pos.coords.latitude;
+            geoLoc.long = pos.coords.longitude;
+            console.log('geoLoc is: ', geoLoc);
+            //var result = $scope.calcDistance(-81.06333, 33.95576, long, lat);
+            // console.log('result is: ' + result);
+        });
+
+
 	$scope.MakeAWish = function(){
-		alert('wish');
 		if(!$localStorage.user){ //if user is authenticated
 			//direct to braintree page
 			console.log('!user');
@@ -335,16 +361,34 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('AccountCtrl', function($scope,$state) {
+.controller('AccountCtrl', function($scope,$state, $localStorage) {
+
+console.log('in account ctrl');
+console.log('acct user is: ', $localStorage.user);
+	if(!$localStorage.user){ //if user is not authenticated
+			//direct to braintree page
+			console.log('!user');
+			$localStorage.prevPage = 'tab.account';
+			console.log('redirect');
+			$state.go('tab.login');
+			return;
+		}
+
   $scope.settings = {
     enableFriends: true
-  }
+  };
   
 	$scope.changePassword = function(){
 		//alert('in details');
 		$state.go('tab.changepassword');
 		//  {'id': '101'}
 	}
+
+	$scope.logOff = function(){
+		$localStorage.user = '';
+		$state.go('tab.signin');
+	}
+
 })
 
 .controller('ChangePasswordCtrl', function($scope){

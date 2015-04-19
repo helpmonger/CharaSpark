@@ -3,6 +3,7 @@ angular.module('starter.services', [])
 
 .factory('CharityService', function(Restangular, lodash){
 
+Restangular.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
   
 
   return {
