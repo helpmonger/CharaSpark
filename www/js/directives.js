@@ -1,5 +1,5 @@
-
-  myApp.directive('script', function() {
+angular.module('starter.directives', [])
+  .directive('script', function() {
     return {
       restrict: 'E',
       scope: false,

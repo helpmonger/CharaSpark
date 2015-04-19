@@ -8,6 +8,7 @@
 angular.module('starter', ['ionic',
                             'starter.controllers',
                             'starter.services',
+                            // 'starter.directives',
                             'restangular',
                             'ngLodash',
                             'braintree-angular',
@@ -62,7 +63,7 @@ angular.module('starter', ['ionic',
 
   //make a payment with braintree
   .state('tab.tree', {
-      url: "/",
+      url: "/tree",
       views: {
         'tab-landing': {
           templateUrl: "templates/braintree/tree.html",
