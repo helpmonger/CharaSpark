@@ -3,7 +3,9 @@ var braintree = require('braintree');
 var mongojs = require('mongojs');
 // var db = mongojs('mongodb://localhost/CharaSpark', ['Users']);
 
-var connection_string = '127.0.0.1:27017/charaspark';
+// var connection_string = '127.0.0.1:27017/charaspark'; //local
+// var db = mongojs('username:password@example.com/mydb', ['mycollection']);
+var connection_string = 'testuser:coconut1@ds061651.mongolab.com:61651/charaspark';
 var db = mongojs(connection_string, ['charaspark']);
 var users = db.collection("users");
 
