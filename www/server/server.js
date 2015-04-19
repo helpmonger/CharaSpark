@@ -35,6 +35,7 @@ server.get({path : PATH +'UserWishes', version: '0.0.1'} , GetUserWishes);
 server.post({path : PATH +'GetUserDonations', version: '0.0.1'} , GetUserDonations);
 server.post({path : PATH +'GetUserFulfillments', version: '0.0.1'} , GetUserFulfillments);
 server.post({path : PATH +'GetPaidWishes', version: '0.0.1'} , GetPaidWishes);
+server.post({path : PATH +'UpdateWishAsPaid', version: '0.0.1'} , UpdateWishAsPaid);
 
 // server.post({path : PATH +'Jobs', version: '0.0.1'} ,postNewJob);
 // server.del({path : PATH +'/:jobId' , version: '0.0.1'} ,deleteJob);
@@ -270,6 +271,33 @@ function GetPaidWishes(req , res , next){
     	}
     });
 } 
+
+// db.collection.update( { "_id.authorID": 1 },
+//    { "name": "Robert Frost" },
+//    { upsert: true } )
+// 1. it will read the wish id from the request
+// 2. it will update the wish as paid
+
+function UpdateWishAsPaid(req , res , next){
+    req.params.postedOn = new Date();
+    res.setHeader('Access-Control-Allow-Origin','*');
+    wishes.update( 
+    	{ _id: req.params.wishid,
+		    status: 'paid',
+		    upsert: true }, function(err , success){
+        console.log('Response success ', success);
+        console.log('Response error ', err);
+        if(success){
+            res.send(201 , wishes);
+            return next();
+        }
+        else{
+            return next(err);
+        }
+
+         });
+	}
+
 
 
 
