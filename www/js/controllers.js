@@ -96,15 +96,40 @@ console.log('in login');
  //  }); // end of promise 
 
 
-			
-	$scope.wishes = [{   'id': '101',
-			'title':'Looking for Run Partner',	
+
+	$scope.wishes = 
+	{ 105: {
+			'title':'Urgent! Need a Ride',	
 			'charity':'Salvation Army',
-			'amount':10,
+			'amount':5,
 			'date':'4/10/15',
-			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-			'status':'published',
-			'donor':'David',
+			'description':'I\'m supposed to pick up my kids after school, but my car is suddenly broken. Is there anyone who can help?',
+			'status':'new',
+			'donor':'Lydia',
+			'fulfiller':''
+		}
+
+	}		
+		
+	$scope.goToDetails = function(){
+		//alert('in details');
+		$state.go('tab.mywishdescription');
+		//  {'id': '101'}
+	}
+	
+})
+
+.controller('MyWishDescriptionCtrl', function($scope) {
+	
+	$scope.aWish= [{
+			'id': '102',
+			'title':'Urgent! Need a Ride',	
+			'charity':'Salvation Army',
+			'amount':5,
+			'date':'4/10/15',
+			'description':'I\'m supposed to pick up my kids after school, but my car is suddenly broken. Is there anyone who can help?',
+			'status':'new',
+			'donor':'Lydia',
 			'fulfiller':''
 		},
 		{   'id': '102',
@@ -334,39 +359,29 @@ var geoLoc = {
 
 		 $scope.wishes={
 		
-			"101":{
-				'title':'Fulfill 111 for Run Partner',	
+			"103":{
+				'title':'Wedding Accompany',	
 				'charity':'Salvation Army',
-				'amount':10,
+				'amount':5,
 				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
+				'description':'I\'m going to a friend\'s wedding next Saturday, but I hate to be there alone. Looking for a female to come with me',
+				'status':'new',
 				'donor':'David',
 				'fulfiller':'',
 				'distance':1.5
 			},
-			"102":{
-				'title':'Looking for Run Partner 2',	
-				'charity':'Salvation Army 2',
-				'amount':10,
+			"104":{
+				'title':'Resume Help',	
+				'charity':'Learning for Life',
+				'amount':5,
 				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
+				'description':'Can somebody help with reviewing my resume? Any suggestions welcome!',
+				'status':'new',
 				'donor':'David',
 				'fulfiller':'',
 				'distance':2.2
 			},
-			"103":{
-				'title':'Looking for Run Partner 3',	
-				'charity':'Salvation Army 3',
-				'amount':10,
-				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
-				'donor':'David',
-				'fulfiller':'',
-				'distance': 4
-			}
+
 		};
 
 	$scope.goToDetails = function(){
@@ -379,14 +394,18 @@ var geoLoc = {
 
 .controller('WishDescriptionCtrl', function($scope,$state) {
 	$scope.aWish={
-		'title':'Looking for Run Partner',	
-		'charity':'Salvation Army',
-		'amount':10,
-		'date':'4/10/15',
-		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-		'status':'published',
-		'donor':'David',
-		'fulfiller':''
+
+				'title':'Wedding Accompany',	
+				'charity':'Salvation Army',
+				'amount':5,
+				'date':'4/10/15',
+				'description':'I\'m going to a friend\'s wedding next Saturday, but I hate to be there alone. Looking for a female to come with me',
+				'status':'new',
+				'donor':'David',
+				'fulfiller':'',
+				'distance':1.5
+
+
 	}
 	$scope.accept = function(){
 		//alert('in details');
@@ -400,55 +419,45 @@ var geoLoc = {
 .controller('MyFullfillmentsCtrl', function($scope, $state) {
 	$scope.wishes={
 			
-			"101":{
-				'title':'Looking for Run Partner',	
+		       "101":{
+				'title':'Meal Partner',	
 				'charity':'Salvation Army',
 				'amount':10,
 				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
-				'donor':'David',
-				'fulfiller':''
+				'description':'I\'m new to the city. Is there anyone who want to come and hangout with me? I\'ll pay.',
+				'status':'Cancelled',
+				'donor':'Daniel',
+				'fulfiller':'Lydia'
 			},
-			"102":{
-				'title':'Looking for Run Partner 2',	
-				'charity':'Salvation Army 2',
+	        	"102":{
+				'title':'Laptop Needs To Be Fixed',	
+				'charity':'Salvation Army',
 				'amount':10,
 				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
-				'donor':'David',
-				'fulfiller':''
-			},
-			"103":{
-				'title':'Looking for Run Partner 3',	
-				'charity':'Salvation Army 3',
-				'amount':10,
-				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
-				'donor':'David',
-				'fulfiller':''
+				'description':'My laptop is broken. I feel bad. Can somebody help?',
+				'status':'Fulfilled',
+				'donor':'Daniel',
+				'fulfiller':'Lydia'
 			}
+
 		}
 	$scope.goToDetails = function(){
 		//alert('in details');
 		$state.go('tab.myfullfillmentdescription');
-		//  {'id': '101'}
 	}
 })
 
 .controller('MyFullfillmentDescriptionCtrl', function($scope) {
 	
 	$scope.aWish={
-			'title':'Looking for Run Partner',	
-			'charity':'Salvation Army',
-			'amount':10,
-			'date':'4/10/15',
-			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-			'status':'published',
-			'donor':'David',
-			'fulfiller':''
+				'title':'Meal Partner',	
+				'charity':'Salvation Army',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'I\'m new to the city. Is there anyone who want to come and hangout with me? I\'ll pay.',
+				'status':'Cancelled',
+				'donor':'Daniel',
+				'fulfiller':'Lydia'
 		}
 	
 })
