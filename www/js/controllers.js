@@ -185,7 +185,7 @@ angular.module('starter.controllers', [])
 		$scope.wishes={
 			
 			"101":{
-				'title':'Looking for Run Partner',	
+				'title':'Fulfill 111 for Run Partner',	
 				'charity':'Salvation Army',
 				'amount':10,
 				'date':'4/10/15',
