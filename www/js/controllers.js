@@ -180,9 +180,50 @@ angular.module('starter.controllers', [])
 
 
 //tab-fullfillawish
-.controller('FullfillaWishCtrl', function($scope) {})	
+.controller('FullfillaWishCtrl', function($scope,$state) {
+	
+		$scope.wishes={
+			
+			"101":{
+				'title':'Looking for Run Partner',	
+				'charity':'Salvation Army',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':''
+			},
+			"102":{
+				'title':'Looking for Run Partner 2',	
+				'charity':'Salvation Army 2',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':''
+			},
+			"103":{
+				'title':'Looking for Run Partner 3',	
+				'charity':'Salvation Army 3',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':''
+			}
+		}
+	$scope.goToDetails = function(){
+		//alert('in details');
+		$state.go('tab.wishdescription');
+		//  {'id': '101'}
+	}
+	
+})	
 
-.controller('WishDescriptionCtrl', function($scope) {
+.controller('WishDescriptionCtrl', function($scope,$state) {
 	$scope.aWish={
 		'title':'Looking for Run Partner',	
 		'charity':'Salvation Army',
@@ -193,7 +234,11 @@ angular.module('starter.controllers', [])
 		'donor':'David',
 		'fulfiller':''
 	}
-	
+	$scope.accept = function(){
+		//alert('in details');
+		$state.go('tab.acceptconfirm');
+		//  {'id': '101'}
+	}
 	
 })	
 
@@ -257,14 +302,20 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope,$state) {
   $scope.settings = {
     enableFriends: true
-  };
+  }
+  
+	$scope.changePassword = function(){
+		//alert('in details');
+		$state.go('tab.changepassword');
+		//  {'id': '101'}
+	}
 })
 
 .controller('ChangePasswordCtrl', function($scope){
-	
+
 });
 
 
