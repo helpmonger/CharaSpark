@@ -76,7 +76,17 @@ console.log('in login');
 
 })
 
-.controller('MyWishesCtrl', function($scope, $state) {
+.controller('MyWishesCtrl', function($scope, $state, $localStorage) {
+
+	if(!$localStorage.user){ //if user is not authenticated
+		//direct to braintree page
+		console.log('!user');
+		$localStorage.prevPage = 'tab.account';
+		console.log('redirect');
+		$state.go('tab.login');
+		return;
+	}
+	
 	$scope.wishes={
 			
 		"101":{
@@ -116,6 +126,7 @@ console.log('in login');
 		$state.go('tab.mywishdescription');
 		//  {'id': '101'}
 	}
+	
 })
 
 .controller('MyWishDescriptionCtrl', function($scope) {
@@ -403,7 +414,7 @@ var geoLoc = {
 			console.log('!user');
 			$localStorage.prevPage = 'tab.account';
 			console.log('redirect');
-			$state.go('tab.relogin');
+			$state.go('tab.login');
 			return;
 		}
 
@@ -423,6 +434,8 @@ var geoLoc = {
 	}
 
 })
+
+.controller('TabLoginCtrl', function($scope) {})
 
 .controller('ReloginCtrl', function($scope,$state, $localStorage) {
 	if(!$localStorage.user){ //if user is not authenticated
