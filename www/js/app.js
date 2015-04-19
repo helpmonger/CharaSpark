@@ -13,7 +13,7 @@ angular.module('starter', ['ionic',
                             'braintree-angular',
                             'ngStorage',
                             ])
-.constant('clientTokenPath', 'http://localhost:8080/api/token')
+.constant('clientTokenPath', 'http://charasparkservices.herokuapp.com/api/token')
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
