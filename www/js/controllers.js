@@ -198,7 +198,7 @@ angular.module('starter.controllers', [])
 })	
 
 //Fullfillments data needs to be updated to Fullfillments.
-.controller('MyFullfillmentsCtrl', function($scope) {
+.controller('MyFullfillmentsCtrl', function($scope, $state) {
 	$scope.wishes={
 			
 			"101":{
@@ -232,6 +232,11 @@ angular.module('starter.controllers', [])
 				'fulfiller':''
 			}
 		}
+	$scope.goToDetails = function(){
+		//alert('in details');
+		$state.go('tab.myfullfillmentdescription');
+		//  {'id': '101'}
+	}
 })
 
 .controller('MyFullfillmentDescriptionCtrl', function($scope) {
