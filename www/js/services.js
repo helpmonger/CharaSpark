@@ -55,7 +55,7 @@ angular.module('starter.services', [])
 
   var baseUrl = 'http://charasparkservices.herokuapp.com/api';
   Restangular.setBaseUrl(baseUrl);
-  var baseOptin = Restangular.all('api/');
+  // var baseOptin = Restangular.all('api/');
 
 
 
@@ -64,13 +64,13 @@ angular.module('starter.services', [])
 
   return {
           signin: function (form) {
-              return Restangular.all().customPOST($.param(form), "LogIn", form, 
+              return Restangular.all('LogIn').customPOST($.param(form), "", form, 
                         {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
             
           },
           signup: function (form) {
 
-              return Restangular.all().customPOST($.param(form), "SignUp", form, 
+              return Restangular.all('SignUp').customPOST($.param(form), "", form, 
                         {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
              //end of signup
           },
