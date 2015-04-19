@@ -1,8 +1,15 @@
 <ion-view view-title="Wish Description">
-  <ion-content class="padding">
-      <div class="list">
-      This is a wish description page.
-         
+  <ion-content class="padding" >
+      <div class="list" style="text-align:center">
+      {{aWish.title}} <br>
+      {{aWish.charity}} <br>
+      {{aWish.amount | currency}} <br>
+      {{aWish.date}} <br>
+      {{aWish.description}} <br>
+      {{aWish.status}} <br>
+      <button class="button button-positive">
+       Accept
+      </button>  
       </div>
   </ion-content>
 </ion-view>

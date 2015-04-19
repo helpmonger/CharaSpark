@@ -128,7 +128,20 @@ angular.module('starter.controllers', [])
 
 //tab-fullfillawish
 .controller('FullfillaWishCtrl', function($scope) {})	
-.controller('WishDescriptionCtrl', function($scope) {})	
+.controller('WishDescriptionCtrl', function($scope) {
+	$scope.aWish={
+		'title':'Run Partner',	
+		'charity':'Salvation Army',
+		'amount':10,
+		'date':'4/10/15',
+		'description':'Looking for a run parter',
+		'status':'published',
+		'donor':'David',
+		'fulfiller':''
+	}
+	
+	
+})	
 
 
 .controller('MyFullfillmentsCtrl', function($scope) {})
