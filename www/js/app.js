@@ -161,6 +161,16 @@ angular.module('starter', ['ionic',
       }
     }
   })  
+
+  .state('tab.myfullfillmentdescription', {
+    url: '/myfullfillmentdescription',
+    views: {
+      'tab-myfullfillments': {
+        templateUrl: 'templates/myfullfillmentdescription.html',
+        controller: 'MyFullfillmentDescriptionCtrl'
+      }
+    }
+  })    
   
   .state('tab.chats', {
       url: '/chats',

@@ -191,10 +191,57 @@ angular.module('starter.controllers', [])
 	
 })	
 
+//Fullfillments data needs to be updated to Fullfillments.
+.controller('MyFullfillmentsCtrl', function($scope) {
+	$scope.wishes={
+			
+			"101":{
+				'title':'Looking for Run Partner',	
+				'charity':'Salvation Army',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':''
+			},
+			"102":{
+				'title':'Looking for Run Partner 2',	
+				'charity':'Salvation Army 2',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':''
+			},
+			"103":{
+				'title':'Looking for Run Partner 3',	
+				'charity':'Salvation Army 3',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':''
+			}
+		}
+})
 
-.controller('MyFullfillmentsCtrl', function($scope) {})
-
-
+.controller('MyFullfillmentDescriptionCtrl', function($scope) {
+	
+	$scope.aWish={
+			'title':'Looking for Run Partner',	
+			'charity':'Salvation Army',
+			'amount':10,
+			'date':'4/10/15',
+			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+			'status':'published',
+			'donor':'David',
+			'fulfiller':''
+		}
+	
+})
 
 
 .controller('DashCtrl', function($scope) {})
