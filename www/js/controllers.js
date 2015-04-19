@@ -352,7 +352,7 @@ var geoLoc = {
 	}
 	$scope.accept = function(){
 		//alert('in details');
-		$state.go('tab.acceptconfirm');
+		$state.go('tab.fullfillacceptconfirm');
 		//  {'id': '101'}
 	}
 	
