@@ -62,6 +62,17 @@ angular.module('starter', ['ionic',
     }
   })
 
+// Login 
+.state('tab.login', {
+    url: '/login',
+    views: {
+      'tab-login': {
+        templateUrl: 'templates/tab-login.html',
+        controller: 'LoginCtrl'
+      }
+    }
+  })  
+  
   //make a payment with braintree
   .state('tab.tree', {
       url: "/tree",
@@ -72,16 +83,6 @@ angular.module('starter', ['ionic',
         }
       }
     })
-
-.state('tab.login', {
-    url: '/login',
-    views: {
-        'tab-landing': {
-          templateUrl: 'templates/tab-login.html',
-          controller: 'LoginCtrl'
-        }
-    }   
-  })
   
 .state('tab.signup', {
     url: '/signup',
@@ -184,15 +185,6 @@ angular.module('starter', ['ionic',
     }
   })
   
-  .state('tab.relogin', {
-    url: '/relogin',
-    views: {
-        'tab-account': {
-          templateUrl: 'templates/tab-relogin.html',
-          controller: 'ReloginCtrl'
-        }
-    }   
-  })
   
   .state('tab.changepassword', {
 	    url: '/changepassword',

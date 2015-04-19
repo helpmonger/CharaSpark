@@ -44,7 +44,7 @@ console.log('in login');
 
 .controller('SignupCtrl', function($scope, AuthService, $localStorage, $state) {
 	// alert('we re in sign up');
-
+    console.log($localStorage.user);
     if ($localStorage.user) {
         $state.go('tabs.landing');
     }
@@ -76,6 +76,7 @@ console.log('in login');
 
 })
 
+
 .controller('MyWishesCtrl', function($scope, $state, WishService) {
 
 //to-do: add redirect if user doesn't have permission;
@@ -95,7 +96,6 @@ console.log('in login');
   }); // end of promise 
 
 
-	// $scope.wishes={
 			
 	// 	"101":{
 	// 		'title':'Looking for Run Partner',	
@@ -134,6 +134,7 @@ console.log('in login');
 		$state.go('tab.mywishdescription');
 		//  {'id': '101'}
 	}
+	
 })
 
 .controller('MyWishDescriptionCtrl', function($scope) {
@@ -418,6 +419,7 @@ var geoLoc = {
 
 .controller('AccountCtrl', function($scope,$state, $localStorage) {
 
+
 	// console.log('in account ctrl');
 	// console.log('acct user is: ', $localStorage.user);
 	// if(!$localStorage.user){ //if user is not authenticated
@@ -428,6 +430,7 @@ var geoLoc = {
 	// 		$state.go('tab.relogin');
 	// 		return;
 	// 	}
+
 
 	$scope.settings = {
 			enableFriends: true
@@ -445,6 +448,8 @@ var geoLoc = {
 	}
 
 })
+
+.controller('TabLoginCtrl', function($scope) {})
 
 .controller('ReloginCtrl', function($scope,$state, $localStorage) {
 	if(!$localStorage.user){ //if user is not authenticated
