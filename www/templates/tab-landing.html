@@ -11,10 +11,9 @@
          <label class="item item-input">
          <span class="input-label">Wish Detail</span>
          <input type="text" ng-model="wish.detail">
-         </label>
-         <label class="item item-input">
-         <span class="input-label">Select Charity</span>
-         </label>        
+         </label>  
+         
+        <!--      
          <label class="item item-radio" ng-repeat="charity in charities" ng-click="displayDetails(charity.charityId)">
           <input type="radio" name="group">
           <div class="item-content">
@@ -22,7 +21,22 @@
           </div>
           <i class="radio-icon ion-checkmark"></i>
         </label>
-         
+        
+         -->
+		<div class="list">
+		
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Select Charity
+		    </div>
+		    <select>
+		      <option ng-repeat="charity in charities" ng-click="displayDetails(charity.charityId)">{{charity.name}}</option>
+
+		    </select>
+		  </label>
+		
+		
+		</div>         
          <label class="item item-input">
          <span class="input-label">Enter Donation Amount: $</span>
          <input type="text" ng-model="wish.amount">

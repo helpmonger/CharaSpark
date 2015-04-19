@@ -8,12 +8,11 @@ var mongojs = require('mongojs');
 var connection_string = 'testuser:coconut1@ds061651.mongolab.com:61651/charaspark';
 var db = mongojs(connection_string, ['charaspark']);
 var users = db.collection("users");
-
-
+var wishes = db.collection("wishes");
 
 var server = restify.createServer();
 
-var portNumber = 8080;
+var portNumber = process.env.PORT || 8080;
 
 
 server.use(restify.acceptParser(server.acceptable));

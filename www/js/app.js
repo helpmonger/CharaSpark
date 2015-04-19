@@ -110,6 +110,17 @@ angular.module('starter', ['ionic',
       }
     }
   })   
+  
+  .state('tab.acceptconfirm', {
+    url: '/acceptconfirm',
+    views: {
+      'tab-fullfillawish': {
+        templateUrl: 'templates/acceptconfirm.html',
+        controller: ''
+      }
+    }
+  })  
+  
 
   .state('tab.wishdescription', {
     url: '/wishdescription',
@@ -131,6 +142,16 @@ angular.module('starter', ['ionic',
     }
   })  
 
+  .state('tab.mywishdescription', {
+    url: '/mywishdescription/',
+    views: {
+      'tab-mywishes': {
+        templateUrl: 'templates/mywishdescription.html',
+        controller: 'MyWishDescriptionCtrl'
+      }
+    }
+  })    
+  
   .state('tab.myfullfillments', {
     url: '/myfullfillments',
     views: {
@@ -140,26 +161,16 @@ angular.module('starter', ['ionic',
       }
     }
   })  
-  
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
+
+  .state('tab.myfullfillmentdescription', {
+    url: '/myfullfillmentdescription',
+    views: {
+      'tab-myfullfillments': {
+        templateUrl: 'templates/myfullfillmentdescription.html',
+        controller: 'MyFullfillmentDescriptionCtrl'
       }
-    })
-    
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
+    }
+  })    
 
   .state('tab.account', {
     url: '/account',
@@ -169,9 +180,17 @@ angular.module('starter', ['ionic',
         controller: 'AccountCtrl'
       }
     }
-  });
+  })
 
-
+  .state('tab.changepassword', {
+	    url: '/changepassword',
+	    views: {
+	      'tab-account': {
+	        templateUrl: 'templates/changepassword.html',
+	        controller: 'ChangePasswordCtrl'
+	      }
+	    }
+	  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/landing');

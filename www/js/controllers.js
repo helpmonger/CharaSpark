@@ -23,8 +23,61 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('MyWishesCtrl', function($scope) {
-	$scope.testValue = "test";
+.controller('MyWishesCtrl', function($scope, $state) {
+	$scope.wishes={
+			
+		"101":{
+			'title':'Looking for Run Partner',	
+			'charity':'Salvation Army',
+			'amount':10,
+			'date':'4/10/15',
+			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+			'status':'published',
+			'donor':'David',
+			'fulfiller':''
+		},
+		"102":{
+			'title':'Looking for Run Partner 2',	
+			'charity':'Salvation Army 2',
+			'amount':10,
+			'date':'4/10/15',
+			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+			'status':'published',
+			'donor':'David',
+			'fulfiller':''
+		},
+		"103":{
+			'title':'Looking for Run Partner 3',	
+			'charity':'Salvation Army 3',
+			'amount':10,
+			'date':'4/10/15',
+			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+			'status':'published',
+			'donor':'David',
+			'fulfiller':''
+		}
+	}
+	
+	$scope.goToDetails = function(){
+		//alert('in details');
+		$state.go('tab.mywishdescription');
+		//  {'id': '101'}
+	}
+})
+
+.controller('MyWishDescriptionCtrl', function($scope) {
+	
+	$scope.aWish={
+			'title':'Looking for Run Partner',	
+			'charity':'Salvation Army',
+			'amount':10,
+			'date':'4/10/15',
+			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+			'status':'published',
+			'donor':'David',
+			'fulfiller':''
+		}
+	
 })
 
 
@@ -141,43 +194,142 @@ angular.module('starter.controllers', [])
 
 
 //tab-fullfillawish
-.controller('FullfillaWishCtrl', function($scope) {})	
-.controller('WishDescriptionCtrl', function($scope) {
+.controller('FullfillaWishCtrl', function($scope,$state) {
+	
+		$scope.wishes={
+			
+			"101":{
+				'title':'Looking for Run Partner',	
+				'charity':'Salvation Army',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':''
+			},
+			"102":{
+				'title':'Looking for Run Partner 2',	
+				'charity':'Salvation Army 2',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':''
+			},
+			"103":{
+				'title':'Looking for Run Partner 3',	
+				'charity':'Salvation Army 3',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':''
+			}
+		}
+	$scope.goToDetails = function(){
+		//alert('in details');
+		$state.go('tab.wishdescription');
+		//  {'id': '101'}
+	}
+	
+})	
+
+.controller('WishDescriptionCtrl', function($scope,$state) {
 	$scope.aWish={
-		'title':'Run Partner',	
+		'title':'Looking for Run Partner',	
 		'charity':'Salvation Army',
 		'amount':10,
 		'date':'4/10/15',
-		'description':'Looking for a run parter',
+		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
 		'status':'published',
 		'donor':'David',
 		'fulfiller':''
 	}
-	
+	$scope.accept = function(){
+		//alert('in details');
+		$state.go('tab.acceptconfirm');
+		//  {'id': '101'}
+	}
 	
 })	
 
+//Fullfillments data needs to be updated to Fullfillments.
+.controller('MyFullfillmentsCtrl', function($scope, $state) {
+	$scope.wishes={
+			
+			"101":{
+				'title':'Looking for Run Partner',	
+				'charity':'Salvation Army',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':''
+			},
+			"102":{
+				'title':'Looking for Run Partner 2',	
+				'charity':'Salvation Army 2',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':''
+			},
+			"103":{
+				'title':'Looking for Run Partner 3',	
+				'charity':'Salvation Army 3',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':''
+			}
+		}
+	$scope.goToDetails = function(){
+		//alert('in details');
+		$state.go('tab.myfullfillmentdescription');
+		//  {'id': '101'}
+	}
+})
 
-.controller('MyFullfillmentsCtrl', function($scope) {})
-
-
+.controller('MyFullfillmentDescriptionCtrl', function($scope) {
+	
+	$scope.aWish={
+			'title':'Looking for Run Partner',	
+			'charity':'Salvation Army',
+			'amount':10,
+			'date':'4/10/15',
+			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+			'status':'published',
+			'donor':'David',
+			'fulfiller':''
+		}
+	
+})
 
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  }
-}) // end of ChatsCtrl
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
-
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope,$state) {
   $scope.settings = {
     enableFriends: true
-  };
+  }
+  
+	$scope.changePassword = function(){
+		//alert('in details');
+		$state.go('tab.changepassword');
+		//  {'id': '101'}
+	}
+})
+
+.controller('ChangePasswordCtrl', function($scope){
+
 });
+
+
