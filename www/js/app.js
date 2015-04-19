@@ -13,6 +13,7 @@ angular.module('starter', ['ionic',
                             'ngLodash',
                             'braintree-angular',
                             'ngStorage',
+                            'ngMessages'
                             ])
 .constant('clientTokenPath', 'http://charasparkservices.herokuapp.com/api/token')
 .run(function($ionicPlatform) {
@@ -182,7 +183,17 @@ angular.module('starter', ['ionic',
       }
     }
   })
-
+  
+  .state('tab.relogin', {
+    url: '/relogin',
+    views: {
+        'tab-account': {
+          templateUrl: 'templates/tab-relogin.html',
+          controller: 'ReloginCtrl'
+        }
+    }   
+  })
+  
   .state('tab.changepassword', {
 	    url: '/changepassword',
 	    views: {
