@@ -32,9 +32,6 @@ angular.module('starter.services', [])
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
-  // Some fake testing data
-  
-
   return {
     all: function() {
       return chats;
@@ -51,4 +48,33 @@ angular.module('starter.services', [])
       return null;
     }
   };
+}) //end of chats service
+
+
+.factory('AuthService', function(Restangular, lodash){
+
+  var baseUrl = 'http://charasparkservices.herokuapp.com/api';
+  Restangular.setBaseUrl(baseUrl);
+  var baseOptin = Restangular.all('api/');
+
+
+
+  // POST /accounts/123/messages?param=myParam with the body of name: "My Message"
+  account.customPOST({name: "My Message"}, "messages", {param: "myParam"}, {})
+
+  return {
+          signin: function (form) {
+              return Restangular.all().customPOST($.param(form), "LogIn", form, 
+                        {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
+            
+          },
+          signup: function (form) {
+
+              return Restangular.all().customPOST($.param(form), "SignUp", form, 
+                        {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
+             //end of signup
+          },
+        } //end of return
 });
+
+

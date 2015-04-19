@@ -1,11 +1,25 @@
 angular.module('starter.controllers', [])
 
 
-.controller('LoginCtrl', function($scope) {
-
+.controller('LoginCtrl', function($scope, AuthService) {
+	$scope.LogIn = function(){
+		var promise = AuthService.LogIn();
+		promise2.then(function(user, err) {
+                                  // returns a list of users
+	      if(!err){
+	        console.log('user is: ', user);
+	        $scope.user = user;
+	        alert('charity email is: ' + user.emailAddress);
+	        //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
+	      }
+	      else {
+	        console.log('error is: ', err);
+	      }
+	    }); //end of then
+	}
 })
 
-.controller('SignupCtrl', function($scope) {
+.controller('SignupCtrl', function($scope, AuthService) {
 
 })
 
