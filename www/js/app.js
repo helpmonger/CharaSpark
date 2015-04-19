@@ -110,6 +110,17 @@ angular.module('starter', ['ionic',
       }
     }
   })   
+  
+  .state('tab.acceptconfirm', {
+    url: '/acceptconfirm',
+    views: {
+      'tab-fullfillawish': {
+        templateUrl: 'templates/acceptconfirm.html',
+        controller: ''
+      }
+    }
+  })  
+  
 
   .state('tab.wishdescription', {
     url: '/wishdescription',
@@ -131,6 +142,16 @@ angular.module('starter', ['ionic',
     }
   })  
 
+  .state('tab.mywishdescription', {
+    url: '/mywishdescription',
+    views: {
+      'tab-mywishes': {
+        templateUrl: 'templates/mywishdescription.html',
+        controller: 'MyWishDescriptionCtrl'
+      }
+    }
+  })    
+  
   .state('tab.myfullfillments', {
     url: '/myfullfillments',
     views: {
@@ -140,6 +161,16 @@ angular.module('starter', ['ionic',
       }
     }
   })  
+
+  .state('tab.myfullfillmentdescription', {
+    url: '/myfullfillmentdescription',
+    views: {
+      'tab-myfullfillments': {
+        templateUrl: 'templates/myfullfillmentdescription.html',
+        controller: 'MyFullfillmentDescriptionCtrl'
+      }
+    }
+  })    
   
   .state('tab.chats', {
       url: '/chats',

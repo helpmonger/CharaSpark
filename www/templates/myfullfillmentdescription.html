@@ -1,9 +1,9 @@
-<ion-view view-title="Wish Description">
+<ion-view view-title="{{aWish.title}}">
   <ion-content class="padding" >
 	<div class="list card">
 	  <div class="item item-avatar">
 	    <img src="img/smile.png">
-	    <h2>{{aWish.title}}</h2>
+	    <!-- <h2>{{aWish.title}}</h2> -->
 	    <p>{{aWish.donor}} -->  {{aWish.charity}} | {{aWish.amount | currency}} | {{aWish.date}}</p>
 	  </div>
 	  <div class="item item-body">
@@ -12,11 +12,19 @@
 	    </p>
 	  </div>
 	  <div class="item tabs tabs-secondary tabs-icon-left">
-		<button class="button button-positive ">
-		 Accept
-		</button>
+		Status: {{aWish.status}}
 	  </div>
-	</div> <!-- {{aWish.status}} -->
+	  
+	  <p>only show the following button if accepted </p>
+	    <button class="button button-positive ">
+		 Confirm
+		</button>
+		
+		<button class="button button-positive ">
+		 Cancel
+		</button>
+		
+	</div> 
   </ion-content>
 </ion-view>
 
