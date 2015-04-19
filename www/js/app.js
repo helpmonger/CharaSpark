@@ -13,7 +13,8 @@ angular.module('starter', ['ionic',
                             'ngLodash',
                             'braintree-angular',
                             'ngStorage',
-                            'ngMessages'
+                            'ngMessages',
+                            'ui.router',
                             ])
 .constant('clientTokenPath', 'http://charasparkservices.herokuapp.com/api/token')
 .run(function($ionicPlatform) {

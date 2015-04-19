@@ -81,7 +81,7 @@ console.log('in login');
 
 //to-do: add redirect if user doesn't have permission;
 	console.log('in wish ctrl');
-	var promise = WishService.getUserWishes({_id: 'jsfd'});
+	var promise = WishService.getWishesToFulfill({_id: 'jsfd'});
   	promise.then(function(wishes, err) {
     // returns a list of users
     if(!err){
@@ -194,6 +194,8 @@ var geoLoc = {
 
 	$scope.MakeAWish = function(wish){
 
+	    wish.geoLoc = geoLoc;
+	    wish.wishstatus = 'new';
 		wish.charityName = 'test charity';
 		console.log('the wish is: ', wish);
 
@@ -237,7 +239,7 @@ var geoLoc = {
 	}
   }) //end of controller
 
-.controller('TreeCtrl', function($scope, $localStorage, $braintree, Restangular){
+.controller('TreeCtrl', function($scope, $localStorage, $state, $braintree, TreeService){
             console.log('donation amt is: ' + $localStorage.donationAmt);
             $scope.donationAmt = $localStorage.donationAmt;
           $localStorage.donationAmt = $localStorage.donationAmt;
@@ -269,19 +271,19 @@ var geoLoc = {
                 // console.log('form is ', form);
                 // - Send nonce to your server (e.g. to make a transaction) 
                 
-                  var promise2 = Restangular.oneUrl('test', 'http://localhost:8080/api').customPOST($.param(form), "processPayment", form, 
-                                {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
+                var promise = TreeService.makePayment(form);
 
-                 promise2.then(function(clientToken, err) {
+                 promise.then(function(paymentComplete, err) {
                                   // returns a list of users
-                  if(!err){
-                    console.log('clientToken is: ', clientToken);
-                    $scope.clientToken = clientToken;
-                    alert('charity email is: ' + clientToken.emailAddress);
+                  if(!err && paymentComplete.success){
+                    console.log('paymentComplete is: ', paymentComplete);
+                    $scope.paymentComplete = paymentComplete;
+                    $state.go('tab.acceptconfirm');
+                    // alert('charity email is: ' + clientToken.emailAddress);
                     //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
                   }
                   else {
-                    console.log('error is: ', err);
+                    console.log('error making payment: ', err);
                   }
                 }) //end of then
 
@@ -296,41 +298,55 @@ var geoLoc = {
 
 
 //tab-fullfillawish
-.controller('FullfillaWishCtrl', function($scope,$state) {
+.controller('FullfillaWishCtrl', function($scope,$state, WishService) {
 	
-		$scope.wishes={
+	var promise = WishService.getUserWishes({_id: 'jsfd'});
+  	promise.then(function(wishes, err) {
+    // returns a list of users
+    if(!err){
+      // console.log('list is: ', wishes);
+      $scope.wishes = wishes;
+      console.log('wishes ', $scope.wishes);
+    }
+    else {
+      console.log('error is: ', err);
+    }
+
+  }); // end of promise 
+
+		// $scope.wishes={
 			
-			"101":{
-				'title':'Fulfill 111 for Run Partner',	
-				'charity':'Salvation Army',
-				'amount':10,
-				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
-				'donor':'David',
-				'fulfiller':''
-			},
-			"102":{
-				'title':'Looking for Run Partner 2',	
-				'charity':'Salvation Army 2',
-				'amount':10,
-				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
-				'donor':'David',
-				'fulfiller':''
-			},
-			"103":{
-				'title':'Looking for Run Partner 3',	
-				'charity':'Salvation Army 3',
-				'amount':10,
-				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
-				'donor':'David',
-				'fulfiller':''
-			}
-		}
+		// 	"101":{
+		// 		'title':'Fulfill 111 for Run Partner',	
+		// 		'charity':'Salvation Army',
+		// 		'amount':10,
+		// 		'date':'4/10/15',
+		// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+		// 		'status':'published',
+		// 		'donor':'David',
+		// 		'fulfiller':''
+		// 	},
+		// 	"102":{
+		// 		'title':'Looking for Run Partner 2',	
+		// 		'charity':'Salvation Army 2',
+		// 		'amount':10,
+		// 		'date':'4/10/15',
+		// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+		// 		'status':'published',
+		// 		'donor':'David',
+		// 		'fulfiller':''
+		// 	},
+		// 	"103":{
+		// 		'title':'Looking for Run Partner 3',	
+		// 		'charity':'Salvation Army 3',
+		// 		'amount':10,
+		// 		'date':'4/10/15',
+		// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+		// 		'status':'published',
+		// 		'donor':'David',
+		// 		'fulfiller':''
+		// 	}
+		// }
 	$scope.goToDetails = function(){
 		//alert('in details');
 		$state.go('tab.wishdescription');

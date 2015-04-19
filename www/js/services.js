@@ -81,12 +81,6 @@ Restangular.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
 .factory('WishService', function(Restangular, lodash){
 
   
-  // var baseOptin = Restangular.all('api/');
-
-
-
-  // POST /accounts/123/messages?param=myParam with the body of name: "My Message"
-  // account.customPOST({name: "My Message"}, "messages", {param: "myParam"}, {})
 
   return {
 
@@ -97,17 +91,40 @@ Restangular.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
                         {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
             
           },
-          getUserWishes: function (form) {
+          getWishesToFulfill: function (form) {
               var baseUrl = 'http://charasparkservices.herokuapp.com/api';
               Restangular.setBaseUrl(baseUrl);
               console.log('the form is: ', form);
-              return Restangular.all('UserWishes').customGET("", $.param(form),  
+              return Restangular.all('Wishes').customGET("", {},  
                         {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
 
-
-             //end of signup
           },
+          getFulfillments: function (form) {
+            var baseUrl = 'http://charasparkservices.herokuapp.com/api';
+            Restangular.setBaseUrl(baseUrl);
+            // console.log('the form is: ', form);
+            return Restangular.all('Fulfillments').customGET("", $.param(form),  
+                  {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
+
+    },
+        } //end of return
+})
+
+
+.factory('TreeService', function(Restangular, lodash){
+
+  
+
+  return {
+
+          makePayment: function (form) {
+            var baseUrl = 'http://charasparkservices.herokuapp.com/api';
+            Restangular.setBaseUrl(baseUrl);
+              return Restangular.all('processPayment').customPOST($.param(form), "", form, 
+                        {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
+            
+          },
+         
         } //end of return
 });
-
 
