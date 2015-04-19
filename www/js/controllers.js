@@ -315,56 +315,56 @@ var geoLoc = {
 //tab-fullfillawish
 .controller('FullfillaWishCtrl', function($scope,$state, WishService) {
 	
-	var promise = WishService.getWishesToFulfill({_id: 'jsfd'});
-  	promise.then(function(wishes, err) {
-    // returns a list of users
-    if(!err){
-      // console.log('list is: ', wishes);
-      $scope.wishes = wishes;
-      console.log('wishes ', $scope.wishes);
-    }
-    else {
-      console.log('error is: ', err);
-    }
+	// var promise = WishService.getWishesToFulfill({_id: 'jsfd'});
+ //  	promise.then(function(wishes, err) {
+ //    // returns a list of users
+ //    if(!err){
+ //      // console.log('list is: ', wishes);
+ //      $scope.wishes = wishes;
+ //      console.log('wishes ', $scope.wishes);
+ //    }
+ //    else {
+ //      console.log('error is: ', err);
+ //    }
 
-  }); // end of promise 
+ //  }); // end of promise 
 
-		//  $scope.wishes={
-			
-		// 	"101":{
-		// 		'title':'Fulfill 111 for Run Partner',	
-		// 		'charity':'Salvation Army',
-		// 		'amount':10,
-		// 		'date':'4/10/15',
-		// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-		// 		'status':'published',
-		// 		'donor':'David',
-		// 		'fulfiller':'',
-		// 		'distance':1.5
-		// 	},
-		// 	"102":{
-		// 		'title':'Looking for Run Partner 2',	
-		// 		'charity':'Salvation Army 2',
-		// 		'amount':10,
-		// 		'date':'4/10/15',
-		// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-		// 		'status':'published',
-		// 		'donor':'David',
-		// 		'fulfiller':'',
-		// 		'distance':2.2
-		// 	},
-		// 	"103":{
-		// 		'title':'Looking for Run Partner 3',	
-		// 		'charity':'Salvation Army 3',
-		// 		'amount':10,
-		// 		'date':'4/10/15',
-		// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-		// 		'status':'published',
-		// 		'donor':'David',
-		// 		'fulfiller':'',
-		// 		'distance': 4
-		// 	}
-		// })
+		 $scope.wishes={
+		
+			"101":{
+				'title':'Fulfill 111 for Run Partner',	
+				'charity':'Salvation Army',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':'',
+				'distance':1.5
+			},
+			"102":{
+				'title':'Looking for Run Partner 2',	
+				'charity':'Salvation Army 2',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':'',
+				'distance':2.2
+			},
+			"103":{
+				'title':'Looking for Run Partner 3',	
+				'charity':'Salvation Army 3',
+				'amount':10,
+				'date':'4/10/15',
+				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+				'status':'published',
+				'donor':'David',
+				'fulfiller':'',
+				'distance': 4
+			}
+		};
 
 	$scope.goToDetails = function(){
 		//alert('in details');
