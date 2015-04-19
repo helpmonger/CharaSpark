@@ -413,7 +413,7 @@ var geoLoc = {
 })	
 
 //Fullfillments data needs to be updated to Fullfillments.
-.controller('MyFullfillmentsCtrl', function($scope, $state) {
+.controller('MyFullfillmentsCtrl', function($scope, $state, $localStorage) {
 	$scope.wishes={
 			
 		       "101":{
@@ -438,24 +438,27 @@ var geoLoc = {
 			}
 
 		}
-	$scope.goToDetails = function(){
+	$scope.goToDetails = function(wish){
 		//alert('in details');
+		$localStorage.wish = wish;
 		$state.go('tab.myfullfillmentdescription');
 	}
 })
 
-.controller('MyFullfillmentDescriptionCtrl', function($scope) {
+.controller('MyFullfillmentDescriptionCtrl', function($scope, $localStorage) {
 	
-	$scope.aWish={
-				'title':'Meal Partner',	
-				'charity':'Salvation Army',
-				'amount':10,
-				'date':'4/10/15',
-				'description':'I\'m new to the city. Is there anyone who want to come and hangout with me? I\'ll pay.',
-				'status':'Cancelled',
-				'donor':'Daniel',
-				'fulfiller':'Lydia'
-		}
+	$scope.aWish= $localStorage.wish;
+
+	// {
+	// 			'title':'Meal Partner',	
+	// 			'charity':'Salvation Army',
+	// 			'amount':10,
+	// 			'date':'4/10/15',
+	// 			'description':'I\'m new to the city. Is there anyone who want to come and hangout with me? I\'ll pay.',
+	// 			'status':'Cancelled',
+	// 			'donor':'Daniel',
+	// 			'fulfiller':'Lydia'
+	// 	}
 	
 })
 
