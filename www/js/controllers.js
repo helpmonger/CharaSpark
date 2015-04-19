@@ -9,7 +9,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('MyWishesCtrl', function($scope) {
+.controller('MyWishesCtrl', function($scope, $state) {
 	$scope.wishes={
 			
 		"101":{
@@ -42,6 +42,12 @@ angular.module('starter.controllers', [])
 			'donor':'David',
 			'fulfiller':''
 		}
+	}
+	
+	$scope.goToDetails = function(){
+		//alert('in details');
+		$state.go('tab.mywishdescription');
+		//  {'id': '101'}
 	}
 })
 

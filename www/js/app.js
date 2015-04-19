@@ -143,7 +143,7 @@ angular.module('starter', ['ionic',
   })  
 
   .state('tab.mywishdescription', {
-    url: '/mywishdescription',
+    url: '/mywishdescription/',
     views: {
       'tab-mywishes': {
         templateUrl: 'templates/mywishdescription.html',
