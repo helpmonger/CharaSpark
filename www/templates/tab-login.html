@@ -1,8 +1,10 @@
 
 <ion-view view-title="Log In">
   <ion-content class="padding">
+  
 
 <div class="list">
+<form name="signinForm" novalidate="" ng-submit="signIn(signinForm)">
   <label class="item item-input item-stacked-label">
     <span class="input-label">First Name</span>
     <input type="text" placeholder="your first name">
@@ -21,6 +23,7 @@
          Login
          </button>
   </label>
+</form>
 
 </div>
   </ion-content>
