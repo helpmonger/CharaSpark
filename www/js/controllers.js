@@ -300,7 +300,7 @@ var geoLoc = {
 //tab-fullfillawish
 .controller('FullfillaWishCtrl', function($scope,$state, WishService) {
 	
-	var promise = WishService.getUserWishes({_id: 'jsfd'});
+	var promise = WishService.getWishesToFulfill({_id: 'jsfd'});
   	promise.then(function(wishes, err) {
     // returns a list of users
     if(!err){
