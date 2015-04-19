@@ -32,8 +32,8 @@ server.post({path : PATH +'SignUp', version: '0.0.1'} , SignUp);
 server.post({path : PATH +'LogIn', version: '0.0.1'} , LogIn);
 server.post({path : PATH +'AddWish', version: '0.0.1'} , AddWish);
 server.get({path : PATH +'Wishes', version: '0.0.1'} , Wishes);
-server.post({path : PATH +'GetUserDonations', version: '0.0.1'} , GetUserDonations);
-server.post({path : PATH +'GetUserFulfillments', version: '0.0.1'} , GetUserFulfillments);
+server.post({path : PATH +'GetDonations', version: '0.0.1'} , GetDonations);
+server.post({path : PATH +'Fulfillments', version: '0.0.1'} , Fulfillments);
 server.post({path : PATH +'GetPaidWishes', version: '0.0.1'} , GetPaidWishes);
 server.post({path : PATH +'UpdateWishAsPaid', version: '0.0.1'} , UpdateWishAsPaid);
 
@@ -175,7 +175,7 @@ function Wishes(req , res , next){
  
     res.setHeader('Access-Control-Allow-Origin','*');
  
-    console.log('User id is: ', req.params._id);
+    // console.log('User id is: ', req.params._id);
 
     //1. get id from request parameter
     //2. find wishes by passing id of request parameter to the user collection 
@@ -184,7 +184,7 @@ function Wishes(req , res , next){
 
     //var userwishesfromdb;
 
-        wishes.find({haspaid:true, wishstatus: 'new'}, function(err, data){
+        wishes.find({haspaid: 'true', wishstatus: 'new'}, function(err, data){
     	if(err){
     		console.log('err is: ', err);
     		return next(err);
@@ -198,7 +198,7 @@ function Wishes(req , res , next){
     });
 }
 
-function GetUserDonations(req , res , next){
+function GetDonations(req , res , next){
     var user = {};
  
     res.setHeader('Access-Control-Allow-Origin','*');
@@ -223,15 +223,15 @@ function GetUserDonations(req , res , next){
 } 
 
 
-function GetUserFulfillments(req , res , next){
+function Fulfillments(req , res , next){
     var user = {};
  
     res.setHeader('Access-Control-Allow-Origin','*');
  
-    console.log('User id is: ', req.params._id);
+    // console.log('User id is: ', req.params._id);
 
 
-        wishes.find({userid:req.params._id}, function(err, data){
+        wishes.find({ fulfiller: { $exists: true } }, function(err, data){
     	if(err){
     		console.log('err is: ', err);
     		return next(err);
