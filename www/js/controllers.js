@@ -3,17 +3,25 @@ angular.module('starter.controllers', [])
 
 .controller('LoginCtrl', function($scope, AuthService) {
 	$scope.LogIn = function(){
-		var promise = AuthService.LogIn();
+		var promise = AuthService.LogIn($scope.user);
 		promise2.then(function(user, err) {
                                   // returns a list of users
-	      if(!err){
+	      if(!err && user.success){
 	        console.log('user is: ', user);
 	        $scope.user = user;
+	        if($localStorage.prevPage){
+	        	$state.go($localStorage.prevPage);
+	        	$localStorage.prevPage = '';
+	        } else {
+	        	$state.go('tab.landing');
+	        }
+
 	        // alert('charity email is: ' + user.emailAddress);
 	        //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
 	      }
 	      else {
 	        console.log('error is: ', err);
+	        $scope.error = "invalid credentials";
 	      }
 	    }); //end of then
 	}
@@ -83,7 +91,7 @@ angular.module('starter.controllers', [])
 
 //tab-landing
 
-.controller('LandingCtrl', function($scope, CharityService, $state, lodash) {
+.controller('LandingCtrl', function($scope, CharityService, $state, lodash, $localStorage) {
   //populates the list of charities
   var promise = CharityService.all();
   promise.then(function(chars, err) {
@@ -100,13 +108,14 @@ angular.module('starter.controllers', [])
   }); // end of promise 
 
 	$scope.MakeAWish = function(){
-		//var donationAmt
-		//var charityName
-
-
-		// if($localStorage.user && $localStorage.user.auth_token){ //if user is authenticated
-		// 	//direct to braintree page
-		// }
+		alert('wish');
+		if(!$localStorage.user){ //if user is authenticated
+			//direct to braintree page
+			console.log('!user');
+			$localStorage.prevPage = 'tab.tree';
+			$state.go('tab.login');
+			return;
+		}
 		console.log('clicked');
 		$state.go('tab.tree');
 	}
