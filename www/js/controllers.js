@@ -45,6 +45,21 @@ angular.module('starter.controllers', [])
 	}
 })
 
+.controller('MyWishDescriptionCtrl', function($scope) {
+	
+	$scope.aWish={
+			'title':'Looking for Run Partner',	
+			'charity':'Salvation Army',
+			'amount':10,
+			'date':'4/10/15',
+			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
+			'status':'published',
+			'donor':'David',
+			'fulfiller':''
+		}
+	
+})
+
 
 //tab-landing
 
@@ -160,6 +175,7 @@ angular.module('starter.controllers', [])
 
 //tab-fullfillawish
 .controller('FullfillaWishCtrl', function($scope) {})	
+
 .controller('WishDescriptionCtrl', function($scope) {
 	$scope.aWish={
 		'title':'Looking for Run Partner',	
