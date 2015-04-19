@@ -399,40 +399,29 @@ var geoLoc = {
 	$scope.wishes={
 			
 			"101":{
-				'title':'Looking for Run Partner',	
+				'title':'Laptop Needs To Be Fixed',	
 				'charity':'Salvation Army',
 				'amount':10,
 				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
+				'description':'',
+				'status':'Fulfilled',
 				'donor':'David',
-				'fulfiller':''
+				'fulfiller':'Lydia'
 			},
 			"102":{
-				'title':'Looking for Run Partner 2',	
-				'charity':'Salvation Army 2',
-				'amount':10,
+				'title':'Meal Partner',	
+				'charity':'Salvation Army',
+				'amount':5,
 				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
-				'donor':'David',
-				'fulfiller':''
+				'description':'I\'m new to the city. Is there anyone who want to come and hangout with me? I\'ll pay.',
+				'status':'Fulfilled',
+				'donor':'Daniel',
+				'fulfiller':'Lydia'
 			},
-			"103":{
-				'title':'Looking for Run Partner 3',	
-				'charity':'Salvation Army 3',
-				'amount':10,
-				'date':'4/10/15',
-				'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-				'status':'published',
-				'donor':'David',
-				'fulfiller':''
-			}
 		}
 	$scope.goToDetails = function(){
 		//alert('in details');
 		$state.go('tab.myfullfillmentdescription');
-		//  {'id': '101'}
 	}
 })
 
