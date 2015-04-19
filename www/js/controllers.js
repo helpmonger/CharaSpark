@@ -96,39 +96,20 @@ console.log('in login');
   }); // end of promise 
 
 
-			
-	// 	"101":{
-	// 		'title':'Looking for Run Partner',	
-	// 		'charity':'Salvation Army',
-	// 		'amount':10,
-	// 		'date':'4/10/15',
-	// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-	// 		'status':'published',
-	// 		'donor':'David',
-	// 		'fulfiller':''
-	// 	},
-	// 	"102":{
-	// 		'title':'Looking for Run Partner 2',	
-	// 		'charity':'Salvation Army 2',
-	// 		'amount':10,
-	// 		'date':'4/10/15',
-	// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-	// 		'status':'published',
-	// 		'donor':'David',
-	// 		'fulfiller':''
-	// 	},
-	// 	"103":{
-	// 		'title':'Looking for Run Partner 3',	
-	// 		'charity':'Salvation Army 3',
-	// 		'amount':10,
-	// 		'date':'4/10/15',
-	// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-	// 		'status':'published',
-	// 		'donor':'David',
-	// 		'fulfiller':''
-	// 	}
-	// }
-	
+	$scope.wishes = 
+	{ 105: {
+			'title':'Urgent! Need a Ride',	
+			'charity':'Salvation Army',
+			'amount':5,
+			'date':'4/10/15',
+			'description':'I\'m supposed to pick up my kids after school, but my car is suddenly broken. Is there anyone who can help?',
+			'status':'new',
+			'donor':'Lydia',
+			'fulfiller':''
+		}
+
+	}		
+		
 	$scope.goToDetails = function(){
 		//alert('in details');
 		$state.go('tab.mywishdescription');
@@ -140,13 +121,13 @@ console.log('in login');
 .controller('MyWishDescriptionCtrl', function($scope) {
 	
 	$scope.aWish={
-			'title':'Looking for Run Partner',	
+			'title':'Urgent! Need a Ride',	
 			'charity':'Salvation Army',
-			'amount':10,
+			'amount':5,
 			'date':'4/10/15',
-			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-			'status':'published',
-			'donor':'David',
+			'description':'I\'m supposed to pick up my kids after school, but my car is suddenly broken. Is there anyone who can help?',
+			'status':'new',
+			'donor':'Lydia',
 			'fulfiller':''
 		}
 	
