@@ -98,7 +98,17 @@ console.log('in login');
 
 
 	$scope.wishes = 
-	{ 105: {
+	[{ 		'id':'104',
+			'title':'My child is sick',
+			'charity':'Disabled Living Foundation',
+			'amount':4.5,
+			'date':'4/19/15',
+			'description': 'My child is severely sick and I can\'t afford to take her to the hospital.',
+			'status':'new',
+			'donor':'Lydia',
+			'fulfiller':''
+		},
+	    {   'id':'105',
 			'title':'Urgent! Need a Ride',	
 			'charity':'Salvation Army',
 			'amount':5,
@@ -107,12 +117,13 @@ console.log('in login');
 			'status':'new',
 			'donor':'Lydia',
 			'fulfiller':''
-		}
+		}];
 
-	}		
 		
-	$scope.goToDetails = function(){
+		
+	$scope.goToDetails = function(wish){
 		//alert('in details');
+		$localStorage.wish = wish;
 		$state.go('tab.mywishdescription');
 		//  {'id': '101'}
 	}
@@ -121,8 +132,9 @@ console.log('in login');
 
 .controller('MyWishDescriptionCtrl', function($scope) {
 	
-	$scope.aWish= [{
-			'id': '102',
+	$scope.aWish= [
+			{
+			'id': '101',
 			'title':'Urgent! Need a Ride',	
 			'charity':'Salvation Army',
 			'amount':5,
@@ -132,26 +144,7 @@ console.log('in login');
 			'donor':'Lydia',
 			'fulfiller':''
 		},
-		{   'id': '102',
-			'title':'Looking for Run Partner 2',	
-			'charity':'Salvation Army 2',
-			'amount':10,
-			'date':'4/10/15',
-			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-			'status':'published',
-			'donor':'David',
-			'fulfiller':''
-		},
-		{   'id': '103',
-			'title':'Looking for Run Partner 3',	
-			'charity':'Salvation Army 3',
-			'amount':10,
-			'date':'4/10/15',
-			'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-			'status':'published',
-			'donor':'David',
-			'fulfiller':''
-		}
+		
 	];
 	
 	$scope.goToDetails = function(wish){
@@ -187,9 +180,9 @@ console.log('in login');
   var selectedCharity = '';
 
  $scope.wish = {};
- $scope.wish.wishtitle = "TestWishTitle";
- $scope.wish.description = "TestWishDescription";
- $scope.donationAmt = 10;
+ $scope.wish.wishtitle = "My child is sick";
+ $scope.wish.description = "My child is severely sick and I can't afford to take her to the hospital.";
+ $scope.donationAmt = 4.5;
   $scope.selectCharity = function(charity){
   	console.log('charity is: ', charity)
   };
@@ -276,17 +269,12 @@ var geoLoc = {
 			$scope.paymentComplete = false;
             // console.log('donation amt is: ' + $localStorage.donationAmt);
             $scope.donationAmt = $localStorage.donationAmt;
-          $localStorage.donationAmt = $localStorage.donationAmt;
-          $scope.creditCard.number  = "4111111111111111";
-	  $scope.creditCard.expirationDate= "10/18";
+	          $scope.creditCard.number  = "4111111111111111";
+		 	 $scope.creditCard.expirationDate= "10/18";
 
 	  
             var client;
-                $scope.creditCard = {
-                  number: '',
-                  expirationDate: ''
-                };
-
+            	
             var startup = function() {
               $braintree.getClientToken().success(function(token) {
                 client = new $braintree.api.Client({
@@ -295,9 +283,9 @@ var geoLoc = {
               });
             }
 
-            	$scope.GoToWish = function(){
-					$state.go('tab.mywishes');
-				}
+	    	$scope.GoToWish = function(){
+				$state.go('tab.mywishes');
+			}
 
 
             $scope.payButtonClicked = function(){
