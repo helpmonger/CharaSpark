@@ -60,7 +60,7 @@ angular.module('starter.services', [])
 
 
   // POST /accounts/123/messages?param=myParam with the body of name: "My Message"
-  account.customPOST({name: "My Message"}, "messages", {param: "myParam"}, {})
+  // account.customPOST({name: "My Message"}, "messages", {param: "myParam"}, {})
 
   return {
           signin: function (form) {

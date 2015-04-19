@@ -9,7 +9,7 @@ angular.module('starter.controllers', [])
 	      if(!err){
 	        console.log('user is: ', user);
 	        $scope.user = user;
-	        alert('charity email is: ' + user.emailAddress);
+	        // alert('charity email is: ' + user.emailAddress);
 	        //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
 	      }
 	      else {
@@ -83,7 +83,7 @@ angular.module('starter.controllers', [])
 
 //tab-landing
 
-.controller('LandingCtrl', function($scope, CharityService, lodash) {
+.controller('LandingCtrl', function($scope, CharityService, $state, lodash) {
   //populates the list of charities
   var promise = CharityService.all();
   promise.then(function(chars, err) {
@@ -107,7 +107,7 @@ angular.module('starter.controllers', [])
 		// if($localStorage.user && $localStorage.user.auth_token){ //if user is authenticated
 		// 	//direct to braintree page
 		// }
-
+		console.log('clicked');
 		$state.go('tab.tree');
 	}
   }) //end of controller
@@ -167,29 +167,6 @@ angular.module('starter.controllers', [])
              
 	//close sth
 	})// end of TreeCtrl
-.controller('LandingCtrl', function($scope, CharityService, lodash) {
-  
-  //populates the list of charities
-  var promise = CharityService.all();
-  promise.then(function(chars, err) {
-    // returns a list of users
-    if(!err){
-      // console.log('list is: ', chars);
-      $scope.charities = lodash.sortBy(chars.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
-      console.log('charities ', $scope.charities);
-    }
-    else {
-      console.log('error is: ', err);
-    }
-
-  });
-  
-  // }); end of promise 
-
-	// $scope.MakeAWish = function(){
-
-	// }
-}) //end of promise
 
 
 
