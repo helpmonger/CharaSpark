@@ -30,6 +30,7 @@ var PATH = '/api/'
 server.get({path : PATH + 'token' , version : '0.0.1'} , getToken);
 server.post({path : PATH +'processPayment' , version : '0.0.1'} , processPayment);
 server.post({path : PATH +'SignUp', version: '0.0.1'} , SignUp);
+server.post({path : PATH +'LogIn', version: '0.0.1'} , LogIn);
 // server.post({path : PATH +'Jobs', version: '0.0.1'} ,postNewJob);
 // server.del({path : PATH +'/:jobId' , version: '0.0.1'} ,deleteJob);
 
@@ -87,16 +88,16 @@ function processPayment(req, res, next){
 
 function SignUp(req , res , next){
     var user = {};
+    user.password = req.params.password;
     user.user_name = req.params.user_name;
     user.email = req.params.email;
-    user.password = req.params.password;
     user.postedOn = new Date();
  
     res.setHeader('Access-Control-Allow-Origin','*');
  
     users.save(user , function(err , success){
-        console.log('Response success '+success);
-        console.log('Response error '+err);
+        console.log('Response success ', success);
+        console.log('Response error ', err);
         if(success){
             res.send(201 , user);
             return next();
@@ -105,4 +106,49 @@ function SignUp(req , res , next){
         }
     });
 }
+
+function LogIn(req , res , next){
+    var user = {};
+    //user.password = req.params.password;
+    //user.postedOn = new Date();
+ 
+    res.setHeader('Access-Control-Allow-Origin','*');
+ 
+    //user.user_name = req.params.user_name;
+    console.log('User name is: ', req.params.user_name);
+    var userfromdb;
+    users.findOne({user_name:req.params.user_name}, function(err, data){
+    	if(err){
+    		console.log('err is: ', err);
+    		return next(err);
+    	}
+    	else {
+    		userfromdb = data;
+    		console.log('data is ', data);
+    		// res.send(201 , data);
+    		if(req.params.password == data.password)
+    		{
+    			console.log("log in successfull");
+    			data.success = true;
+    			return res.send(201 , data);
+    		}
+    		else
+    		{
+    			var errorObj = {
+			    	error: 'incorrect password'
+			    };
+    			console.log("log in failed");
+    			data.success = false;
+    			data.password = "";
+    			data.email = "";
+    			return res.send(201 , data);
+    		}
+    	}
+    });
+
+
+}
+    
+
+
 
