@@ -46,7 +46,10 @@ angular.module('starter', ['ionic',
     .state('tab', {
     url: "/tab",
     abstract: true,
-    templateUrl: "templates/tabs.html"
+    templateUrl: "templates/tabs.html",
+    controller: function($scope){
+      $scope.navTitle='<img class="title-image" src="../img/charaspark_logo_400.png" />';
+    }
   })
 
   // Each tab has its own nav history stack:
@@ -57,7 +60,7 @@ angular.module('starter', ['ionic',
     url: '/landing',
     views: {
       'tab-landing': {
-        templateUrl: 'templates/tab-landing.html',
+        templateUrl: 'templates/home/landing.html',
         controller: 'LandingCtrl'
       }
     }
@@ -68,7 +71,7 @@ angular.module('starter', ['ionic',
     url: '/login',
     views: {
       'tab-login': {
-        templateUrl: 'templates/tab-login.html',
+        templateUrl: 'templates/auth/login.html',
         controller: 'LoginCtrl'
       }
     }
@@ -79,7 +82,7 @@ angular.module('starter', ['ionic',
       url: "/tree",
       views: {
         'tab-landing': {
-          templateUrl: "templates/braintree/tree.html",
+          templateUrl: "templates/home/tree.html",
           controller: 'TreeCtrl'
         }
       }
@@ -89,7 +92,7 @@ angular.module('starter', ['ionic',
     url: '/signup',
     views: {
         'tab-landing': {
-          templateUrl: 'templates/signup.html',
+          templateUrl: 'templates/auth/signup.html',
           controller: 'SignupCtrl'
         }
     }     
@@ -109,11 +112,23 @@ angular.module('starter', ['ionic',
     url: '/fullfillawish',
     views: {
       'tab-fullfillawish': {
-        templateUrl: 'templates/tab-fullfillawish.html',
+        templateUrl: 'templates/fullfillawish/fullfillawish.html',
         controller: 'FullfillaWishCtrl'
       }
     }
   })   
+
+
+  .state('tab.wishdescription', {
+    url: '/wishdescription',
+    views: {
+      'tab-fullfillawish': {
+        templateUrl: 'templates/fulfillawish/wishdescription.html',
+        controller: 'WishDescriptionCtrl'
+      }
+    }
+  })    
+
   
   .state('tab.acceptconfirm', {
     url: '/acceptconfirm',
@@ -126,21 +141,12 @@ angular.module('starter', ['ionic',
   })  
   
 
-  .state('tab.wishdescription', {
-    url: '/wishdescription',
-    views: {
-      'tab-fullfillawish': {
-        templateUrl: 'templates/tab-wishdescription.html',
-        controller: 'WishDescriptionCtrl'
-      }
-    }
-  })     
-  
+
   .state('tab.mywishes', {
     url: '/mywishes',
     views: {
       'tab-mywishes': {
-        templateUrl: 'templates/tab-mywishes.html',
+        templateUrl: 'templates/wishes/mywishes.html',
         controller: 'MyWishesCtrl'
       }
     }
@@ -150,7 +156,7 @@ angular.module('starter', ['ionic',
     url: '/mywishdescription/',
     views: {
       'tab-mywishes': {
-        templateUrl: 'templates/mywishdescription.html',
+        templateUrl: 'templates/wishes/mywishdescription.html',
         controller: 'MyWishDescriptionCtrl'
       }
     }
@@ -160,7 +166,7 @@ angular.module('starter', ['ionic',
     url: '/myfullfillments',
     views: {
       'tab-myfullfillments': {
-        templateUrl: 'templates/tab-myfullfillments.html',
+        templateUrl: 'templates/fulfillments/myfullfillments.html',
         controller: 'MyFullfillmentsCtrl'
       }
     }
@@ -190,7 +196,7 @@ angular.module('starter', ['ionic',
     url: '/account',
     views: {
       'tab-account': {
-        templateUrl: 'templates/tab-account.html',
+        templateUrl: 'templates/account/account.html',
         controller: 'AccountCtrl'
       }
     }
@@ -201,7 +207,7 @@ angular.module('starter', ['ionic',
 	    url: '/changepassword',
 	    views: {
 	      'tab-account': {
-	        templateUrl: 'templates/changepassword.html',
+	        templateUrl: 'templates/account/changepassword.html',
 	        controller: 'ChangePasswordCtrl'
 	      }
 	    }

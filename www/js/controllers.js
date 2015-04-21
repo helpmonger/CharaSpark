@@ -99,11 +99,11 @@ console.log('in login');
 
 	$scope.wishes = 
 	[{ 		'id':'104',
-			'title':'My child is sick',
+			'title':'Autistic child needs help',
 			'charity':'Disabled Living Foundation',
 			'amount':4.5,
 			'date':'4/19/15',
-			'description': 'My child is severely sick and I can\'t afford to take her to the hospital.',
+			'description': 'I have an autistic child and I want him to get online behavior training. If someone would like to accompany him with this training for 1 hour, I would be very much grateful.',
 			'status':'new',
 			'donor':'Lydia',
 			'fulfiller':''
@@ -179,10 +179,10 @@ console.log('in login');
   //populates the list of charities
   var selectedCharity = '';
 
- $scope.wish = {};
- $scope.wish.wishtitle = "My autistic child needs training";
- $scope.wish.description = "My child is severely sick and I can't afford to take her to the hospital.";
- $scope.donationAmt = 4.5;
+ // $scope.wish = {};
+ // $scope.wish.wishtitle = "My autistic child needs training";
+ // $scope.wish.description = "My child is severely sick and I can't afford to take her to the hospital.";
+ // $scope.donationAmt = 4.5;
   $scope.selectCharity = function(charity){
   	console.log('charity is: ', charity)
   };
@@ -289,34 +289,35 @@ var geoLoc = {
 
 
             $scope.payButtonClicked = function(){
-              client.tokenizeCard({
-                number: $scope.creditCard.number,
-                expirationDate: $scope.creditCard.expirationDate
-              }, function (err, nonce) {
+              // client.tokenizeCard({
+              //   number: $scope.creditCard.number,
+              //   expirationDate: $scope.creditCard.expirationDate
+              // }, function (err, nonce) {
                 
-                var form = {amount: $localStorage.donationAmt,
-                            nounce: nonce};
-                // console.log('nonce is ', nonce);
-                // console.log('form is ', form);
-                // - Send nonce to your server (e.g. to make a transaction) 
+              //   var form = {amount: $localStorage.donationAmt,
+              //               nounce: nonce};
+              //   // console.log('nonce is ', nonce);
+              //   // console.log('form is ', form);
+              //   // - Send nonce to your server (e.g. to make a transaction) 
                 
-                var promise = TreeService.makePayment(form);
+              //   var promise = TreeService.makePayment(form);
 
-                 promise.then(function(paymentComplete, err) {
-                                  // returns a list of users
-                  if(!err && paymentComplete.success){
-                    console.log('paymentComplete is: ', paymentComplete);
-                    $scope.paymentComplete = paymentComplete;
+              //    promise.then(function(paymentComplete, err) {
+              //                     // returns a list of users
+              //     if(!err && paymentComplete.success){
+              //       console.log('paymentComplete is: ', paymentComplete);
+                    $scope.paymentComplete = true;
+                    //paymentComplete;
                     
                     // alert('charity email is: ' + clientToken.emailAddress);
                     //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
-                  }
-                  else {
-                    console.log('error making payment: ', err);
-                  }
-                }) //end of then
+                //   }
+                //   else {
+                //     console.log('error making payment: ', err);
+                //   }
+                // }) //end of then
 
-              });
+              // });
             }; //end of pay button click
   
              startup();
