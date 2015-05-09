@@ -54,7 +54,16 @@ var myApp = angular.module('starter', ['ionic',
 
   // Each tab has its own nav history stack:
 
+//intro page
 
+.state('intro', {
+  url: '/intro',
+    'tab-landing': {
+      templateUrl: 'templates/home/intro.html',
+      // controller: 'LandingCtrl'
+    }
+  
+})
 // make a wish
 .state('tab.landing', {
     url: '/landing',
@@ -102,7 +111,7 @@ var myApp = angular.module('starter', ['ionic',
     url: '/dash',
     views: {
       'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
+        templateUrl: 'templates/home/dash.html',
         controller: 'DashCtrl'
       }
     }
@@ -112,7 +121,7 @@ var myApp = angular.module('starter', ['ionic',
     url: '/fullfillawish',
     views: {
       'tab-fullfillawish': {
-        templateUrl: 'templates/fullfillawish/fullfillawish.html',
+        templateUrl: 'templates/fulfillawish/fulfillawish.html',
         controller: 'FullfillaWishCtrl'
       }
     }
@@ -176,7 +185,7 @@ var myApp = angular.module('starter', ['ionic',
     url: '/myfullfillmentdescription',
     views: {
       'tab-myfullfillments': {
-        templateUrl: 'templates/myfullfillmentdescription.html',
+        templateUrl: 'templates/fulfillments/myfulfillmentdescription.html',
         controller: 'MyFullfillmentDescriptionCtrl'
       }
     }
@@ -186,7 +195,7 @@ var myApp = angular.module('starter', ['ionic',
     url: '/fullfillacceptconfirm',
     views: {
       'tab-fullfillawish': {
-        templateUrl: 'templates/fullfillacceptconfirm.html',
+        templateUrl: 'templates/fulfillments/fulfillacceptconfirm.html',
         controller: ''
       }
     }
@@ -214,6 +223,6 @@ var myApp = angular.module('starter', ['ionic',
 	  });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/landing');
+  $urlRouterProvider.otherwise('/intro');
 
 });
