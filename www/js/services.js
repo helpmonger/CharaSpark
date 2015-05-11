@@ -80,27 +80,23 @@ Restangular.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
 
 .factory('WishService', function(Restangular, lodash){
 
-  
+  var baseUrl = 'http://localhost:8080/api';
 
   return {
 
           addWish: function (form) {
-            var baseUrl = 'http://charasparkservices.herokuapp.com/api';
             Restangular.setBaseUrl(baseUrl);
               return Restangular.all('AddWish').customPOST($.param(form), "", form, 
                         {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
             
           },
-          getWishesToFulfill: function (form) {
-              var baseUrl = 'http://charasparkservices.herokuapp.com/api';
+          All: function () {
               Restangular.setBaseUrl(baseUrl);
-              console.log('the form is: ', form);
-              return Restangular.all('Wishes').customGET("", {},  
+              return Restangular.all('/Wish').customGET("", {},  
                         {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
 
           },
           getFulfillments: function (form) {
-            var baseUrl = 'http://charasparkservices.herokuapp.com/api';
             Restangular.setBaseUrl(baseUrl);
             // console.log('the form is: ', form);
             return Restangular.all('Fulfillments').customGET("", $.param(form),  

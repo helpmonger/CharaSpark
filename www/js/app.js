@@ -56,21 +56,20 @@ var myApp = angular.module('starter', ['ionic',
 
 //intro page
 
-.state('intro', {
-  url: '/intro',
-    'tab-landing': {
-      templateUrl: 'templates/home/intro.html',
-      // controller: 'LandingCtrl'
-    }
-  
-})
-// make a wish
-.state('tab.landing', {
+
+.state('landing', {
     url: '/landing',
-    views: {
-      'tab-landing': {
         templateUrl: 'templates/home/landing.html',
         controller: 'LandingCtrl'
+  })
+
+// make a wish
+.state('tab.home', {
+    url: '/home',
+    views: {
+      'tab-home': {
+        templateUrl: 'templates/home/home.html',
+        controller: 'HomeCtrl'
       }
     }
   })

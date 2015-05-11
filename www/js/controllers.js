@@ -96,14 +96,12 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 
 //tab-landing
 
-.controller('LandingCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading, WishService) {
+
+
+.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading, WishService) {
   //populates the list of charities
   var selectedCharity = '';
 
- // $scope.wish = {};
- // $scope.wish.wishtitle = "My autistic child needs training";
- // $scope.wish.description = "My child is severely sick and I can't afford to take her to the hospital.";
- // $scope.donationAmt = 4.5;
   $scope.selectCharity = function(charity){
   	console.log('charity is: ', charity)
   };
@@ -145,16 +143,6 @@ var geoLoc = {
 		wish.charityName = 'test charity';
 		console.log('the wish is: ', wish);
 
-		// if(!$localStorage.user){ //if user is not authenticated
-		// 	//direct to braintree page
-		// 	console.log('!user');
-		// 	$localStorage.prevPage = 'tab.tree';
-		// 	$state.go('tab.relogin');
-		// 	return;
-		// } 
-		// else {
-			//create wish
-			//rediret to tree for payment
 				var promise = WishService.addWish(wish);
 				promise.then(function(result, err) {
 	                                  // returns a list of results
@@ -164,25 +152,27 @@ var geoLoc = {
 		    	else {
 		    		$state.go('tab.tree');
 		    	}
-		        // if($localStorage.prevPage){
-		        // 	$state.go($localStorage.prevPage);
-		        // 	$localStorage.prevPage = '';
-		        // } else {
-		        // 	$state.go('tab.landing');
-		        // }
-
-		        // alert('charity email is: ' + user.emailAddress);
-		        //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
-		      //}
-		      // else {
-		      //   console.log('error is: ', err);
-		      //   $scope.error = "invalid credentials";
-		      // }
+		       
 		    }); //end of then
 		// } //end of else
 		console.log('clicked');
 		$state.go('tab.tree');
 	}
+
+	var promise = WishService.All();
+  	promise.then(function(wishes, err) {
+    // returns a list of users
+    if(!err){
+      // console.log('list is: ', wishes);
+      $scope.wishes = wishes;
+      console.log('wishes ', $scope.wishes);
+    }
+    else {
+      console.log('error is: ', err);
+    }
+
+  }); // end of promise 
+
   }) //end of controller
 
 .controller('TreeCtrl', function($scope, $localStorage, $state, $braintree, TreeService){
