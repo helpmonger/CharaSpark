@@ -81,19 +81,19 @@
         <h3>My Wishes</h3>
 
 
-<div class="list">
+<!-- <div class="list">
 
-  <a ng-repeat="wish in wishes" class="item" href="#" ng-click="goToDetails(wish)">
+  <label ng-repeat="wish in wishes" class="item" ng-click="goToDetails(wish)">
     <div class="item-content" >
       {{wish.title}}<br> 
       {{wish.charity.name}}
       {{wish.donationAmt | currency}}
       {{wish.createdDate}}
     </div>
-  </a>
-</div>
+  </label>
+</div> -->
 
-     <!-- <div class="list">
+     <div class="list">
        <label class="item item-radio" ng-repeat="wish in wishes" ng-click="goToDetails(wish)">
             <input type="radio" name="wishgroup">
             <div class="item-content" >
@@ -103,7 +103,7 @@
               {{wish.createdDate}}
             </div>
        </label> 
-  </div> -->
+  </div>
       
   </ion-content>
 </ion-view>
