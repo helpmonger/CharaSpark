@@ -36,7 +36,7 @@ console.log('in login');
 
 	}
 
- $scope.test = function(){
+ $scope.register = function(){
     	$state.go('tab.signup');
     }
 

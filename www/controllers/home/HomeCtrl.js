@@ -20,10 +20,10 @@ myApp.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $l
   }); // end of promise 
 
 //get geo location stuff
-var geoLoc = {
-	long: '',
-	lat: ''
-};
+  var geoLoc = {
+  	long: '',
+  	lat: ''
+  };
 
 	navigator.geolocation
     .getCurrentPosition(function(pos) {

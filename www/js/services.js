@@ -54,7 +54,8 @@ Restangular.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
 
 .factory('AuthService', function(Restangular, lodash){
 
-  var baseUrl = 'http://charasparkservices.herokuapp.com/api';
+  // var baseUrl = 'http://charasparkservices.herokuapp.com/api';
+    var baseUrl = 'http://localhost:8080/api';
   Restangular.setBaseUrl(baseUrl);
   // var baseOptin = Restangular.all('api/');
 
@@ -64,15 +65,20 @@ Restangular.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
   // account.customPOST({name: "My Message"}, "messages", {param: "myParam"}, {})
 
   return {
-          signin: function (form) {
-              return Restangular.all('LogIn').customPOST($.param(form), "", form, 
-                        {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
+          // signin: function (form) {
+          //     return Restangular.all('LogIn').customPOST($.param(form), "", form, 
+          //               {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
             
+          // },
+          login: function (form) {
+              return Restangular.all('login').post(form);
           },
-          signup: function (form) {
+          register: function (form) {
 
-              return Restangular.all('SignUp').customPOST($.param(form), "", form, 
-                        {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
+              return Restangular.all('register').post(form);
+
+              // .customPOST($.param(form), "", form, 
+                        // {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
              //end of signup
           },
         } //end of return

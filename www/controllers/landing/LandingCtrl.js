@@ -1,6 +1,6 @@
 myApp.controller('LandingCtrl', function($scope, $state) {
 
 	$scope.emailLogin = function(){
-		$state.go('tab.home');
+		$state.go('tab.login');
 	}
 })
