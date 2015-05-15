@@ -1,11 +1,10 @@
 myApp.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading, WishService) {
-  //populates the list of charities
-  var selectedCharity = '';
+  
 
-  $scope.selectCharity = function(charity){
-  	console.log('charity is: ', charity)
-  };
-  var promise = CharityService.all();
+// populates variables needed by page
+
+  //populates charities 
+var promise = CharityService.all();
   promise.then(function(chars, err) {
     // returns a list of users
     if(!err){
@@ -19,23 +18,56 @@ myApp.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $l
 
   }); // end of promise 
 
-//get geo location stuff
-  var geoLoc = {
-  	long: '',
-  	lat: ''
-  };
 
-	navigator.geolocation
+
+  //populates wishes
+var promise = WishService.All();
+    promise.then(function(wishes, err) {
+    // returns a list of users
+    if(!err){
+      // console.log('list is: ', wishes);
+      $scope.wishes = wishes;
+      console.log('wishes ', $scope.wishes);
+    }
+    else {
+      console.log('error is: ', err);
+    }
+
+  }); // end of promise 
+
+
+
+
+  //inject methods available on page
+
+  var selectedCharity = '';
+
+  $scope.selectCharity = function(charity){
+    console.log('charity is: ', charity)
+  };
+  
+
+  $scope.goToDetails = function(wish){
+    alert('in details');
+    $localStorage.wish = wish;
+    $state.go('tab.mywishdescription');
+    //  {'id': '101'}
+  }
+
+	$scope.MakeAWish = function(wish){
+
+//get geo location stuff
+
+  var geoLoc = [];
+
+  navigator.geolocation
     .getCurrentPosition(function(pos) {
-            geoLoc.lat = pos.coords.latitude;
-            geoLoc.long = pos.coords.longitude;
+            geoLoc.push(pos.coords.latitude);
+            geoLoc.lpush(pos.coords.longitude);
             console.log('geoLoc is: ', geoLoc);
             //var result = $scope.calcDistance(-81.06333, 33.95576, long, lat);
             // console.log('result is: ' + result);
         });
-
-
-	$scope.MakeAWish = function(wish){
 
 	    wish.geoLoc = geoLoc;
 	    wish.wishstatus = 'new';
@@ -59,18 +91,6 @@ myApp.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $l
 		$state.go('tab.tree');
 	}
 
-	var promise = WishService.All();
-  	promise.then(function(wishes, err) {
-    // returns a list of users
-    if(!err){
-      // console.log('list is: ', wishes);
-      $scope.wishes = wishes;
-      console.log('wishes ', $scope.wishes);
-    }
-    else {
-      console.log('error is: ', err);
-    }
-
-  }); // end of promise 
+	
 
   }) //end of controller
