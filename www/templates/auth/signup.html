@@ -7,6 +7,11 @@
     <span class="input-label">Enter Username</span>
     <input type="text" placeholder="your username" ng-model="user.username" minlength="6" />
   </label>
+
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">Enter Email</span>
+    <input type="email" placeholder="your email" ng-model="user.email" minlength="6" />
+  </label>
   
   <!-- 
   <label class="item item-input item-stacked-label">
@@ -25,7 +30,7 @@
   </label>
   
   <label class="item item-input">
-         <button class="button button-block button-positive" ng-click="SignUp(user)">
+         <button type="button" class="button button-block button-positive" ng-click="SignUp(user)">
          Sign Up
          </button>
   </label>

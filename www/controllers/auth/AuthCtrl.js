@@ -6,12 +6,12 @@ angular.module('starter.controllers', [])
 	console.log('in login');
 	//if logged in, go to landing
 		if ($localStorage.user) {
-	        $state.go('tab.landing');
+	        $state.go('tab.home');
 	    }
 
 		$scope.LogIn = function(userObj){
 			// console.log('scope user is: ', userObj);
-			var promise = AuthService.signin(userObj);
+			var promise = AuthService.login(userObj);
 			promise.then(function(user, err) {
 				console.log('user is: ', user);
 	                                  // returns a list of users
@@ -22,7 +22,7 @@ angular.module('starter.controllers', [])
 		        	$state.go($localStorage.prevPage);
 		        	$localStorage.prevPage = '';
 		        } else {
-		        	$state.go('tab.landing');
+		        	$state.go('tab.home');
 		        }
 
 		        // alert('charity email is: ' + user.emailAddress);
@@ -35,10 +35,10 @@ angular.module('starter.controllers', [])
 		    }); //end of then
 
 		}
-		
+
 
  $scope.register = function(){
-    	$state.go('tab.signup');
+    	$state.go('signup');
     }
 
 })
@@ -47,12 +47,13 @@ angular.module('starter.controllers', [])
 	// alert('we re in sign up');
     console.log($localStorage.user);
     if ($localStorage.user) {
-        $state.go('tabs.landing');
+        $state.go('tab.home');
     }
 
 	$scope.SignUp = function(userObj){
+		alert('clicked');
 		console.log('scope user is: ', userObj);
-		var promise = AuthService.signup(userObj);
+		var promise = AuthService.register(userObj);
 		promise.then(function(user, err) {
                                   // returns a list of users
 	      if(!err){
@@ -62,7 +63,7 @@ angular.module('starter.controllers', [])
 	        	$state.go($localStorage.prevPage);
 	        	$localStorage.prevPage = '';
 	        } else {
-	        	$state.go('tab.landing');
+	        	$state.go('tab.home');
 	        }
 
 	        // alert('charity email is: ' + user.emailAddress);
