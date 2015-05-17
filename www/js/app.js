@@ -6,7 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 var myApp = angular.module('starter', ['ionic',
-                            // 'starter.controllers',
+                            'starter.controllers',
                             'starter.services',
                             // 'starter.directives',
                             'restangular',
@@ -75,14 +75,11 @@ var myApp = angular.module('starter', ['ionic',
   })
 
 // Login 
-.state('tab.login', {
-    url: '/login',
-    views: {
-      'tab-login': {
+.state('login', {
+    url: '/login',    
         templateUrl: 'templates/auth/login.html',
         controller: 'LoginCtrl'
-      }
-    }
+      
   })  
   
   //make a payment with braintree
