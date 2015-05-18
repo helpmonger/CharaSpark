@@ -41,21 +41,25 @@ angular.module('starter.services', [])
 
   return {
 
-          Add: function (form) {
+          add: function (form) {
               return Restangular.all('Wish').post(form);
           },
-          Update: function (form) {
-              return Restangular.all('Wish').customGET("", {},  
-                        {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
-
+          all: function (form) {
+              return Restangular.all('Wish').getList();
           },
-          getFulfillments: function (form) {
-            Restangular.setBaseUrl(baseUrl);
-            // console.log('the form is: ', form);
-            return Restangular.all('Fulfillments').customGET("", $.param(form),  
-                  {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
+          update: function (form) {
+              return Restangular.one('Wish', form._id).customPut(form); 
+          },
+          get: function() {
+            return Restangular.one('Wish', wishID).get();
+          }
+          // getFulfillments: function (form) {
+          //   Restangular.setBaseUrl(baseUrl);
+          //   // console.log('the form is: ', form);
+          //   return Restangular.all('Fulfillments').customGET("", $.param(form),  
+          //         {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
 
-           },
+          //  },
         } //end of return
 })
 
@@ -66,17 +70,17 @@ angular.module('starter.services', [])
   Restangular.setBaseUrl(baseUrl);
 
   return {
-          addCharity: function (form) {           
+          add: function (form) {           
               return Restangular.all('charity').post(form);            
           },
           all: function () {
               return Restangular.all('charity').getList();
           },
-          updateCharity: function (form) {           
-              return Restangular.one('charity',charityID).customPut(form); 
+          update: function (form) {           
+              return Restangular.one('charity', form._id).customPut(form); 
           },
-          getCharity: function () {
-              return Restangular.one('charity',charityID).get();
+          get: function (charityID) {
+              return Restangular.one('charity', charityID).get();
           },
         } //end of return
 })
