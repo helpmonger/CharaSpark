@@ -6,7 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 var myApp = angular.module('starter', ['ionic',
-                            // 'starter.controllers',
+                            'starter.controllers',
                             'starter.services',
                             // 'starter.directives',
                             'restangular',
@@ -34,7 +34,8 @@ var myApp = angular.module('starter', ['ionic',
 
 .config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
 
-  RestangularProvider.setDefaultHeaders({'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'});
+  RestangularProvider.setDefaultHeaders({'Content-Type': 'application/json'});
+  //application/x-www-form-urlencoded; charset=UTF-8
   // RestangularProvider.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -75,14 +76,11 @@ var myApp = angular.module('starter', ['ionic',
   })
 
 // Login 
-.state('tab.login', {
-    url: '/login',
-    views: {
-      'tab-login': {
+.state('login', {
+    url: '/login',    
         templateUrl: 'templates/auth/login.html',
         controller: 'LoginCtrl'
-      }
-    }
+      
   })  
   
   //make a payment with braintree
@@ -96,14 +94,11 @@ var myApp = angular.module('starter', ['ionic',
       }
     })
   
-.state('tab.signup', {
+.state('signup', {
     url: '/signup',
-    views: {
-        'tab-landing': {
-          templateUrl: 'templates/auth/signup.html',
-          controller: 'SignupCtrl'
-        }
-    }     
+    templateUrl: 'templates/auth/signup.html',
+    controller: 'SignupCtrl'
+        
   })
 
   .state('tab.dash', {
