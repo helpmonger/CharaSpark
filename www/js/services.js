@@ -71,10 +71,11 @@ Restangular.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
             
           // },
           login: function (form) {
+            // - /api/login
               return Restangular.all('login').post(form);
           },
           register: function (form) {
-
+              // - /api/register
               return Restangular.all('register').post(form);
 
               // .customPOST($.param(form), "", form, 
@@ -87,18 +88,15 @@ Restangular.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
 .factory('WishService', function(Restangular, lodash){
 
   var baseUrl = 'http://localhost:8080/api';
+  Restangular.setBaseUrl(baseUrl);
 
   return {
 
-          addWish: function (form) {
-            Restangular.setBaseUrl(baseUrl);
-              return Restangular.all('AddWish').customPOST($.param(form), "", form, 
-                        {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
-            
+          Add: function (form) {
+              return Restangular.all('Wish').post(form);
           },
-          All: function () {
-              Restangular.setBaseUrl(baseUrl);
-              return Restangular.all('/Wish').customGET("", {},  
+          Update: function (form) {
+              return Restangular.all('Wish').customGET("", {},  
                         {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
 
           },

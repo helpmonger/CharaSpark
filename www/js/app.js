@@ -150,25 +150,25 @@ var myApp = angular.module('starter', ['ionic',
   
 
 
-  .state('tab.mywishes', {
-    url: '/mywishes',
-    views: {
-      'tab-mywishes': {
-        templateUrl: 'templates/wishes/mywishes.html',
-        controller: 'MyWishesCtrl'
-      }
-    }
-  })  
+  // .state('tab.mywishes', {
+  //   url: '/mywishes',
+  //   views: {
+  //     'tab-mywishes': {
+  //       templateUrl: 'templates/wishes/mywishes.html',
+  //       controller: 'MyWishesCtrl'
+  //     }
+  //   }
+  // })  
 
-  .state('tab.mywishdescription', {
-    url: '/mywishdescription/',
-    views: {
-      'tab-mywishes': {
-        templateUrl: 'templates/wishes/mywishdescription.html',
-        controller: 'MyWishDescriptionCtrl'
-      }
-    }
-  })    
+  // .state('tab.mywishdescription', {
+  //   url: '/mywishdescription/',
+  //   views: {
+  //     'tab-mywishes': {
+  //       templateUrl: 'templates/wishes/mywishdescription.html',
+  //       controller: 'MyWishDescriptionCtrl'
+  //     }
+  //   }
+  // })    
   
   .state('tab.myfullfillments', {
     url: '/myfullfillments',
