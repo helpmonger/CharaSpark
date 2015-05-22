@@ -6,7 +6,6 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 var myApp = angular.module('starter', ['ionic',
-                            'starter.controllers',
                             'starter.services',
                             // 'starter.directives',
                             'restangular',

@@ -246,37 +246,6 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('AccountCtrl', function($scope,$state, $localStorage) {
-
-
-	// console.log('in account ctrl');
-	// console.log('acct user is: ', $localStorage.user);
-	// if(!$localStorage.user){ //if user is not authenticated
-	// 		//direct to braintree page
-	// 		console.log('!user');
-	// 		$localStorage.prevPage = 'tab.account';
-	// 		console.log('redirect');
-	// 		$state.go('tab.relogin');
-	// 		return;
-	// 	}
-
-
-	$scope.settings = {
-			enableFriends: true
-    }
-  
-	$scope.changePassword = function(){
-		//alert('in details');
-		$state.go('tab.changepassword');
-		//  {'id': '101'}
-	}
-
-	$scope.logOff = function(){
-		$localStorage.user = '';
-		$state.go('tab.relogin');
-	}
-
-})
 
 .controller('TabLoginCtrl', function($scope) {})
 

@@ -12,11 +12,7 @@ angular.module('starter.services', [])
   // account.customPOST({name: "My Message"}, "messages", {param: "myParam"}, {})
 
   return {
-          // signin: function (form) {
-          //     return Restangular.all('LogIn').customPOST($.param(form), "", form, 
-          //               {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
-            
-          // },
+       
           login: function (form) {
             // - /api/login
               return Restangular.all('login').post(form);
@@ -24,10 +20,7 @@ angular.module('starter.services', [])
           register: function (form) {
               // - /api/register
               return Restangular.all('register').post(form);
-
-              // .customPOST($.param(form), "", form, 
-                        // {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
-             //end of signup
+            
           },
         } //end of return
 })
@@ -53,13 +46,6 @@ angular.module('starter.services', [])
           get: function() {
             return Restangular.one('Wish', wishID).get();
           }
-          // getFulfillments: function (form) {
-          //   Restangular.setBaseUrl(baseUrl);
-          //   // console.log('the form is: ', form);
-          //   return Restangular.all('Fulfillments').customGET("", $.param(form),  
-          //         {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
-
-          //  },
         } //end of return
 })
 

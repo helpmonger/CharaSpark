@@ -1,7 +1,4 @@
-angular.module('starter.controllers', [])
-
-
-.controller('LoginCtrl', function($scope, AuthService, $state, $localStorage) {
+myApp.controller('LoginCtrl', function($scope, AuthService, $state, $localStorage) {
 
 	console.log('in login');
 	//if logged in, go to landing
@@ -9,7 +6,7 @@ angular.module('starter.controllers', [])
 	        $state.go('tab.home');
 	    }
 
-		$scope.LogIn = function(userObj){
+		$scope.Login = function(userObj){
 			// console.log('scope user is: ', userObj);
 			var promise = AuthService.login(userObj);
 			promise.then(function(user, err) {
@@ -17,17 +14,19 @@ angular.module('starter.controllers', [])
 	                                  // returns a list of users
 		      if(!err && user.token){
 		        console.log('user is: ', user);
-		        $localStorage.user = user;		       
+		        $localStorage.user = user;
 	        	$state.go('tab.home');
-		        
-
-		        // alert('charity email is: ' + user.emailAddress);
-		        //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
 		      }
 		      else {
 		        console.log('error is: ', err);
-		        $scope.error = "invalid credentials";
+		        $scope.error = err;
 		      }
+		      return;
+		    }, function(response){
+		    	// if(parseInt(response) > 201){
+		    		console.log('error login!');
+		    		$scope.error = "invalid credentials";
+		    	// }
 		    }); //end of then
 
 		}
