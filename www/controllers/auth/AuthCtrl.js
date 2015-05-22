@@ -6,9 +6,11 @@ myApp.controller('LoginCtrl', function($scope, AuthService, $state, $localStorag
 	        $state.go('tab.home');
 	    }
 
-		$scope.Login = function(userObj){
-			// console.log('scope user is: ', userObj);
-			var promise = AuthService.login(userObj);
+	    $scope.user = {};
+	    
+		$scope.Login = function(){
+			console.log('scope user is: ', $scope.user);
+			var promise = AuthService.login($scope.user);
 			promise.then(function(user, err) {
 				// console.log('user is: ', user);
 	                                  // returns a list of users
@@ -45,10 +47,12 @@ myApp.controller('LoginCtrl', function($scope, AuthService, $state, $localStorag
         $state.go('tab.home');
     }
 
-	$scope.SignUp = function(userObj){
-		alert('clicked');
-		console.log('scope user is: ', userObj);
-		var promise = AuthService.register(userObj);
+    $scope.user = {};
+
+	$scope.Register = function(){
+		
+		console.log('scope user is: ', $scope.user);
+		var promise = AuthService.register($scope.user);
 		promise.then(function(user, err) {
                                   // returns a list of users
 	      if(!err){

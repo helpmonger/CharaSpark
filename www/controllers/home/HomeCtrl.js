@@ -21,7 +21,7 @@ var promise = CharityService.all();
 
 
   //populates wishes
-var promise = WishService.All();
+var promise = WishService.all();
     promise.then(function(wishes, err) {
     // returns a list of users
     if(!err){
