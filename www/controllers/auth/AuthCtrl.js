@@ -13,17 +13,13 @@ angular.module('starter.controllers', [])
 			// console.log('scope user is: ', userObj);
 			var promise = AuthService.login(userObj);
 			promise.then(function(user, err) {
-				console.log('user is: ', user);
+				// console.log('user is: ', user);
 	                                  // returns a list of users
-		      if(!err && user.success){
+		      if(!err && user.token){
 		        console.log('user is: ', user);
-		        $localStorage.user = user;
-		        if($localStorage.prevPage){
-		        	$state.go($localStorage.prevPage);
-		        	$localStorage.prevPage = '';
-		        } else {
-		        	$state.go('tab.home');
-		        }
+		        $localStorage.user = user;		       
+	        	$state.go('tab.home');
+		        
 
 		        // alert('charity email is: ' + user.emailAddress);
 		        //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
