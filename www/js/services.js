@@ -27,28 +27,32 @@ angular.module('starter.services', [])
 
 
 
-.factory('WishService', function(Restangular, $localStorage, lodash){
+
+.factory('WishService', function(TokenRestangular, lodash, $localStorage){
+
 
   var baseUrl = 'http://localhost:8080/api';
-  Restangular.setBaseUrl(baseUrl);
-  Restangular.set
+  TokenRestangular.setBaseUrl(baseUrl);
+  //TokenRestangular.set
 
   return {
 
           add: function (form) {
-        	  console.log('services.js form detail:', form);
-              return Restangular.all('Wish').post(form);
+              return TokenRestangular.all('Wish').post(form);
           },
           all: function (form) {
         	  var userId = $localStorage.user.user._id;
-        	  return Restangular.one('Wish').one('User', userId).getList();
-              
+        	  return TokenRestangular.one('Wish').one('User', userId).getList();
           },
           update: function (form) {
-              return Restangular.one('Wish', form._id).customPut(form); 
+              return TokenRestangular.one('Wish', form._id).customPut(form); 
           },
           get: function() {
-            return Restangular.one('Wish', wishID).get();
+            return TokenRestangular.one('Wish', wishID).get();
+          },
+          findWishesFromFulfiller: function(){
+            console.log($localStorage.user.user._id);
+            return TokenRestangular.all('Wish').one('fulfiller',$localStorage.user.user._id).get();
           }
         } //end of return
 })
