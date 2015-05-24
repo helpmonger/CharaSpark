@@ -31,6 +31,7 @@ angular.module('starter.services', [])
 
   var baseUrl = 'http://localhost:8080/api';
   Restangular.setBaseUrl(baseUrl);
+  Restangular.set
 
   return {
 
@@ -50,23 +51,23 @@ angular.module('starter.services', [])
 })
 
 
-.factory('CharityService', function(Restangular, lodash){
+.factory('CharityService', function(TokenRestangular, lodash){
 
-  var baseUrl = 'http://localhost:8080/api';
-  Restangular.setBaseUrl(baseUrl);
+  // var baseUrl = 'http://localhost:8080/api';
+  // Restangular.setBaseUrl(baseUrl);
 
   return {
           add: function (form) {           
-              return Restangular.all('charity').post(form);            
+              return TokenRestangular.all('charity').post(form);            
           },
           all: function () {
-              return Restangular.all('charity').getList();
+              return TokenRestangular.all('charity').getList();
           },
           update: function (form) {           
-              return Restangular.one('charity', form._id).customPut(form); 
+              return TokenRestangular.one('charity', form._id).customPut(form); 
           },
           get: function (charityID) {
-              return Restangular.one('charity', charityID).get();
+              return TokenRestangular.one('charity', charityID).get();
           },
         } //end of return
 })
@@ -85,5 +86,19 @@ angular.module('starter.services', [])
           },
          
         } //end of return
-});
+})
+
+.factory("TokenRestangular", ["Restangular", "$localStorage", function (Restangular, $localStorage) {
+        return Restangular.withConfig(function (RestangularConfigurer) {
+        // Set access token in header.
+        var accessToken = '';
+        var user = $localStorage.user;
+        if(user != null && user.token != null){
+          accessToken = user.token;
+        }
+        console.log('accessToken is: ', accessToken);
+        Restangular.setDefaultHeaders({Authorization: 'Bearer '+ accessToken});
+        RestangularConfigurer.setBaseUrl('http://localhost:8080/api');
+    });
+}]);
 

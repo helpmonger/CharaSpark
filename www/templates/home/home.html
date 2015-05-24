@@ -21,7 +21,7 @@
       
 	     <label class="item item-input">
          <span class="input-label">Wish Title </span><br/>
-         <input type="text" ng-model="wish.wishtitle">
+         <input type="text" ng-model="wish.title">
 
 
          </label>
@@ -48,7 +48,7 @@
 		    </div>
 		    <select>
 		      <option selected>Choose One From List</option>
-		      <option ng-repeat="charity in charities" ng-click="alert('aa')">{{charity.name}}</option>
+		      <option ng-repeat="charity in charities" ng-model="charity.selectedCharity">{{charity.name}}</option>
 
 		    </select>
 		  </label>
@@ -63,7 +63,7 @@
 
 	    <label class="item item-input">
 	       <span class="input-label">Donation Amt:</span>
-	       <input type="text" ng-model="donationAmt">
+	       <input type="text" ng-model="donation.amount">
 	   </label>
 	</div>         
        
@@ -73,7 +73,7 @@
          </label> -->
       </div> <!-- end of list -->
 
-       <button class="button button-block button-positive" ng-click="MakeAWish(wish)">
+       <button class="button button-block button-positive" ng-click="MakeAWish()">
          Make a Wish
          </button>
 

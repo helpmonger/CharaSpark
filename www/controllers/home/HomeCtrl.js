@@ -1,6 +1,16 @@
 myApp.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading, WishService) {
   
 
+$scope.wish = {
+  title: '',
+  description: '',
+}
+
+$scope.donation = {
+  amount: null,
+}
+
+
 // populates variables needed by page
 
   //populates charities 
@@ -9,7 +19,7 @@ var promise = CharityService.all();
     // returns a list of users
     if(!err){
       // console.log('list is: ', chars);
-      $scope.charities = lodash.sortBy(chars.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
+      $scope.charities = lodash.sortBy(chars, 'name');; // first Restangular obj in list: { id: 123 }
       console.log('charities ', $scope.charities);
     }
     else {
@@ -40,7 +50,7 @@ var promise = WishService.all();
 
   //inject methods available on page
 
-  var selectedCharity = '';
+  $scope.selectedCharity = '';
 
   $scope.selectCharity = function(charity){
     console.log('charity is: ', charity)
@@ -54,41 +64,41 @@ var promise = WishService.all();
     //  {'id': '101'}
   }
 
-	$scope.MakeAWish = function(wish){
+	$scope.MakeAWish = function(){
 
 //get geo location stuff
+  console.log('selected charity is: ', $scope.selectedCharity);
 
-  var geoLoc = [];
+    var geoLoc = [];
 
-  navigator.geolocation
-    .getCurrentPosition(function(pos) {
-            geoLoc.push(pos.coords.latitude);
-            geoLoc.lpush(pos.coords.longitude);
-            console.log('geoLoc is: ', geoLoc);
-            //var result = $scope.calcDistance(-81.06333, 33.95576, long, lat);
-            // console.log('result is: ' + result);
-        });
+    navigator.geolocation
+      .getCurrentPosition(function(pos) {
+              geoLoc.push(pos.coords.latitude);
+              geoLoc.push(pos.coords.longitude);
+              console.log('geoLoc is: ', geoLoc);
+          });
 
-	    wish.geoLoc = geoLoc;
-	    wish.wishstatus = 'new';
-	    wish.haspaid = 'true';
-		wish.charityName = 'test charity';
-		console.log('the wish is: ', wish);
+	    $scope.wish.location = geoLoc;
+	   
+  		$scope.wish._charity = $scope.selectedCharity._id;
+  		console.log('the wish is: ', $scope.wish);
 
-				var promise = WishService.addWish(wish);
-				promise.then(function(result, err) {
-	                                  // returns a list of results
-		      if(!err){
-		        	console.log('wish successfully added: ', result);
-		    	}
-		    	else {
-		    		$state.go('tab.tree');
-		    	}
-		       
-		    }); //end of then
-		// } //end of else
-		console.log('clicked');
-		$state.go('tab.tree');
+  				var promise = WishService.add($scope.wish);
+  				promise.then(function(result, err) {
+  	                                  // returns a list of results
+  		      if(!err){
+  		        	console.log('wish successfully added: ', result);
+                //add the donation
+
+  		    	}
+  		    	else {
+  		    		$state.go('tab.tree');
+  		    	}
+  		       
+  		    }); //end of then
+  		// } //end of else
+  		console.log('clicked');
+  		$state.go('tab.tree');
 	}
 
 	
