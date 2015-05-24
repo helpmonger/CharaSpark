@@ -10,6 +10,10 @@ $scope.donation = {
   amount: null,
 }
 
+$scope.charity = {
+  selectedCharity: '',
+}
+
 
 // populates variables needed by page
 
@@ -50,7 +54,7 @@ var promise = WishService.all();
 
   //inject methods available on page
 
-  $scope.selectedCharity = '';
+  // $scope.selectedCharity = '';
 
   $scope.selectCharity = function(charity){
     console.log('charity is: ', charity)
@@ -67,7 +71,7 @@ var promise = WishService.all();
 	$scope.MakeAWish = function(){
 
 //get geo location stuff
-  console.log('selected charity is: ', $scope.selectedCharity);
+  console.log('selected charity is: ', $scope.charity.selectedCharity);
 
     var geoLoc = [];
 
@@ -80,8 +84,8 @@ var promise = WishService.all();
 
 	    $scope.wish.location = geoLoc;
 	   
-  		$scope.wish._charity = $scope.selectedCharity._id;
-      $scope.donation._charity = $scope.selectedCharity._id;
+  		$scope.wish._charity = $scope.charity.selectedCharity._id;
+      $scope.donation._charity = $scope.charity.selectedCharity._id;
   		console.log('the wish is: ', $scope.wish);
 
   				var promise = WishService.add($scope.wish);
