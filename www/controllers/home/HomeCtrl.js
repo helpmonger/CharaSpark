@@ -1,4 +1,4 @@
-myApp.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading, WishService) {
+myApp.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading, WishService, DonationService) {
   
 
 $scope.wish = {
@@ -81,18 +81,31 @@ var promise = WishService.all();
 	    $scope.wish.location = geoLoc;
 	   
   		$scope.wish._charity = $scope.selectedCharity._id;
+      $scope.donation._charity = $scope.selectedCharity._id;
   		console.log('the wish is: ', $scope.wish);
 
   				var promise = WishService.add($scope.wish);
-  				promise.then(function(result, err) {
-  	                                  // returns a list of results
-  		      if(!err){
-  		        	console.log('wish successfully added: ', result);
+  				promise.then(function(wishResult, wishErr) {
+  	                                  
+  		      if(!wishErr){
+  		        	console.log('wish successfully added: ', wishResult);
                 //add the donation
+                //associates the wishID with donation
+                $scope.donation._wish = wishResult._id;
+                promise = DonationService.add($scope.donation);
+
+                promise.then(function(donationResult, donationErr) {
+                    if(!donationErr){
+                      console.log('donation successfully added: ', donationResult);
+                    } else {
+                      console.log('error adding donation: ', donationErr)
+                    }
+                });
 
   		    	}
   		    	else {
-  		    		$state.go('tab.tree');
+  		    		// $state.go('tab.tree');
+              console.log('error adding wish: ', wishErr)
   		    	}
   		       
   		    }); //end of then

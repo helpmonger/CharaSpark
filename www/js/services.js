@@ -51,6 +51,29 @@ angular.module('starter.services', [])
 })
 
 
+.factory('DonationService', function(TokenRestangular, lodash){
+
+  // var baseUrl = 'http://localhost:8080/api';
+  // Restangular.setBaseUrl(baseUrl);
+
+  return {
+          add: function (form) {           
+              return TokenRestangular.all('donation').post(form);            
+          },
+          all: function () {
+              return TokenRestangular.all('donation').getList();
+          },
+          update: function (form) {           
+              return TokenRestangular.one('donation', form._id).customPut(form); 
+          },
+          get: function (donationID) {
+              return TokenRestangular.one('donation', donationID).get();
+          },
+        } //end of return
+})
+
+
+
 .factory('CharityService', function(TokenRestangular, lodash){
 
   // var baseUrl = 'http://localhost:8080/api';
