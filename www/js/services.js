@@ -27,7 +27,9 @@ angular.module('starter.services', [])
 
 
 
+
 .factory('WishService', function(TokenRestangular, lodash, $localStorage){
+
 
   var baseUrl = 'http://localhost:8080/api';
   TokenRestangular.setBaseUrl(baseUrl);
@@ -39,7 +41,8 @@ angular.module('starter.services', [])
               return TokenRestangular.all('Wish').post(form);
           },
           all: function (form) {
-              return TokenRestangular.all('Wish').getList();
+        	  var userId = $localStorage.user.user._id;
+        	  return TokenRestangular.one('Wish').one('User', userId).getList();
           },
           update: function (form) {
               return TokenRestangular.one('Wish', form._id).customPut(form); 
