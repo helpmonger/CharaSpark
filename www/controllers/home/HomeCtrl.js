@@ -2,8 +2,7 @@ myApp.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $l
   
 
 $scope.wish = {
-  title: '',
-  description: '',
+
 }
 
 $scope.donation = {
@@ -24,7 +23,7 @@ var promise = CharityService.all();
     if(!err){
       // console.log('list is: ', chars);
       $scope.charities = lodash.sortBy(chars, 'name');; // first Restangular obj in list: { id: 123 }
-      console.log('charities ', $scope.charities);
+      console.log('charities population', $scope.charities);
     }
     else {
       console.log('error is: ', err);
@@ -50,17 +49,6 @@ var promise = WishService.all();
   }); // end of promise 
 
 
-
-
-  //inject methods available on page
-
-  // $scope.selectedCharity = '';
-
-  $scope.selectCharity = function(charity){
-    console.log('charity is: ', charity)
-  };
-  
-
   $scope.goToDetails = function(wish){
     alert('in details');
     $localStorage.wish = wish;
@@ -71,7 +59,6 @@ var promise = WishService.all();
 	$scope.MakeAWish = function(){
 
 //get geo location stuff
-  console.log('selected charity is: ', $scope.charity.selectedCharity);
 
     var geoLoc = [];
 
@@ -84,8 +71,8 @@ var promise = WishService.all();
 
 	    $scope.wish.location = geoLoc;
 	   
-  		$scope.wish._charity = $scope.charity.selectedCharity._id;
-      $scope.donation._charity = $scope.charity.selectedCharity._id;
+      $scope.donation._charity = $scope.wish._charity;
+
   		console.log('the wish is: ', $scope.wish);
 
   				var promise = WishService.add($scope.wish);
@@ -116,6 +103,7 @@ var promise = WishService.all();
   		// } //end of else
   		console.log('clicked');
   		$state.go('tab.tree');
+  		console.log('scope itself is', $scope);
 	}
 
 	

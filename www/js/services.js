@@ -27,7 +27,7 @@ angular.module('starter.services', [])
 
 
 
-.factory('WishService', function(Restangular, lodash){
+.factory('WishService', function(Restangular, $localStorage, lodash){
 
   var baseUrl = 'http://localhost:8080/api';
   Restangular.setBaseUrl(baseUrl);
@@ -36,10 +36,13 @@ angular.module('starter.services', [])
   return {
 
           add: function (form) {
+        	  console.log('services.js form detail:', form);
               return Restangular.all('Wish').post(form);
           },
           all: function (form) {
-              return Restangular.all('Wish').getList();
+        	  var userId = $localStorage.user.user._id;
+        	  return Restangular.one('Wish').one('User', userId).getList();
+              
           },
           update: function (form) {
               return Restangular.one('Wish', form._id).customPut(form); 
