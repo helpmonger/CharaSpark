@@ -46,10 +46,8 @@
 		    <div class="input-label">
 		      Select Charity
 		    </div>
-		    <select>
-		      <option selected>Choose One From List</option>
-		      <option ng-repeat="charity in charities" ng-model="charity.selectedCharity">{{charity.name}}</option>
-
+		    <select ng-model="wish._charity">
+		      <option ng-repeat="charity in charities" value="{{charity._id}}">{{charity.name}}</option>
 		    </select>
 		  </label>
 

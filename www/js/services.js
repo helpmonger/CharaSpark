@@ -36,6 +36,7 @@ angular.module('starter.services', [])
   return {
 
           add: function (form) {
+        	  console.log('services.js form detail:', form);
               return Restangular.all('Wish').post(form);
           },
           all: function (form) {
