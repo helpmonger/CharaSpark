@@ -40,7 +40,7 @@ angular.module('starter.services', [])
           },
           all: function (form) {
         	  var userId = $localStorage.user.user._id;
-        	  return Restangular.one('Wish', userId).getList();
+        	  return Restangular.one('Wish').one('User', userId).getList();
               
           },
           update: function (form) {
