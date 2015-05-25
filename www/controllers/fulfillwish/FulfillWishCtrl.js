@@ -1,19 +1,6 @@
 myApp.controller('FulfillWishCtrl', function($scope,$state, WishService, $localStorage) {
 	
-	// var promise = WishService.getWishesToFulfill({_id: 'jsfd'});
- //  	promise.then(function(wishes, err) {
- //    // returns a list of users
- //    if(!err){
- //      // console.log('list is: ', wishes);
- //      $scope.wishes = wishes;
- //      console.log('wishes ', $scope.wishes);
- //    }
- //    else {
- //      console.log('error is: ', err);
- //    }
-
- // 	 }); // end of promise 
-
+	
 		//  $scope.wishes=[
 		
 		// 	{	'id': '103',

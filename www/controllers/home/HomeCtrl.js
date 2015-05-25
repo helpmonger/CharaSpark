@@ -34,7 +34,7 @@ var promise = CharityService.all();
 
 
   //populates wishes
-var promise = WishService.all();
+var promise = WishService.findWishesFromUser();
     promise.then(function(wishes, err) {
     // returns a list of users
     if(!err){

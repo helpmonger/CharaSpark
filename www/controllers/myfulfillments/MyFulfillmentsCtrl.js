@@ -1,5 +1,6 @@
 //Fullfillments data needs to be updated to Fullfillments.
 myApp.controller('MyFullfillmentsCtrl', function($scope, $state, $localStorage) {
+
 	$scope.wishes = //$localStorage.wishes;
 		{
 			
