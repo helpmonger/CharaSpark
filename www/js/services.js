@@ -8,9 +8,6 @@ angular.module('starter.services', [])
   Restangular.setBaseUrl(baseUrl);
   // var baseOptin = Restangular.all('api/');
 
-  // POST /accounts/123/messages?param=myParam with the body of name: "My Message"
-  // account.customPOST({name: "My Message"}, "messages", {param: "myParam"}, {})
-
   return {
        
           login: function (form) {
@@ -28,12 +25,31 @@ angular.module('starter.services', [])
 
 
 
+
+.factory('UserService', function(TokenRestangular, $localStorage){
+
+  return {
+          // GET: /user
+          // returns all users
+          all: function (form) {
+            return TokenRestangular.all('user').getList();
+          },
+
+          // Put: /user/:userID
+          // updates a single user
+          update: function (form) {
+              return TokenRestangular.all('user', form._id).customPut(form); 
+          },
+
+          // GET: /user/:userID
+          // returns a specific user
+          get: function() {
+            return TokenRestangular.one('user', wishID).get();
+          },
+        } //end of return
+})
+
 .factory('WishService', function(TokenRestangular, lodash, $localStorage){
-
-
-  // var baseUrl = 'http://localhost:8080/api';
-  // TokenRestangular.setBaseUrl(baseUrl);
-  // //TokenRestangular.set
 
   return {
 
