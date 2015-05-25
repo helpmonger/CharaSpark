@@ -46,54 +46,27 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 	
 })
 
-.controller('MyWishDescriptionCtrl', function($scope) {
-	
-	$scope.aWish= [
-			{
-			'id': '101',
-			'title':'Urgent! Need a Ride',	
-			'charity':'Salvation Army',
-			'amount':5,
-			'date':'4/10/15',
-			'description':'I\'m supposed to pick up my kids after school, but my car is suddenly broken. Is there anyone who can help?',
-			'status':'new',
-			'donor':'Lydia',
-			'fulfiller':''
-		},
-		
-	];
-	
-	$scope.goToDetails = function(wish){
-		//alert('in details');
-		$localStorage.wish = wish;
-		$state.go('tab.mywishdescription');
-		//  {'id': '101'}
-	}
-	
-})
-
-.controller('MyWishDescriptionCtrl', function($scope, $localStorage) {
+.controller('MyWishDescriptionCtrl', function($scope, $localStorage, CharityService) {
 	
 	$scope.aWish = $localStorage.wish;
-	// $scope.aWish={
-	// 		'title':'Looking for Run Partner',	
-	// 		'charity':'Salvation Army',
-	// 		'amount':10,
-	// 		'date':'4/10/15',
-	// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-	// 		'status':'published',
-	// 		'donor':'David',
-	// 		'fulfiller':''
-	// 	}
+	console.log('scope detail:', $scope);
+	
+	// trying to convert the charityId to charityName
+	charityId = $scope.aWish._charity;
+	var charityName = '';
+	var promise = CharityService.get(charityId);
+	promise.then(function(result){
+//		console.log('result is', result.name);
+		$scope.aWish.charityName = result.name;
+	});// end of then
+	
+	// trying to convert the wishMakerId to donor's name
+	
 	
 })
 
 
 //tab-landing
-
-
-
-
 
 .controller('TreeCtrl', function($scope, $localStorage, $state, $braintree, TreeService){
           $scope.creditCard = {}; 
@@ -216,39 +189,6 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 })
 
 .controller('DashCtrl', function($scope) {})
-
-.controller('AccountCtrl', function($scope,$state, $localStorage) {
-
-
-	// console.log('in account ctrl');
-	// console.log('acct user is: ', $localStorage.user);
-	// if(!$localStorage.user){ //if user is not authenticated
-	// 		//direct to braintree page
-	// 		console.log('!user');
-	// 		$localStorage.prevPage = 'tab.account';
-	// 		console.log('redirect');
-	// 		$state.go('tab.relogin');
-	// 		return;
-	// 	}
-
-
-	$scope.settings = {
-			enableFriends: true
-    }
-  
-	$scope.changePassword = function(){
-		//alert('in details');
-		$state.go('tab.changepassword');
-		//  {'id': '101'}
-	}
-
-	$scope.logOff = function(){
-		$localStorage.user = '';
-		$state.go('tab.relogin');
-	}
-	
-
-})
 
 .controller('TabLoginCtrl', function($scope) {})
 

@@ -4,7 +4,7 @@
 	  <div class="item item-avatar">
 	    <img src="img/smile.png">
 	    <!-- <h2>{{aWish.title}}</h2> -->
-	    <p>{{aWish.donor}} -->  {{aWish.charity}} | {{aWish.amount | currency}} | {{aWish.date}}</p>
+	    <p>{{aWish._wishMaker.user_name}} -->  {{aWish.charityName}} | {{aWish.amount | currency}} | {{aWish.date}}</p>
 	  </div>
 	  <div class="item item-body">
 	    <p>
@@ -12,7 +12,7 @@
 	    </p>
 	  </div>
 	  <div class="item tabs tabs-secondary tabs-icon-left">
-		Status: {{aWish.status}}
+		Status: {{aWish.wishStatus}}
 	  </div>
 	  
 	  <p>only show the following button if accepted </p>

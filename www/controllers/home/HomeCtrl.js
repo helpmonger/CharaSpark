@@ -50,15 +50,17 @@ var promise = WishService.findWishesFromUser();
 
 
   $scope.goToDetails = function(wish){
-    alert('in details');
+	// save wish object to the localStorage for the next page using
+//	alert('dd');
     $localStorage.wish = wish;
+//    console.log('details of localStorage', $localStorage);
     $state.go('tab.mywishdescription');
-    //  {'id': '101'}
+
   }
 
 	$scope.MakeAWish = function(){
 
-//get geo location stuff
+	//get geo location stuff
 
     var geoLoc = [];
 
