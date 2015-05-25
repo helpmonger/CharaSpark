@@ -46,45 +46,16 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 	
 })
 
-.controller('MyWishDescriptionCtrl', function($scope) {
+.controller('MyWishDescriptionCtrl', function($scope, $localStorage) {
 	
-	$scope.aWish= [
-			{
-			'id': '101',
-			'title':'Urgent! Need a Ride',	
-			'charity':'Salvation Army',
-			'amount':5,
-			'date':'4/10/15',
-			'description':'I\'m supposed to pick up my kids after school, but my car is suddenly broken. Is there anyone who can help?',
-			'status':'new',
-			'donor':'Lydia',
-			'fulfiller':''
-		},
-		
-	];
+//	$scope.aWish = $localStorage.wish;
 	
 	$scope.goToDetails = function(wish){
-		//alert('in details');
 		$localStorage.wish = wish;
+		console.log('goToDetails: wish');
 		$state.go('tab.mywishdescription');
 		//  {'id': '101'}
 	}
-	
-})
-
-.controller('MyWishDescriptionCtrl', function($scope, $localStorage) {
-	
-	$scope.aWish = $localStorage.wish;
-	// $scope.aWish={
-	// 		'title':'Looking for Run Partner',	
-	// 		'charity':'Salvation Army',
-	// 		'amount':10,
-	// 		'date':'4/10/15',
-	// 		'description':'Looking for a run parter, I need a run partner on Monday, 5pm at Columbia, SC.',
-	// 		'status':'published',
-	// 		'donor':'David',
-	// 		'fulfiller':''
-	// 	}
 	
 })
 

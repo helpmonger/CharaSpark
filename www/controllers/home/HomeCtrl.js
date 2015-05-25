@@ -50,15 +50,16 @@ var promise = WishService.all();
 
 
   $scope.goToDetails = function(wish){
-    alert('in details');
+	// wish stores the wish json object  
     $localStorage.wish = wish;
+    console.log('details of wish', wish);
     $state.go('tab.mywishdescription');
     //  {'id': '101'}
   }
 
 	$scope.MakeAWish = function(){
 
-//get geo location stuff
+	//get geo location stuff
 
     var geoLoc = [];
 
