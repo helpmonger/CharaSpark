@@ -31,9 +31,9 @@ angular.module('starter.services', [])
 .factory('WishService', function(TokenRestangular, lodash, $localStorage){
 
 
-  var baseUrl = 'http://localhost:8080/api';
-  TokenRestangular.setBaseUrl(baseUrl);
-  //TokenRestangular.set
+  // var baseUrl = 'http://localhost:8080/api';
+  // TokenRestangular.setBaseUrl(baseUrl);
+  // //TokenRestangular.set
 
   return {
 
@@ -41,14 +41,17 @@ angular.module('starter.services', [])
               return TokenRestangular.all('Wish').post(form);
           },
           all: function (form) {
-        	  var userId = $localStorage.user.user._id;
-        	  return TokenRestangular.one('Wish').one('User', userId).getList();
+        	  return TokenRestangular.all('Wish').getList();
           },
           update: function (form) {
               return TokenRestangular.one('Wish', form._id).customPut(form); 
           },
           get: function() {
             return TokenRestangular.one('Wish', wishID).get();
+          },
+          findWishesFromUser: function(form){
+            var userId = $localStorage.user.user._id;
+            return TokenRestangular.all('Wish').one('User', userId).getList();
           },
           findWishesFromFulfiller: function(){
             console.log($localStorage.user.user._id);
@@ -127,7 +130,7 @@ angular.module('starter.services', [])
           accessToken = user.token;
         }
         console.log('accessToken is: ', accessToken);
-        Restangular.setDefaultHeaders({Authorization: 'Bearer '+ accessToken});
+        RestangularConfigurer.setDefaultHeaders({Authorization: 'Bearer '+ accessToken});
         RestangularConfigurer.setBaseUrl('http://localhost:8080/api');
     });
 }]);

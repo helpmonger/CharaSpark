@@ -215,7 +215,7 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('AccountCtrl', function($scope,$state, $localStorage, UserService) {
+.controller('AccountCtrl', function($scope,$state, $localStorage) {
 
 
 	// console.log('in account ctrl');
@@ -245,12 +245,12 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 		$state.go('tab.relogin');
 	}
 	
-	$scope.test = function(){
-		var promise = UserService.All();
-		promise.then(function(user, err)){
-			console.log('user is:', user);
-		};
-	};
+	// $scope.test = function(){
+	// 	var promise = UserService.All();
+	// 	promise.then(function(user, err){
+	// 		console.log('user is:', user);
+	// 	});
+	// };
 
 })
 
