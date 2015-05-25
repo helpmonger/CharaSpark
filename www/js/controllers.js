@@ -48,23 +48,15 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 
 .controller('MyWishDescriptionCtrl', function($scope, $localStorage) {
 	
-//	$scope.aWish = $localStorage.wish;
+	$scope.aWish = $localStorage.wish;
+	console.log('scope wish is:', $scope.aWish);
 	
-	$scope.goToDetails = function(wish){
-		$localStorage.wish = wish;
-		console.log('goToDetails: wish');
-		$state.go('tab.mywishdescription');
-		//  {'id': '101'}
-	}
+	charityId = $scope._charity;
 	
 })
 
 
 //tab-landing
-
-
-
-
 
 .controller('TreeCtrl', function($scope, $localStorage, $state, $braintree, TreeService){
           $scope.creditCard = {}; 

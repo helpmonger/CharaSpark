@@ -142,7 +142,15 @@ var myApp = angular.module('starter', ['ionic',
     }
   })  
   
-
+   .state('tab.mywishdescription', {
+     url: '/mywishdescription/',
+     views: {
+       'tab-home': {
+         templateUrl: 'templates/wishes/mywishdescription.html',
+         controller: 'MyWishDescriptionCtrl'
+       }
+     }
+   }) 
 
   // .state('tab.mywishes', {
   //   url: '/mywishes',
@@ -154,15 +162,7 @@ var myApp = angular.module('starter', ['ionic',
   //   }
   // })  
 
-   .state('tab.mywishdescription', {
-     url: '/mywishdescription/',
-     views: {
-       'tab-mywishes': {
-         templateUrl: 'templates/wishes/mywishdescription.html',
-         controller: 'MyWishDescriptionCtrl'
-       }
-     }
-   })    
+   
   
   .state('tab.myfullfillments', {
     url: '/myfullfillments',

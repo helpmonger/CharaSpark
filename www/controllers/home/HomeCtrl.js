@@ -50,11 +50,12 @@ var promise = WishService.all();
 
 
   $scope.goToDetails = function(wish){
-	// wish stores the wish json object  
+	// save wish object to the localStorage for the next page using
+//	alert('dd');
     $localStorage.wish = wish;
-    console.log('details of wish', wish);
+//    console.log('details of localStorage', $localStorage);
     $state.go('tab.mywishdescription');
-    //  {'id': '101'}
+
   }
 
 	$scope.MakeAWish = function(){
