@@ -198,18 +198,20 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 
 .controller('MyFullfillmentDescriptionCtrl', function($scope, $localStorage) {
 	
-	$scope.aWish= $localStorage.wish;
+	$scope.aWish= //$localStorage.wish;
 
-	// {
-	// 			'title':'Meal Partner',	
-	// 			'charity':'Salvation Army',
-	// 			'amount':10,
-	// 			'date':'4/10/15',
-	// 			'description':'I\'m new to the city. Is there anyone who want to come and hangout with me? I\'ll pay.',
-	// 			'status':'Cancelled',
-	// 			'donor':'Daniel',
-	// 			'fulfiller':'Lydia'
-	// 	}
+	{				
+				'_wishMaker':'Daniel',
+				'_fulfiller':'Lydia',
+				'_charity':'Salvation Army',
+				'title':'Meal Partner',	
+				'description':'I\'m new to the city. Is there anyone who want to come and hangout with me? I\'ll pay.',
+				'wishStatus':'Cancelled',
+				'createdDate':'4/10/15',
+				'location':[28.222222,39.999999],
+				'startDate':'4/10/15',
+				'expireDate':'5/10/15'
+			}
 	
 })
 
@@ -247,9 +249,9 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 	
 	$scope.test = function(){
 		var promise = UserService.All();
-		promise.then(function(user, err)){
+		promise.then(function(user, err){
 			console.log('user is:', user);
-		};
+		});
 	};
 
 })
