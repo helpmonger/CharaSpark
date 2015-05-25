@@ -57,6 +57,7 @@ angular.module('starter.services', [])
             console.log($localStorage.user.user._id);
             return TokenRestangular.all('Wish').one('fulfiller',$localStorage.user.user._id).get();
           }
+
         } //end of return
 })
 
@@ -79,6 +80,14 @@ angular.module('starter.services', [])
           get: function (donationID) {
               return TokenRestangular.one('donation', donationID).get();
           },
+          findDonationsFromUser: function(){
+            console.log($localStorage.user.user._id);
+            return TokenRestangular.all('donation').one('user',$localStorage.user.user._id).get();
+          },
+          findDonationsFromCharity: function(){
+            //console.log($localStorage.user.user._id);
+            return TokenRestangular.all('donation').one('charity',$localStorage.user.user._id).get();
+          }
         } //end of return
 })
 
