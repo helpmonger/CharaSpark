@@ -62,7 +62,7 @@ angular.module('starter.services', [])
 })
 
 
-.factory('DonationService', function(TokenRestangular, lodash){
+.factory('DonationService', function(TokenRestangular, lodash, $localStorage){
 
   // var baseUrl = 'http://localhost:8080/api';
   // Restangular.setBaseUrl(baseUrl);

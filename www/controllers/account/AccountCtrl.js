@@ -1,11 +1,10 @@
-myApp.controller('AccountCtrl', function($scope,$state, $localStorage) {
+myApp.controller('AccountCtrl', function($scope,$state, $localStorage, DonationService) {
 
 	$scope.settings = {
 			enableFriends: true
     }
-    
-    $scope.totalDonation = 10;
 
+    console.log("account controller here");
 	$scope.changePassword = function(){
 		//alert('in details');
 		$state.go('tab.changepassword');
@@ -17,10 +16,11 @@ myApp.controller('AccountCtrl', function($scope,$state, $localStorage) {
 		$state.go('login', {}, { reload: true });
 	}
 
-	var promise = WishService.findDonationsFromUser();
+	var promise = DonationService.findDonationsFromUser();
 	promise.then(function(results,err){
 		if(!err){
 	      $scope.donations = results;
+	      $scope.totalDonation = results.totalDonation;
 	      console.log('donations ', $scope.donations);
 	    }
 	    else {
