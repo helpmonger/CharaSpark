@@ -55,6 +55,7 @@ angular.module('starter.services', [])
   return {
 
           add: function (form) {
+            console.log('in add');
               return TokenRestangular.all('Wish').post(form);
           },
           all: function (form) {
@@ -147,6 +148,42 @@ angular.module('starter.services', [])
         } //end of return
 })
 
+.factory('ResponseService', function($state){
+
+  return {
+
+          handleResponse: function(response){
+                  if(response.status == 401){
+                    console.log('going to login...');
+                    $state.go('login');
+                  } else {
+                    console.log("Error with status code", response.status);
+                  }
+                  return null;
+                
+          },
+         
+        } //end of return
+})
+
+.factory('UserService', function($localStorage) {
+
+  return {
+    getCurrentUser: function() {
+      var user = $localStorage.user;
+      if(user && user.exp >= new Date()){
+        return user;
+      }
+    },
+    setCurrentUser: function(user) {
+      $localStorage.user = user;
+      //makes the token expire in 15 minutes
+      $localStorage.user.exp = new Date().getTime() + 15*60000;
+    }
+ } //end of return 
+
+})
+
 .factory("TokenRestangular", ["Restangular", "$localStorage", function (Restangular, $localStorage) {
         return Restangular.withConfig(function (RestangularConfigurer) {
         // Set access token in header.
@@ -160,4 +197,8 @@ angular.module('starter.services', [])
         RestangularConfigurer.setBaseUrl('http://localhost:8080/api');
     });
 }]);
+
+
+
+
 

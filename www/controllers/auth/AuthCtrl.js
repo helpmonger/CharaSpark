@@ -1,8 +1,8 @@
-myApp.controller('LoginCtrl', function($scope, AuthService, $state, $localStorage) {
+myApp.controller('LoginCtrl', function($scope, AuthService, $state, UserService) {
 
 	console.log('in login');
 	//if logged in, go to landing
-		if ($localStorage.user) {
+		if (UserService.getCurrentUser()) {
 	        $state.go('tab.home');
 	    }
 
@@ -16,7 +16,7 @@ myApp.controller('LoginCtrl', function($scope, AuthService, $state, $localStorag
 	                                  // returns a list of users
 		      if(!err && user.token){
 		        console.log('user is: ', user);
-		        $localStorage.user = user;
+		        UserService.setCurrentUser(user);
 	        	$state.go('tab.home');
 		      }
 		      else {
@@ -40,10 +40,10 @@ myApp.controller('LoginCtrl', function($scope, AuthService, $state, $localStorag
 
 })
 
-.controller('SignupCtrl', function($scope, AuthService, $localStorage, $state) {
+.controller('SignupCtrl', function($scope, AuthService, UserService, $state) {
 	// alert('we re in sign up');
-    console.log($localStorage.user);
-    if ($localStorage.user) {
+    console.log(UserService.getCurrentUser());
+    if (UserService.getCurrentUser()) {
         $state.go('tab.home');
     }
 
@@ -57,16 +57,7 @@ myApp.controller('LoginCtrl', function($scope, AuthService, $state, $localStorag
                                   // returns a list of users
 	      if(!err){
 	        console.log('user is: ', user);
-	        $localStorage.user = user;
-	        if($localStorage.prevPage){
-	        	$state.go($localStorage.prevPage);
-	        	$localStorage.prevPage = '';
-	        } else {
-	        	$state.go('tab.home');
-	        }
-
-	        // alert('charity email is: ' + user.emailAddress);
-	        //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
+	        UserService.setCurrentUser(user);
 	      }
 	      else {
 	        console.log('error is: ', err);

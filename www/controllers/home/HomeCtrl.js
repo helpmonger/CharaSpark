@@ -1,4 +1,4 @@
-myApp.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading, WishService, DonationService) {
+myApp.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading, WishService, DonationService, ResponseService) {
   
 
 $scope.wish = {
@@ -69,16 +69,18 @@ var promise = WishService.findWishesFromUser();
 
   $scope.MakeAWish = function(){
 
+    
       $scope.wish.location = geoLoc;
       $scope.donation._charity = $scope.wish._charity;
 
   		console.log('the wish is: ', $scope.wish);
 
   				var promise = WishService.add($scope.wish);
-  				promise.then(function(wishResult, wishErr) {
-  	                                  
-  		      if(!wishErr){
-  		        	console.log('wish successfully added: ', wishResult);
+          
+          promise.then(function(wishResult, wishErr) {
+                                      
+            if(!wishErr){
+                    console.log('wish successfully added: ', wish);
                 //add the donation
                 //associates the wishID with donation
                 $scope.donation._wish = wishResult._id;
@@ -90,6 +92,10 @@ var promise = WishService.findWishesFromUser();
                     } else {
                       console.log('error adding donation: ', donationErr)
                     }
+                }, function (response){
+                  console.log('reponse is: ', response);
+                  $state.go('login'); 
+                   // ResponseService.handleResponse(response, $state); 
                 });
 
   		    	}
@@ -98,11 +104,11 @@ var promise = WishService.findWishesFromUser();
               console.log('error adding wish: ', wishErr)
   		    	}
   		       
-  		    }); //end of then
-  		// } //end of else
-  		console.log('clicked');
-  		$state.go('tab.tree');
-  		console.log('scope itself is', $scope);
+  		    }, function (response){
+            console.log('reponse is: ', response);
+              $state.go('login');
+                   // ResponseService.handleResponse(response, $state); 
+                }); //end of promise then
 	}
 
 	

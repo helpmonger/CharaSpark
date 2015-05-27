@@ -16,7 +16,7 @@ var myApp = angular.module('starter', ['ionic',
                             'ui.router',
                             ])
 .constant('clientTokenPath', 'http://charasparkservices.herokuapp.com/api/token')
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $localStorage) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -47,9 +47,7 @@ var myApp = angular.module('starter', ['ionic',
     url: "/tab",
     abstract: true,
     templateUrl: "templates/tabs.html",
-    controller: function($scope){
-      $scope.navTitle='<img class="title-image" src="../img/charaspark_logo_400.png" />';
-    }
+    controller: 'TabCtrl'
   })
 
   // Each tab has its own nav history stack:
