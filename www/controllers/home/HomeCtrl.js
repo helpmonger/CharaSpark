@@ -58,12 +58,8 @@ var promise = WishService.findWishesFromUser();
 
   }
 
-	$scope.MakeAWish = function(){
-
-	//get geo location stuff
-
+  //get geo location 
     var geoLoc = [];
-
     navigator.geolocation
       .getCurrentPosition(function(pos) {
               geoLoc.push(pos.coords.latitude);
@@ -71,8 +67,9 @@ var promise = WishService.findWishesFromUser();
               console.log('geoLoc is: ', geoLoc);
           });
 
-	    $scope.wish.location = geoLoc;
-	   
+  $scope.MakeAWish = function(){
+
+      $scope.wish.location = geoLoc;
       $scope.donation._charity = $scope.wish._charity;
 
   		console.log('the wish is: ', $scope.wish);

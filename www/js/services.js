@@ -10,14 +10,15 @@ angular.module('starter.services', [])
 
   return {
        
+          // POST: /api/login
+          // logs the user in
           login: function (form) {
-            // - /api/login
               return Restangular.all('login').post(form);
           },
+          // POST: /api/register
+          // registers the user
           register: function (form) {
-              // - /api/register
               return Restangular.all('register').post(form);
-            
           },
         } //end of return
 })
