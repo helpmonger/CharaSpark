@@ -1,4 +1,4 @@
-myApp.controller('AccountCtrl', function($scope,$state, $localStorage, DonationService) {
+myApp.controller('AccountCtrl', function($scope,$state, StorageService, DonationService) {
 
 	$scope.settings = {
 			enableFriends: true
@@ -12,7 +12,7 @@ myApp.controller('AccountCtrl', function($scope,$state, $localStorage, DonationS
 	}
 
 	$scope.logOff = function(){
-		$localStorage.user = '';
+		StorageService.resetCurrentUser();
 		$state.go('login', {}, { reload: true });
 	}
 

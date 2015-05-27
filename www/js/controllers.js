@@ -1,4 +1,4 @@
-myApp.controller('TabCtrl', function($scope, $state, WishService, $localStorage) {
+myApp.controller('TabCtrl', function($scope, $state, WishService) {
 
     $scope.navTitle='<img class="title-image" src="../img/charaspark_logo_400.png" />';
 
@@ -27,15 +27,15 @@ myApp.controller('TabCtrl', function($scope, $state, WishService, $localStorage)
 	//   // alert('quitting..');
 	// }
 
-	window.onunload = function(event){
-		//alert('before onunload');
-		$localStorage.user = '';
-	}
+	// window.onunload = function(event){
+	// 	//alert('before onunload');
+	// 	$localStorage.user = '';
+	// }
 
 })
 
 
-myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localStorage) {
+myApp.controller('MyWishesCtrl', function($scope, $state, WishService) {
 
 //to-do: add redirect if user doesn't have permission;
 	console.log('in wish ctrl');
@@ -83,7 +83,7 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 	
 })
 
-.controller('MyWishDescriptionCtrl', function($scope, $localStorage, CharityService) {
+.controller('MyWishDescriptionCtrl', function($scope, CharityService, $localStorage) {
 	
 	$scope.aWish = $localStorage.wish;
 	console.log('scope detail:', $scope);
@@ -105,7 +105,7 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 
 //tab-landing
 
-.controller('TreeCtrl', function($scope, $localStorage, $state, $braintree, TreeService){
+.controller('TreeCtrl', function($scope, $state, $braintree, TreeService, $localStorage){
           $scope.creditCard = {}; 
 			$scope.paymentComplete = false;
             // console.log('donation amt is: ' + $localStorage.donationAmt);
@@ -206,7 +206,7 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 
 
 
-.controller('MyFullfillmentDescriptionCtrl', function($scope, $localStorage) {
+.controller('MyFullfillmentDescriptionCtrl', function($scope) {
 	
 	$scope.aWish= //$localStorage.wish;
 
@@ -227,18 +227,6 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService, $localSto
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('TabLoginCtrl', function($scope) {})
-
-.controller('ReloginCtrl', function($scope,$state, $localStorage) {
-	if(!$localStorage.user){ //if user is not authenticated
-		//direct to braintree page
-		console.log('!user');
-		$localStorage.prevPage = 'tab.account';
-		console.log('redirect');
-		$state.go('tab.relogin');
-		return;
-	}
-})
 
 .controller('ChangePasswordCtrl', function($scope){
 

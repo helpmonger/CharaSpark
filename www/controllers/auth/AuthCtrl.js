@@ -1,8 +1,8 @@
-myApp.controller('LoginCtrl', function($scope, AuthService, $state, UserService) {
+myApp.controller('LoginCtrl', function($scope, AuthService, $state, StorageService) {
 
 	console.log('in login');
 	//if logged in, go to landing
-		if (UserService.getCurrentUser()) {
+		if (StorageService.getCurrentUser()) {
 	        $state.go('tab.home');
 	    }
 
@@ -16,7 +16,7 @@ myApp.controller('LoginCtrl', function($scope, AuthService, $state, UserService)
 	                                  // returns a list of users
 		      if(!err && user.token){
 		        console.log('user is: ', user);
-		        UserService.setCurrentUser(user);
+		        StorageService.setCurrentUser(user);
 	        	$state.go('tab.home');
 		      }
 		      else {
@@ -40,10 +40,10 @@ myApp.controller('LoginCtrl', function($scope, AuthService, $state, UserService)
 
 })
 
-.controller('SignupCtrl', function($scope, AuthService, UserService, $state) {
+.controller('SignupCtrl', function($scope, AuthService, StorageService, $state) {
 	// alert('we re in sign up');
-    console.log(UserService.getCurrentUser());
-    if (UserService.getCurrentUser()) {
+    console.log(StorageService.getCurrentUser());
+    if (StorageService.getCurrentUser()) {
         $state.go('tab.home');
     }
 
@@ -57,7 +57,7 @@ myApp.controller('LoginCtrl', function($scope, AuthService, $state, UserService)
                                   // returns a list of users
 	      if(!err){
 	        console.log('user is: ', user);
-	        UserService.setCurrentUser(user);
+	        StorageService.setCurrentUser(user);
 	      }
 	      else {
 	        console.log('error is: ', err);

@@ -27,7 +27,7 @@ angular.module('starter.services', [])
 
 
 
-.factory('UserService', function(TokenRestangular, $localStorage){
+.factory('UserService', function(TokenRestangular){
 
   return {
           // GET: /user
@@ -44,13 +44,13 @@ angular.module('starter.services', [])
 
           // GET: /user/:userID
           // returns a specific user
-          get: function() {
-            return TokenRestangular.one('user', wishID).get();
+          get: function(userID) {
+            return TokenRestangular.one('user', userID).get();
           },
         } //end of return
 })
 
-.factory('WishService', function(TokenRestangular, lodash, $localStorage){
+.factory('WishService', function(TokenRestangular, lodash){
 
   return {
 
@@ -68,19 +68,18 @@ angular.module('starter.services', [])
             return TokenRestangular.one('Wish', wishID).get();
           },
           findWishesFromUser: function(form){
-            var userId = $localStorage.user.user._id;
+            var userId = form._id;
             return TokenRestangular.all('Wish').one('User', userId).getList();
           },
-          findWishesFromFulfiller: function(){
-            console.log($localStorage.user.user._id);
-            return TokenRestangular.all('Wish').one('fulfiller',$localStorage.user.user._id).get();
+          findWishesFromFulfiller: function(fulfillerID){
+            return TokenRestangular.all('Wish').one('fulfiller',fulfillerID).get();
           }
 
         } //end of return
 })
 
 
-.factory('DonationService', function(TokenRestangular, lodash, $localStorage){
+.factory('DonationService', function(TokenRestangular, lodash){
 
   // var baseUrl = 'http://localhost:8080/api';
   // Restangular.setBaseUrl(baseUrl);
@@ -92,19 +91,19 @@ angular.module('starter.services', [])
           all: function () {
               return TokenRestangular.all('donation').getList();
           },
-          update: function (form) {           
-              return TokenRestangular.one('donation', form._id).customPut(form); 
+          update: function (form) {          
+              var userId = form._id; 
+              return TokenRestangular.one('donation', userId).customPut(form); 
           },
           get: function (donationID) {
               return TokenRestangular.one('donation', donationID).get();
           },
-          findDonationsFromUser: function(){
-            console.log($localStorage.user.user._id);
-            return TokenRestangular.all('donation').one('user',$localStorage.user.user._id).get();
+          findDonationsFromUser: function(userID){
+            return TokenRestangular.all('donation').one('user',userID).get();
           },
-          findDonationsFromCharity: function(){
-            //console.log($localStorage.user.user._id);
-            return TokenRestangular.all('donation').one('charity',$localStorage.user.user._id).get();
+          findDonationsFromCharity: function(charityID){
+            //console.log(form._id);
+            return TokenRestangular.all('donation').one('charity',charityID).get();
           }
         } //end of return
 })
