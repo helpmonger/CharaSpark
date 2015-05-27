@@ -165,7 +165,7 @@ angular.module('starter.services', [])
         } //end of return
 })
 
-.factory('UserService', function($localStorage) {
+.factory('StorageService', function($localStorage) {
 
   return {
     getCurrentUser: function() {
@@ -178,7 +178,10 @@ angular.module('starter.services', [])
       $localStorage.user = user;
       //makes the token expire in 15 minutes
       $localStorage.user.exp = new Date().getTime() + 15*60000;
-    }
+    },
+    resetCurrentUser: function() {
+      $localStorage.user = '';
+    },
  } //end of return 
 
 })

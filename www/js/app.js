@@ -42,26 +42,40 @@ var myApp = angular.module('starter', ['ionic',
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-  // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: "/tab",
-    abstract: true,
-    templateUrl: "templates/tabs.html",
-    controller: 'TabCtrl'
-  })
-
-  // Each tab has its own nav history stack:
-
-//intro page
-
-
+//landing page with intro and login options
 .state('landing', {
     url: '/landing',
         templateUrl: 'templates/home/landing.html',
         controller: 'LandingCtrl'
   })
 
-// make a wish
+// Allows the user to login
+.state('login', {
+    url: '/login',    
+        templateUrl: 'templates/auth/login.html',
+        controller: 'LoginCtrl'
+      
+  })  
+
+//Allows the user to register
+.state('register', {
+    url: '/register',
+    templateUrl: 'templates/auth/register.html',
+    controller: 'RegisterCtrl'
+        
+  })
+
+// parent state of all tabs
+// abstract means that this state itself cannot be navigated to 
+.state('tab', {
+    url: "/tab",
+    abstract: true,
+    templateUrl: "templates/tabs.html",
+    controller: 'TabCtrl'
+  })
+
+
+// the default page after logging in
 .state('tab.home', {
     url: '/home',
     views: {
@@ -72,31 +86,29 @@ var myApp = angular.module('starter', ['ionic',
     }
   })
 
-// Login 
-.state('login', {
-    url: '/login',    
-        templateUrl: 'templates/auth/login.html',
-        controller: 'LoginCtrl'
-      
-  })  
+//page showing details of the user's own wishes
+ .state('tab.wishDetails', {
+   url: '/wishDetails/',
+   views: {
+     'tab-home': {
+       templateUrl: 'templates/home/wishDetails.html',
+       controller: 'WishDetailsCtrl'
+     }
+   }
+ }) 
+
   
-  //make a payment with braintree
+  //page where user enters payment info
   .state('tab.tree', {
       url: "/tree",
       views: {
-        'tab-landing': {
+        'tab-home': {
           templateUrl: "templates/home/tree.html",
           controller: 'TreeCtrl'
         }
       }
     })
   
-.state('signup', {
-    url: '/signup',
-    templateUrl: 'templates/auth/signup.html',
-    controller: 'SignupCtrl'
-        
-  })
 
   .state('tab.dash', {
     url: '/dash',
@@ -140,15 +152,7 @@ var myApp = angular.module('starter', ['ionic',
     }
   })  
   
-   .state('tab.mywishdescription', {
-     url: '/mywishdescription/',
-     views: {
-       'tab-home': {
-         templateUrl: 'templates/wishes/mywishdescription.html',
-         controller: 'MyWishDescriptionCtrl'
-       }
-     }
-   }) 
+
 
   // .state('tab.mywishes', {
   //   url: '/mywishes',

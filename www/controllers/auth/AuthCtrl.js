@@ -40,7 +40,7 @@ myApp.controller('LoginCtrl', function($scope, AuthService, $state, StorageServi
 
 })
 
-.controller('SignupCtrl', function($scope, AuthService, StorageService, $state) {
+.controller('RegisterCtrl', function($scope, AuthService, StorageService, $state) {
 	// alert('we re in sign up');
     console.log(StorageService.getCurrentUser());
     if (StorageService.getCurrentUser()) {
