@@ -64,7 +64,7 @@ angular.module('starter.services', [])
           update: function (form) {
               return TokenRestangular.one('Wish', form._id).customPut(form); 
           },
-          
+
           // GET: /wish/:wishID
           // returns a specific wish
           get: function(wishID) {
@@ -221,8 +221,8 @@ angular.module('starter.services', [])
     },
     setCurrentUser: function(user) {
       $localStorage.user = user;
-      //makes the token expire in 15 minutes
-      $localStorage.user.exp = new Date().getTime() + 1*60000;
+      //makes the token expire in 30 minutes
+      $localStorage.user.exp = new Date().getTime() + 30*60000;
     },
     resetCurrentUser: function() {
       $localStorage.user = '';
