@@ -90,7 +90,7 @@ if(user){
     $scope.goToDetails = function(wish){
     // save wish object to the localStorage for the next page using
       $localStorage.wish = wish;
-      $state.go('tab.wishDetails');
+      $state.go('tab.wishDetails', { 'wishID': wish._id});
     }
 
 

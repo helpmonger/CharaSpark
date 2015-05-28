@@ -88,7 +88,7 @@ var myApp = angular.module('starter', ['ionic',
 
 //page showing details of the user's own wishes
  .state('tab.wishDetails', {
-   url: '/wishDetails/',
+   url: '/wishDetails/:wishID',
    views: {
      'tab-home': {
        templateUrl: 'templates/home/wishDetails.html',

@@ -64,7 +64,10 @@ angular.module('starter.services', [])
           update: function (form) {
               return TokenRestangular.one('Wish', form._id).customPut(form); 
           },
-          get: function() {
+          
+          // GET: /wish/:wishID
+          // returns a specific wish
+          get: function(wishID) {
             return TokenRestangular.one('Wish', wishID).get();
           },
           findWishesFromUser: function(userID){
