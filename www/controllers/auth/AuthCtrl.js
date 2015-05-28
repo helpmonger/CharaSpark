@@ -1,4 +1,7 @@
-myApp.controller('LoginCtrl', function($scope, AuthService, $state, StorageService) {
+myApp.controller('LoginCtrl', function($scope, 
+									   AuthService, 
+									   $state, 
+									   StorageService) {
 
 	console.log('in login');
 	//if logged in, go to landing
@@ -18,6 +21,7 @@ myApp.controller('LoginCtrl', function($scope, AuthService, $state, StorageServi
 		        // console.log('user is: ', user);
 		        StorageService.setCurrentUser(user);
 	        	// $state.go('tab.home');
+	        	console.log('reloading home state');
 	        	$state.go('tab.home', {}, {reload: true});
 		      }
 		      else {

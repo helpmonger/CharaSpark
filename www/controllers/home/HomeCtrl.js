@@ -1,4 +1,14 @@
-myApp.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading, WishService, DonationService, StorageService, PromiseService) {
+myApp.controller('HomeCtrl', function($scope, 
+                                      CharityService, 
+                                      $state, 
+                                      lodash, 
+                                      $localStorage, 
+                                      $ionicLoading, 
+                                      WishService, 
+                                      DonationService, 
+                                      StorageService, 
+                                      PromiseService,
+                                      LocationService) {
 
 console.log('in home ctrl');
 //---------- get current user info ---------------
@@ -26,12 +36,9 @@ if(user){
   //populates charities for dropdown
   var charityPromise = CharityService.all();
 
-  PromiseService.getData(charityPromise, function(data){
-    if(data.success){
+  PromiseService.getData(charityPromise,  function(data){
+    if(data){
       $scope.charities = lodash.sortBy(data, 'name');
-    } 
-    else if(data.status){
-      $state.go('login');
     }
   });
 

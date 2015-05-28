@@ -208,9 +208,11 @@ angular.module('starter.services', [])
         return user;
       }
       else {
-        console.log('needs to login');
+        // console.log('needs to login');
         $localStorage.user = '';
-        $state.go('login');
+        // $state.go('login');
+        $state.go('login', {}, {reload: true});
+        // console.log('after logged in');
         return null;
       }
     },
