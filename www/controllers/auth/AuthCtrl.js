@@ -10,15 +10,15 @@ myApp.controller('LoginCtrl', function($scope, AuthService, $state, StorageServi
 	    $scope.user = {};
 	    
 		$scope.Login = function(){
-			console.log('scope user is: ', $scope.user);
 			var promise = AuthService.login($scope.user);
 			promise.then(function(user, err) {
 				// console.log('user is: ', user);
 	                                  // returns a list of users
 		      if(!err && user.token){
-		        console.log('user is: ', user);
+		        // console.log('user is: ', user);
 		        StorageService.setCurrentUser(user);
-	        	$state.go('tab.home');
+	        	// $state.go('tab.home');
+	        	$state.go('tab.home', {}, {reload: true});
 		      }
 		      else {
 		        console.log('error is: ', err);

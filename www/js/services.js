@@ -175,6 +175,7 @@ angular.module('starter.services', [])
             promise.then(function(data, err) {
             // returns a list of users
             if(!err){
+                //returns the data if the data is successfully retrieved
                 callback(data);
             }
             else {
@@ -198,19 +199,25 @@ angular.module('starter.services', [])
 })
 
 
-.factory('StorageService', function($localStorage) {
-
+.factory('StorageService', function($localStorage, $state) {
+  console.log('in storage service');
   return {
     getCurrentUser: function() {
       var user = $localStorage.user;
       if(user && user.exp >= new Date()){
         return user;
       }
+      else {
+        console.log('needs to login');
+        $localStorage.user = '';
+        $state.go('login');
+        return null;
+      }
     },
     setCurrentUser: function(user) {
       $localStorage.user = user;
       //makes the token expire in 15 minutes
-      $localStorage.user.exp = new Date().getTime() + 15*60000;
+      $localStorage.user.exp = new Date().getTime() + 1*60000;
     },
     resetCurrentUser: function() {
       $localStorage.user = '';
@@ -219,19 +226,43 @@ angular.module('starter.services', [])
 
 })
 
-.factory("TokenRestangular", ["Restangular", "$localStorage", function (Restangular, $localStorage) {
+// This service automatically adds the user's authorization to restangular's request header.
+// To begin, just inject TokenRestangular in wherever Restangular is used. 
+// No other code change is needed
+.factory("TokenRestangular", ["Restangular", "StorageService", function (Restangular, StorageService) {
         return Restangular.withConfig(function (RestangularConfigurer) {
         // Set access token in header.
         var accessToken = '';
-        var user = $localStorage.user;
-        if(user != null && user.token != null){
+        var user = StorageService.getCurrentUser();
+        if(user){
           accessToken = user.token;
+        } else {
+          return;
         }
         console.log('accessToken is: ', accessToken);
         RestangularConfigurer.setDefaultHeaders({Authorization: 'Bearer '+ accessToken});
         RestangularConfigurer.setBaseUrl('http://localhost:8080/api');
     });
-}]);
+}])
+
+.factory('LocationService', function() {
+  var geoLoc = [];
+  return {
+    getCurrentLocation: function(callback) {
+      navigator.geolocation
+      .getCurrentPosition(function(pos) {
+              geoLoc.push(pos.coords.latitude);
+              geoLoc.push(pos.coords.longitude);
+              callback(geoLoc);
+              console.log('geoLoc is: ', geoLoc);
+          });
+    }
+ } //end of return 
+
+});
+
+
+
 
 
 
