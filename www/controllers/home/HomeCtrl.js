@@ -79,9 +79,17 @@ if(user){
             PromiseService.getData(donationPromise, function(donationData){
               if(donationData){
                 $scope.wishes = donationData;
-              }
+                //update the wish with the donationID
+                wishData._donation = donationData._id;
+                var wishUPromise = WishService.update(wishData);
+                PromiseService.getData(wishUPromise, function(wishData2){
+                  if(wishData2){
+                    console.log('the wish has been updated.');
+                  }
+                }); //end of PromiseService
+              } //end of if(donationData)
             });
-          }
+        }
         });
   	} //end of make a wish
 
