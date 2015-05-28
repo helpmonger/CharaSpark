@@ -67,9 +67,8 @@ angular.module('starter.services', [])
           get: function() {
             return TokenRestangular.one('Wish', wishID).get();
           },
-          findWishesFromUser: function(form){
-            var userId = form._id;
-            return TokenRestangular.all('Wish').one('User', userId).getList();
+          findWishesFromUser: function(userID){
+            return TokenRestangular.all('Wish').one('User', userID).getList();
           },
           findWishesFromFulfiller: function(fulfillerID){
             return TokenRestangular.all('Wish').one('fulfiller',fulfillerID).get();
@@ -164,6 +163,40 @@ angular.module('starter.services', [])
          
         } //end of return
 })
+
+//this aims to make consuming promises easier by taking care of all the error handling
+//to begin, just pass the promise, and a callback function. 
+// 
+.factory('PromiseService', function($state, StorageService){
+  console.log('in promise service');
+  return {
+
+          getData: function(promise, callback){
+            promise.then(function(data, err) {
+            // returns a list of users
+            if(!err){
+                callback(data);
+            }
+            else {
+              console.log('error is: ', err);
+              callback(null);
+            }
+                
+          }, function(response){
+              if(response.status == 401){ //401 = expired Authorization
+                //need to reset local storage to prevent auto-redirect
+                StorageService.resetCurrentUser(); 
+                return $state.go('login');
+              } else {
+                callback(null);
+                console.log('response error ', response);
+              }
+          }); //end of promise.then
+        }, //end of getData
+         
+      } //end of return
+})
+
 
 .factory('StorageService', function($localStorage) {
 

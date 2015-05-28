@@ -3,6 +3,7 @@ myApp.controller('LoginCtrl', function($scope, AuthService, $state, StorageServi
 	console.log('in login');
 	//if logged in, go to landing
 		if (StorageService.getCurrentUser()) {
+			console.log('redirecting to home...');
 	        $state.go('tab.home');
 	    }
 
@@ -44,6 +45,7 @@ myApp.controller('LoginCtrl', function($scope, AuthService, $state, StorageServi
 	// alert('we re in sign up');
     console.log(StorageService.getCurrentUser());
     if (StorageService.getCurrentUser()) {
+    	console.log('redirecting to home...');
         $state.go('tab.home');
     }
 

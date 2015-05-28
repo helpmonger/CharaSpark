@@ -1,9 +1,15 @@
-myApp.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading, WishService, DonationService, ResponseService) {
-  
+myApp.controller('HomeCtrl', function($scope, CharityService, $state, lodash, $localStorage, $ionicLoading, WishService, DonationService, StorageService, PromiseService) {
 
-$scope.wish = {
+//---------- get current user info ---------------
 
+var user = StorageService.getCurrentUser();
+if(!user){
+  return $state.go('login');
 }
+  
+// ---------- declare variables needed by $scope ---------------
+
+$scope.wish = {}
 
 $scope.donation = {
   amount: null,
@@ -14,39 +20,29 @@ $scope.charity = {
 }
 
 
-// populates variables needed by page
+// ---------- populates variables needed by page ---------------
 
-  //populates charities 
-var promise = CharityService.all();
-  promise.then(function(chars, err) {
-    // returns a list of users
-    if(!err){
-      // console.log('list is: ', chars);
-      $scope.charities = lodash.sortBy(chars, 'name');; // first Restangular obj in list: { id: 123 }
-      console.log('charities population', $scope.charities);
-    }
-    else {
-      console.log('error is: ', err);
-    }
 
-  }); // end of promise 
+//populates charities for dropdown
+var charityPromise = CharityService.all();
+
+PromiseService.getData(charityPromise, function(data){
+  if(data.success){
+    $scope.charities = lodash.sortBy(data, 'name');
+  } 
+  else if(data.status){
+    $state.go('login');
+  }
+});
 
 
 
-  //populates wishes
-var promise = WishService.findWishesFromUser();
-    promise.then(function(wishes, err) {
-    // returns a list of users
-    if(!err){
-      // console.log('list is: ', wishes);
-      $scope.wishes = wishes;
-      console.log('wishes ', $scope.wishes);
-    }
-    else {
-      console.log('error is: ', err);
-    }
-
-  }); // end of promise 
+var wishPromise = WishService.findWishesFromUser(user.user._id);
+PromiseService.getData(wishPromise, function(data){
+  if(data){
+    $scope.wishes = data;
+  }
+});
 
 
   $scope.goToDetails = function(wish){
