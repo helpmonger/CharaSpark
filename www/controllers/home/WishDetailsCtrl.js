@@ -1,4 +1,4 @@
-myApp.controller('WishDetailsCtrl', function($scope,$state, $localStorage) {
+myApp.controller('WishDetailsCtrl', function($scope,$state, $localStorage, $stateParams) {
 	
 	
 	$scope.aWish= $localStorage.wish;
