@@ -71,6 +71,7 @@ if(user){
         
         PromiseService.getData(wishCPromise, function(wishData){
           if(wishData){
+            console.log('wish successfully created');
             //associated the wish id to the donation
             $scope.donation._wish = wishData._id;
 
@@ -78,7 +79,8 @@ if(user){
             var donationPromise = DonationService.add($scope.donation);
             PromiseService.getData(donationPromise, function(donationData){
               if(donationData){
-                $scope.wishes = donationData;
+
+                console.log('donation successfully created');
                 //update the wish with the donationID
                 wishData._donation = donationData._id;
                 var wishUPromise = WishService.update(wishData);
@@ -97,7 +99,7 @@ if(user){
     //transitions to the wish details page
     $scope.goToDetails = function(wish){
     // save wish object to the localStorage for the next page using
-      $localStorage.wish = wish;
+      // $localStorage.wish = wish;
       $state.go('tab.wishDetails', { 'wishID': wish._id});
     }
 

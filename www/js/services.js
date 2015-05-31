@@ -39,7 +39,7 @@ angular.module('starter.services', [])
           // Put: /user/:userID
           // updates a single user
           update: function (form) {
-              return TokenRestangular.all('user', form._id).customPut(form); 
+              return TokenRestangular.all('user', form._id).customPUT(form); 
           },
 
           // GET: /user/:userID
@@ -62,7 +62,7 @@ angular.module('starter.services', [])
         	  return TokenRestangular.all('Wish').getList();
           },
           update: function (form) {
-              return TokenRestangular.one('Wish', form._id).customPut(form); 
+              return TokenRestangular.one('Wish', form._id).customPUT(form); 
           },
 
           // GET: /wish/:wishID
@@ -95,7 +95,7 @@ angular.module('starter.services', [])
           },
           update: function (form) {          
               var userId = form._id; 
-              return TokenRestangular.one('donation', userId).customPut(form); 
+              return TokenRestangular.one('donation', userId).customPUT(form); 
           },
           get: function (donationID) {
               return TokenRestangular.one('donation', donationID).get();
@@ -125,7 +125,7 @@ angular.module('starter.services', [])
               return TokenRestangular.all('charity').getList();
           },
           update: function (form) {           
-              return TokenRestangular.one('charity', form._id).customPut(form); 
+              return TokenRestangular.one('charity', form._id).customPUT(form); 
           },
           get: function (charityID) {
               return TokenRestangular.one('charity', charityID).get();
@@ -205,7 +205,7 @@ angular.module('starter.services', [])
 .factory('StorageService', function($localStorage, $state) {
   console.log('in storage service');
   return {
-    getCurrentUser: function() {
+    getCurrentUser: function(goToRegister) {
       var user = $localStorage.user;
       if(user && user.exp >= new Date()){
         return user;
@@ -214,7 +214,11 @@ angular.module('starter.services', [])
         // console.log('needs to login');
         $localStorage.user = '';
         // $state.go('login');
-        $state.go('login', {}, {reload: true});
+        if(goToRegister){
+          $state.go('register', {}, {reload: true});
+        } else {
+          $state.go('login', {}, {reload: true});
+        }
         // console.log('after logged in');
         return null;
       }
