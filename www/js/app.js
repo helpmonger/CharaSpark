@@ -100,7 +100,7 @@ var myApp = angular.module('starter', ['ionic',
   
   //page where user enters payment info
   .state('tab.tree', {
-      url: "/tree",
+      url: "/tree/:donationID",
       views: {
         'tab-home': {
           templateUrl: "templates/home/tree.html",

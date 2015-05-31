@@ -39,7 +39,7 @@ angular.module('starter.services', [])
           // Put: /user/:userID
           // updates a single user
           update: function (form) {
-              return TokenRestangular.all('user', form._id).customPut(form); 
+              return TokenRestangular.all('user', form._id).customPUT(form); 
           },
 
           // GET: /user/:userID
@@ -62,7 +62,7 @@ angular.module('starter.services', [])
         	  return TokenRestangular.all('Wish').getList();
           },
           update: function (form) {
-              return TokenRestangular.one('Wish', form._id).customPut(form); 
+              return TokenRestangular.one('Wish', form._id).customPUT(form); 
           },
 
           // GET: /wish/:wishID
@@ -94,8 +94,8 @@ angular.module('starter.services', [])
               return TokenRestangular.all('donation').getList();
           },
           update: function (form) {          
-              var userId = form._id; 
-              return TokenRestangular.one('donation', userId).customPut(form); 
+              var donationID = form._id; 
+              return TokenRestangular.all('donation', donationID).customPUT(form); 
           },
           get: function (donationID) {
               return TokenRestangular.one('donation', donationID).get();
@@ -125,7 +125,7 @@ angular.module('starter.services', [])
               return TokenRestangular.all('charity').getList();
           },
           update: function (form) {           
-              return TokenRestangular.one('charity', form._id).customPut(form); 
+              return TokenRestangular.one('charity', form._id).customPUT(form); 
           },
           get: function (charityID) {
               return TokenRestangular.one('charity', charityID).get();
