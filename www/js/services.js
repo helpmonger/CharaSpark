@@ -225,8 +225,8 @@ angular.module('starter.services', [])
     },
     setCurrentUser: function(user) {
       $localStorage.user = user;
-      //makes the token expire in 30 minutes
-      $localStorage.user.exp = new Date().getTime() + 30*60000;
+      //makes the token expire in 30 minutes x 24 = 12 hours
+      $localStorage.user.exp = new Date().getTime() + 30*60000*24;
     },
     resetCurrentUser: function() {
       $localStorage.user = '';
