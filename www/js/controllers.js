@@ -148,12 +148,12 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService) {
               //     if(!err && paymentComplete.success){
               //       console.log('paymentComplete is: ', paymentComplete);
                     $scope.paymentComplete = true;
-
+                    console.log('state params = ', $stateParams);
 					var localDonationID = $stateParams.donationID;
-
+					console.log('localDonationID = ', localDonationID);
 					//get donationID from wishId
                     var promise = DonationService.update({
-                    	'donationID':localDonationID,
+                    	'_id':localDonationID,
                     	'paidDate':new Date()
                     	});
                     promise.then(function(results,err){

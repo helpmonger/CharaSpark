@@ -81,12 +81,14 @@ if(user){
               if(donationData){
 
                 console.log('donation successfully created');
+                console.log('donation is: ', donationData._id);
                 //update the wish with the donationID
                 wishData._donation = donationData._id;
                 var wishUPromise = WishService.update(wishData);
                 PromiseService.getData(wishUPromise, function(wishData2){
                   if(wishData2){
                     console.log('the wish has been updated.');
+                    $state.go('tab.tree',{'donationID': donationData._id});
                   }
                 }); //end of PromiseService
               } //end of if(donationData)
@@ -94,7 +96,7 @@ if(user){
         }
         });
 
-        $state.go('tab.tree',{'donationID':$scope.wish._donation});
+        
   	} //end of make a wish
 
 

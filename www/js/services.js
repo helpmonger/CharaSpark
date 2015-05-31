@@ -95,7 +95,8 @@ angular.module('starter.services', [])
           },
           update: function (form) {          
               var donationID = form._id; 
-              return TokenRestangular.all('donation', donationID).customPUT(form); 
+              console.log('donation id in service is: ', donationID);
+              return TokenRestangular.one('donation', donationID).customPUT(form); 
           },
           get: function (donationID) {
               return TokenRestangular.one('donation', donationID).get();
