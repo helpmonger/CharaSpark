@@ -93,6 +93,8 @@ if(user){
             });
         }
         });
+
+        $state.go('tab.tree',{'donationID':$scope.wish._donation});
   	} //end of make a wish
 
 

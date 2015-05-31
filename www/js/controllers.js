@@ -105,7 +105,7 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService) {
 
 //tab-landing
 
-.controller('TreeCtrl', function($scope, $state, $braintree, TreeService, $localStorage){
+.controller('TreeCtrl', function($scope, $state, $braintree, TreeService, $localStorage, DonationService, $stateParams){
           $scope.creditCard = {}; 
 			$scope.paymentComplete = false;
             // console.log('donation amt is: ' + $localStorage.donationAmt);
@@ -148,6 +148,22 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService) {
               //     if(!err && paymentComplete.success){
               //       console.log('paymentComplete is: ', paymentComplete);
                     $scope.paymentComplete = true;
+
+					var localDonationID = $stateParams.donationID;
+
+					//get donationID from wishId
+                    var promise = DonationService.update({
+                    	'donationID':localDonationID,
+                    	'paidDate':new Date()
+                    	});
+                    promise.then(function(results,err){
+						if(!err){
+					      console.log('success');
+					    }
+					    else {
+					      console.log('error is: ', err);
+					    }
+					});
                     //paymentComplete;
                     
                     // alert('charity email is: ' + clientToken.emailAddress);
