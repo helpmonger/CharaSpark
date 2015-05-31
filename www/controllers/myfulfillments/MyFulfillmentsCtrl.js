@@ -1,16 +1,20 @@
 //Fullfillments data needs to be updated to Fullfillments.
-myApp.controller('MyFullfillmentsCtrl', function($scope, $state, WishService, $localStorage) {
+myApp.controller('MyFullfillmentsCtrl', function($scope, $state, WishService, StorageService) {
 
-	var promise = WishService.findWishesFromFulfiller();
-	promise.then(function(wishes,err){
-		if(!err){
-	      $scope.wishes = wishes;
-	      console.log('wishes ', $scope.wishes);
-	    }
-	    else {
-	      console.log('error is: ', err);
-	    }
-	});
+	var user = StorageService.getCurrentUser();
+	if(user)
+	{
+		var promise = WishService.findWishesFromFulfiller(user.user._id);
+		promise.then(function(wishes,err){
+			if(!err){
+		      $scope.wishes = wishes;
+		      console.log('wishes ', $scope.wishes);
+		    }
+		    else {
+		      console.log('error is: ', err);
+		    }
+		});
+	}
 
 	// $scope.wishes = //$localStorage.wishes;
 	// 	{
