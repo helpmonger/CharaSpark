@@ -6,16 +6,14 @@
 	  <div class="item item-avatar">
 	    <img src="img/smile.png">
 	    <!-- <h2>{{aWish.title}}</h2> -->
-	    <p>{{aWish._wishMaker}} -->  {{aWish._charity}} | {{aWish.createdDate}}</p>
+	    {{aWish._wishMaker.user_name}} -->  {{aWish._charity.name}} | {{aWish.createdDate}}
 	  </div>
 	  <div class="item item-body">
-	    <p>
-	      {{aWish.description}}
-	    </p>
+  	      {{aWish.description}}
 	  </div>
 	  
 	  <div class="item tabs tabs-secondary tabs-icon-left">
-		Wish Maker: {{aWish._wishMaker}}
+		Wish Maker: {{aWish._wishMaker.user_name}}
 	  </div>
 
 	  <div class="item tabs tabs-secondary tabs-icon-left">

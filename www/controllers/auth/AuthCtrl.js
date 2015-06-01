@@ -45,7 +45,10 @@ myApp.controller('LoginCtrl', function($scope,
 
 })
 
-.controller('RegisterCtrl', function($scope, AuthService, StorageService, $state) {
+.controller('RegisterCtrl', function($scope, 
+									   AuthService, 
+									   $state, 
+									   StorageService) {
 	// alert('we re in sign up');
     //true prevents the user from being redirected to the login page
     if (StorageService.getCurrentUser(true)) { 
@@ -53,23 +56,24 @@ myApp.controller('LoginCtrl', function($scope,
         $state.go('tab.home');
     }
 
-    // $scope.user = {};
+    $scope.user = {};
 
-	// $scope.Register = function(){
+	$scope.Register = function(){
 		
-	// 	console.log('scope user is: ', $scope.user);
-	// 	var promise = AuthService.register($scope.user);
-	// 	promise.then(function(user, err) {
- //                                  // returns a list of users
-	//       if(!err){
-	//         console.log('user is: ', user);
-	//         StorageService.setCurrentUser(user);
-	//       }
-	//       else {
-	//         console.log('error is: ', err);
-	//         $scope.error = "unable to sign up at this time";
-	//       }
-	//     }); //end of then
-	// }// end of sign up
+		console.log('scope user is: ', $scope.user);
+		var promise = AuthService.register($scope.user);
+		promise.then(function(user, err) {
+                                  // returns a list of users
+	      if(!err){
+	        console.log('user is: ', user);
+	        StorageService.setCurrentUser(user);
+	        $state.go('tab.home', {}, {reload: true});
+	      }
+	      else {
+	        console.log('error is: ', err);
+	        $scope.error = "unable to sign up at this time";
+	      }
+	    }); //end of then
+	}// end of sign up
 
 })

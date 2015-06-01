@@ -166,28 +166,28 @@ var myApp = angular.module('starter', ['ionic',
 
    
   
-  .state('tab.myfullfillments', {
-    url: '/myfullfillments',
+  .state('tab.myfulfillments', {
+    url: '/myfulfillments',
     views: {
-      'tab-myfullfillments': {
-        templateUrl: 'templates/fulfillments/myfullfillments.html',
-        controller: 'MyFullfillmentsCtrl'
+      'tab-myfulfillments': {
+        templateUrl: 'templates/fulfillments/myfulfillments.html',
+        controller: 'MyFulfillmentsCtrl'
       }
     }
   })  
 
-  .state('tab.myfullfillmentdescription', {
-    url: '/myfullfillmentdescription',
+  .state('tab.myfulfillmentdescription', {
+    url: '/myfulfillmentdescription/:wishID',
     views: {
-      'tab-myfullfillments': {
+      'tab-myfulfillments': {
         templateUrl: 'templates/fulfillments/myfulfillmentdescription.html',
-        controller: 'MyFullfillmentDescriptionCtrl'
+        controller: 'MyFulfillmentDescriptionCtrl'
       }
     }
   })    
   
-    .state('tab.fullfillacceptconfirm', {
-    url: '/fullfillacceptconfirm',
+    .state('tab.fulfillacceptconfirm', {
+    url: '/fulfillacceptconfirm',
     views: {
       'tab-fullfillawish': {
         templateUrl: 'templates/fulfillments/fulfillacceptconfirm.html',
