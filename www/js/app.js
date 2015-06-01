@@ -177,7 +177,7 @@ var myApp = angular.module('starter', ['ionic',
   })  
 
   .state('tab.myfulfillmentdescription', {
-    url: '/myfulfillmentdescription',
+    url: '/myfulfillmentdescription/:wishID',
     views: {
       'tab-myfulfillments': {
         templateUrl: 'templates/fulfillments/myfulfillmentdescription.html',
