@@ -1,5 +1,5 @@
-myApp.controller('FulfillWishCtrl', function($scope,$state, WishService, $localStorage) {
-	
+myApp.controller('FulfillWishCtrl', function($scope,$state, WishService, $localStorage, PromiseService) {
+	// console.log('in fulfilla wish');
 	$scope.goToDetails = function(wish){
 		alert('in details');
 		$localStorage.wish = wish;
@@ -7,15 +7,13 @@ myApp.controller('FulfillWishCtrl', function($scope,$state, WishService, $localS
 		//  {'id': '101'}
 	}
 
-	var promise = WishService.findWishesFromFulfiller();
-	promise.then(function(wishes,err){
-		if(!err){
-	      $scope.wishes = wishes;
-	      console.log('wishes ', $scope.wishes);
+	var promise = WishService.all();
+
+	PromiseService.getData(promise,  function(data){
+	    if(data){
+	    	console.log('successful! ', data);
+	      $scope.wishes = data
 	    }
-	    else {
-	      console.log('error is: ', err);
-	    }
-	});
+    });
 	
 })	
