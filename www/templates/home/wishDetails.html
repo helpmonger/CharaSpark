@@ -17,7 +17,8 @@
 	  
       <span ng-if="wish.wishStatus == 'pending' || wish.wishStatus == 'proceeding'" >
 	    <button class="button button-positive " ng-click="changeStatus('yes', wish.wishStatus)">
-		 Confirm
+		 <span ng-if="wish.wishStatus =='proceeding'">Complete</span>
+		 <span ng-if="wish.wishStatus !='proceeding'">Confirm</span>
 		</button>
       </span>
       <span ng-if="wish.wishStatus == 'new' || wish.wishStatus == 'pending' || wish.wishStatus == 'proceeding'" >
