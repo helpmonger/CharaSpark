@@ -96,8 +96,8 @@
             <input type="radio" name="wishgroup">
             <div class="item-content" >
               {{wish.title}}<br> 
-              {{wish.charity.name}}
-              {{wish.donationAmt | currency}}
+              {{wish._charity.name}}
+              {{wish._donation.amount| currency}}
               {{wish.createdDate}}
             </div>
        </label> 
