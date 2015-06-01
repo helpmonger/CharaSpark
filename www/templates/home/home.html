@@ -97,8 +97,8 @@
             <div class="item-content" >
               {{wish.title}}<br> 
               {{wish._charity.name}}
-              {{wish._donation.amount| currency}}
-              {{wish.createdDate}}
+              {{wish._donation.amount| currency}} <br>
+              {{wish.createdDate | date: 'short'}}
             </div>
        </label> 
   </div>
