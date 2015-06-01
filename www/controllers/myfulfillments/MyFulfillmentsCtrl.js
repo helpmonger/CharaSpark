@@ -1,7 +1,8 @@
 //Fullfillments data needs to be updated to Fullfillments.
 myApp.controller('MyFullfillmentsCtrl', function($scope, $state, WishService, StorageService) {
-
+console.log('in MyFullfillmentsCtrl');
 	var user = StorageService.getCurrentUser();
+		console.log('the user id is: ', user.user._id);
 	if(user)
 	{
 		var promise = WishService.findWishesFromFulfiller(user.user._id);
