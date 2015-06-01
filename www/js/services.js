@@ -1,119 +1,143 @@
 angular.module('starter.services', [])
 
 
-.factory('CharityService', function(Restangular, lodash){
-
-Restangular.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
-  
-
-  return {
-    all: function() {
-      return Restangular.all('search').customGET("");
-    },
-    get: function(charityID){
-      var userInfo;
-      var promise2 = Restangular.oneUrl('test', 'https://api.justgiving.com/ab7113a9/v1/charity/53').get();
-       promise2.then(function(charInfo, err) {
-        // returns a list of users
-        if(!err){
-          console.log('charInfo is: ', charInfo);
-          userInfo = charInfo;
-          alert('charity email is: ' + charInfo.emailAddress);
-          //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
-        }
-        else {
-          console.log('error is: ', err);
-        }
-      });
-       return userInfo;
-    } //end get
-  };
-})
-
-.factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
-
-  return {
-    all: function() {
-      return chats;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
-        }
-      }
-      return null;
-    }
-  };
-}) //end of chats service
-
-
 .factory('AuthService', function(Restangular, lodash){
 
-  var baseUrl = 'http://charasparkservices.herokuapp.com/api';
+  // var baseUrl = 'http://charasparkservices.herokuapp.com/api';
+  var baseUrl = 'http://localhost:8080/api';
   Restangular.setBaseUrl(baseUrl);
   // var baseOptin = Restangular.all('api/');
 
-
-
-  // POST /accounts/123/messages?param=myParam with the body of name: "My Message"
-  // account.customPOST({name: "My Message"}, "messages", {param: "myParam"}, {})
-
   return {
-          signin: function (form) {
-              return Restangular.all('LogIn').customPOST($.param(form), "", form, 
-                        {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
-            
+       
+          // POST: /api/login
+          // logs the user in
+          login: function (form) {
+              return Restangular.all('login').post(form);
           },
-          signup: function (form) {
-
-              return Restangular.all('SignUp').customPOST($.param(form), "", form, 
-                        {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
-             //end of signup
+          // POST: /api/register
+          // registers the user
+          register: function (form) {
+              return Restangular.all('register').post(form);
           },
         } //end of return
 })
 
-.factory('WishService', function(Restangular, lodash){
 
-  
+
+
+
+.factory('UserService', function(TokenRestangular){
+
+  return {
+          // GET: /user
+          // returns all users
+          all: function (form) {
+            return TokenRestangular.all('user').getList();
+          },
+
+          // Put: /user/:userID
+          // updates a single user
+          update: function (form) {
+              return TokenRestangular.all('user', form._id).customPUT(form); 
+          },
+
+          // GET: /user/:userID
+          // returns a specific user
+          get: function(userID) {
+            return TokenRestangular.one('user', userID).get();
+          },
+        } //end of return
+})
+
+.factory('WishService', function(TokenRestangular, lodash){
 
   return {
 
-          addWish: function (form) {
-            var baseUrl = 'http://charasparkservices.herokuapp.com/api';
-            Restangular.setBaseUrl(baseUrl);
-              return Restangular.all('AddWish').customPOST($.param(form), "", form, 
-                        {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
-            
+          add: function (form) {
+            console.log('in add');
+              return TokenRestangular.all('Wish').post(form);
           },
-          getWishesToFulfill: function (form) {
-              var baseUrl = 'http://charasparkservices.herokuapp.com/api';
-              Restangular.setBaseUrl(baseUrl);
-              console.log('the form is: ', form);
-              return Restangular.all('Wishes').customGET("", {},  
-                        {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
-
+          all: function (form) {
+        	  return TokenRestangular.all('Wish').getList();
           },
-          getFulfillments: function (form) {
-            var baseUrl = 'http://charasparkservices.herokuapp.com/api';
-            Restangular.setBaseUrl(baseUrl);
-            // console.log('the form is: ', form);
-            return Restangular.all('Fulfillments').customGET("", $.param(form),  
-                  {'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"});
+          update: function (form) {
+              return TokenRestangular.one('Wish', form._id).customPUT(form); 
+          },
 
-    },
+          // GET: /wish/:wishID
+          // returns a specific wish
+          get: function(wishID) {
+            //console.log("get wish is working");
+            //console.log("wish id = ", wishID);
+            return TokenRestangular.one('Wish', wishID).get();
+          },
+          findWishesFromUser: function(userID){
+            return TokenRestangular.all('Wish').one('User', userID).getList();
+          },
+          findWishesFromFulfiller: function(fulfillerID){
+            return TokenRestangular.all('Wish').one('fulfiller',fulfillerID).get();
+          }
+
+        } //end of return
+})
+
+
+.factory('DonationService', function(TokenRestangular, lodash){
+
+  // var baseUrl = 'http://localhost:8080/api';
+  // Restangular.setBaseUrl(baseUrl);
+
+  return {
+          add: function (form) {           
+              return TokenRestangular.all('donation').post(form);            
+          },
+          all: function () {
+              return TokenRestangular.all('donation').getList();
+          },
+          update: function (form) {          
+              var donationID = form._id; 
+              console.log('donation id in service is: ', donationID);
+              return TokenRestangular.one('donation', donationID).customPUT(form); 
+          },
+          get: function (donationID) {
+              return TokenRestangular.one('donation', donationID).get();
+          },
+          findDonationsFromUser: function(userID){
+            return TokenRestangular.all('donation').one('user',userID).get();
+          },
+          findDonationsFromCharity: function(charityID){
+            //console.log(form._id);
+            return TokenRestangular.all('donation').one('charity',charityID).get();
+          }
+        } //end of return
+})
+
+
+
+.factory('CharityService', function(TokenRestangular, lodash){
+
+  // var baseUrl = 'http://localhost:8080/api';
+  // Restangular.setBaseUrl(baseUrl);
+
+  return {
+          add: function (form) {           
+              return TokenRestangular.all('charity').post(form);            
+          },
+          all: function () {
+              return TokenRestangular.all('charity').getList();
+          },
+          update: function (form) {           
+              return TokenRestangular.one('charity', form._id).customPUT(form); 
+          },
+          get: function (charityID) {
+              return TokenRestangular.one('charity', charityID).get();
+          },
         } //end of return
 })
 
 
 .factory('TreeService', function(Restangular, lodash){
-
-  
 
   return {
 
@@ -126,5 +150,133 @@ Restangular.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
           },
          
         } //end of return
+})
+
+.factory('ResponseService', function($state){
+
+  return {
+
+          handleResponse: function(response){
+                  if(response.status == 401){
+                    console.log('going to login...');
+                    $state.go('login');
+                  } else {
+                    console.log("Error with status code", response.status);
+                  }
+                  return null;
+                
+          },
+         
+        } //end of return
+})
+
+//this aims to make consuming promises easier by taking care of all the error handling
+//to begin, just pass the promise, and a callback function. 
+// 
+.factory('PromiseService', function($state, StorageService){
+  console.log('in promise service');
+  return {
+
+          getData: function(promise, callback){
+            promise.then(function(data, err) {
+            // returns a list of users
+            if(!err){
+                //returns the data if the data is successfully retrieved
+                callback(data);
+            }
+            else {
+              console.log('error is: ', err);
+              callback(null);
+            }
+                
+          }, function(response){
+              if(response.status == 401){ //401 = expired Authorization
+                //need to reset local storage to prevent auto-redirect
+                StorageService.resetCurrentUser(); 
+                return $state.go('login');
+              } else {
+                callback(null);
+                console.log('response error ', response);
+              }
+          }); //end of promise.then
+        }, //end of getData
+         
+      } //end of return
+})
+
+
+.factory('StorageService', function($localStorage, $state) {
+  console.log('in storage service');
+  return {
+    getCurrentUser: function(goToRegister) {
+      var user = $localStorage.user;
+      if(user && user.exp >= new Date()){
+        return user;
+      }
+      else {
+        // console.log('needs to login');
+        $localStorage.user = '';
+        // $state.go('login');
+        if(goToRegister){
+          $state.go('register', {}, {reload: true});
+        } else {
+          $state.go('login', {}, {reload: true});
+        }
+        // console.log('after logged in');
+        return null;
+      }
+    },
+    setCurrentUser: function(user) {
+      $localStorage.user = user;
+      //makes the token expire in 30 minutes x 24 = 12 hours
+      $localStorage.user.exp = new Date().getTime() + 30*60000*24;
+    },
+    resetCurrentUser: function() {
+      $localStorage.user = '';
+    },
+ } //end of return 
+
+})
+
+// This service automatically adds the user's authorization to restangular's request header.
+// To begin, just inject TokenRestangular in wherever Restangular is used. 
+// No other code change is needed
+.factory("TokenRestangular", ["Restangular", "StorageService", function (Restangular, StorageService) {
+        return Restangular.withConfig(function (RestangularConfigurer) {
+        // Set access token in header.
+        var accessToken = '';
+        var user = StorageService.getCurrentUser();
+        if(user){
+          accessToken = user.token;
+        } else {
+          return;
+        }
+        console.log('accessToken is: ', accessToken);
+        RestangularConfigurer.setDefaultHeaders({Authorization: 'Bearer '+ accessToken});
+        RestangularConfigurer.setBaseUrl('http://localhost:8080/api');
+    });
+}])
+
+.factory('LocationService', function() {
+  var geoLoc = [];
+  return {
+    getCurrentLocation: function(callback) {
+      navigator.geolocation
+      .getCurrentPosition(function(pos) {
+              geoLoc.push(pos.coords.latitude);
+              geoLoc.push(pos.coords.longitude);
+              callback(geoLoc);
+              console.log('geoLoc is: ', geoLoc);
+          });
+    }
+ } //end of return 
+
 });
+
+
+
+
+
+
+
 

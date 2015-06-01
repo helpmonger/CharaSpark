@@ -9,9 +9,8 @@
 
 	   <!-- should show info here-->
 <ul class="list">
-	<li class="item">Name: Lydia</li>
-    <li class="item">Username: lydia</li>
-    <li class="item">Email: lydia@gmail.com</li>
+    <li class="item" ng-model="user.user_name">Username: {{user.user_name}}</li>
+    <li class="item" ng-model="user.email">Email: {{user.email}}</li>
 </ul>
 
 <!-- 
@@ -20,11 +19,11 @@
 </button>
  -->
 <button type="button" class="button button-block button-positive" ng-click="logOff()">
-  Log Out {{test}}
+  Log Out
 </button>
 
 <ul class="list">
-    <li class="item">Total Donated: $15</li>
+    <li class="item">Total Donated: {{totalDonation | currency}}</li>
     <li class="item">Total Donation Received (only shown for charity)</li>
 
 </ul>

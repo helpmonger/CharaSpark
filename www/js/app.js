@@ -5,8 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic',
-                            'starter.controllers',
+var myApp = angular.module('starter', ['ionic',
                             'starter.services',
                             // 'starter.directives',
                             'restangular',
@@ -17,7 +16,7 @@ angular.module('starter', ['ionic',
                             'ui.router',
                             ])
 .constant('clientTokenPath', 'http://charasparkservices.herokuapp.com/api/token')
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $localStorage) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -34,7 +33,8 @@ angular.module('starter', ['ionic',
 
 .config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
 
-
+  RestangularProvider.setDefaultHeaders({'Content-Type': 'application/json'});
+  //application/x-www-form-urlencoded; charset=UTF-8
   // RestangularProvider.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -42,67 +42,79 @@ angular.module('starter', ['ionic',
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-  // setup an abstract state for the tabs directive
-    .state('tab', {
+//landing page with intro and login options
+.state('landing', {
+    url: '/landing',
+        templateUrl: 'templates/home/landing.html',
+        controller: 'LandingCtrl'
+  })
+
+// Allows the user to login
+.state('login', {
+    url: '/login',    
+        templateUrl: 'templates/auth/login.html',
+        controller: 'LoginCtrl'
+      
+  })  
+
+//Allows the user to register
+.state('register', {
+    url: '/register',
+    templateUrl: 'templates/auth/register.html',
+    controller: 'RegisterCtrl'
+        
+  })
+
+// parent state of all tabs
+// abstract means that this state itself cannot be navigated to 
+.state('tab', {
     url: "/tab",
     abstract: true,
     templateUrl: "templates/tabs.html",
-    controller: function($scope){
-      $scope.navTitle='<img class="title-image" src="../img/charaspark_logo_400.png" />';
-    }
+    controller: 'TabCtrl'
   })
 
-  // Each tab has its own nav history stack:
 
-
-// make a wish
-.state('tab.landing', {
-    url: '/landing',
+// the default page after logging in
+.state('tab.home', {
+    url: '/home',
     views: {
-      'tab-landing': {
-        templateUrl: 'templates/home/landing.html',
-        controller: 'LandingCtrl'
+      'tab-home': {
+        templateUrl: 'templates/home/home.html',
+        controller: 'HomeCtrl'
       }
     }
   })
 
-// Login 
-.state('tab.login', {
-    url: '/login',
-    views: {
-      'tab-login': {
-        templateUrl: 'templates/auth/login.html',
-        controller: 'LoginCtrl'
-      }
-    }
-  })  
+//page showing details of the user's own wishes
+ .state('tab.wishDetails', {
+   url: '/wishDetails/:wishID',
+   views: {
+     'tab-home': {
+       templateUrl: 'templates/home/wishDetails.html',
+       controller: 'WishDetailsCtrl'
+     }
+   }
+ }) 
+
   
-  //make a payment with braintree
+  //page where user enters payment info
   .state('tab.tree', {
-      url: "/tree",
+      url: "/tree/:donationID",
       views: {
-        'tab-landing': {
+        'tab-home': {
           templateUrl: "templates/home/tree.html",
           controller: 'TreeCtrl'
         }
       }
     })
   
-.state('tab.signup', {
-    url: '/signup',
-    views: {
-        'tab-landing': {
-          templateUrl: 'templates/auth/signup.html',
-          controller: 'SignupCtrl'
-        }
-    }     
-  })
 
   .state('tab.dash', {
     url: '/dash',
     views: {
       'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
+        templateUrl: 'templates/home/dash.html',
         controller: 'DashCtrl'
       }
     }
@@ -112,8 +124,8 @@ angular.module('starter', ['ionic',
     url: '/fullfillawish',
     views: {
       'tab-fullfillawish': {
-        templateUrl: 'templates/fullfillawish/fullfillawish.html',
-        controller: 'FullfillaWishCtrl'
+        templateUrl: 'templates/fulfillawish/fulfillawish.html',
+        controller: 'FulfillWishCtrl'
       }
     }
   })   
@@ -142,51 +154,43 @@ angular.module('starter', ['ionic',
   
 
 
-  .state('tab.mywishes', {
-    url: '/mywishes',
+  // .state('tab.mywishes', {
+  //   url: '/mywishes',
+  //   views: {
+  //     'tab-mywishes': {
+  //       templateUrl: 'templates/wishes/mywishes.html',
+  //       controller: 'MyWishesCtrl'
+  //     }
+  //   }
+  // })  
+
+   
+  
+  .state('tab.myfulfillments', {
+    url: '/myfulfillments',
     views: {
-      'tab-mywishes': {
-        templateUrl: 'templates/wishes/mywishes.html',
-        controller: 'MyWishesCtrl'
+      'tab-myfulfillments': {
+        templateUrl: 'templates/fulfillments/myfulfillments.html',
+        controller: 'MyFulfillmentsCtrl'
       }
     }
   })  
 
-  .state('tab.mywishdescription', {
-    url: '/mywishdescription/',
+  .state('tab.myfulfillmentdescription', {
+    url: '/myfulfillmentdescription/:wishID',
     views: {
-      'tab-mywishes': {
-        templateUrl: 'templates/wishes/mywishdescription.html',
-        controller: 'MyWishDescriptionCtrl'
+      'tab-myfulfillments': {
+        templateUrl: 'templates/fulfillments/myfulfillmentdescription.html',
+        controller: 'MyFulfillmentDescriptionCtrl'
       }
     }
   })    
   
-  .state('tab.myfullfillments', {
-    url: '/myfullfillments',
-    views: {
-      'tab-myfullfillments': {
-        templateUrl: 'templates/fulfillments/myfullfillments.html',
-        controller: 'MyFullfillmentsCtrl'
-      }
-    }
-  })  
-
-  .state('tab.myfullfillmentdescription', {
-    url: '/myfullfillmentdescription',
-    views: {
-      'tab-myfullfillments': {
-        templateUrl: 'templates/myfullfillmentdescription.html',
-        controller: 'MyFullfillmentDescriptionCtrl'
-      }
-    }
-  })    
-  
-    .state('tab.fullfillacceptconfirm', {
-    url: '/fullfillacceptconfirm',
+    .state('tab.fulfillacceptconfirm', {
+    url: '/fulfillacceptconfirm',
     views: {
       'tab-fullfillawish': {
-        templateUrl: 'templates/fullfillacceptconfirm.html',
+        templateUrl: 'templates/fulfillments/fulfillacceptconfirm.html',
         controller: ''
       }
     }
@@ -214,6 +218,6 @@ angular.module('starter', ['ionic',
 	  });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/landing');
+  $urlRouterProvider.otherwise('/landing');
 
 });

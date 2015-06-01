@@ -1,70 +1,50 @@
-<!-- Make a Wish Here -->
 
 
-<ion-view ion-title="CharaSpark">
-
- <ion-nav-title>
-      <span>Make A Wish</span>
-      <img src="./img/charaspark_logo_400.png" height="50%" style="float:left; margin-top: 13px">
-    </ion-nav-title>
-
+<ion-view view-title="Chara Spark">
   <ion-content class="padding">
-      <div class="list">
-      
-	     <label class="item item-input">
-         <span class="input-label">Wish Title </span><br/>
-         <input type="text" ng-model="wish.wishtitle">
+<div class="list card">
+
+  <!-- <div class="item item-avatar">
+    <img src="mcfly.jpg">
+    <h2>Marty McFly</h2>
+    <p>November 05, 1955</p>
+  </div> -->
+
+  <div class="item item-body">
+    <!-- <img class="full-image" src="delorean.jpg"> -->
+    <p>
+      This is some place holder text that will be replaced with something totally awesome. 
+    </p>
+    <!-- <p>
+      <a href="#" class="subdued">1 Like</a>
+      <a href="#" class="subdued">5 Comments</a>
+    </p> -->
 
 
-         </label>
-         <label class="item item-input">
-         <span class="input-label">Wish Detail</span>
-         <input type="text" ng-model="wish.description">
-         </label>  
-         
-        <!--      
-         <label class="item item-radio" ng-repeat="charity in charities" ng-click="displayDetails(charity.charityId)">
-          <input type="radio" name="group">
-          <div class="item-content">
-            {{charity.name}}
-          </div>
-          <i class="radio-icon ion-checkmark"></i>
-        </label>
-        
-         -->
-		<div class="list">
-		
-		  <label class="item item-input item-select">
-		    <div class="input-label">
-		      Select Charity
-		    </div>
-		    <select>
-		      <option selected>Choose One From List</option>
-		      <option ng-repeat="charity in charities" ng-click="alert('aa')">{{charity.name}}</option>
-
-		    </select>
-		  </label>
-
-        <!-- <label class="item item-radio" ng-repeat="charity in charities" ng-click="displayDetails(charity.charityId)">
-        <input type="radio" name="group">
-        <div class="item-content">
-          {{charity.name}}
+            <button ng-click="facebookLogin()" class="button button-block button-positive">Facebook Sign In</button>
+            <button ng-click="googleLogin()" class="button button-block button-assertive">Google Sign In</button>
+            <button ng-click="emailLogin()" class="button button-block button-energized">Email Sign In</button>
+            <!-- <p>
+                Clicking the above button will initiate an official browser sign in flow with Facebook.  You
+                will be redirected to the Facebook website to enter your credentials.
+            </p> -->
         </div>
-        <i class="radio-icon ion-checkmark"></i>
-      </label> -->
 
-	    <label class="item item-input">
-	       <span class="input-label">Donation Amt:</span>
-	       <input type="text" ng-model="donationAmt">
-	   </label>
-	</div>         
-       
-         
-         <label class="item item-input">
-         <button class="button button-block button-positive" ng-click="MakeAWish(wish)">
-         Make a Wish
-         </button>
-         </label>
-      </div>
+  <!-- <div class="item tabs tabs-secondary tabs-icon-left">
+    <a class="tab-item" href="#">
+      <i class="icon ion-thumbsup"></i>
+      Like
+    </a>
+    <a class="tab-item" href="#">
+      <i class="icon ion-chatbox"></i>
+      Comment
+    </a>
+    <a class="tab-item" href="#">
+      <i class="icon ion-share"></i>
+      Share
+    </a>
+  </div> -->
+
+</div> <!-- end of list card -->
   </ion-content>
 </ion-view>

@@ -1,0 +1,107 @@
+<!-- Make a Wish Here -->
+
+
+<ion-view ion-title="CharaSpark">
+
+ <ion-nav-title>
+      <span>Make A Wish</span>
+      <img src="./img/charaspark_logo_400.png" height="50%" style="float:left; margin-top: 13px">
+    </ion-nav-title>
+
+  <ion-content class="padding">
+
+    <!-- <div class="card">
+      <div class="item item-text-wrap">
+      </div>
+    </div> -->
+    <br>
+        <h3>Make a difference today</h3>
+
+      <div class="list">
+      
+	     <label class="item item-input">
+         <span class="input-label">Wish Title </span><br/>
+         <input type="text" ng-model="wish.title">
+
+
+         </label>
+         <label class="item item-input">
+         <span class="input-label">Wish Detail</span>
+         <input type="text" ng-model="wish.description">
+         </label>  
+         
+        <!--      
+         <label class="item item-radio" ng-repeat="charity in charities" ng-click="displayDetails(charity.charityId)">
+          <input type="radio" name="group">
+          <div class="item-content">
+            {{charity.name}}
+          </div>
+          <i class="radio-icon ion-checkmark"></i>
+        </label>
+        
+         -->
+		<div class="list">
+		
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Select Charity
+		    </div>
+		    <select ng-model="wish._charity">
+		      <option ng-repeat="charity in charities" value="{{charity._id}}">{{charity.name}}</option>
+		    </select>
+		  </label>
+
+        <!-- <label class="item item-radio" ng-repeat="charity in charities" ng-click="displayDetails(charity.charityId)">
+        <input type="radio" name="group">
+        <div class="item-content">
+          {{charity.name}}
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label> -->
+
+	    <label class="item item-input">
+	       <span class="input-label">Donation Amt:</span>
+	       <input type="text" ng-model="donation.amount">
+	   </label>
+	</div>         
+       
+         
+        <!--  <label class="item item-input">
+        
+         </label> -->
+      </div> <!-- end of list -->
+
+       <button class="button button-block button-positive" ng-click="MakeAWish()">
+         Make a Wish
+         </button>
+
+          <br>
+        <h3>My Wishes</h3>
+
+
+<!-- <div class="list">
+
+  <label ng-repeat="wish in wishes" class="item" ng-click="goToDetails(wish)">
+    <div class="item-content" >
+      {{wish.title}}<br> 
+      {{wish.charity.name}}
+      {{wish.donationAmt | currency}}
+      {{wish.createdDate}}
+    </div>
+  </label>
+</div> -->
+
+     <div class="list">
+       <label class="item item-radio" ng-repeat="wish in wishes" ng-click="goToDetails(wish)">
+            <input type="radio" name="wishgroup">
+            <div class="item-content" >
+              {{wish.title}}<br> 
+              {{wish._charity.name}}
+              {{wish._donation.amount| currency}} <br>
+              {{wish.createdDate | date: 'short'}}
+            </div>
+       </label> 
+  </div>
+      
+  </ion-content>
+</ion-view>
