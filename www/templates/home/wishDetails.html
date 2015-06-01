@@ -15,15 +15,18 @@
 		Status: {{wish.wishStatus}}
 	  </div>
 	  
-	  <p>only show the following button if accepted </p>
-	    <button class="button button-positive ">
+      <span ng-if="wish.wishStatus == 'pending' || wish.wishStatus == 'proceeding'" >
+	    <button class="button button-positive " ng-click="changeStatus('yes', wish.wishStatus)">
 		 Confirm
 		</button>
-		
-		<button class="button button-positive ">
+      </span>
+      <span ng-if="wish.wishStatus == 'new' || wish.wishStatus == 'pending' || wish.wishStatus == 'proceeding'" >
+		<button class="button button-positive " ng-click="changeStatus('no', wish.wishStatus)">
 		 Cancel
-		</button>
-		
+		</span>
+      
+	  </div>
+	  
 	</div> 
   </ion-content>
 </ion-view>
