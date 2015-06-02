@@ -50,7 +50,7 @@ angular.module('starter.services', [])
         } //end of return
 })
 
-.factory('WishService', function(TokenRestangular, lodash){
+.factory('WishService', function(TokenRestangular, lodash, StorageService){
 
   return {
 
@@ -59,7 +59,9 @@ angular.module('starter.services', [])
               return TokenRestangular.all('Wish').post(form);
           },
           all: function (form) {
-        	  return TokenRestangular.all('Wish').getList();
+            //manually set the authorization because it will be overriden 
+            form.Authorization = StorageService.getAuthorization();
+            return TokenRestangular.all('wish').customGET("", {}, form);
           },
           update: function (form) {
               return TokenRestangular.one('Wish', form._id).customPUT(form); 
@@ -226,6 +228,17 @@ angular.module('starter.services', [])
         return null;
       }
     },
+    getAuthorization: function(){
+        var accessToken = '';
+        var user = this.getCurrentUser();
+        if(user){
+          accessToken = user.token;
+        } else {
+          return null;
+        }
+        console.log('accessToken is: ', accessToken);
+        return 'Bearer '+ accessToken;
+    },
     setCurrentUser: function(user) {
       $localStorage.user = user;
       //makes the token expire in 30 minutes x 24 = 12 hours
@@ -244,16 +257,12 @@ angular.module('starter.services', [])
 .factory("TokenRestangular", ["Restangular", "StorageService", function (Restangular, StorageService) {
         return Restangular.withConfig(function (RestangularConfigurer) {
         // Set access token in header.
-        var accessToken = '';
-        var user = StorageService.getCurrentUser();
-        if(user){
-          accessToken = user.token;
-        } else {
-          return;
-        }
-        console.log('accessToken is: ', accessToken);
-        RestangularConfigurer.setDefaultHeaders({Authorization: 'Bearer '+ accessToken});
-        RestangularConfigurer.setBaseUrl('http://localhost:8080/api');
+        
+        var auth = StorageService.getAuthorization();
+        if(auth){
+          RestangularConfigurer.setDefaultHeaders({'Authorization': auth});
+          RestangularConfigurer.setBaseUrl('http://localhost:8080/api');
+        } 
     });
 }])
 
