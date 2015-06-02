@@ -50,7 +50,7 @@ angular.module('starter.services', [])
         } //end of return
 })
 
-.factory('WishService', function(TokenRestangular, lodash, StorageService){
+.factory('WishService', function(TokenRestangular, Restangular, lodash, StorageService){
 
   return {
 
@@ -61,7 +61,7 @@ angular.module('starter.services', [])
           all: function (form) {
             //manually set the authorization because it will be overriden 
             form.Authorization = StorageService.getAuthorization();
-            return TokenRestangular.all('wish').customGET("", {}, form);
+            return Restangular.all('wish').customGET("", {}, form);
           },
           update: function (form) {
               return TokenRestangular.one('Wish', form._id).customPUT(form); 
