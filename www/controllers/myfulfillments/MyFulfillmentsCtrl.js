@@ -1,21 +1,17 @@
 //Fulfillments data needs to be updated to Fulfillments.
 
-myApp.controller('MyFulfillmentsCtrl', function($scope, $state, WishService, StorageService) {
+myApp.controller('MyFulfillmentsCtrl', function($scope, $state, lodash, WishService, StorageService, PromiseService) {
 	//console.log('in MyFullfillmentsCtrl');
 	var user = StorageService.getCurrentUser();
 	//console.log('the user id is: ', user.user._id);
 	if(user)
 	{   //console.log('user = ', user);
 		var promise = WishService.findWishesFromFulfiller(user.user._id);
-		promise.then(function(wishes,err){
-			if(!err){
-		      $scope.wishes = wishes;
-		      console.log('wishes ', $scope.wishes);
-		    }
-		    else {
-		      console.log('error is: ', err);
-		    }
-		});
+		PromiseService.getData(promise, function(data){
+			if(data){
+				$scope.wishes = lodash.sortBy(data, 'createdDate').reverse();
+			}
+		});		
 	}
 
 	
@@ -24,3 +20,4 @@ myApp.controller('MyFulfillmentsCtrl', function($scope, $state, WishService, Sto
 		$state.go('tab.myfulfillmentdescription',{'wishID': wish._id});
 	}
 })
+

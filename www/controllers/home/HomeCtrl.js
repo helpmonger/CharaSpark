@@ -48,7 +48,7 @@ if(user){
   PromiseService.getData(wishRPromise, function(data){
     if(data){
       console.log('wish data is: ', data);
-      $scope.wishes = data;
+      $scope.wishes = lodash.sortBy(data, 'createdDate').reverse();
     }
   });
 

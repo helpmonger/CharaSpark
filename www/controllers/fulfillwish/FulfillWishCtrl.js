@@ -1,4 +1,4 @@
-myApp.controller('FulfillWishCtrl', function($scope,$state, WishService, $localStorage, PromiseService, LocationService) {
+myApp.controller('FulfillWishCtrl', function($scope,$state, WishService, $localStorage, lodash, PromiseService, LocationService) {
 	// console.log('in fulfilla wish');
 	$scope.goToDetails = function(wish){		
 		$state.go('tab.fulfillWishDetails', { 'wishID': wish._id});		
@@ -14,7 +14,7 @@ myApp.controller('FulfillWishCtrl', function($scope,$state, WishService, $localS
 			PromiseService.getData(promise,  function(data){
 			    if(data){
 			    	console.log('successful! ', data);
-			      $scope.wishes = data
+			      	$scope.wishes = lodash.sortBy(data, 'createdDate').reverse();
 			    }
 		    });
 		}
