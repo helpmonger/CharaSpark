@@ -236,7 +236,7 @@ angular.module('starter.services', [])
         } else {
           return null;
         }
-        console.log('accessToken is: ', accessToken);
+        // console.log('accessToken is: ', accessToken);
         return 'Bearer '+ accessToken;
     },
     setCurrentUser: function(user) {

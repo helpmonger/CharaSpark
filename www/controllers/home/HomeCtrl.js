@@ -56,13 +56,14 @@ if(user){
   var geoLoc = [];
   LocationService.getCurrentLocation(function(location){
     if(location){
-      geoLoc = localStorage;
+      geoLoc = location;
     }
   });
      
 
     $scope.MakeAWish = function(){
         $scope.wish.location = geoLoc;
+        console.log('geo loc is: ', geoLoc);
         $scope.donation._charity = $scope.wish._charity;
 
     		console.log('the wish is: ', $scope.wish);
@@ -72,6 +73,7 @@ if(user){
         PromiseService.getData(wishCPromise, function(wishData){
           if(wishData){
             console.log('wish successfully created');
+            console.log('wish id is: ', wishData._id);
             //associated the wish id to the donation
             $scope.donation._wish = wishData._id;
 
@@ -81,7 +83,7 @@ if(user){
               if(donationData){
 
                 console.log('donation successfully created');
-                console.log('donation is: ', donationData._id);
+                console.log('donation id is: ', donationData._id);
                 //update the wish with the donationID
                 wishData._donation = donationData._id;
                 var wishUPromise = WishService.update(wishData);
