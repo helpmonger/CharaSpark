@@ -267,9 +267,9 @@ angular.module('starter.services', [])
 }])
 
 .factory('LocationService', function() {
-  var geoLoc = [];
   return {
     getCurrentLocation: function(callback) {
+      var geoLoc = [];
       navigator.geolocation
       .getCurrentPosition(function(pos) {
               geoLoc.push(pos.coords.latitude);

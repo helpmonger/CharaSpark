@@ -11,4 +11,13 @@ angular.module('starter.directives', [])
         }
       }
     };
+  })
+
+  .directive('wishSummary', function(){
+    return { 
+              template: '{{wish.title}} <br /> {{wish._charity.name}} {{wish._donation.amount| currency}} <br/> {{wish.createdDate | date: "short"}}'};
+
+    //  return {
+    //     template: '{{wish.title}} <br />  Street: {{customer.street}}'
+    // };
   });

@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 var myApp = angular.module('starter', ['ionic',
                             'starter.services',
-                            // 'starter.directives',
+                            'starter.directives',
                             'restangular',
                             'ngLodash',
                             'braintree-angular',
