@@ -61,14 +61,13 @@ myApp.controller('TreeCtrl', function($scope, $state, $braintree, TreeService, $
         	'_id':localDonationID,
         	'paidDate':new Date()
         	});
-        promise.then(function(results,err){
-					if(!err){
-				      console.log('success');
-				    }
-				    else {
-				      console.log('error is: ', err);
-				    }
-				});
+
+        PromiseService.getData(promise, function(data){
+          if(data){
+              console.log('successfuly updated donation');
+            }            
+        })
+        
               //paymentComplete;
               
               // alert('charity email is: ' + clientToken.emailAddress);

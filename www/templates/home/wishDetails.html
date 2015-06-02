@@ -4,7 +4,7 @@
 	  <div class="item">
 	    <!-- <img src="img/smile.png"> -->
 	    <h2>{{wish.title}}</h2>
-	    <p>{{wish._wishMaker.user_name}} -->  {{wish._charity.name}} | {{wish._donation.amount | currency}} | {{wish.createdDate}}</p>
+	    <p>{{wish._wishMaker.user_name}} -->  {{wish._charity.name}} | {{wish._donation.amount | currency}} | {{wish.createdDate | date: 'medium'}}</p>
 	  </div>
 	  <div class="item item-body">
 	    <p>

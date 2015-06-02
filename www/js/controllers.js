@@ -83,24 +83,7 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService) {
 	
 })
 
-.controller('MyWishDescriptionCtrl', function($scope, CharityService, $localStorage) {
-	
-	$scope.aWish = $localStorage.wish;
-	console.log('scope detail:', $scope);
-	
-	// trying to convert the charityId to charityName
-	charityId = $scope.aWish._charity;
-	var charityName = '';
-	var promise = CharityService.get(charityId);
-	promise.then(function(result){
-//		console.log('result is', result.name);
-		$scope.aWish.charityName = result.name;
-	});// end of then
-	
-	// trying to convert the wishMakerId to donor's name
-	
-	
-})
+
 
 
 //tab-landing

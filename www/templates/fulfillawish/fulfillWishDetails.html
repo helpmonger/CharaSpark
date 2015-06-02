@@ -1,0 +1,38 @@
+<ion-view view-title="{{wish.title}}">
+  <ion-content class="padding" >
+	<div class="list card">
+	  <div class="item">
+	    <!-- <img src="img/smile.png"> -->
+	    <h2>{{wish.title}}</h2>
+	    <p>{{wish._wishMaker.user_name}} -->  {{wish._charity.name}} | {{wish._donation.amount | currency}} | {{wish.createdDate | date: 'medium'}}</p>
+	  </div>
+	  <div class="item item-body">
+	    <p>
+	      {{wish.description}}
+	    </p>
+	  </div>
+	<div class="item tabs tabs-secondary tabs-icon-left">
+		Status: {{wish.wishStatus}}
+	  </div>
+	  
+      <span>
+	    <button class="button button-positive" type="butotn" ng-click="Accept()">Accept
+		</button>
+      </span>
+      <span >
+		<a class="button button-assertive" type="button" ui-sref="tab.fullfillawish">
+
+		 Cancel
+		 </a>
+		</span>
+      
+	  </div> <!-- {{wish.status}} -->
+  </ion-content>
+</ion-view>
+
+
+
+
+ 
+
+      

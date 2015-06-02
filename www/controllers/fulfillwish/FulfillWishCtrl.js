@@ -1,10 +1,7 @@
 myApp.controller('FulfillWishCtrl', function($scope,$state, WishService, $localStorage, PromiseService, LocationService) {
 	// console.log('in fulfilla wish');
-	$scope.goToDetails = function(wish){
-		alert('in details');
-		$localStorage.wish = wish;
-		$state.go('tab.wishdescription');
-		//  {'id': '101'}
+	$scope.goToDetails = function(wish){		
+		$state.go('tab.fulfillWishDetails', { 'wishID': wish._id});		
 	}
 
 

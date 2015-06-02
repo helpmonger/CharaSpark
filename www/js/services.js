@@ -56,7 +56,7 @@ angular.module('starter.services', [])
 
           add: function (form) {
             console.log('in add');
-              return TokenRestangular.all('Wish').post(form);
+              return TokenRestangular.all('wish').post(form);
           },
           all: function (form) {
             //manually set the authorization because it will be overriden 
@@ -64,7 +64,7 @@ angular.module('starter.services', [])
             return Restangular.all('wish').customGET("", {}, form);
           },
           update: function (form) {
-              return TokenRestangular.one('Wish', form._id).customPUT(form); 
+              return TokenRestangular.one('wish', form._id).customPUT(form); 
           },
 
           // GET: /wish/:wishID
@@ -72,13 +72,13 @@ angular.module('starter.services', [])
           get: function(wishID) {
             //console.log("get wish is working");
             //console.log("wish id = ", wishID);
-            return TokenRestangular.one('Wish', wishID).get();
+            return TokenRestangular.one('wish', wishID).get();
           },
           findWishesFromUser: function(userID){
-            return TokenRestangular.all('Wish').one('User', userID).getList();
+            return TokenRestangular.all('wish').one('User', userID).getList();
           },
           findWishesFromFulfiller: function(fulfillerID){
-            return TokenRestangular.all('Wish').one('fulfiller',fulfillerID).get();
+            return TokenRestangular.all('wish').one('fulfiller',fulfillerID).get();
           }
 
         } //end of return
@@ -99,7 +99,6 @@ angular.module('starter.services', [])
           },
           update: function (form) {          
               var donationID = form._id; 
-              console.log('donation id in service is: ', donationID);
               return TokenRestangular.one('donation', donationID).customPUT(form); 
           },
           get: function (donationID) {

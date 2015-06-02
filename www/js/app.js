@@ -110,17 +110,6 @@ var myApp = angular.module('starter', ['ionic',
       }
     })
   
-
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/home/dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
   .state('tab.fullfillawish', {
     url: '/fullfillawish',
     views: {
@@ -132,15 +121,26 @@ var myApp = angular.module('starter', ['ionic',
   })   
 
 
-  .state('tab.wishdescription', {
-    url: '/wishdescription',
+  .state('tab.fulfillWishDetails', {
+    url: '/fulfillWishDetails/:wishID',
     views: {
       'tab-fullfillawish': {
-        templateUrl: 'templates/fulfillawish/wishdescription.html',
-        controller: 'WishDescriptionCtrl'
+        templateUrl: 'templates/fulfillawish/fulfillWishDetails.html',
+        controller: 'FulfillWishDetailsCtrl'
       }
     }
   })    
+
+  .state('tab.dash', {
+    url: '/dash',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/home/dash.html',
+        controller: 'DashCtrl'
+      }
+    }
+  })
+
 
   
   .state('tab.acceptconfirm', {
