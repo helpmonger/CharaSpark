@@ -1,11 +1,11 @@
-//Fullfillments data needs to be updated to Fullfillments.
+//Fulfillments data needs to be updated to Fulfillments.
 
 myApp.controller('MyFulfillmentsCtrl', function($scope, $state, WishService, StorageService) {
-console.log('in MyFullfillmentsCtrl');
+	//console.log('in MyFullfillmentsCtrl');
 	var user = StorageService.getCurrentUser();
-		console.log('the user id is: ', user.user._id);
+	//console.log('the user id is: ', user.user._id);
 	if(user)
-	{   console.log('user = ', user);
+	{   //console.log('user = ', user);
 		var promise = WishService.findWishesFromFulfiller(user.user._id);
 		promise.then(function(wishes,err){
 			if(!err){
@@ -20,6 +20,7 @@ console.log('in MyFullfillmentsCtrl');
 
 	
 	$scope.goToDetails = function(wish){
+		//console.log('go to detail of wish ', wish._id);
 		$state.go('tab.myfulfillmentdescription',{'wishID': wish._id});
 	}
 })

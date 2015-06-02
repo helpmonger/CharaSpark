@@ -68,6 +68,8 @@ angular.module('starter.services', [])
           // GET: /wish/:wishID
           // returns a specific wish
           get: function(wishID) {
+            //console.log("get wish is working");
+            //console.log("wish id = ", wishID);
             return TokenRestangular.one('Wish', wishID).get();
           },
           findWishesFromUser: function(userID){

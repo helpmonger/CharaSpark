@@ -192,8 +192,6 @@ myApp.controller('MyWishesCtrl', function($scope, $state, WishService) {
 // })
 
 
-//tab-fullfillawish
-
 
 .controller('DashCtrl', function($scope) {})
 
