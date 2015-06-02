@@ -16,7 +16,7 @@ console.log('in home ctrl');
 var user = StorageService.getCurrentUser();
 
 if(user){
-
+  console.log('in home ctrl and the user is: ', user);
   // ---------- declare variables needed by $scope ---------------
 
   $scope.wish = {}
