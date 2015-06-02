@@ -1,6 +1,6 @@
 <ion-view view-title="{{wish.title}}">
   <ion-content class="padding" >
-	<div class="list card">
+	<div class="list card" ng-hide="wishAccepted">
 	  <div class="item">
 	    <!-- <img src="img/smile.png"> -->
 	    <h2>{{wish.title}}</h2>
@@ -27,6 +27,17 @@
 		</span>
       
 	  </div> <!-- {{wish.status}} -->
+
+	     <div class="list card" ng-show="wishAccepted">
+          <h4> Congratulations! Your request has been sent to the wish maker. You will be notified once your help is accepted. Check back soon! </h4>
+          <p>Click elow to go to my fulfillments tab</p> 
+          
+           <div class="item item-input">
+         <button type="button" class="button button-positive" ng-click="GoToWish()">
+         Go To My Fulfillments
+         </button>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
 

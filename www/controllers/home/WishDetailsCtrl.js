@@ -21,7 +21,6 @@ myApp.controller('WishDetailsCtrl', function($scope, $state, $stateParams, WishS
 		if(status == 'new'){
 			if(operation == 'no'){
 				$scope.wish.wishStatus = 'cancelled';
-				
 			}
 		}
 		
