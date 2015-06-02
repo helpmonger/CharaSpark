@@ -6,3 +6,4 @@ platforms/
 plugins/
 .project
 .DS_Store
+ios/
