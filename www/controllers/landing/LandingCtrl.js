@@ -1,6 +1,11 @@
-myApp.controller('LandingCtrl', function($scope, $state) {
+(function(){
+'use strict'
 
-	$scope.emailLogin = function(){
-		$state.go('login');
-	}
-})
+	myApp.controller('LandingCtrl', function($scope, $state) {
+
+		$scope.emailLogin = function(){
+			$state.go('login');
+		}
+	})
+
+})();

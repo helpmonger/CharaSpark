@@ -1,5 +1,5 @@
-// (function(){
-// 	'use strict'
+(function(){
+	'use strict'
 
 	myApp.controller('AccountCtrl', function($scope,$state, StorageService, DonationService, userInfo) {
 
@@ -7,11 +7,7 @@
 		// assign the user value from localStorage to local scope
 		// var user = ;
 		$scope.user = userInfo.user;
-		// $scope.$state = $state;
-		// $scope.$watch('$state.$current.locals.globals.userInfo', function (userInfo) {
-	 //        $scope.user = userInfo.user;
-	 //        console.log('$scope.user is: ', $scope.user);
-	 //      });
+		
 
 		//StorageService.getCurrentUser().user;
 		// console.log('user in storage: ', user.user);
@@ -42,4 +38,4 @@
 		
 	}) // end of AccountCtrl
 	
-// })();
+})();

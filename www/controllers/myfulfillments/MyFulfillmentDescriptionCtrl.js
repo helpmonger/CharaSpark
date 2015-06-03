@@ -1,27 +1,16 @@
-myApp.controller('MyFulfillmentDescriptionCtrl', function($scope, $stateParams, PromiseService, WishService) {
-	var localWishID = $stateParams.wishID;
-	//console.log('my fulfillment description of wish id = ', localWishID);
-	var wishRPromise = WishService.get(localWishID);
-	PromiseService.getData(wishRPromise, function(data){
-		if(data){	  
-			console.log('the data is: ', data);
-		    $scope.aWish = data;
-		}
-	});
+(function(){
+'use strict'
 
-	//$localStorage.wish;
+	myApp.controller('MyFulfillmentDescriptionCtrl', function($scope, $stateParams, PromiseService, WishService) {
+		var localWishID = $stateParams.wishID;
+		//console.log('my fulfillment description of wish id = ', localWishID);
+		var wishRPromise = WishService.get(localWishID);
+		PromiseService.getData(wishRPromise, function(data){
+			if(data){	  
+				console.log('the data is: ', data);
+			    $scope.aWish = data;
+			}
+		});	
+	})
 
-	// {				
-	// 			'_wishMaker':'Daniel',
-	// 			'_fulfiller':'Lydia',
-	// 			'_charity':'Salvation Army',
-	// 			'title':'Meal Partner',	
-	// 			'description':'I\'m new to the city. Is there anyone who want to come and hangout with me? I\'ll pay.',
-	// 			'wishStatus':'Cancelled',
-	// 			'createdDate':'4/10/15',
-	// 			'location':[28.222222,39.999999],
-	// 			'startDate':'4/10/15',
-	// 			'expireDate':'5/10/15'
-	// 		}
-	
-})
+})();
