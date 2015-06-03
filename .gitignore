@@ -7,3 +7,4 @@ plugins/
 .project
 .DS_Store
 ios/
+lib/

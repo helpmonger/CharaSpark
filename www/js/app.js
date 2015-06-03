@@ -204,6 +204,13 @@ var myApp = angular.module('starter', ['ionic',
         templateUrl: 'templates/account/account.html',
         controller: 'AccountCtrl'
       }
+    },
+    resolve: {
+      userInfo: function(StorageService) {
+        var user = StorageService.getCurrentUser();
+        console.log('resolved ', user)
+        return user;
+      }
     }
   })
   

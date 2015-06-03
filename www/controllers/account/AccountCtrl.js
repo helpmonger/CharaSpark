@@ -1,9 +1,16 @@
-myApp.controller('AccountCtrl', function($scope,$state, StorageService, DonationService) {
+myApp.controller('AccountCtrl', function($scope,$state, StorageService, DonationService, userInfo) {
 
 	console.log('in acct ctrl');
 	// assign the user value from localStorage to local scope
 	// var user = ;
-	$scope.user = StorageService.getCurrentUser().user;
+	$scope.user = userInfo.user;
+	$scope.$state = $state;
+	$scope.$watch('$state.$current.locals.globals.userInfo', function (userInfo) {
+        $scope.user = userInfo.user;
+        console.log('$scope.user is: ', $scope.user);
+      });
+
+	//StorageService.getCurrentUser().user;
 	// console.log('user in storage: ', user.user);
 	
 	$scope.changePassword = function(){
