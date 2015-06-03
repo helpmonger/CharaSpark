@@ -31,10 +31,13 @@ var myApp = angular.module('starter', ['ionic',
 })
 
 
-.config(function($stateProvider, $urlRouterProvider, RestangularProvider) {
+.config(function($stateProvider, $urlRouterProvider, RestangularProvider, $ionicConfigProvider) {
 
   RestangularProvider.setDefaultHeaders({'Content-Type': 'application/json'});
   RestangularProvider.setBaseUrl('http://localhost:8080/api');
+
+  // $ionicConfigProvider.views.maxCache(0);
+
   //application/x-www-form-urlencoded; charset=UTF-8
   // RestangularProvider.setBaseUrl('https://api.justgiving.com/ab7113a9/v1/charity');
   // Ionic uses AngularUI Router which uses the concept of states
@@ -84,7 +87,23 @@ var myApp = angular.module('starter', ['ionic',
         templateUrl: 'templates/home/home.html',
         controller: 'HomeCtrl'
       }
-    }
+    },
+    cache: false,
+    resolve: {
+      // userInfo: function(StorageService) {
+      //   var user = StorageService.getCurrentUser();
+      //   console.log('resolved ', user)
+      //   return user;
+      // },
+      wishInfo: function(StorageService, WishService){
+        var user = StorageService.getCurrentUser();
+        // console.log('the user info is: ', user.user);
+        return WishService.findWishesFromUser(user.user._id);
+      },
+      currLoc: function(LocationService){
+        return LocationService.getCurrentLocation();
+      }
+    } //end of resolve
   })
 
 //page showing details of the user's own wishes
@@ -117,7 +136,8 @@ var myApp = angular.module('starter', ['ionic',
         templateUrl: 'templates/fulfillawish/fulfillawish.html',
         controller: 'FulfillWishCtrl'
       }
-    }
+    },
+    cache: false
   })   
 
 
@@ -174,7 +194,8 @@ var myApp = angular.module('starter', ['ionic',
         templateUrl: 'templates/fulfillments/myfulfillments.html',
         controller: 'MyFulfillmentsCtrl'
       }
-    }
+    },
+    cache: false
   })  
 
   .state('tab.myfulfillmentdescription', {
@@ -205,13 +226,14 @@ var myApp = angular.module('starter', ['ionic',
         controller: 'AccountCtrl'
       }
     },
+    cache: false,
     resolve: {
       userInfo: function(StorageService) {
         var user = StorageService.getCurrentUser();
         console.log('resolved ', user)
         return user;
       }
-    }
+    } //end of resolve
   })
   
   

@@ -208,12 +208,12 @@ angular.module('starter.services', [])
 
 
 .factory('StorageService', function($localStorage, $state) {
-  console.log('in storage service');
+  // console.log('in storage service');
   return {
     getCurrentUser: function(goToRegister) {
       var user = $localStorage.user;
       if(user && user.exp >= new Date()){
-        console.log('getting current user... ', $localStorage.user);
+        // console.log('getting current user... ', $localStorage.user);
         return user;
       }
       else {
@@ -270,17 +270,27 @@ angular.module('starter.services', [])
     });
 }])
 
-.factory('LocationService', function() {
+.factory('LocationService', function($q) {
   return {
-    getCurrentLocation: function(callback) {
+    getCurrentLocation: function() {
+
       var geoLoc = [];
-      navigator.geolocation
-      .getCurrentPosition(function(pos) {
-              geoLoc.push(pos.coords.latitude);
-              geoLoc.push(pos.coords.longitude);
-              callback(geoLoc);
-              console.log('geoLoc is: ', geoLoc);
-          });
+
+      var deferred = $q.defer();
+
+      var onSuccess = function(position){
+        geoLoc.push(position.coords.latitude);
+        geoLoc.push(position.coords.longitude);
+        deferred.resolve(geoLoc)
+      };
+
+      var onError = function(error){
+        deferred.reject(error);
+      };
+      
+      navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+      return deferred.promise;
     }
  } //end of return 
 

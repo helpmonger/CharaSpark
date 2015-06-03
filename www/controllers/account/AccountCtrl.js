@@ -1,41 +1,45 @@
-myApp.controller('AccountCtrl', function($scope,$state, StorageService, DonationService, userInfo) {
+// (function(){
+// 	'use strict'
 
-	console.log('in acct ctrl');
-	// assign the user value from localStorage to local scope
-	// var user = ;
-	$scope.user = userInfo.user;
-	$scope.$state = $state;
-	$scope.$watch('$state.$current.locals.globals.userInfo', function (userInfo) {
-        $scope.user = userInfo.user;
-        console.log('$scope.user is: ', $scope.user);
-      });
+	myApp.controller('AccountCtrl', function($scope,$state, StorageService, DonationService, userInfo) {
 
-	//StorageService.getCurrentUser().user;
-	// console.log('user in storage: ', user.user);
+		console.log('in acct ctrl');
+		// assign the user value from localStorage to local scope
+		// var user = ;
+		$scope.user = userInfo.user;
+		// $scope.$state = $state;
+		// $scope.$watch('$state.$current.locals.globals.userInfo', function (userInfo) {
+	 //        $scope.user = userInfo.user;
+	 //        console.log('$scope.user is: ', $scope.user);
+	 //      });
+
+		//StorageService.getCurrentUser().user;
+		// console.log('user in storage: ', user.user);
+		
+		$scope.changePassword = function(){
+			//alert('in details');
+			$state.go('tab.changepassword');
+			//  {'id': '101'}
+		};
+
+		$scope.logOff = function(){
+			StorageService.resetCurrentUser();
+			$state.go('login');
+				//, {}, { reload: true });
+		};
+
+		var promise = DonationService.findDonationsFromUser($scope.user._id);
+		promise.then(function(results,err){
+			if(!err){
+		      $scope.donations = results;
+		      $scope.totalDonation = results.totalDonation;
+		      console.log('donations ', $scope.donations);
+		    }
+		    else {
+		      console.log('error is: ', err);
+		    }
+		});
+		
+	}) // end of AccountCtrl
 	
-	$scope.changePassword = function(){
-		//alert('in details');
-		$state.go('tab.changepassword');
-		//  {'id': '101'}
-	};
-
-	$scope.logOff = function(){
-		StorageService.resetCurrentUser();
-		$state.go('login', {}, { reload: true });
-	};
-
-	var promise = DonationService.findDonationsFromUser($scope.user._id);
-	promise.then(function(results,err){
-		if(!err){
-	      $scope.donations = results;
-	      $scope.totalDonation = results.totalDonation;
-	      console.log('donations ', $scope.donations);
-	    }
-	    else {
-	      console.log('error is: ', err);
-	    }
-	});
-
-	
-	
-}) // end of AccountCtrl
+// })();

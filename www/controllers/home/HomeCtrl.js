@@ -8,7 +8,8 @@ myApp.controller('HomeCtrl', function($scope,
                                       DonationService, 
                                       StorageService, 
                                       PromiseService,
-                                      LocationService) {
+                                      currLoc,
+                                      wishInfo) {
 
 console.log('in home ctrl');
 //---------- get current user info ---------------
@@ -16,7 +17,7 @@ console.log('in home ctrl');
 var user = StorageService.getCurrentUser();
 
 if(user){
-  console.log('in home ctrl and the user is: ', user);
+  // console.log('in home ctrl and the user is: ', user);
   // ---------- declare variables needed by $scope ---------------
 
   $scope.wish = {}
@@ -44,26 +45,18 @@ if(user){
 
   //populates the user's wishes
 
-  var wishRPromise = WishService.findWishesFromUser(user.user._id);
-  PromiseService.getData(wishRPromise, function(data){
-    if(data){
-      console.log('wish data is: ', data);
-      $scope.wishes = lodash.sortBy(data, 'createdDate').reverse();
-    }
-  });
+  console.log('wishInfo ', wishInfo);
+  $scope.wishes = lodash.sortBy(wishInfo); 
 
-  //get geo location 
-  var geoLoc = [];
-  LocationService.getCurrentLocation(function(location){
-    if(location){
-      geoLoc = location;
-    }
-  });
+  // //get geo location 
+  // var geoLoc = currLoc;
+  console.log('loc is: ', currLoc);
+
      
 
     $scope.MakeAWish = function(){
-        $scope.wish.location = geoLoc;
-        console.log('geo loc is: ', geoLoc);
+        $scope.wish.location = currLoc;
+        console.log('geo loc is: ', currLoc);
         $scope.donation._charity = $scope.wish._charity;
 
     		console.log('the wish is: ', $scope.wish);
