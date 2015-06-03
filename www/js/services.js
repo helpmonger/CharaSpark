@@ -55,7 +55,8 @@ angular.module('starter.services', [])
   return {
 
           add: function (form) {
-            console.log('in add');
+              console.log('the token_restangular is: ', TokenRestangular);
+
               return TokenRestangular.all('wish').post(form);
           },
           all: function (form) {
@@ -212,6 +213,7 @@ angular.module('starter.services', [])
     getCurrentUser: function(goToRegister) {
       var user = $localStorage.user;
       if(user && user.exp >= new Date()){
+        console.log('getting current user... ', $localStorage.user);
         return user;
       }
       else {
@@ -245,7 +247,9 @@ angular.module('starter.services', [])
       $localStorage.user.exp = new Date().getTime() + 30*60000*24;
     },
     resetCurrentUser: function() {
+      console.log('resetting current user...');
       $localStorage.user = '';
+      console.log('current user is ', $localStorage.user);
     },
  } //end of return 
 

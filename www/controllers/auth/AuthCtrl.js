@@ -7,7 +7,7 @@ myApp.controller('LoginCtrl', function($scope,
 	//if logged in, go to landing
 		if (StorageService.getCurrentUser()) {
 			console.log('redirecting to home...');
-	        $state.go('tab.home');
+	        $state.go('tab.home', {}, {reload: true});
 	    }
 
 	    $scope.user = {};
