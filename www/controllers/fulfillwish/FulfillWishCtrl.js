@@ -6,7 +6,7 @@
         $localStorage,
         lodash,
         PromiseService,
-        LocationService) {
+        currLoc) {
         // console.log('in fulfilla wish');
         $scope.goToDetails = function(wish) {
             $state.go('tab.fulfillWishDetails', {
@@ -15,10 +15,11 @@
         }
         //get the current location
 
-        LocationService.getCurrentLocation(function(loc) {
-            if (loc) {
+
+        // LocationService.getCurrentLocation(function(loc) {
+            // if (loc) {
                 var promise = WishService.all({
-                    location: loc,
+                    location: currLoc,
                     radius: 10
                 });
 
@@ -28,7 +29,7 @@
                         $scope.wishes = lodash.sortBy(data, 'createdDate').reverse();
                     }
                 });
-            }
-        });
+            // }
+        // });
     })
 })();

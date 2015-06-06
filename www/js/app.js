@@ -136,7 +136,12 @@ var myApp = angular.module('starter', ['ionic',
                 controller: 'FulfillWishCtrl'
             }
         },
-        cache: false
+        cache: false,
+        resolve: {
+            currLoc: function(LocationService) {
+                return LocationService.getCurrentLocation();
+            }
+        } //end of resolve
     })
 
     .state('tab.fulfillWishDetails', {
@@ -187,7 +192,7 @@ var myApp = angular.module('starter', ['ionic',
                 controller: 'MyFulfillmentsCtrl'
             }
         },
-        cache: false
+        cache: false,
     })
 
     .state('tab.myfulfillmentdescription', {

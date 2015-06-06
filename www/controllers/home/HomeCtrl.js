@@ -47,7 +47,7 @@
                 //populates the user's wishes
 
                 console.log('wishInfo ', wishInfo);
-                $scope.wishes = lodash.sortBy(wishInfo);
+                $scope.wishes = lodash.sortBy(wishInfo, 'createdDate').reverse();
 
                 // //get geo location
                 // var geoLoc = currLoc;
