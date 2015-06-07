@@ -1,11 +1,11 @@
 (function() {
     'use strict';
 
-    myApp.controller('TabCtrl', function($scope, $state, WishService) {
+        myApp.controller('TabCtrl', function($scope, $state, WishService) {
 
         $scope.navTitle = '<img class="title-image" src="../img/charaspark_logo_400.png" />';
 
-        console.log('in tabCtrl');
+            console.log('in tabCtrl')
         // $scope.$on('$locationChangeStart', function( event ) {
         //     var answer = confirm("Are you sure you want to leave this page?")
         //     if (!answer) {

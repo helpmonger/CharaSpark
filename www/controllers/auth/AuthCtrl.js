@@ -42,7 +42,7 @@
                 // }
             }); //end of then
 
-        }
+        };
 
         $scope.register = function() {
             $state.go('register');

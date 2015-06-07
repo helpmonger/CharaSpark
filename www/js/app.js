@@ -58,7 +58,8 @@ var myApp = angular.module('starter', ['ionic',
     .state('login', {
         url: '/login',
         templateUrl: 'templates/auth/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        // cache: false
 
     })
 
@@ -88,7 +89,7 @@ var myApp = angular.module('starter', ['ionic',
                 controller: 'HomeCtrl'
             }
         },
-        cache: false,
+        // cache: false,
         resolve: {
             // userInfo: function(StorageService) {
             //   var user = StorageService.getCurrentUser();
@@ -136,7 +137,7 @@ var myApp = angular.module('starter', ['ionic',
                 controller: 'FulfillWishCtrl'
             }
         },
-        cache: false,
+        // cache: false,
         resolve: {
             currLoc: function(LocationService) {
                 return LocationService.getCurrentLocation();
@@ -192,7 +193,7 @@ var myApp = angular.module('starter', ['ionic',
                 controller: 'MyFulfillmentsCtrl'
             }
         },
-        cache: false,
+        // cache: false,
     })
 
     .state('tab.myfulfillmentdescription', {
@@ -223,7 +224,7 @@ var myApp = angular.module('starter', ['ionic',
                 controller: 'AccountCtrl'
             }
         },
-        cache: false,
+        // cache: false,
         resolve: {
             userInfo: function(StorageService) {
                 var user = StorageService.getCurrentUser();
