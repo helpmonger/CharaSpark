@@ -12,7 +12,14 @@
 	    </p>
 	  </div>
 	  <div class="item tabs tabs-secondary tabs-icon-left">
-		Status: {{wish.wishStatus}}
+		<span ng-class="{'new': wish.wishStatus == 'new',
+						 'cancelled': wish.wishStatus == 'cancelled',
+						'pending': wish.wishStatus == 'pending',
+						'proceeding': wish.wishStatus == 'proceeding',
+						'completed': wish.wishStatus == 'completed'}"> 
+
+				Status: {{wish.wishStatus}} 
+		</span>
 	  </div>
 	  
       <span ng-if="wish.wishStatus == 'pending' || wish.wishStatus == 'proceeding'" >

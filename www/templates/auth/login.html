@@ -8,15 +8,15 @@
   <label class="item item-input"> 
       <span class="input-label">User Name</span>
       <input name="username" type="text" placeholder="User name" ng-model="user.username" required>
-    </label>
+  </label>
     
      <label class="item item-input">
        <span class="input-label">Password</span>
        <input type="password" placeholder="Password" ng-model="user.password" required>
      </label> 
 
-    <label class="item item-input" ng-show="error">
-       <span class="input-label">Invalid credentials</span>
+    <label class="item item-input" ng-show="error" >
+       <span class="error">Invalid credentials</span>
      </label>   
 
     <label class="item item-input">

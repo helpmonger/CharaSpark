@@ -1,1 +1,21 @@
 /* Empty. Add your own CSS if you like */
+.error {
+    padding-left:10px;
+    color: #F00;
+}
+
+.new {
+    color: #00FF00;
+}
+.cancelled {
+    color: #FF0000;
+}
+.pending {
+    color: #FFFF00;
+}
+.proceeding {
+    color: #0000FF;
+}
+.completed {
+    color: #C0C0C0;
+}
