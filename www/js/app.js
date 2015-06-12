@@ -15,7 +15,7 @@ var myApp = angular.module('starter', ['ionic',
         'ngMessages',
         'ui.router',
     ])
-    .constant('clientTokenPath', 'http://charasparkservices.herokuapp.com/api/token')
+    .constant('clientTokenPath', 'http://localhost:8080/api/token')
     .run(function($ionicPlatform, $localStorage) {
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -96,14 +96,14 @@ var myApp = angular.module('starter', ['ionic',
             //   console.log('resolved ', user)
             //   return user;
             // },
-            wishInfo: function(StorageService, WishService) {
-                var user = StorageService.getCurrentUser();
-                // console.log('the user info is: ', user.user);
-                return WishService.findWishesFromUser(user.user._id);
-            },
-            currLoc: function(LocationService) {
-                return LocationService.getCurrentLocation();
-            }
+            // wishInfo: function(StorageService, WishService) {
+            //     var user = StorageService.getCurrentUser();
+            //     // console.log('the user info is: ', user.user);
+            //     return WishService.findWishesFromUser(user.user._id);
+            // },
+            // currLoc: function(LocationService) {
+            //     return LocationService.getCurrentLocation();
+            // }
         } //end of resolve
     })
 
@@ -136,13 +136,8 @@ var myApp = angular.module('starter', ['ionic',
                 templateUrl: 'templates/fulfillawish/fulfillawish.html',
                 controller: 'FulfillWishCtrl'
             }
-        },
+        }
         // cache: false,
-        resolve: {
-            currLoc: function(LocationService) {
-                return LocationService.getCurrentLocation();
-            }
-        } //end of resolve
     })
 
     .state('tab.fulfillWishDetails', {

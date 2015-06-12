@@ -2,95 +2,87 @@
     'use strict';
 
     myApp.controller('TreeCtrl', function($scope,
-            $state,
-            $braintree,
-            TreeService,
-            $localStorage,
-            DonationService,
-            $stateParams,
-            PromiseService) {
+        $state,
+        $braintree,
+        TreeService,
+        $localStorage,
+        DonationService,
+        $stateParams,
+        PromiseService) {
 
-            // --------------hard coded credit card info ------------------
-            $scope.creditCard = {};
-            $scope.paymentComplete = false;
-            $scope.donationAmt = $localStorage.donationAmt;
-            $scope.creditCard.number = '4111111111111111';
-            $scope.creditCard.expirationDate = '10/18';
+        // --------------hard coded credit card info ------------------
+        $scope.creditCard = {};
+        $scope.paymentComplete = false;
+        $scope.donationAmt = $localStorage.donationAmt;
+        $scope.creditCard.number = '4111111111111111';
+        $scope.creditCard.expirationDate = '10/18';
 
-            // -------------- get the donation from route ------------------
+        // -------------- get the donation from route ------------------
 
-            var localDonationID = $stateParams.donationID;
+        var localDonationID = $stateParams.donationID;
 
-            var promise = DonationService.get(localDonationID);
-            PromiseService.getData(promise, function(data) {
-                if (data) {
-                    $scope.donationAmt = data.amount;
-                }
+        var promise = DonationService.get(localDonationID);
+        PromiseService.getData(promise, function(data) {
+            if (data) {
+                $scope.donationAmt = data.amount;
+            }
+        });
+
+        var client;
+
+        var startup = function() {
+            $braintree.getClientToken().success(function(token) {
+                client = new $braintree.api.Client({
+                    clientToken: token
+                });
             });
+        };
 
-            var client;
+        $scope.GoToWish = function() {
+            $state.go('tab.home');
+        };
 
-            var startup = function() {
-                $braintree.getClientToken().success(function(token) {
-                    client = new $braintree.api.Client({
-                        clientToken: token
-                    });
-                });
-            };
+        $scope.payButtonClicked = function() {
+            client.tokenizeCard({
+                number: $scope.creditCard.number,
+                expirationDate: $scope.creditCard.expirationDate
+            }, function(err, nonce) {
 
-            $scope.GoToWish = function() {
-                $state.go('tab.home');
-            };
+                var form = {
+                    amount: $localStorage.donationAmt,
+                    nounce: nonce
+                };
+                // console.log('nonce is ', nonce);
+                // console.log('form is ', form);
+                // - Send nonce to your server (e.g. to make a transaction)
 
-            $scope.payButtonClicked = function() {
-                // client.tokenizeCard({
-                //   number: $scope.creditCard.number,
-                //   expirationDate: $scope.creditCard.expirationDate
-                // }, function (err, nonce) {
+                var treePromise = TreeService.makePayment(form);
 
-                //   var form = {amount: $localStorage.donationAmt,
-                //               nounce: nonce};
-                //   // console.log('nonce is ', nonce);
-                //   // console.log('form is ', form);
-                //   // - Send nonce to your server (e.g. to make a transaction)
+                PromiseService.getData(treePromise, function(data) {
+                    if (data && data.success) {
+                        $scope.paymentComplete = true;
+                        // console.log('state params = ', $stateParams);
+                        var localDonationID = $stateParams.donationID;
+                        // console.log('localDonationID = ', localDonationID);
+                        //get donationID from wishId
+                        var donationPromise = DonationService.update({
+                            '_id': localDonationID,
+                            'paidDate': new Date()
+                        });
 
-                //   var promise = TreeService.makePayment(form);
-
-                //    promise.then(function(paymentComplete, err) {
-                //                     // returns a list of users
-                //     if(!err && paymentComplete.success){
-                //       console.log('paymentComplete is: ', paymentComplete);
-                $scope.paymentComplete = true;
-                console.log('state params = ', $stateParams);
-                var localDonationID = $stateParams.donationID;
-                console.log('localDonationID = ', localDonationID);
-                //get donationID from wishId
-                var promise = DonationService.update({
-                    '_id': localDonationID,
-                    'paidDate': new Date()
-                });
-
-                PromiseService.getData(promise, function(data) {
-                    if (data) {
-                        console.log('successfuly updated donation');
+                        PromiseService.getData(donationPromise, function(data) {
+                            if (data) {
+                                console.log('successfuly updated donation');
+                            }
+                        });
                     }
-                })
+                });
 
-                //paymentComplete;
+            }); //end of tokenize card
+        }; //end of pay button click
 
-                // alert('charity email is: ' + clientToken.emailAddress);
-                //lodash.sortBy(charInfo.charitySearchResults, 'name');; // first Restangular obj in list: { id: 123 }
-                //   }
-                //   else {
-                //     console.log('error making payment: ', err);
-                //   }
-                // }) //end of then
+        startup();
 
-                // });
-            }; //end of pay button click
-
-            startup();
-
-            //close sth
-        }) // end of TreeCtrl
+        //close sth
+    }); // end of TreeCtrl
 })();

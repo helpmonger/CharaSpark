@@ -6,19 +6,24 @@
         $localStorage,
         lodash,
         PromiseService,
-        currLoc) {
-       
-        var promise = WishService.all({
-            location: currLoc,
-            radius: 10
-        });
-
-        PromiseService.getData(promise, function(data) {
+        LocationService) {
+        //populates the location
+        var locPromise = LocationService.getCurrentLocation();
+        PromiseService.getData(locPromise, function(data) {
             if (data) {
-                console.log('successful! ', data);
-                $scope.wishes = lodash.sortBy(data, 'createdDate').reverse();
+                var promise = WishService.all({
+                    location: data,
+                    radius: 10
+                });
+
+                PromiseService.getData(promise, function(data) {
+                    if (data) {
+                        console.log('successful! ', data);
+                        $scope.wishes = lodash.sortBy(data, 'createdDate').reverse();
+                    }
+                });
             }
         });
-           
-    })
+
+    });
 })();
