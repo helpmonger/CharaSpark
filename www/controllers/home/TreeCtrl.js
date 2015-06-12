@@ -36,11 +36,11 @@
                         clientToken: token
                     });
                 });
-            }
+            };
 
             $scope.GoToWish = function() {
                 $state.go('tab.home');
-            }
+            };
 
             $scope.payButtonClicked = function() {
                 // client.tokenizeCard({
