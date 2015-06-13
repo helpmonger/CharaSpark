@@ -37,10 +37,8 @@
                         console.log('successfuly updated wish');
                         $scope.wishAccepted = true;
                     }
-                })
+                });
             }
-
-        }
-
-    })
+        };
+    });
 })();

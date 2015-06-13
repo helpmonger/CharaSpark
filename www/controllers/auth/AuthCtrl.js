@@ -36,18 +36,15 @@
                 }
                 return;
             }, function(response) {
-                // if(parseInt(response) > 201){
                 console.log('error login!');
                 $scope.error = 'invalid credentials';
-                
-                // }
             }); //end of then
 
         };
 
         $scope.register = function() {
             $state.go('register');
-        }
+        };
 
     })
 
@@ -81,7 +78,6 @@
                     $scope.error = 'unable to sign up at this time';
                 }
             }); //end of then
-        } // end of sign up
-
-    })
+        }; // end of sign up
+    });
 })();

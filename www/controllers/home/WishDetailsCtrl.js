@@ -22,23 +22,22 @@
 
         $scope.changeStatus = function(operation, status) {
             //		console.log($scope.wish);
-
-            if (status == 'new') {
-                if (operation == 'no') {
+            if (status === 'new') {
+                if (operation === 'no') {
                     $scope.wish.wishStatus = 'cancelled';
                 }
-            } else if (status == 'pending') {
-                if (operation == 'no') {
+            } else if (status === 'pending') {
+                if (operation === 'no') {
                     $scope.wish.wishStatus = 'cancelled';
                     WishService.update($scope.wish);
-                } else if (operation == 'yes') {
+                } else if (operation === 'yes') {
                     $scope.wish.wishStatus = 'proceeding';
                 } else {}
-            } else if (status == 'proceeding') {
-                if (operation == 'no') {
+            } else if (status === 'proceeding') {
+                if (operation === 'no') {
                     $scope.wish.wishStatus = 'cancelled';
                     WishService.update($scope.wish);
-                } else if (operation == 'yes') {
+                } else if (operation === 'yes') {
                     $scope.wish.wishStatus = 'completed';
                 } else {}
             } else {
@@ -48,5 +47,5 @@
             WishService.update($scope.wish);
         };
 
-    })
+    });
 })();

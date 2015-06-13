@@ -26,7 +26,7 @@
             $state.go('tab.myfulfillmentdescription', {
                 'wishID': wish._id
             });
-        }
-    })
+        };
+    });
 
 })();

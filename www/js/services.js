@@ -22,7 +22,7 @@
             register: function(form) {
                 return Restangular.all('register').post(form);
             },
-        } //end of return
+        };//end of return
     })
 
     .factory('UserService', function(TokenRestangular) {
@@ -45,7 +45,7 @@
             get: function(userID) {
                 return TokenRestangular.one('user', userID).get();
             },
-        } //end of return
+        }; //end of return
     })
 
     .factory('WishService', function(TokenRestangular, Restangular, lodash, StorageService) {
@@ -80,7 +80,7 @@
                 return TokenRestangular.all('wish').one('fulfiller', fulfillerID).get();
             }
 
-        } //end of return
+        }; //end of return
     })
 
     .factory('DonationService', function(TokenRestangular, lodash) {
@@ -109,7 +109,7 @@
                 //console.log(form._id);
                 return TokenRestangular.all('donation').one('charity', charityID).get();
             }
-        } //end of return
+        }; //end of return
     })
 
     .factory('CharityService', function(TokenRestangular, lodash) {
@@ -130,7 +130,7 @@
             get: function(charityID) {
                 return TokenRestangular.one('charity', charityID).get();
             },
-        } //end of return
+        };//end of return
     })
 
     .factory('TreeService', function(Restangular, lodash) {
@@ -145,26 +145,7 @@
                 });
 
             },
-
-        } //end of return
-    })
-
-    .factory('ResponseService', function($state) {
-
-        return {
-
-            handleResponse: function(response) {
-                if (response.status == 401) {
-                    console.log('going to login...');
-                    $state.go('login');
-                } else {
-                    console.log('Error with status code', response.status);
-                }
-                return null;
-
-            },
-
-        } //end of return
+        };//end of return
     })
 
     //this aims to make consuming promises easier by taking care of all the error handling
@@ -185,7 +166,7 @@
                     }
 
                 }, function(response) {
-                    if (response.status == 401) { //401 = expired Authorization
+                    if (response.status === 401) { //401 = expired Authorization
                         //need to reset local storage to prevent auto-redirect
                         StorageService.resetCurrentUser();
                         return $state.go('login');
@@ -196,7 +177,7 @@
                 }); //end of promise.then
             }, //end of getData
 
-        } //end of return
+        };//end of return
     })
 
     .factory('StorageService', function($localStorage, $state) {
@@ -246,7 +227,7 @@
                 $localStorage.user = '';
                 console.log('current user is ', $localStorage.user);
             },
-        } //end of return
+        };//end of return
 
     })
 
@@ -281,7 +262,7 @@
                 var onSuccess = function(position) {
                     geoLoc.push(position.coords.latitude);
                     geoLoc.push(position.coords.longitude);
-                    deferred.resolve(geoLoc)
+                    deferred.resolve(geoLoc);
                 };
 
                 var onError = function(error) {
@@ -292,7 +273,7 @@
 
                 return deferred.promise;
             }
-        } //end of return
+        };//end of return
 
     });
 
