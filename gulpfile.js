@@ -15,7 +15,27 @@ gulp.task('vet', function() {
         .pipe($.jshint.reporter('fail'));
 });
 
-////////////
+gulp.task('wiredep', function() {
+    log('Wire up the bower css js and our app js into the html');
+    var wiredepOptions = config.getWiredepDefaultOptions();
+    var gulpInjectDefaultOptions = config.getGulpInjectDefaultOptions();
+    var wiredep = require('wiredep').stream;
+
+    return gulp
+        .src(config.index)
+        .pipe(wiredep(wiredepOptions))
+        .pipe($.inject(gulp.src(config.js, {read: false}), gulpInjectDefaultOptions))
+        .pipe(gulp.dest(config.client));
+});
+
+gulp.task('inject', ['wiredep'], function() {
+    log('Wire up the app css into the html, and call wiredep ');
+
+    return gulp
+        .src(config.index)
+        .pipe($.inject(gulp.src(config.css)))
+        .pipe(gulp.dest(config.client));
+});
 
 function log(msg) {
     if (typeof(msg) === 'object') {
@@ -28,7 +48,6 @@ function log(msg) {
         $.util.log($.util.colors.blue(msg));
     }
 }
-
 
 // var gutil = require('gulp-util');
 // var bower = require('bower');
