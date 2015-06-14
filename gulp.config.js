@@ -9,7 +9,7 @@ module.exports = function() {
             './www/controllers/**/*.js',
         ],
         client: client,
-        css: client + 'css/styles.css',
+        css: client + 'css/*.css',
         index: client + 'index.html',
         js: [
             client + 'js/*.js',

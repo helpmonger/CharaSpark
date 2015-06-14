@@ -5,26 +5,34 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+   
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="lib/ionic/css/ionic.css" />
+    <!-- endbower -->
+
+    <!-- our own css -->
+    
+    <!-- inject:css -->   
+    <link rel="stylesheet" href="css/style.css">   
+    <!-- endinject -->
 
     <!-- angular modules -->
 
-    <!-- bower:css -->
-    <!-- endbower -->
-
     <!-- bower:js -->
     <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/braintree-angular/dist/braintree-angular.js"></script>
     <script src="lib/lodash/lodash.js"></script>
-    <script src="lib/angular/angular.js"></script>
     <script src="lib/restangular/dist/restangular.js"></script>
     <script src="lib/ng-lodash/build/ng-lodash.js"></script>
     <script src="lib/ngstorage/ngStorage.js"></script>
@@ -32,8 +40,6 @@
     <script src="lib/angular-mocks/angular-mocks.js"></script>
     <script src="lib/angular-messages/angular-messages.js"></script>
     <!-- endbower -->
-    
- 
 
     
     <!-- cordova script (this will be a 404 during development) -->

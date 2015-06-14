@@ -24,6 +24,7 @@ gulp.task('wiredep', function() {
     return gulp
         .src(config.index)
         .pipe(wiredep(wiredepOptions))
+        .pipe($.inject(gulp.src(config.css, {read: false}), gulpInjectDefaultOptions))
         .pipe($.inject(gulp.src(config.js, {read: false}), gulpInjectDefaultOptions))
         .pipe(gulp.dest(config.client));
 });
