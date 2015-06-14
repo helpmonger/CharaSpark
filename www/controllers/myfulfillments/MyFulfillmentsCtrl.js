@@ -9,7 +9,7 @@
         WishService,
         StorageService,
         PromiseService) {
-        //console.log('in MyFullfillmentsCtrl');
+        //console.log('in MyFulfillmentsCtrl');
         var user = StorageService.getCurrentUser();
         //console.log('the user id is: ', user.user._id);
         if (user) { //console.log('user = ', user);

@@ -21,6 +21,14 @@
             template: '{{wish.title}} <br /> {{wish._charity.name}} {{wish._donation.amount| \
               currency}} <br/> {{wish.createdDate | date: "short"}}'
         };
-    });
+    })
+
+    .directive('wishDetail', function(){
+        return{
+            template: '<p><font size="4">{{wish._charity.name}}<br/>{{wish.description \
+            }} <br/>Wish Maker: {{wish._wishMaker.user_name}}<br/>{{wish.createdDate|date: "short"}}</p>'
+        };
+    })
+    ;
 
 })();

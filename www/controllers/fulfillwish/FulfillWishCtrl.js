@@ -25,5 +25,12 @@
             }
         });
 
+        $scope.goToDetails = function(wish) {
+            //console.log('go to detail of wish ', wish._id);
+            $state.go('tab.fulfillWishDetails', {
+                'wishID': wish._id
+            });
+        };
+
     });
 })();

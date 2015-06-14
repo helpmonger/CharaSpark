@@ -17,7 +17,7 @@
         });
 
         $scope.accept = function() {
-            $state.go('tab.fullfillacceptconfirm');
+            $state.go('tab.fulfillacceptconfirm');
         };
 
         $scope.changeStatus = function(operation, status) {

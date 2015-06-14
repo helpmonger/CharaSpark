@@ -129,10 +129,10 @@ var myApp = angular.module('starter', ['ionic',
         }
     })
 
-    .state('tab.fullfillawish', {
-        url: '/fullfillawish',
+    .state('tab.fulfillawish', {
+        url: '/fulfillawish',
         views: {
-            'tab-fullfillawish': {
+            'tab-fulfillawish': {
                 templateUrl: 'templates/fulfillawish/fulfillawish.html',
                 controller: 'FulfillWishCtrl'
             }
@@ -143,7 +143,7 @@ var myApp = angular.module('starter', ['ionic',
     .state('tab.fulfillWishDetails', {
         url: '/fulfillWishDetails/:wishID',
         views: {
-            'tab-fullfillawish': {
+            'tab-fulfillawish': {
                 templateUrl: 'templates/fulfillawish/fulfillWishDetails.html',
                 controller: 'FulfillWishDetailsCtrl'
             }
@@ -204,7 +204,7 @@ var myApp = angular.module('starter', ['ionic',
     .state('tab.fulfillacceptconfirm', {
         url: '/fulfillacceptconfirm',
         views: {
-            'tab-fullfillawish': {
+            'tab-fulfillawish': {
                 templateUrl: 'templates/fulfillments/fulfillacceptconfirm.html',
                 controller: ''
             }
