@@ -40,5 +40,11 @@
                 });
             }
         };
+        
+        $scope.Cancel = function() {
+            //		console.log($scope.wish);
+        	$scope.wish.wishStatus = 'cancelled';
+            WishService.update($scope.wish);
+        };
     });
 })();
