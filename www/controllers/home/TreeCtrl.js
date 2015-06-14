@@ -8,7 +8,8 @@
         $localStorage,
         DonationService,
         $stateParams,
-        PromiseService) {
+        PromiseService,
+        $ionicLoading) {
 
         // --------------hard coded credit card info ------------------
         $scope.creditCard = {};
@@ -43,6 +44,11 @@
         };
 
         $scope.payButtonClicked = function() {
+
+            $ionicLoading.show({
+                template: '<p>Loading...</p><ion-spinner></ion-spinner>'
+            });
+
             client.tokenizeCard({
                 number: $scope.creditCard.number,
                 expirationDate: $scope.creditCard.expirationDate
@@ -61,6 +67,7 @@
                 PromiseService.getData(treePromise, function(data) {
                     if (data && data.success) {
                         $scope.paymentComplete = true;
+                        $ionicLoading.hide();
                         // console.log('state params = ', $stateParams);
                         var localDonationID = $stateParams.donationID;
                         // console.log('localDonationID = ', localDonationID);
