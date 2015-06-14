@@ -11,6 +11,7 @@
 <ul class="list">
     <li class="item" ng-model="user.user_name">Username: {{user.user_name}}</li>
     <li class="item" ng-model="user.email">Email: {{user.email}}</li>
+    <li class="item">Total Donated: {{totalDonation | currency}}</li>
 </ul>
 
 <!-- 
@@ -18,21 +19,20 @@
   Change Password
 </button>
  -->
-<button type="button" class="button button-block button-positive" ng-click="logOff()">
-  Log Out
-</button>
 
-<ul class="list">
-    <li class="item">Total Donated: {{totalDonation | currency}}</li>
+<!--
+<ul class="list">   
     <li class="item">Total Donation Received (only shown for charity)</li>
-
 </ul>
 
 <button class="button button-block button-positive">
   Donation Detail (only shown for charity)
 </button>
+-->
   
-
+<button type="button" class="button button-block button-positive" ng-click="logOff()">
+  Log Out
+</button>
 
 </div> 
   </ion-content>
