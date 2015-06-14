@@ -1,4 +1,9 @@
-<ion-view view-title="{{wish.title}}">
+<ion-view view-title="">
+	<ion-nav-title>
+      <span>Fulfill a Wish</span>
+      <img src="./img/charaspark_logo_400.png" height="50%" style="float:left; margin-top: 13px">
+    </ion-nav-title>
+  
   <ion-content class="padding" >
 	<div class="list card" ng-hide="wishAccepted">
 	  <!-- <div class="item">
@@ -33,8 +38,8 @@
 	  </div> <!-- {{wish.status}} -->
 
 	     <div class="list card" ng-show="wishAccepted">
-          <h4> Congratulations! Your request has been sent to the wish maker. You will be notified once your help is accepted. Check back soon! </h4>
-          <p>Click below to go to my fulfillments tab</p> 
+          <p><font size = "4"> Congratulations! Your request has been sent to the wish maker. You will be notified once your help is accepted. Check back soon! <br/>
+          Click below to go to my fulfillments tab</p> 
           
            <div class="item item-input">
          <a class="button button-positive" ui-sref="tab.myfulfillments">
