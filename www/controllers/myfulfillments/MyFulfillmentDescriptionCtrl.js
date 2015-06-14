@@ -12,7 +12,7 @@
         PromiseService.getData(wishRPromise, function(data) {
             if (data) {
                 console.log('the data is: ', data);
-                $scope.aWish = data;
+                $scope.wish = data;
             }
         });
     });
