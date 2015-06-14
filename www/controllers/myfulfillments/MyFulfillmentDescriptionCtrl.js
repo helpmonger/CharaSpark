@@ -2,6 +2,7 @@
     'use strict';
 
     myApp.controller('MyFulfillmentDescriptionCtrl', function($scope,
+    	$state,
         $stateParams,
         PromiseService,
         WishService) {
@@ -15,6 +16,15 @@
                 $scope.wish = data;
             }
         });
+        
+        
+        $scope.Cancel = function() {
+//        	console.log('cancel triggered');
+        	$scope.wish.wishStatus = 'cancelled';
+            WishService.update($scope.wish);
+            $state.go('tab.myfulfillments');
+        };
+        
     });
 
 })();

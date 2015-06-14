@@ -21,7 +21,7 @@
                     $scope.wish = data;
                 }
             });
-        }
+        };
 
         $scope.Accept = function() {
             //updates the wish status to accepted
@@ -41,10 +41,5 @@
             }
         };
         
-        $scope.Cancel = function() {
-            //		console.log($scope.wish);
-        	$scope.wish.wishStatus = 'cancelled';
-            WishService.update($scope.wish);
-        };
     });
 })();
