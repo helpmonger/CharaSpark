@@ -21,7 +21,7 @@
                     $scope.wish = data;
                 }
             });
-        }
+        };
 
         $scope.Accept = function() {
             //updates the wish status to accepted
@@ -40,5 +40,6 @@
                 });
             }
         };
+        
     });
 })();
