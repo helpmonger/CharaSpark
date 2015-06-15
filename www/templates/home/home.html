@@ -17,14 +17,23 @@
     <br>
         <h3>Make A Difference Today</h3>
 
-      <div class="list">
+  <form name="wishForm">
       
 	     <label class="item item-input">
          <span class="input-label">Wish Title </span><br/>
-         <input type="text" placeholder="give your wish a name" ng-model="wish.title">
+         <input type="text" name="tTitle" placeholder="give your wish a name" ng-model="wish.title" required ng-init="ishForm.tTitle.$error.required=true">
+        </label>
+        
+        <tt>{{wishForm.tTitle.$error.required}}</tt><br/>   
+        <span class="error" ng-if="wishForm.tTitle.$error.required">Required</span><br>
+        <span class="error" ng-if="!wish.title">Required2!</span><br>
 
-
-         </label>
+          <label>Click me: <input type="checkbox" ng-model="checked" /></label><br/>
+          Show when checked:
+          <span ng-if="checked">
+            This is removed when the checkbox is unchecked.
+          </span>
+      
          <label class="item item-input">
          <span class="input-label">Wish Detail</span>
          <input type="text" placeholder="describe your wish" ng-model="wish.description">
@@ -40,7 +49,7 @@
         </label>
         
          -->
-		<div class="list">
+		
 		
 		  <label class="item item-input item-select">
 		    <div class="input-label">
@@ -63,9 +72,7 @@
 	       <span class="input-label">Donation Amount:</span>
 	       $<input type="text" placeholder=" enter your donation amount (a number)" ng-model="donation.amount">
 	   </label>
-	</div>         
        
-         
         <!--  <label class="item item-input">
         
          </label> -->
@@ -73,7 +80,10 @@
 
        <button class="button button-block button-positive" ng-click="MakeAWish()">
          Make a Wish
-         </button>
+      </button>
+  </form>
+
+
 
           <br>
         <h3>My Wishes</h3>
