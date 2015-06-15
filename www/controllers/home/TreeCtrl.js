@@ -14,7 +14,7 @@
         // --------------hard coded credit card info ------------------
         $scope.creditCard = {};
         $scope.paymentComplete = false;
-        $scope.donationAmt = $localStorage.donationAmt;
+        // $scope.donationAmt = $localStorage.donationAmt;
         $scope.creditCard.number = '4111111111111111';
         $scope.creditCard.expirationDate = '10/18';
 
@@ -56,20 +56,20 @@
             }, function(err, nonce) {
 
                 var form = {
-                    amount: $localStorage.donationAmt,
+                    amount: $scope.donationAmt,
                     nounce: nonce
                 };
                 // console.log('nonce is ', nonce);
                 // console.log('form is ', form);
                 // - Send nonce to your server (e.g. to make a transaction)
 
-                // var treePromise = TreeService.makePayment(form);
+                var treePromise = TreeService.makePayment(form);
 
-                // PromiseService.getData(treePromise, function(data) {
-                //     if (data && data.success) {
-                //         $scope.paymentComplete = true;
+                PromiseService.getData(treePromise, function(data) {
+                    if (data && data.success) {
+                        $scope.paymentComplete = true;
                         
-                //         var localDonationID = $stateParams.donationID;
+                        var localDonationID = $stateParams.donationID;
 
                         $ionicLoading.hide();
                         var donationPromise = DonationService.update({
@@ -77,13 +77,13 @@
                             'paidDate': new Date()
                         });
 
-                //         PromiseService.getData(donationPromise, function(data) {
-                //             if (data) {
-                //                 console.log('successfuly updated donation');
-                //             }
-                //         });
-                //     }
-                // });
+                        PromiseService.getData(donationPromise, function(data) {
+                            if (data) {
+                                console.log('successfuly updated donation');
+                            }
+                        });
+                    }
+                });
 
             }); //end of tokenize card
         }; //end of pay button click
