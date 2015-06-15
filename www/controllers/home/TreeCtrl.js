@@ -68,8 +68,10 @@
                 // PromiseService.getData(treePromise, function(data) {
                 //     if (data && data.success) {
                 //         $scope.paymentComplete = true;
-                //         $ionicLoading.hide();
+                        
                 //         var localDonationID = $stateParams.donationID;
+
+                        $ionicLoading.hide();
                         var donationPromise = DonationService.update({
                             '_id': localDonationID,
                             'paidDate': new Date()
