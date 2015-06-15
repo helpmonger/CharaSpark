@@ -36,6 +36,7 @@
                 client = new $braintree.api.Client({
                     clientToken: token
                 });
+                console.log('got client!');
             });
         };
 
