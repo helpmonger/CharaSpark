@@ -63,28 +63,25 @@
                 // console.log('form is ', form);
                 // - Send nonce to your server (e.g. to make a transaction)
 
-                var treePromise = TreeService.makePayment(form);
+                // var treePromise = TreeService.makePayment(form);
 
-                PromiseService.getData(treePromise, function(data) {
-                    if (data && data.success) {
-                        $scope.paymentComplete = true;
-                        $ionicLoading.hide();
-                        // console.log('state params = ', $stateParams);
-                        var localDonationID = $stateParams.donationID;
-                        // console.log('localDonationID = ', localDonationID);
-                        //get donationID from wishId
+                // PromiseService.getData(treePromise, function(data) {
+                //     if (data && data.success) {
+                //         $scope.paymentComplete = true;
+                //         $ionicLoading.hide();
+                //         var localDonationID = $stateParams.donationID;
                         var donationPromise = DonationService.update({
                             '_id': localDonationID,
                             'paidDate': new Date()
                         });
 
-                        PromiseService.getData(donationPromise, function(data) {
-                            if (data) {
-                                console.log('successfuly updated donation');
-                            }
-                        });
-                    }
-                });
+                //         PromiseService.getData(donationPromise, function(data) {
+                //             if (data) {
+                //                 console.log('successfuly updated donation');
+                //             }
+                //         });
+                //     }
+                // });
 
             }); //end of tokenize card
         }; //end of pay button click
