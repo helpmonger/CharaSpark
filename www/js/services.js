@@ -136,14 +136,8 @@
     .factory('TreeService', function(Restangular, lodash) {
 
         return {
-
             makePayment: function(form) {
-                var baseUrl = 'http://charasparkservices.herokuapp.com/api';
-                Restangular.setBaseUrl(baseUrl);
-                return Restangular.all('processPayment').customPOST($.param(form), "", form, {
-                    'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"
-                });
-
+                return Restangular.all('processPayment').post(form);
             },
         };//end of return
     })
