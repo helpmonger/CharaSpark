@@ -1,3 +1,4 @@
+<div class="item-content" ng-class="wish.wishStatus">
 <div style="float:left">
 	Wish title: {{wish.title}} <br /> 
 	Charity: {{wish._charity.name}} <br />
@@ -6,5 +7,6 @@
 	Paid Date: {{wish._donation.paidDate | date: "short"}}
 </div>
 <div style="float:right">
-    {{wish.wishStatus}}
+    <span ng-class="wish.wishStatus">{{wish.wishStatus}}</span>
+</div>
 </div>

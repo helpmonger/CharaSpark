@@ -3,18 +3,36 @@
     color: #F00;
 }
 
-.new {
-    color: #00FF00;
+div.new {
+    background-color: #DFF2BF !important;
 }
-.cancelled {
+
+span.new {
+	color: #4F8A10;
+}
+/*.cancelled {
     color: #FF0000;
+}*/
+div.pending {
+    background-color: #FEEFB3 !important;
 }
-.pending {
-    color: #FFFF00;
+span.pending {
+    color: #9F6000;
 }
 .proceeding {
-    color: #0000FF;
+    background-color: #BDE5F8 !important;
 }
-.completed {
+.proceeding {
+     color: #00529B;
+}
+/*.completed {
     color: #C0C0C0;
+}*/
+
+div.aborted, div.cancelled {
+	background-color: #FFBABA !important;
+}
+
+span.aborted, span.cancelled {
+	color: #D8000C;
 }
