@@ -23,7 +23,7 @@
 
         $scope.goToDetails = function(wish) {
             //console.log('go to detail of wish ', wish._id);
-            $state.go('tab.myfulfillmentdescription', {
+            $state.go('tab.myfulfillmentdetail', {
                 'wishID': wish._id
             });
         };

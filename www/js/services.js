@@ -22,7 +22,7 @@
             register: function(form) {
                 return Restangular.all('register').post(form);
             },
-        };//end of return
+        }; //end of return
     })
 
     .factory('UserService', function(TokenRestangular) {
@@ -130,7 +130,7 @@
             get: function(charityID) {
                 return TokenRestangular.one('charity', charityID).get();
             },
-        };//end of return
+        }; //end of return
     })
 
     .factory('TreeService', function(Restangular, lodash) {
@@ -139,7 +139,7 @@
             makePayment: function(form) {
                 return Restangular.all('processPayment').post(form);
             },
-        };//end of return
+        }; //end of return
     })
 
     //this aims to make consuming promises easier by taking care of all the error handling
@@ -171,7 +171,7 @@
                 }); //end of promise.then
             }, //end of getData
 
-        };//end of return
+        }; //end of return
     })
 
     .factory('StorageService', function($localStorage, $state) {
@@ -221,15 +221,14 @@
                 $localStorage.user = '';
                 console.log('current user is ', $localStorage.user);
             },
-        };//end of return
+        }; //end of return
 
     })
 
     // This service automatically adds the user's authorization to restangular's request header.
     // To begin, just inject TokenRestangular in wherever Restangular is used.
     // No other code change is needed
-    .factory('TokenRestangular',
-        ['Restangular', 'StorageService',
+    .factory('TokenRestangular', ['Restangular', 'StorageService',
         function(Restangular, StorageService) {
 
             return Restangular.withConfig(function(RestangularConfigurer) {
@@ -267,7 +266,20 @@
 
                 return deferred.promise;
             }
-        };//end of return
+        }; //end of return
+
+    })
+
+    .factory('WishStatusService', function() {
+        return {
+            //determines if wish can be cancelled by wishFulfiller
+            canFulfillerCancelWish: function(wish) {
+                if (wish) {
+                    return wish.wishStatus === 'pending' || wish.wishStatus === 'proceeding';
+                }
+                return false;
+            }
+        }; //end of return
 
     });
 

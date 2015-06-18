@@ -1,11 +1,12 @@
 (function() {
     'use strict';
 
-    myApp.controller('MyFulfillmentDescriptionCtrl', function($scope,
-    	$state,
+    myApp.controller('MyFulfillmentDetailCtrl', function($scope,
+        $state,
         $stateParams,
         PromiseService,
-        WishService) {
+        WishService,
+        WishStatusService) {
 
         var localWishID = $stateParams.wishID;
         //console.log('my fulfillment description of wish id = ', localWishID);
@@ -14,17 +15,16 @@
             if (data) {
                 console.log('the data is: ', data);
                 $scope.wish = data;
+                $scope.showCancel = WishStatusService.canFulfillerCancelWish(data);
             }
         });
-        
-        
+
         $scope.Cancel = function() {
-//        	console.log('cancel triggered');
-        	$scope.wish.wishStatus = 'cancelled';
+            $scope.wish.wishStatus = 'cancelled';
             WishService.update($scope.wish);
             $state.go('tab.myfulfillments');
         };
-        
+
     });
 
 })();

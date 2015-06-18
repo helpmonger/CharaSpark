@@ -20,21 +20,13 @@
 
     .directive('wishSummary', function() {
         return {
-            template: 'Wish title: {{wish.title}} <br /> Charity: {{wish._charity.name}} <br /> \
-            Amount: {{wish._donation.amount| \
-              currency}} <br/> Created Date: {{wish.createdDate | date: "short"}} <br />\
-              Paid Date: {{wish._donation.paidDate | date: "short"}}'
+            templateUrl: '../templates/directives/wishSummary.html'
         };
     })
 
     .directive('wishDetail', function(){
         return{
-            template: '<h3>{{wish.title\
-            }}</h3><p><font size="4"> Donated To: <b>{{wish._charity.name \
-            }}</b><br/> Description: {{wish.description \
-            }}<br/> Wish Maker: {{wish._wishMaker.user_name \
-            }}<br/> {{wish.createdDate|date: "short" \
-            }}<br/> Paid Date: {{wish._donation.paidDate | date: "short"}}</p>'
+            templateUrl: '../templates/directives/wishDetail.html'
         };
     })
     ;

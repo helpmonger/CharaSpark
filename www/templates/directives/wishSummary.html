@@ -1,0 +1,10 @@
+<div style="float:left">
+	Wish title: {{wish.title}} <br /> 
+	Charity: {{wish._charity.name}} <br />
+	Amount: {{wish._donation.amount| currency}} <br/> 
+	Created Date: {{wish.createdDate | date: "short"}} <br />
+	Paid Date: {{wish._donation.paidDate | date: "short"}}
+</div>
+<div style="float:right">
+    {{wish.wishStatus}}
+</div>
