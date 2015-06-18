@@ -13,7 +13,7 @@
             if (data) {
                 var promise = WishService.all({
                     location: data,
-                    radius: 1000
+                    radius: 10
                 });
 
                 PromiseService.getData(promise, function(data) {

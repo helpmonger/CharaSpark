@@ -112,7 +112,7 @@
         }; //end of return
     })
 
-    .factory('CharityService', function(TokenRestangular, lodash) {
+    .factory('CharityService', function(TokenRestangular, Restangular, lodash) {
 
         // var baseUrl = 'http://localhost:8080/api';
         // Restangular.setBaseUrl(baseUrl);
@@ -121,8 +121,9 @@
             add: function(form) {
                 return TokenRestangular.all('charity').post(form);
             },
-            all: function() {
-                return TokenRestangular.all('charity').getList();
+            all: function(form) {
+                // return TokenRestangular.all('charity').getList();
+                return Restangular.all('charity').customGET("", {}, form);
             },
             update: function(form) {
                 return TokenRestangular.one('charity', form._id).customPUT(form);

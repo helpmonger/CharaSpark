@@ -34,12 +34,21 @@
 
                 // ---------- populates variables needed by page ---------------
 
-                //populates charities for dropdown
-                var charityPromise = CharityService.all();
-
-                PromiseService.getData(charityPromise, function(data) {
+                //populates the location
+                var locPromise = LocationService.getCurrentLocation();
+                PromiseService.getData(locPromise, function(data) {
                     if (data) {
-                        $scope.charities = lodash.sortBy(data, 'name');
+                        //populates charities for dropdown
+                        var charityPromise = CharityService.all({
+                            location: data,
+                            radius: 10
+                        });
+
+                        PromiseService.getData(charityPromise, function(data) {
+                            if (data) {
+                                $scope.charities = lodash.sortBy(data, 'name');
+                            }
+                        });
                     }
                 });
 
