@@ -16,6 +16,7 @@
                 console.log('the data is: ', data);
                 $scope.wish = data;
                 $scope.showCancel = WishStatusService.canFulfillerCancelWish(data);
+                $scope.showContactInfo = WishStatusService.canFulfillerHaveContactInfo(data);
             }
         });
 

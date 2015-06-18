@@ -19,10 +19,10 @@ div.pending {
 span.pending {
     color: #9F6000;
 }
-.proceeding {
+.progressing, .proceeding {
     background-color: #BDE5F8 !important;
 }
-.proceeding {
+.progressing, .proceeding {
      color: #00529B;
 }
 /*.completed {

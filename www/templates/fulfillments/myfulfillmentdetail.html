@@ -7,14 +7,11 @@
   <ion-content class="padding" >
 	<div class="list card"> 
 	  <div wish-detail>
-	  </div>
-
-	  <div class="item tabs tabs-secondary tabs-icon-left">
-		Wish Status: {{wish.wishStatus}}
-	  </div>
-	
-		
+	  </div>		
 	</div> 
+	<div class="list card" ng-show="showContactInfo">
+		<p>Wish Maker's contact: {{wish._fulfiller.email}}
+	</div>
 	<div class="list card" ng-show="showCancel">
 		<button class="button button-positive" style="float:left" ng-click="Cancel()">
 		 Cancel

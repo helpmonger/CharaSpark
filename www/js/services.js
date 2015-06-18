@@ -279,6 +279,12 @@
                     return wish.wishStatus === 'pending' || wish.wishStatus === 'proceeding';
                 }
                 return false;
+            },
+            canFulfillerHaveContactInfo: function(wish) {
+                if (wish) {
+                    return wish.wishStatus === 'proceeding';
+                }
+                return false;
             }
         }; //end of return
 
