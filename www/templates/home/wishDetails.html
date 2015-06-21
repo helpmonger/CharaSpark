@@ -6,15 +6,16 @@
         </div>
         <div class="list card">
             <span ng-if="wish.wishStatus == 'pending' || wish.wishStatus == 'proceeding'" style="clear:both">
-		    <button class="button button-positive " ng-click="changeStatus('yes', wish.wishStatus)">
-			 <span ng-if="wish.wishStatus =='proceeding'">Complete</span>
-            <span ng-if="wish.wishStatus !='proceeding'">Confirm</span>
+		    <button class="button button-positive " ng-click="showCompleteOrConfirm('yes',wish.wishStatus)">  
+             <span ng-if="wish.wishStatus =='proceeding'" >Complete</span>
+             <span ng-if="wish.wishStatus !='proceeding'" >Confirm</span>
+            
             </button>
             </span>
             <span ng-if="wish.wishStatus == 'new' || wish.wishStatus == 'pending' || wish.wishStatus == 'proceeding'">
-			<button class="button button-positive " ng-click="changeStatus('no', wish.wishStatus)">
+			<button class="button button-positive " ng-click="showCancel('no', wish.wishStatus)">
 			 Cancel</button>
-		</span>
+		    </span>
         </div>
         </div>
     </ion-content>

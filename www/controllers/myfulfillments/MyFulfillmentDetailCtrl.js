@@ -21,7 +21,7 @@
         });
 
         $scope.Cancel = function() {
-            $scope.wish.wishStatus = 'cancelled';
+            $scope.wish.wishStatus = 'aborted';
             WishService.update($scope.wish);
             $state.go('tab.myfulfillments');
         };
