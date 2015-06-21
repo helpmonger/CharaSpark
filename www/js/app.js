@@ -71,6 +71,14 @@ var myApp = angular.module('starter', ['ionic',
 
     })
 
+    //Allows the user to retrieve password via the registed email
+    .state('retrievePassword', {
+        url: '/retrievePassword',
+        templateUrl: 'templates/auth/retrievePassword.html',
+        controller: 'RetrievePasswordCtrl'
+
+    })
+
     // parent state of all tabs
     // abstract means that this state itself cannot be navigated to
     .state('tab', {
@@ -228,6 +236,8 @@ var myApp = angular.module('starter', ['ionic',
             }
         } //end of resolve
     })
+
+
 
     .state('tab.changepassword', {
         url: '/changepassword',

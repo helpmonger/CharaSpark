@@ -46,6 +46,12 @@
             $state.go('register');
         };
 
+        $scope.retrievePassword = function() {
+            console.log('retrive password');
+            $state.go('retrievePassword');
+
+        };
+
     })
 
     .controller('RegisterCtrl', function($scope,
@@ -79,5 +85,27 @@
                 }
             }); //end of then
         }; // end of sign up
+    })
+
+    .controller('RetrievePasswordCtrl', function($scope,
+        AuthService,
+        $state,
+        StorageService) {
+        // alert('we re in sign up');
+        //true prevents the user from being redirected to the login page
+        // if (StorageService.getCurrentUser(true)) {
+        //     console.log('redirecting to home...');
+        //     $state.go('tab.home');
+        // }
+
+        $scope.user = {};
+
+        $scope.RetrievePassword = function() {
+
+  
+        }; // end of sign up
     });
+
+
+
 })();

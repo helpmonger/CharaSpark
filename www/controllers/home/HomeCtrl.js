@@ -124,6 +124,10 @@
                     });
                 };
 
+                $scope.showCharity = function(charity){
+                    alert('qq');
+                };
+
             } //end of if(user)
 
         }) //end of controller

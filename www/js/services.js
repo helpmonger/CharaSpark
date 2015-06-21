@@ -282,7 +282,7 @@
             },
             canFulfillerHaveContactInfo: function(wish) {
                 if (wish) {
-                    return wish.wishStatus === 'proceeding';
+                    return wish.wishStatus === 'proceeding' || wish.wishStatus === 'completed' ;
                 }
                 return false;
             }
