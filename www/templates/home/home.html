@@ -82,6 +82,10 @@
           <br>
         <h3>My Wishes</h3>
 
+   <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
 
      <div class="list">
        <label class="item item-radio" ng-repeat="wish in wishes" ng-click="goToDetails(wish)">
