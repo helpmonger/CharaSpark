@@ -86,7 +86,7 @@
     To show confirmation window for the button "Cancel"
     param: operation: 'yes', 'no'; status: could be any of the wishStatus
     */
-    $scope.showCancel = function(operation, status) {
+    $scope.cancel = function(operation, status) {
        var promptMsg = 'Are you sure to cancel?';
        
        var confirmPopup = $ionicPopup.confirm({
