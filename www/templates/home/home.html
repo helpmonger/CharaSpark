@@ -21,7 +21,7 @@
       
 	     <label class="item item-input">
          <span class="input-label">Wish Title </span><br/>
-         <input type="text" name="wishTitle" placeholder="give your wish a name" ng-model="wish.title" required>
+         <input type="text" name="wishTitle" placeholder="Walk my dog" ng-model="wish.title" required>
         </label>   
         <label class="item item-input" ng-show="wishForm.wishTitle.$dirty && wishForm.wishTitle.$error.required">
           <span class="error">Wish Title is required</span>
@@ -29,7 +29,7 @@
 
          <label class="item item-input">
            <span class="input-label">Wish Detail</span>
-           <input type="text" name="wishDesc" placeholder="describe your wish" ng-model="wish.description" required>
+           <input type="text" name="wishDesc" placeholder="Freindly and beautiful dog" ng-model="wish.description" required>
          </label>  
 
         <label class="item item-input" ng-show="wishForm.wishDesc.$dirty && wishForm.wishDesc.$error.required">
@@ -60,7 +60,7 @@
 
 	    <label class="item item-input">
 	       <span class="input-label">Donation Amount:</span>
-	       $<input type="text" name="donationAmt" placeholder=" enter your donation amount (i.e. 3.11)" ng-pattern="/^[0-9]\d*(\.\d+)?$/" ng-model="donation.amount" required>
+	       $<input type="text" name="donationAmt" placeholder=" 10" ng-pattern="/^[0-9]\d*(\.\d+)?$/" ng-model="donation.amount" required>
 	   </label>       
 
       <label class="item item-input" ng-show="wishForm.donationAmt.$dirty && wishForm.donationAmt.$error.required">
