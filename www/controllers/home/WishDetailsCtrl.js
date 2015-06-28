@@ -4,6 +4,7 @@
         $state,
         $stateParams,
         WishService,
+        WishStatusService,
         PromiseService,
         $ionicPopup) {
         //gets the wishID from the url
@@ -14,6 +15,9 @@
             if (data) {
                 console.log('Wish Date is: ', data);
                 $scope.wish = data;
+                $scope.showCancel = WishStatusService.canWishmakerCancelWish(data);
+                $scope.showConfirm = WishStatusService.canWishmakerConfirmWish(data);
+                $scope.showComplete = WishStatusService.canWishmakerCompleteWish(data);
             }
         });
 

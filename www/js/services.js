@@ -285,6 +285,26 @@
                     return wish.wishStatus === 'proceeding' || wish.wishStatus === 'completed' ;
                 }
                 return false;
+            },
+            
+            //determine which buttons should be showed on wishDetails.html
+            canWishmakerCancelWish: function(wish){
+            	if (wish) {
+                    return wish.wishStatus === 'new' || wish.wishStatus === 'pending' || wish.wishStatus ==='proceeding';
+                }
+                return false;
+            },
+            canWishmakerConfirmWish: function(wish){
+            	if (wish) {
+                    return wish.wishStatus === 'pending';
+                }
+                return false;
+            },
+            canWishmakerCompleteWish: function(wish){
+            	if (wish) {
+                    return wish.wishStatus === 'proceeding';
+                }
+                return false;
             }
         }; //end of return
 
