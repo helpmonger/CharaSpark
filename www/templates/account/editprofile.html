@@ -1,0 +1,36 @@
+
+<ion-view view-title="Edit Profile">
+  <ion-content class="padding">
+
+<div class="list">
+  <label class="item item-input"> 
+      <span class="input-label">User Name:</span>
+      <input name="username" type="text" ng-model="user.user_name" ng-readonly="true">
+  </label>
+  <label class="item item-input"> 
+      <span class="input-label">Email:</span>
+      <input name="email" type="text" ng-model="user.email" required>
+  </label>
+
+  <!--
+  <ul class="list">
+     
+    <li class="item" ng-model="user.user_name">Username: {{user.user.user_name}}</li>
+    <li class="item" ng-model="user.email">Email: {{user.user.email}}</li>
+    <li class="item" ng-model="user.email">Firstname: {{user.user.first_name}}</li>
+    <li class="item" ng-model="user.email">Lastname: {{user.user.last_name}}</li>
+    <li class="item" ng-model="user.email">Phone: {{user.user.phone}}</li>
+     
+  </ul>
+    -->
+  <div><button ng-click="changePassword()">Change Password</button></div>
+  <label class="item item-input">
+	<button class="button button-block button-positive" ng-click="updateProfile()">
+	Update
+	</button>
+	
+  </label>
+
+</div>
+  </ion-content>
+</ion-view>

@@ -37,7 +37,8 @@
             // Put: /user/:userID
             // updates a single user
             update: function(form) {
-                return TokenRestangular.all('user', form._id).customPUT(form);
+            	console.log('form is', form);
+                return TokenRestangular.one('user', form._id).customPUT(form);
             },
 
             // GET: /user/:userID

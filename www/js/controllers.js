@@ -37,10 +37,6 @@
 
     })
 
-    .controller('DashCtrl', function($scope) {})
-
-    .controller('ChangePasswordCtrl', function($scope) {
-
-    });
+    .controller('DashCtrl', function($scope) {});
 
 })();

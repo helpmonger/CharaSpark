@@ -237,7 +237,15 @@ var myApp = angular.module('starter', ['ionic',
         } //end of resolve
     })
 
-
+    .state('tab.editprofile', {
+        url: '/editprofile',
+        views: {
+            'tab-account': {
+                templateUrl: 'templates/account/editprofile.html',
+                controller: 'EditProfileCtrl'
+            }
+        }
+    })
 
     .state('tab.changepassword', {
         url: '/changepassword',
