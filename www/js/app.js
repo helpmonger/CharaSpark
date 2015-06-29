@@ -13,10 +13,10 @@ var myApp = angular.module('starter', ['ionic',
         'braintree-angular',
         'ngStorage',
         'ngMessages',
-        'ui.router',
+        'ui.router'
     ])
     .constant('clientTokenPath', 'http://localhost:8080/api/token')
-    .run(function($ionicPlatform, $localStorage) {
+    .run(function($ionicPlatform, $localStorage, $interval) {
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -28,6 +28,11 @@ var myApp = angular.module('starter', ['ionic',
                 window.StatusBar.styleLightContent();
             }
         });
+
+        $interval(function() {
+            delete localStorage["location"];
+            // delete all the required localStorage variables by specifying their keys
+        }, 1000 * 60 * 1); //delets all location localStorage vars afer 1 minute
     })
 
 .config(function($stateProvider, $urlRouterProvider, RestangularProvider, $ionicConfigProvider) {

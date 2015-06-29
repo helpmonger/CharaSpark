@@ -27,6 +27,16 @@
                 'wishID': wish._id
             });
         };
+
+        
+        $scope.doRefresh = function() {
+            var promise = WishService.findWishesFromFulfiller(user.user._id);
+            PromiseService.getData(promise, function(data) {
+                if (data) {
+                    $scope.wishes = lodash.sortBy(data, 'createdDate').reverse();
+                }
+            });
+        };
     });
 
 })();

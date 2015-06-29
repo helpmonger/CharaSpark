@@ -1,7 +1,9 @@
 var gulp = require('gulp');
 var args = require('yargs').argv;
 var config = require('./gulp.config')();
-var $ = require('gulp-load-plugins')({lazy: true});
+var $ = require('gulp-load-plugins')({
+    lazy: true
+});
 
 gulp.task('vet', function() {
     log('Analyzing source with JSHint and JSCS');
@@ -11,7 +13,9 @@ gulp.task('vet', function() {
         .pipe($.if(args.verbose, $.print()))
         .pipe($.jscs())
         .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
+        .pipe($.jshint.reporter('jshint-stylish', {
+            verbose: true
+        }))
         .pipe($.jshint.reporter('fail'));
 });
 
@@ -24,8 +28,12 @@ gulp.task('wiredep', function() {
     return gulp
         .src(config.index)
         .pipe(wiredep(wiredepOptions))
-        .pipe($.inject(gulp.src(config.css, {read: false}), gulpInjectDefaultOptions))
-        .pipe($.inject(gulp.src(config.js, {read: false}), gulpInjectDefaultOptions))
+        .pipe($.inject(gulp.src(config.css, {
+            read: false
+        }), gulpInjectDefaultOptions))
+        .pipe($.inject(gulp.src(config.js, {
+            read: false
+        }), gulpInjectDefaultOptions))
         .pipe(gulp.dest(config.client));
 });
 

@@ -32,5 +32,24 @@
             });
         };
 
+        $scope.doRefresh = function() {
+            var locPromise = LocationService.getCurrentLocation();
+            PromiseService.getData(locPromise, function(data) {
+                if (data) {
+                    var promise = WishService.all({
+                        location: data,
+                        radius: 400
+                    });
+
+                    PromiseService.getData(promise, function(data) {
+                        if (data) {
+                            console.log('successful! ', data);
+                            $scope.wishes = lodash.sortBy(data, 'createdDate').reverse();
+                        }
+                    });
+                }
+            });
+        };
+
     });
 })();
