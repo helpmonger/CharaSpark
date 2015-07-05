@@ -4,6 +4,7 @@
         $state,
         $stateParams,
         WishService,
+        WishStatusService,
         PromiseService,
         $ionicPopup) {
         //gets the wishID from the url
@@ -14,6 +15,9 @@
             if (data) {
                 console.log('Wish Date is: ', data);
                 $scope.wish = data;
+                $scope.showCancel = WishStatusService.canWishmakerCancelWish(data);
+                $scope.showConfirm = WishStatusService.canWishmakerConfirmWish(data);
+                $scope.showComplete = WishStatusService.canWishmakerCompleteWish(data);
             }
         });
 
@@ -82,7 +86,7 @@
     To show confirmation window for the button "Cancel"
     param: operation: 'yes', 'no'; status: could be any of the wishStatus
     */
-    $scope.showCancel = function(operation, status) {
+    $scope.cancel = function(operation, status) {
        var promptMsg = 'Are you sure to cancel?';
        
        var confirmPopup = $ionicPopup.confirm({

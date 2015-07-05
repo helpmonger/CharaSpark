@@ -15,11 +15,11 @@
         //StorageService.getCurrentUser().user;
         // console.log('user in storage: ', user.user);
 
-        $scope.changePassword = function() {
-            //alert('in details');
-            $state.go('tab.changepassword');
-            //  {'id': '101'}
+        $scope.editProfile = function() {
+            $state.go('tab.editprofile');
         };
+        
+
 
         $scope.logOff = function() {
             StorageService.resetCurrentUser();

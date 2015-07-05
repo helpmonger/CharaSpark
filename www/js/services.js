@@ -37,7 +37,8 @@
             // Put: /user/:userID
             // updates a single user
             update: function(form) {
-                return TokenRestangular.all('user', form._id).customPUT(form);
+            	console.log('form is', form);
+                return TokenRestangular.one('user', form._id).customPUT(form);
             },
 
             // GET: /user/:userID
@@ -245,25 +246,30 @@
         }
     ])
 
-    .factory('LocationService', function($q) {
+    .factory('LocationService', function($q, $localStorage) {
         return {
             getCurrentLocation: function() {
-
-                var geoLoc = [];
-
                 var deferred = $q.defer();
 
-                var onSuccess = function(position) {
-                    geoLoc.push(position.coords.latitude);
-                    geoLoc.push(position.coords.longitude);
-                    deferred.resolve(geoLoc);
-                };
+                if($localStorage.location){
+                    deferred.resolve($localStorage.location);
+                } else {
+                    var geoLoc = [];
 
-                var onError = function(error) {
-                    deferred.reject(error);
-                };
+                    var onSuccess = function(position) {
+                        geoLoc.push(position.coords.latitude);
+                        geoLoc.push(position.coords.longitude);
+                        $localStorage.location = geoLoc;
+                        deferred.resolve(geoLoc);
+                    };
 
-                navigator.geolocation.getCurrentPosition(onSuccess, onError);
+                    var onError = function(error) {
+                        deferred.reject(error);
+                    };
+
+                    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+                }
 
                 return deferred.promise;
             }
@@ -283,6 +289,26 @@
             canFulfillerHaveContactInfo: function(wish) {
                 if (wish) {
                     return wish.wishStatus === 'proceeding' || wish.wishStatus === 'completed' ;
+                }
+                return false;
+            },
+            
+            //determine which buttons should be showed on wishDetails.html
+            canWishmakerCancelWish: function(wish){
+            	if (wish) {
+                    return wish.wishStatus === 'new' || wish.wishStatus === 'pending' || wish.wishStatus ==='proceeding';
+                }
+                return false;
+            },
+            canWishmakerConfirmWish: function(wish){
+            	if (wish) {
+                    return wish.wishStatus === 'pending';
+                }
+                return false;
+            },
+            canWishmakerCompleteWish: function(wish){
+            	if (wish) {
+                    return wish.wishStatus === 'proceeding';
                 }
                 return false;
             }
