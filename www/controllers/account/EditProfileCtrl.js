@@ -7,7 +7,6 @@
         StorageService) {
     	
         $scope.changePassword = function() {
-            //alert('in details');
             $state.go('tab.changepassword');
             //  {'id': '101'}
         };
@@ -17,9 +16,8 @@
         
         // update user profile
         $scope.updateProfile = function(){
-//        	console.log($scope.user);
         	UserService.update($scope.user);
-        	
+        	$state.go('tab.account');
         }
 
     }); // end of EditProfileCtrl
