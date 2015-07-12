@@ -11,3 +11,4 @@ lib/
 *.log
 resources/
 build/
+.tmp/

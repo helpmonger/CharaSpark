@@ -41,9 +41,13 @@ gulp.task('wiredep', function() {
 gulp.task('inject', ['wiredep', 'templatecache'], function() {
     log('Wire up the app css into the html, and call wiredep ');
 
+    var gulpInjectDefaultOptions = config.getGulpInjectDefaultOptions();
+    
     return gulp
         .src(config.index)
-        .pipe($.inject(gulp.src(config.css)))
+        .pipe($.inject(gulp.src(config.css, {
+            read: false
+        }), gulpInjectDefaultOptions))
         .pipe(gulp.dest(config.client));
 });
 

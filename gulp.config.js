@@ -1,6 +1,6 @@
 module.exports = function() {
     var client = './www/';
-    var temp = client + '.tmp/';
+    var temp = './.tmp/';
     // var clientApp = client + 'js/';
     var config = {
 
@@ -16,7 +16,7 @@ module.exports = function() {
         client: client,
         css: client + 'css/*.css',
         fonts: client + 'lib/font-awesome/fonts/*.*',
-        html: client + 'views/**/*.html',
+        html: client + 'templates/**/*.html',
         htmltemplates: client + 'templates/**/*.html',
         images: client + 'img/**/*.*',
         index: client + 'index.html',
@@ -52,7 +52,7 @@ module.exports = function() {
             options: {
                 module: 'app.core',
                 standAlone: false,
-                root: client + 'templates/'
+                root: 'templates/'
             }
         },
     };
