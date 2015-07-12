@@ -16,7 +16,7 @@ module.exports = function() {
         build: client + 'build/',
         client: client,
         css: client + 'css/*.css',
-        fonts: client + 'lib/font-awesome/fonts/*.*',
+        fonts: client + 'lib/ionic/fonts/*.*',
         html: client + 'templates/**/*.html',
         htmltemplates: client + 'templates/**/*.html',
         img: img,
