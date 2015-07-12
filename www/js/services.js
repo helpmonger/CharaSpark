@@ -5,11 +5,6 @@
 
     .factory('AuthService', function(Restangular, lodash) {
 
-        // var baseUrl = 'http://charasparkservices.herokuapp.com/api';
-        var baseUrl = 'http://localhost:8080/api';
-        Restangular.setBaseUrl(baseUrl);
-        // var baseOptin = Restangular.all('api/');
-
         return {
 
             // POST: /api/login
@@ -240,7 +235,7 @@
                     RestangularConfigurer.setDefaultHeaders({
                         'Authorization': auth
                     });
-                    RestangularConfigurer.setBaseUrl('http://localhost:8080/api');
+                    RestangularConfigurer.setBaseUrl('https://fast-thicket-1866.herokuapp.com/api');
                 }
             });
         }

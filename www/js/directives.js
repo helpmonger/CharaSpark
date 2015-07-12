@@ -18,17 +18,16 @@
 
 
 
-    .directive('wishSummary', function() {
+    .directive('wishSummary', function($templateCache) {
         return {
-            templateUrl: '../templates/directives/wishSummary.html'
+             // templateUrl: '../templates/directives/wishSummary.html'
+            template: $templateCache.get('templates/directives/wishSummary.html')
         };
     })
 
-    .directive('wishDetail', function(){
+    .directive('wishDetail', function($templateCache){
         return{
-            templateUrl: '../templates/directives/wishDetail.html'
+            template: $templateCache.get('templates/directives/wishDetail.html')
         };
-    })
-    ;
-
+    });
 })();
