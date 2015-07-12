@@ -1,6 +1,6 @@
 module.exports = function() {
     var client = './www/';
-    var temp = './.tmp/';
+    var temp = client + '.tmp/';
     var img = 'img';
     // var clientApp = client + 'js/';
     var config = {
