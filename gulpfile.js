@@ -47,7 +47,7 @@ gulp.task('inject', ['wiredep', 'templatecache'], function() {
         .pipe(gulp.dest(config.client));
 });
 
-gulp.task('optimize', ['clean', 'inject', 'fonts', 'images'], function() {
+gulp.task('optimize', ['inject', 'fonts', 'images'], function() {
   log('Optimizing the javascript, css, html');
 
   var assets = $.useref.assets({
