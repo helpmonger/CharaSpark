@@ -13,7 +13,8 @@ var myApp = angular.module('starter', ['ionic',
         'braintree-angular',
         'ngStorage',
         'ngMessages',
-        'ui.router'
+        'ui.router',
+        'app.core',
     ])
     .constant('clientTokenPath', 'http://localhost:8080/api/token')
     .run(function($ionicPlatform, $localStorage, $interval) {

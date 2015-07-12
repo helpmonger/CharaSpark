@@ -10,3 +10,4 @@ ios/
 lib/
 *.log
 resources/
+build/

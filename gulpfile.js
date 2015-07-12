@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var args = require('yargs').argv;
 var config = require('./gulp.config')();
+var del = require('del');
 var $ = require('gulp-load-plugins')({
     lazy: true
 });
@@ -37,7 +38,7 @@ gulp.task('wiredep', function() {
         .pipe(gulp.dest(config.client));
 });
 
-gulp.task('inject', ['wiredep'], function() {
+gulp.task('inject', ['wiredep', 'templatecache'], function() {
     log('Wire up the app css into the html, and call wiredep ');
 
     return gulp
@@ -45,6 +46,109 @@ gulp.task('inject', ['wiredep'], function() {
         .pipe($.inject(gulp.src(config.css)))
         .pipe(gulp.dest(config.client));
 });
+
+gulp.task('optimize', ['clean', 'inject', 'fonts', 'images'], function() {
+  log('Optimizing the javascript, css, html');
+
+  var assets = $.useref.assets({
+    searchPath: './'
+  });
+  var templateCache = config.temp + config.templateCache.file;
+  var cssFilter = $.filter('**/*.css');
+  var jsFilter = $.filter('**/*.js');
+
+  log('The templateCache is: ' + templateCache);
+  return gulp
+    .src(config.index)
+    .pipe($.plumber())
+    .pipe($.inject(
+      gulp.src(templateCache, {
+        read: false
+      }), {
+        starttag: '<!-- inject:templates:js -->'
+      }))
+    .pipe(assets)
+    .pipe(cssFilter)
+    // .pipe($.csso())
+    .pipe(cssFilter.restore())
+    .pipe(jsFilter)
+    // .pipe($.uglify())
+    .pipe(jsFilter.restore())
+    .pipe(assets.restore())
+    .pipe($.useref())
+    .pipe(gulp.dest(config.build));
+});
+
+
+gulp.task('fonts', ['clean-fonts'], function() {
+  log('Copying fonts');
+
+  return gulp
+    .src(config.fonts)
+    .pipe(gulp.dest(config.build + 'fonts'));
+});
+
+gulp.task('images', ['clean-images'], function() {
+  log('Copying and compressing the images');
+
+  return gulp
+    .src(config.images)
+    .pipe($.imagemin({
+      optimizationLevel: 4
+    }))
+    .pipe(gulp.dest(config.build + 'images'));
+});
+
+gulp.task('clean', function(done) {
+  var delconfig = [].concat(config.build, config.temp);
+  log('Cleaning: ' + $.util.colors.blue(delconfig));
+  del(delconfig, done);
+});
+
+gulp.task('clean-fonts', function(done) {
+  clean(config.build + 'fonts/**/*.*', done);
+});
+
+gulp.task('clean-images', function(done) {
+  clean(config.build + 'images/**/*.*', done);
+});
+
+gulp.task('clean-styles', function(done) {
+  clean(config.temp + '**/*.css', done);
+});
+
+gulp.task('clean-code', function(done) {
+  var files = [].concat(
+    config.temp + '**/*.js',
+    config.build + '**/*.html',
+    config.build + 'js/**/*.js'
+  );
+  clean(files, done);
+});
+
+
+gulp.task('templatecache', ['clean-code'], function() {
+  log('Creating AngularJS $templateCache');
+
+  return gulp
+    .src(config.htmltemplates)
+    .pipe($.minifyHtml({
+      empty: true
+    }))
+    .pipe($.angularTemplatecache(
+      config.templateCache.file,
+      config.templateCache.options
+    ))
+    .pipe(gulp.dest(config.temp));
+});
+
+
+function clean(path, done) {
+  log('Cleaning: ' + $.util.colors.blue(path));
+  del(path, done);
+}
+
+
 
 function log(msg) {
     if (typeof(msg) === 'object') {
@@ -58,52 +162,3 @@ function log(msg) {
     }
 }
 
-// var gutil = require('gulp-util');
-// var bower = require('bower');
-// var concat = require('gulp-concat');
-// var sass = require('gulp-sass');
-// var minifyCss = require('gulp-minify-css');
-// var rename = require('gulp-rename');
-// var sh = require('shelljs');
-
-// var paths = {
-//   sass: ['./scss/**/*.scss']
-// };
-
-// gulp.task('default', ['sass']);
-
-// gulp.task('sass', function(done) {
-//   gulp.src('./scss/ionic.app.scss')
-//     .pipe(sass())
-//     .pipe(gulp.dest('./www/css/'))
-//     .pipe(minifyCss({
-//       keepSpecialComments: 0
-//     }))
-//     .pipe(rename({ extname: '.min.css' }))
-//     .pipe(gulp.dest('./www/css/'))
-//     .on('end', done);
-// });
-
-// gulp.task('watch', function() {
-//   gulp.watch(paths.sass, ['sass']);
-// });
-
-// gulp.task('install', ['git-check'], function() {
-//   return bower.commands.install()
-//     .on('log', function(data) {
-//       gutil.log('bower', gutil.colors.cyan(data.id), data.message);
-//     });
-// });
-
-// gulp.task('git-check', function(done) {
-//   if (!sh.which('git')) {
-//     console.log(
-//       '  ' + gutil.colors.red('Git is not installed.'),
-//       '\n  Git, the version control system, is required to download Ionic.',
-//       '\n  Download git here:', gutil.colors.cyan('http://git-scm.com/downloads') + '.',
-//       '\n  Once git is installed, run \'' + gutil.colors.cyan('gulp install') + '\' again.'
-//     );
-//     process.exit(1);
-//   }
-//   done();
-// });

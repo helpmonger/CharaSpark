@@ -1,37 +1,59 @@
 module.exports = function() {
     var client = './www/';
+    var temp = client + '.tmp/';
     // var clientApp = client + 'js/';
     var config = {
 
         // all js to vet
         alljs: [
-            './www/js/*.js',
-            './www/controllers/**/*.js',
+            client + 'js/*.js',
+            client + 'controllers/**/*.js',
         ],
+        allBuild: [
+            './build/js/*.js'
+        ],
+        build: client + 'build/',
         client: client,
         css: client + 'css/*.css',
+        fonts: client + 'lib/font-awesome/fonts/*.*',
+        html: client + 'views/**/*.html',
+        htmltemplates: client + 'templates/**/*.html',
+        images: client + 'img/**/*.*',
         index: client + 'index.html',
         js: [
             client + 'js/*.js',
             client + 'controllers/**/*.js',
             '!' + client + '**/*.spec.js'
         ],
+        less: client + 'styles/styles.less',
         // src: ['./www/lib/braintree-angular/dist/*.js'],
 
-        // less: client + 'styles/styles.less',
 
         //the following settings determine the gulp-inject
         //paths for our custom .js files
 
         addRootSlash: false,
-        ignorePath: '/www',
         /**
          * Bower and NPM locations
          */
         bower: {
             json: require('./bower.json'),
-            directory: './www/lib/',
-        }
+            directory: client + 'lib/',
+        },
+
+        temp: temp,
+
+                /**
+         * template cache
+         */
+        templateCache: {
+            file: 'templates.js',
+            options: {
+                module: 'app.core',
+                standAlone: false,
+                root: client + 'templates/'
+            }
+        },
     };
 
     config.getWiredepDefaultOptions = function() {

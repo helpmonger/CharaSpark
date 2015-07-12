@@ -11,19 +11,21 @@
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
-
+    <!-- build:css css/lib.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="lib/ionic/css/ionic.css" />
     <!-- endbower -->
+    <!-- endbuild -->
 
     <!-- our own css -->
-    
+    <!-- build:css css/app.css -->
     <!-- inject:css -->   
-    <link rel="stylesheet" href="css/style.css">   
+    <link rel="stylesheet" href="/www/css/style.css">   
     <!-- endinject -->
+    <!-- endbuild -->
 
     <!-- angular modules -->
-
+    <!-- build:js js/lib.js -->
     <!-- bower:js -->
     <script src="lib/jquery/dist/jquery.js"></script>
     <script src="lib/angular/angular.js"></script>
@@ -40,47 +42,40 @@
     <script src="lib/angular-mocks/angular-mocks.js"></script>
     <script src="lib/angular-messages/angular-messages.js"></script>
     <!-- endbower -->
-
+    
     
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
+    <!-- endbuild -->
 
     <!-- your app's js -->
+    <!-- build:js js/app.js -->
     <!-- inject:js -->       
-    <script src="js/app.js"></script>       
-    <script src="js/controllers.js"></script>       
-    <script src="js/directives.js"></script>       
-    <script src="js/services.js"></script>       
-    <script src="controllers/account/AccountCtrl.js"></script>       
-    <script src="controllers/account/ChangePasswordCtrl.js"></script>       
-    <script src="controllers/account/EditProfileCtrl.js"></script>       
-    <script src="controllers/auth/AuthCtrl.js"></script>       
-    <script src="controllers/fulfillwish/FulfillWishCtrl.js"></script>       
-    <script src="controllers/fulfillwish/FulfillWishDetailsCtrl.js"></script>       
-    <script src="controllers/charity/CharityCtrl.js"></script>       
-    <script src="controllers/home/HomeCtrl.js"></script>       
-    <script src="controllers/home/TreeCtrl.js"></script>       
-    <script src="controllers/home/WishDetailsCtrl.js"></script>       
-    <script src="controllers/myfulfillments/MyFulfillmentDetailCtrl.js"></script>       
-    <script src="controllers/myfulfillments/MyFulfillmentsCtrl.js"></script>       
-    <script src="controllers/landing/LandingCtrl.js"></script>       
+    <script src="www/js/app.core.js"></script>       
+    <script src="www/js/app.js"></script>       
+    <script src="www/js/controllers.js"></script>       
+    <script src="www/js/directives.js"></script>       
+    <script src="www/js/services.js"></script>       
+    <script src="www/controllers/account/AccountCtrl.js"></script>       
+    <script src="www/controllers/account/ChangePasswordCtrl.js"></script>       
+    <script src="www/controllers/account/EditProfileCtrl.js"></script>       
+    <script src="www/controllers/auth/AuthCtrl.js"></script>       
+    <script src="www/controllers/charity/CharityCtrl.js"></script>       
+    <script src="www/controllers/fulfillwish/FulfillWishCtrl.js"></script>       
+    <script src="www/controllers/fulfillwish/FulfillWishDetailsCtrl.js"></script>       
+    <script src="www/controllers/home/HomeCtrl.js"></script>       
+    <script src="www/controllers/home/TreeCtrl.js"></script>       
+    <script src="www/controllers/home/WishDetailsCtrl.js"></script>       
+    <script src="www/controllers/landing/LandingCtrl.js"></script>       
+    <script src="www/controllers/myfulfillments/MyFulfillmentDetailCtrl.js"></script>       
+    <script src="www/controllers/myfulfillments/MyFulfillmentsCtrl.js"></script>       
     <!-- endinject -->
-    
-   <!--  <script src="js/app.js"></script>
-    <script src="controllers/auth/AuthCtrl.js"></script>
-    <script src="controllers/landing/LandingCtrl.js"></script>
-    <script src="controllers/home/HomeCtrl.js"></script>
-    <script src="controllers/home/WishDetailsCtrl.js"></script>
-    <script src="controllers/home/TreeCtrl.js"></script>
-    <script src="controllers/fulfillwish/FulfillWishCtrl.js"></script>
-    <script src="controllers/fulfillwish/FulfillWishDetailsCtrl.js"></script>
-    <script src="controllers/myfulfillments/MyFulfillmentsCtrl.js"></script>
-    <script src="controllers/myfulfillments/MyFulfillmentDescriptionCtrl.js"></script>
-    <script src="controllers/account/AccountCtrl.js"></script>
 
-    <script src="js/controllers.js"></script>
-    <script src="js/directives.js"></script>
-    <script src="js/services.js"></script> -->
+    <!-- inject:templates:js -->
+    <!-- endinject -->    
+    
+    <!-- endbuild -->
+   
   </head>
   <body ng-app="starter">
     <!--
