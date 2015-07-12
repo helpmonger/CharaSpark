@@ -16,7 +16,7 @@ var myApp = angular.module('starter', ['ionic',
         'ui.router',
         'app.core',
     ])
-    .constant('clientTokenPath', 'https://fast-thicket-1866.herokuapp.com/api/token')
+    .constant('clientTokenPath', 'http://localhost:8080/api/token')
     .run(function($ionicPlatform, $localStorage, $interval) {
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -41,7 +41,7 @@ var myApp = angular.module('starter', ['ionic',
     RestangularProvider.setDefaultHeaders({
         'Content-Type': 'application/json'
     });
-    RestangularProvider.setBaseUrl('https://fast-thicket-1866.herokuapp.com/api');
+    RestangularProvider.setBaseUrl('http://localhost:8080/api');
 
     // $ionicConfigProvider.views.maxCache(0);
 

@@ -235,7 +235,7 @@
                     RestangularConfigurer.setDefaultHeaders({
                         'Authorization': auth
                     });
-                    RestangularConfigurer.setBaseUrl('https://fast-thicket-1866.herokuapp.com/api');
+                    RestangularConfigurer.setBaseUrl('http://localhost:8080/api');
                 }
             });
         }
