@@ -56,14 +56,23 @@ var myApp = angular.module('starter', ['ionic',
     //landing page with intro and login options
         .state('landing', {
         url: '/landing',
-        templateUrl: 'templates/home/landing.html',
+        templateProvider: function($templateCache) {
+            // simplified, expecting that the cache is filled
+            // there should be some checking... and async $http loading if not found
+            return $templateCache.get('templates/home/landing.html');
+        },
         controller: 'LandingCtrl'
     })
+
 
     // Allows the user to login
     .state('login', {
         url: '/login',
-        templateUrl: 'templates/auth/login.html',
+        templateProvider: function($templateCache) {
+            // simplified, expecting that the cache is filled
+            // there should be some checking... and async $http loading if not found
+            return $templateCache.get('templates/auth/login.html');
+        },
         controller: 'LoginCtrl',
         // cache: false
 
@@ -72,7 +81,11 @@ var myApp = angular.module('starter', ['ionic',
     //Allows the user to register
     .state('register', {
         url: '/register',
-        templateUrl: 'templates/auth/register.html',
+        templateProvider: function($templateCache) {
+            // simplified, expecting that the cache is filled
+            // there should be some checking... and async $http loading if not found
+            return $templateCache.get('templates/auth/register.html');
+        },
         controller: 'RegisterCtrl'
 
     })
@@ -80,7 +93,11 @@ var myApp = angular.module('starter', ['ionic',
     //Allows the user to retrieve password via the registed email
     .state('retrievePassword', {
         url: '/retrievePassword',
-        templateUrl: 'templates/auth/retrievePassword.html',
+        templateProvider: function($templateCache) {
+            // simplified, expecting that the cache is filled
+            // there should be some checking... and async $http loading if not found
+            return $templateCache.get('templates/auth/retrievePassword.html');
+        },
         controller: 'RetrievePasswordCtrl'
 
     })
@@ -90,7 +107,11 @@ var myApp = angular.module('starter', ['ionic',
     .state('tab', {
         url: '/tab',
         abstract: true,
-        templateUrl: 'templates/tabs.html',
+        templateProvider: function($templateCache) {
+            // simplified, expecting that the cache is filled
+            // there should be some checking... and async $http loading if not found
+            return $templateCache.get('templates/tabs.html');
+        },
         controller: 'TabCtrl'
     })
 
@@ -99,7 +120,11 @@ var myApp = angular.module('starter', ['ionic',
         url: '/home',
         views: {
             'tab-home': {
-                templateUrl: 'templates/home/home.html',
+                templateProvider: function($templateCache) {
+                    // simplified, expecting that the cache is filled
+                    // there should be some checking... and async $http loading if not found
+                    return $templateCache.get('templates/home/home.html');
+                },
                 controller: 'HomeCtrl'
             }
         },
@@ -126,7 +151,11 @@ var myApp = angular.module('starter', ['ionic',
         url: '/wishDetails/:wishID',
         views: {
             'tab-home': {
-                templateUrl: 'templates/home/wishDetails.html',
+                templateProvider: function($templateCache) {
+                    // simplified, expecting that the cache is filled
+                    // there should be some checking... and async $http loading if not found
+                    return $templateCache.get('templates/home/wishDetails.html');
+                },
                 controller: 'WishDetailsCtrl'
             }
         }
@@ -137,7 +166,11 @@ var myApp = angular.module('starter', ['ionic',
         url: '/tree/:donationID',
         views: {
             'tab-home': {
-                templateUrl: 'templates/home/tree.html',
+                templateProvider: function($templateCache) {
+                    // simplified, expecting that the cache is filled
+                    // there should be some checking... and async $http loading if not found
+                    return $templateCache.get('templates/home/tree.html');
+                },
                 controller: 'TreeCtrl'
             }
         }
@@ -147,7 +180,11 @@ var myApp = angular.module('starter', ['ionic',
         url: '/fulfillawish',
         views: {
             'tab-fulfillawish': {
-                templateUrl: 'templates/fulfillawish/fulfillawish.html',
+                templateProvider: function($templateCache) {
+                    // simplified, expecting that the cache is filled
+                    // there should be some checking... and async $http loading if not found
+                    return $templateCache.get('templates/fulfillawish/fulfillawish.html');
+                },
                 controller: 'FulfillWishCtrl'
             }
         }
@@ -158,7 +195,11 @@ var myApp = angular.module('starter', ['ionic',
         url: '/fulfillWishDetails/:wishID',
         views: {
             'tab-fulfillawish': {
-                templateUrl: 'templates/fulfillawish/fulfillWishDetails.html',
+                templateProvider: function($templateCache) {
+                    // simplified, expecting that the cache is filled
+                    // there should be some checking... and async $http loading if not found
+                    return $templateCache.get('templates/fulfillawish/fulfillWishDetails.html');
+                },
                 controller: 'FulfillWishDetailsCtrl'
             }
         }
@@ -168,7 +209,11 @@ var myApp = angular.module('starter', ['ionic',
         url: '/dash',
         views: {
             'tab-dash': {
-                templateUrl: 'templates/home/dash.html',
+                templateProvider: function($templateCache) {
+                    // simplified, expecting that the cache is filled
+                    // there should be some checking... and async $http loading if not found
+                    return $templateCache.get('templates/home/dash.html');
+                },
                 controller: 'DashCtrl'
             }
         }
@@ -178,92 +223,111 @@ var myApp = angular.module('starter', ['ionic',
         url: '/acceptconfirm',
         views: {
             'tab-landing': {
-                templateUrl: 'templates/acceptconfirm.html',
+                templateProvider: function($templateCache) {
+                    // simplified, expecting that the cache is filled
+                    // there should be some checking... and async $http loading if not found
+                    return $templateCache.get('templates/acceptconfirm.html');
+                },
                 controller: 'AcceptConfirmCtrl'
             }
         }
     })
 
-    // .state('tab.mywishes', {
-    //   url: '/mywishes',
-    //   views: {
-    //     'tab-mywishes': {
-    //       templateUrl: 'templates/wishes/mywishes.html',
-    //       controller: 'MyWishesCtrl'
-    //     }
-    //   }
-    // })
 
-    .state('tab.myfulfillments', {
-        url: '/myfulfillments',
-        views: {
-            'tab-myfulfillments': {
-                templateUrl: 'templates/fulfillments/myfulfillments.html',
-                controller: 'MyFulfillmentsCtrl'
-            }
-        },
-        // cache: false,
-    })
-
-    .state('tab.myfulfillmentdetail', {
-        url: '/myfulfillmentdetail/:wishID',
-        views: {
-            'tab-myfulfillments': {
-                templateUrl: 'templates/fulfillments/myfulfillmentdetail.html',
-                controller: 'MyFulfillmentDetailCtrl'
-            }
+.state('tab.myfulfillments', {
+    url: '/myfulfillments',
+    views: {
+        'tab-myfulfillments': {
+            templateProvider: function($templateCache) {
+                // simplified, expecting that the cache is filled
+                // there should be some checking... and async $http loading if not found
+                return $templateCache.get('templates/fulfillments/myfulfillments.html');
+            },
+            controller: 'MyFulfillmentsCtrl'
         }
-    })
+    },
+    // cache: false,
+})
 
-    .state('tab.fulfillacceptconfirm', {
-        url: '/fulfillacceptconfirm',
-        views: {
-            'tab-fulfillawish': {
-                templateUrl: 'templates/fulfillments/fulfillacceptconfirm.html',
-                controller: ''
-            }
+.state('tab.myfulfillmentdetail', {
+    url: '/myfulfillmentdetail/:wishID',
+    views: {
+        'tab-myfulfillments': {
+            templateProvider: function($templateCache) {
+                // simplified, expecting that the cache is filled
+                // there should be some checking... and async $http loading if not found
+                return $templateCache.get('templates/fulfillments/myfulfillmentdetail.html');
+            },
+            controller: 'MyFulfillmentDetailCtrl'
         }
-    })
+    }
+})
 
-    .state('tab.account', {
-        url: '/account',
-        views: {
-            'tab-account': {
-                templateUrl: 'templates/account/account.html',
-                controller: 'AccountCtrl'
-            }
-        },
-        // cache: false,
-        resolve: {
-            userInfo: function(StorageService) {
-                var user = StorageService.getCurrentUser();
-                console.log('resolved ', user);
-                return user;
-            }
-        } //end of resolve
-    })
-
-    .state('tab.editprofile', {
-        url: '/editprofile',
-        views: {
-            'tab-account': {
-                templateUrl: 'templates/account/editprofile.html',
-                controller: 'EditProfileCtrl'
-            }
+.state('tab.fulfillacceptconfirm', {
+    url: '/fulfillacceptconfirm',
+    views: {
+        'tab-fulfillawish': {
+            templateProvider: function($templateCache) {
+                // simplified, expecting that the cache is filled
+                // there should be some checking... and async $http loading if not found
+                return $templateCache.get('templates/fulfillments/fulfillacceptconfirm.html');
+            },
+            controller: ''
         }
-    })
+    }
+})
 
-    .state('tab.changepassword', {
-        url: '/changepassword',
-        views: {
-            'tab-account': {
-                templateUrl: 'templates/account/changepassword.html',
-                controller: 'ChangePasswordCtrl'
-            }
+.state('tab.account', {
+    url: '/account',
+    views: {
+        'tab-account': {
+            templateProvider: function($templateCache) {
+                // simplified, expecting that the cache is filled
+                // there should be some checking... and async $http loading if not found
+                return $templateCache.get('templates/account/account.html');
+            },
+            controller: 'AccountCtrl'
         }
-    });
+    },
+    // cache: false,
+    resolve: {
+        userInfo: function(StorageService) {
+            var user = StorageService.getCurrentUser();
+            console.log('resolved ', user);
+            return user;
+        }
+    } //end of resolve
+})
 
-    // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/landing');
+.state('tab.editprofile', {
+    url: '/editprofile',
+    views: {
+        'tab-account': {
+            templateProvider: function($templateCache) {
+                // simplified, expecting that the cache is filled
+                // there should be some checking... and async $http loading if not found
+                return $templateCache.get('templates/account/editprofile.html');
+            },
+            controller: 'EditProfileCtrl'
+        }
+    }
+})
+
+.state('tab.changepassword', {
+    url: '/changepassword',
+    views: {
+        'tab-account': {
+            templateProvider: function($templateCache) {
+                // simplified, expecting that the cache is filled
+                // there should be some checking... and async $http loading if not found
+                return $templateCache.get('templates/account/changepassword.html');
+            },
+            controller: 'ChangePasswordCtrl'
+        }
+    }
+});
+
+// if none of the above states are matched, use this as the fallback
+$urlRouterProvider.otherwise('/landing');
 
 });

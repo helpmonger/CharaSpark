@@ -42,7 +42,7 @@ gulp.task('inject', ['wiredep', 'templatecache'], function() {
     log('Wire up the app css into the html, and call wiredep ');
 
     var gulpInjectDefaultOptions = config.getGulpInjectDefaultOptions();
-    
+
     return gulp
         .src(config.index)
         .pipe($.inject(gulp.src(config.css, {
@@ -57,7 +57,7 @@ gulp.task('optimize', ['inject', 'fonts', 'images'], function() {
   var assets = $.useref.assets({
     searchPath: './www'
   });
-  var templateCache = config.temp + config.templateCache.file;
+  var templateCache = '.tmp/' + config.templateCache.file;
   var cssFilter = $.filter('**/*.css');
   var jsFilter = $.filter('**/*.js');
 
@@ -100,7 +100,7 @@ gulp.task('images', ['clean-images'], function() {
     .pipe($.imagemin({
       optimizationLevel: 4
     }))
-    .pipe(gulp.dest(config.build + 'images'));
+    .pipe(gulp.dest(config.build + config.img));
 });
 
 gulp.task('clean', function(done) {

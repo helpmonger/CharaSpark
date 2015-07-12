@@ -1,6 +1,7 @@
 module.exports = function() {
     var client = './www/';
     var temp = './.tmp/';
+    var img = 'img';
     // var clientApp = client + 'js/';
     var config = {
 
@@ -18,7 +19,8 @@ module.exports = function() {
         fonts: client + 'lib/font-awesome/fonts/*.*',
         html: client + 'templates/**/*.html',
         htmltemplates: client + 'templates/**/*.html',
-        images: client + 'img/**/*.*',
+        img: img,
+        images: client + img + '/**/*.*',
         index: client + 'index.html',
         js: [
             client + 'js/*.js',
