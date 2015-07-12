@@ -51,7 +51,7 @@ gulp.task('optimize', ['inject', 'fonts', 'images'], function() {
   log('Optimizing the javascript, css, html');
 
   var assets = $.useref.assets({
-    searchPath: './'
+    searchPath: './www'
   });
   var templateCache = config.temp + config.templateCache.file;
   var cssFilter = $.filter('**/*.css');

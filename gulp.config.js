@@ -33,6 +33,7 @@ module.exports = function() {
         //paths for our custom .js files
 
         addRootSlash: false,
+        ignorePath: '/www',
         /**
          * Bower and NPM locations
          */
