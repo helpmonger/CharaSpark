@@ -3,7 +3,7 @@
 
     angular.module('starter.services', [])
 
-    .factory('AuthService', function(Restangular, lodash) {
+    .factory('AuthService', function(TokenRestangular, Restangular) {
 
         return {
 
@@ -17,6 +17,11 @@
             register: function(form) {
                 return Restangular.all('register').post(form);
             },
+            // POST: /api/auth/changepassword
+            // change user password
+            changePassword: function(form) {
+                return TokenRestangular.all('auth').customPOST(form, 'changePassword');
+            }, 
         }; //end of return
     })
 

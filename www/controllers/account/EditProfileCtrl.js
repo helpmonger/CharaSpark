@@ -6,7 +6,7 @@
         UserService,
         StorageService) {
     	
-        $scope.changePassword = function() {
+        $scope.goChangePassword = function() {
             $state.go('tab.changepassword');
             //  {'id': '101'}
         };
