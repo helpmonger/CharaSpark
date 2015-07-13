@@ -41,6 +41,16 @@
             get: function(userID) {
                 return TokenRestangular.one('user', userID).get();
             },
+            //POST: /user/isEmailUnique
+            //returns true if email is not registered yet
+            isEmailUnique: function(form){
+                return Restangular.all('user').all('isEmailUnique').post(form);
+            },
+            //POST: /user/isUserNameUnique
+            //returns true if username is not registered yet 
+            isUsernameUnique: function(form){
+                return Restangular.all('user').all('isUserNameUnique').post(form);
+            }
         }; //end of return
     })
 
