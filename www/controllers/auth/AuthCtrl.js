@@ -87,10 +87,11 @@
         }; // end of sign up
     })
 
-    .controller('RetrievePasswordCtrl', function($scope,
-        AuthService,
+    .controller('RetrievePasswordCtrl', function(AuthService,
         $state,
-        StorageService) {
+        StorageService,
+        PromiseService,
+        $ionicPopup) {
         // alert('we re in sign up');
         //true prevents the user from being redirected to the login page
         // if (StorageService.getCurrentUser(true)) {
@@ -98,12 +99,32 @@
         //     $state.go('tab.home');
         // }
 
-        $scope.user = {};
+        var vm = this;
+        vm.foo = 'bar';
+        console.log('in ctrl');
 
-        $scope.RetrievePassword = function() {
+        vm.RetrievePassword = function() {
+            console.log('in retreive password');
+            console.log('user is: ', vm.email);
+            var promise = AuthService.forgotPassword({email: vm.email});
+            PromiseService.getData(promise, function(data) {
+                if (data) {
+                    console.log('got data');
+                    var alertPopup = $ionicPopup.alert({
+                        title: 'Password reset!',
+                        template: 'Check your email for your password reset instructions.'
+                    });
+                    alertPopup.then(function(res) {
+                        console.log('password reset complete');
+                    });
+                } else {
+                    console.log('got no data');
+                }
+            });
 
-  
-        }; // end of sign up
+
+        }; // end of RetrievePassword
+        return vm;
     });
 
 

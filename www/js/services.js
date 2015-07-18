@@ -17,6 +17,10 @@
             register: function(form) {
                 return Restangular.all('register').post(form);
             },
+
+            forgotPassword: function(form){
+                return Restangular.all('auth').all('forgotPassword').post(form);
+            }
         }; //end of return
     })
 
