@@ -3,7 +3,7 @@
 
     angular.module('starter.services', [])
 
-    .factory('AuthService', function(Restangular, lodash) {
+    .factory('AuthService', function(TokenRestangular, Restangular) {
 
         return {
 
@@ -17,10 +17,18 @@
             register: function(form) {
                 return Restangular.all('register').post(form);
             },
+<<<<<<< HEAD
 
             forgotPassword: function(form){
                 return Restangular.all('auth').all('forgotPassword').post(form);
             }
+=======
+            // POST: /api/auth/changepassword
+            // change user password
+            changePassword: function(form) {
+                return TokenRestangular.all('auth').customPOST(form, 'changePassword');
+            }, 
+>>>>>>> 2fb2bd81dc758b7ec0a950078923b2031ad7009b
         }; //end of return
     })
 
@@ -45,6 +53,16 @@
             get: function(userID) {
                 return TokenRestangular.one('user', userID).get();
             },
+            //POST: /user/isEmailUnique
+            //returns true if email is not registered yet
+            isEmailUnique: function(form){
+                return Restangular.all('user').all('isEmailUnique').post(form);
+            },
+            //POST: /user/isUserNameUnique
+            //returns true if username is not registered yet 
+            isUsernameUnique: function(form){
+                return Restangular.all('user').all('isUserNameUnique').post(form);
+            }
         }; //end of return
     })
 
