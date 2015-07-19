@@ -234,100 +234,108 @@ var myApp = angular.module('starter', ['ionic',
     })
 
 
-.state('tab.myfulfillments', {
-    url: '/myfulfillments',
-    views: {
-        'tab-myfulfillments': {
-            templateProvider: function($templateCache) {
-                // simplified, expecting that the cache is filled
-                // there should be some checking... and async $http loading if not found
-                return $templateCache.get('templates/fulfillments/myfulfillments.html');
-            },
-            controller: 'MyFulfillmentsCtrl'
-        }
-    },
-    // cache: false,
-})
+	.state('tab.myfulfillments', {
+	    url: '/myfulfillments',
+	    views: {
+	        'tab-myfulfillments': {
+	            templateProvider: function($templateCache) {
+	                // simplified, expecting that the cache is filled
+	                // there should be some checking... and async $http loading if not found
+	                return $templateCache.get('templates/fulfillments/myfulfillments.html');
+	            },
+	            controller: 'MyFulfillmentsCtrl'
+	        }
+	    },
+	    // cache: false,
+	})
+	
+	.state('tab.myfulfillmentdetail', {
+	    url: '/myfulfillmentdetail/:wishID',
+	    views: {
+	        'tab-myfulfillments': {
+	            templateProvider: function($templateCache) {
+	                // simplified, expecting that the cache is filled
+	                // there should be some checking... and async $http loading if not found
+	                return $templateCache.get('templates/fulfillments/myfulfillmentdetail.html');
+	            },
+	            controller: 'MyFulfillmentDetailCtrl'
+	        }
+	    }
+	})
+	
+	.state('tab.fulfillacceptconfirm', {
+	    url: '/fulfillacceptconfirm',
+	    views: {
+	        'tab-fulfillawish': {
+	            templateProvider: function($templateCache) {
+	                // simplified, expecting that the cache is filled
+	                // there should be some checking... and async $http loading if not found
+	                return $templateCache.get('templates/fulfillments/fulfillacceptconfirm.html');
+	            },
+	            controller: ''
+	        }
+	    }
+	})
+	
+	.state('tab.account', {
+	    url: '/account',
+	    views: {
+	        'tab-account': {
+	            templateProvider: function($templateCache) {
+	                // simplified, expecting that the cache is filled
+	                // there should be some checking... and async $http loading if not found
+	                return $templateCache.get('templates/account/account.html');
+	            },
+	            controller: 'AccountCtrl'
+	        }
+	    },
+	    // cache: false,
+	    resolve: {
+	        userInfo: function(StorageService) {
+	            var user = StorageService.getCurrentUser();
+	            console.log('resolved ', user);
+	            return user;
+	        }
+	    } //end of resolve
+	})
+	
+	.state('tab.editprofile', {
+	    url: '/editprofile',
+	    views: {
+	        'tab-account': {
+	            templateProvider: function($templateCache) {
+	                // simplified, expecting that the cache is filled
+	                // there should be some checking... and async $http loading if not found
+	                return $templateCache.get('templates/account/editprofile.html');
+	            },
+	            controller: 'EditProfileCtrl'
+	        }
+	    }
+	})
+	
+	.state('tab.changepassword', {
+	    url: '/changepassword',
+	    views: {
+	        'tab-account': {
+	            templateProvider: function($templateCache) {
+	                // simplified, expecting that the cache is filled
+	                // there should be some checking... and async $http loading if not found
+	                return $templateCache.get('templates/account/changepassword.html');
+	            },
+	            controller: 'ChangePasswordCtrl'
+	        }
+	    }
+	})
 
-.state('tab.myfulfillmentdetail', {
-    url: '/myfulfillmentdetail/:wishID',
-    views: {
-        'tab-myfulfillments': {
-            templateProvider: function($templateCache) {
-                // simplified, expecting that the cache is filled
-                // there should be some checking... and async $http loading if not found
-                return $templateCache.get('templates/fulfillments/myfulfillmentdetail.html');
-            },
-            controller: 'MyFulfillmentDetailCtrl'
+  .state('tab.chats', {
+      url: '/chats',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/chats/tab-chats.html',
+          controller: 'ChatsCtrl'
         }
-    }
-})
-
-.state('tab.fulfillacceptconfirm', {
-    url: '/fulfillacceptconfirm',
-    views: {
-        'tab-fulfillawish': {
-            templateProvider: function($templateCache) {
-                // simplified, expecting that the cache is filled
-                // there should be some checking... and async $http loading if not found
-                return $templateCache.get('templates/fulfillments/fulfillacceptconfirm.html');
-            },
-            controller: ''
-        }
-    }
-})
-
-.state('tab.account', {
-    url: '/account',
-    views: {
-        'tab-account': {
-            templateProvider: function($templateCache) {
-                // simplified, expecting that the cache is filled
-                // there should be some checking... and async $http loading if not found
-                return $templateCache.get('templates/account/account.html');
-            },
-            controller: 'AccountCtrl'
-        }
-    },
-    // cache: false,
-    resolve: {
-        userInfo: function(StorageService) {
-            var user = StorageService.getCurrentUser();
-            console.log('resolved ', user);
-            return user;
-        }
-    } //end of resolve
-})
-
-.state('tab.editprofile', {
-    url: '/editprofile',
-    views: {
-        'tab-account': {
-            templateProvider: function($templateCache) {
-                // simplified, expecting that the cache is filled
-                // there should be some checking... and async $http loading if not found
-                return $templateCache.get('templates/account/editprofile.html');
-            },
-            controller: 'EditProfileCtrl'
-        }
-    }
-})
-
-.state('tab.changepassword', {
-    url: '/changepassword',
-    views: {
-        'tab-account': {
-            templateProvider: function($templateCache) {
-                // simplified, expecting that the cache is filled
-                // there should be some checking... and async $http loading if not found
-                return $templateCache.get('templates/account/changepassword.html');
-            },
-            controller: 'ChangePasswordCtrl'
-        }
-    }
-})
-
-
+      }
+    })
 // if none of the above states are matched, use this as the fallback
 $urlRouterProvider.otherwise('/landing');
 

@@ -37,6 +37,8 @@
 
     })
 
-    .controller('DashCtrl', function($scope) {});
-
+    .controller('DashCtrl', function($scope) {})
+    
+    .controller('ChatsCtrl', function($scope) {});
+        
 })();
