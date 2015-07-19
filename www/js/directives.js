@@ -30,4 +30,13 @@
             template: $templateCache.get('templates/directives/wishDetail.html')
         };
     });
+
+
+    // .directive('isUserNameUnique', function($templateCache){
+    //     return{
+    //         template: $templateCache.get('templates/directives/isUserNameUnique.html')
+    //     };
+    // });
+
+    
 })();
