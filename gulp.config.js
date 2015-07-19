@@ -28,6 +28,7 @@ module.exports = function() {
             '!' + client + '**/*.spec.js'
         ],
         less: client + 'styles/styles.less',
+        nodeServer: './www/server/server.js',
         // src: ['./www/lib/braintree-angular/dist/*.js'],
 
 
@@ -44,6 +45,7 @@ module.exports = function() {
             directory: client + 'lib/',
         },
 
+        server: '*.*',
         temp: temp,
 
                 /**
@@ -57,6 +59,7 @@ module.exports = function() {
                 root: 'templates/'
             }
         },
+        defaultPort: 8100
     };
 
     config.getWiredepDefaultOptions = function() {
