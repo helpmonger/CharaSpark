@@ -53,6 +53,15 @@ var myApp = angular.module('starter', ['ionic',
     // Each state's controller can be found in controllers.js
     $stateProvider
 
+    //introduction page: make a wish
+        .state('intro', {
+        url: '/intro',
+        templateProvider: function($templateCache) {
+            return $templateCache.get('templates/introduction/intro.html');
+        },
+        controller: 'IntroCtrl'
+    })
+
     //landing page with intro and login options
         .state('landing', {
         url: '/landing',
