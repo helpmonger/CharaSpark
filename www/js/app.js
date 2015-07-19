@@ -98,7 +98,7 @@ var myApp = angular.module('starter', ['ionic',
             // there should be some checking... and async $http loading if not found
             return $templateCache.get('templates/auth/retrievePassword.html');
         },
-        controller: 'RetrievePasswordCtrl'
+        controller: 'RetrievePasswordCtrl as vm',
 
     })
 
