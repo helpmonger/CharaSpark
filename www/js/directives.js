@@ -32,11 +32,11 @@
     });
 
 
-    .directive('isUserNameUnique', function($templateCache){
-        return{
-            template: $templateCache.get('templates/directives/isUserNameUnique.html')
-        };
-    });
+    // .directive('isUserNameUnique', function($templateCache){
+    //     return{
+    //         template: $templateCache.get('templates/directives/isUserNameUnique.html')
+    //     };
+    // });
 
     
 })();
