@@ -3,15 +3,19 @@
 
     myApp.controller('ChatsCtrl', function($scope,
         $state,
-        StorageService,
-        DonationService,
-        userInfo) {
+        $stateParams,
+        ChatsService
+        ) {
 
         console.log('in chats ctrl');
-        // assign the user value from localStorage to local scope
-        // var user = ;
         
-
-    }); // end of AccountCtrl
+        $scope.chats = ChatsService.all();
+        $scope.remove = function(chat) {
+        	ChatsService.remove(chat);
+        };
+        
+        $scope.chat = ChatsService.get($stateParams.chatId);
+        
+    }); // end of ChatsCtrl
 
 })();
