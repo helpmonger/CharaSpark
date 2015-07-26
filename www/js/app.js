@@ -345,6 +345,16 @@ var myApp = angular.module('starter', ['ionic',
         }
       }
     })
+    
+    .state('tab.chat-detail', {
+      url: '/chats/:chatId',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/chats/chat-detail.html',
+          controller: 'ChatsCtrl'
+        }
+      }
+    })    
 // if none of the above states are matched, use this as the fallback
 $urlRouterProvider.otherwise('/landing');
 

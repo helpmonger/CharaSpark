@@ -85,7 +85,9 @@ span.aborted, span.cancelled {
     opacity: 0;
   }
 }
+
 */
+
 
 /* CSS for chats module */
 
@@ -280,5 +282,9 @@ a.autolinker {
 
 .loader .ion-loading-c {
   font-size: 64px;
+
 }
+
+
+
 
