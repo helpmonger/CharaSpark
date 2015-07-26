@@ -11,4 +11,3 @@ lib/
 *.log
 resources/
 build/
-www/.temp
