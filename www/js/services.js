@@ -18,14 +18,14 @@
                 return Restangular.all('register').post(form);
             },
 
-            forgotPassword: function(form){
+            forgotPassword: function(form) {
                 return Restangular.all('auth').all('forgotPassword').post(form);
             },
             // POST: /api/auth/changepassword
             // change user password
             changePassword: function(form) {
                 return TokenRestangular.all('auth').customPOST(form, 'changePassword');
-            }, 
+            },
         }; //end of return
     })
 
@@ -41,7 +41,7 @@
             // Put: /user/:userID
             // updates a single user
             update: function(form) {
-            	console.log('form is', form);
+                console.log('form is', form);
                 return TokenRestangular.one('user', form._id).customPUT(form);
             },
 
@@ -52,12 +52,12 @@
             },
             //POST: /user/isEmailUnique
             //returns true if email is not registered yet
-            isEmailUnique: function(form){
+            isEmailUnique: function(form) {
                 return Restangular.all('user').all('isEmailUnique').post(form);
             },
             //POST: /user/isUserNameUnique
             //returns true if username is not registered yet 
-            isUsernameUnique: function(form){
+            isUsernameUnique: function(form) {
                 return Restangular.all('user').all('isUserNameUnique').post(form);
             }
         }; //end of return
@@ -265,7 +265,7 @@
             getCurrentLocation: function() {
                 var deferred = $q.defer();
 
-                if($localStorage.location){
+                if ($localStorage.location) {
                     deferred.resolve($localStorage.location);
                 } else {
                     var geoLoc = [];
@@ -302,26 +302,26 @@
             },
             canFulfillerHaveContactInfo: function(wish) {
                 if (wish) {
-                    return wish.wishStatus === 'proceeding' || wish.wishStatus === 'completed' ;
+                    return wish.wishStatus === 'proceeding' || wish.wishStatus === 'completed';
                 }
                 return false;
             },
-            
+
             //determine which buttons should be showed on wishDetails.html
-            canWishmakerCancelWish: function(wish){
-            	if (wish) {
-                    return wish.wishStatus === 'new' || wish.wishStatus === 'pending' || wish.wishStatus ==='proceeding';
+            canWishmakerCancelWish: function(wish) {
+                if (wish) {
+                    return wish.wishStatus === 'new' || wish.wishStatus === 'pending' || wish.wishStatus === 'proceeding';
                 }
                 return false;
             },
-            canWishmakerConfirmWish: function(wish){
-            	if (wish) {
+            canWishmakerConfirmWish: function(wish) {
+                if (wish) {
                     return wish.wishStatus === 'pending';
                 }
                 return false;
             },
-            canWishmakerCompleteWish: function(wish){
-            	if (wish) {
+            canWishmakerCompleteWish: function(wish) {
+                if (wish) {
                     return wish.wishStatus === 'proceeding';
                 }
                 return false;
@@ -331,52 +331,83 @@
     })
 
     .factory('ChatsService', function() {
-    	  // Might use a resource here that returns a JSON array
+        // Might use a resource here that returns a JSON array
 
-    	  // Some fake testing data
-    	  var chats = [{
-    	    id: 0,
-    	    name: 'Ben Sparrow',
-    	    lastText: 'You on your way?',
-    	    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
-    	  }, {
-    	    id: 1,
-    	    name: 'Max Lynx',
-    	    lastText: 'Hey, it\'s me',
-    	    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
-    	  }, {
-    	    id: 2,
-    	    name: 'Adam Bradleyson',
-    	    lastText: 'I should buy a boat',
-    	    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
-    	  }, {
-    	    id: 3,
-    	    name: 'Perry Governor',
-    	    lastText: 'Look at my mukluks!',
-    	    face: 'https://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
-    	  }, {
-    	    id: 4,
-    	    name: 'Mike Harrington',
-    	    lastText: 'This is wicked good ice cream.',
-    	    face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
-    	  }];
+        // Some fake testing data
+        var chats = [{
+            id: 0,
+            name: 'Ben Sparrow',
+            lastText: 'You on your way?',
+            face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
+        }, {
+            id: 1,
+            name: 'Max Lynx',
+            lastText: 'Hey, it\'s me',
+            face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
+        }, {
+            id: 2,
+            name: 'Adam Bradleyson',
+            lastText: 'I should buy a boat',
+            face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+        }, {
+            id: 3,
+            name: 'Perry Governor',
+            lastText: 'Look at my mukluks!',
+            face: 'https://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
+        }, {
+            id: 4,
+            name: 'Mike Harrington',
+            lastText: 'This is wicked good ice cream.',
+            face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
+        }];
 
-    	  return {
-    	    all: function() {
-    	      return chats;
-    	    },
-    	    remove: function(chat) {
-    	      chats.splice(chats.indexOf(chat), 1);
-    	    },
-    	    get: function(chatId) {
-    	      for (var i = 0; i < chats.length; i++) {
-    	        if (chats[i].id === parseInt(chatId)) {
-    	          return chats[i];
-    	        }
-    	      }
-    	      return null;
-    	    }
-    	  };
-    	});    
-    
+        return {
+            all: function() {
+                return chats;
+            },
+            remove: function(chat) {
+                chats.splice(chats.indexOf(chat), 1);
+            },
+            get: function(chatId) {
+                for (var i = 0; i < chats.length; i++) {
+                    if (chats[i].id === parseInt(chatId)) {
+                        return chats[i];
+                    }
+                }
+                return null;
+            }
+        };
+    })
+
+    .factory('socket', function socket($rootScope, StorageService) {
+        var user = StorageService.getCurrentUser();
+        
+        var baseUrl = 'http://localhost:8080/';
+        
+        var socket = io.connect(baseUrl, {
+            query: user._id
+        });
+
+        return {
+            on: function(eventName, callback) {
+                socket.on(eventName, function() {
+                    var args = arguments;
+                    $rootScope.$apply(function() {
+                        callback.apply(socket, args);
+                    });
+                });
+            },
+            emit: function(eventName, data, callback) {
+                socket.emit(eventName, data, function() {
+                    var args = arguments;
+                    $rootScope.$apply(function() {
+                        if (callback) {
+                            callback.apply(socket, args);
+                        }
+                    });
+                })
+            }
+        };
+    });
+
 })();
