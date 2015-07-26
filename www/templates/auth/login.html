@@ -1,5 +1,6 @@
 
-<ion-view view-title="Log In">
+<ion-view view-title="Log In" class="login-background">
+
   <ion-content class="padding">
 
 <form name="login" ng-submit="Login()" novalidate>
@@ -20,24 +21,30 @@
      </label>   
 
     <label class="item item-input">
-      <button type="submit" class="button button-block button-positive" ng-disabled="login.$invalid">
-        Login
+      <button type="submit" class="button button-stable button-outline" ng-disabled="login.$invalid">
+        <b>Sign in</b>
       </button>
     </label>
     
     <label class="item item-input">
-      <p>Don't have an account yet? </p> &nbsp;
-       <button type="button" class="button button-clear button-positive" ng-click="register()">
+      <button type="button" class="button button-clear button-stable" ng-click="retrievePassword()">
+      Forgot password
+      </button>
+    </label>
+
+    <label class="item item-input">
+      <button type="submit" class="button button-stable button-outline">
+        <b>Facebook Login</b>
+      </button>
+    </label>
+
+    <label class="item item-input">
+       <button type="button" class="button button-clear button-stable" ng-click="register()">
       Sign Up
       </button>
     </label>
     
-    <label class="item item-input">
-      <p>Forgot Password ? </p> &nbsp;
-       <button type="button" class="button button-clear button-positive" ng-click="retrievePassword()">
-      Forgot password
-      </button>
-    </label>
+
     
     <!-- <label class="item item-input">
      
