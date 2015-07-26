@@ -37,6 +37,8 @@ span.aborted, span.cancelled {
 	color: #D8000C;
 }
 
+/* CSS for background images */
+
 .bgimg {    
     /*background: url(../img/makeawish.jpg);*/
     background-repeat: no-repeat;
@@ -49,6 +51,7 @@ span.aborted, span.cancelled {
     position: relative;
 }
 
+/* CSS for introduction /slide page images */
 .transparent {
   background: transparent !important;
 }
@@ -65,12 +68,12 @@ span.aborted, span.cancelled {
   left: 0;
   margin: auto;
   overflow: auto;
-  position: fixed;
+  /*position: fixed;*/
   right: 0;
   top: 0;
 }
 
-/* Fix modal backdrop for smaller devices */
+/* Fix modal backdrop for smaller devices 
 @media (max-width: 679px) {
   .active .modal-backdrop-bg {
     opacity: .5;
@@ -82,6 +85,9 @@ span.aborted, span.cancelled {
     opacity: 0;
   }
 }
+
+*/
+
 
 /* CSS for chats module */
 
@@ -276,4 +282,9 @@ a.autolinker {
 
 .loader .ion-loading-c {
   font-size: 64px;
+
 }
+
+
+
+

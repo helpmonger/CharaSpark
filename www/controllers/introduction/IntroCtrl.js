@@ -4,7 +4,7 @@ myApp.controller('IntroCtrl', ['$scope', '$ionicModal', '$ionicSlideBoxDelegate'
 		
   	$scope.aImages = [{
       	'src' : '../../img/donation.jpg', 
-      	'msg' : 'Swipe me to the left. Tap/click to close'
+      	'msg' : ''
     	}, {
         'src' : '../../img/makeawish.jpg', 
         'msg' : ''
@@ -41,9 +41,11 @@ myApp.controller('IntroCtrl', ['$scope', '$ionicModal', '$ionicSlideBoxDelegate'
     $scope.$on('modal.removed', function() {
       // Execute action
     });
+    /*
     $scope.$on('modal.shown', function() {
       console.log('Modal is shown!');
     });
+    */
 
     // Call this functions if you need to manually control the slides
     $scope.next = function() {
@@ -53,11 +55,12 @@ myApp.controller('IntroCtrl', ['$scope', '$ionicModal', '$ionicSlideBoxDelegate'
     $scope.previous = function() {
       $ionicSlideBoxDelegate.previous();
     };
-  
+    /*
   	$scope.goToSlide = function(index) {
       $scope.modal.show();
       $ionicSlideBoxDelegate.slide(index);
     }
+    */
   
     // Called each time the slide changes
     $scope.slideChanged = function(index) {
