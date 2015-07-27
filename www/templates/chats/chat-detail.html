@@ -4,7 +4,9 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="{{chat.name}}">
+<ion-view id="userMessagesView"
+          cache-view="false" 
+          view-title="<i class='icon ion-chatbubble user-messages-top-icon'></i> <div class='msg-header-username'>{{toUser.username='mzdu'}}</div>">
 
 
   <ion-content class="padding">

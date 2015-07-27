@@ -341,9 +341,9 @@
             face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
         }, {
             id: 1,
-            name: 'Max Lynx',
+            name: 'mzdu',
             lastText: 'Hey, it\'s me',
-            face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
+            face: 'https://avatars1.githubusercontent.com/u/1903316?v=3&s=460'
         }, {
             id: 2,
             name: 'Adam Bradleyson',
