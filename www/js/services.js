@@ -361,9 +361,37 @@
             face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
         }];
 
+        var chatSpecific = {
+            session: 0,
+            messages: [{
+                user_name: "fred",
+                message: "hello",
+                timestamp: "1437959711613"
+            }, {
+                user_name: "betty",
+                message: "hey how are you?",
+                timestamp: "1437959728420"
+            }, {
+                user_name: "fred",
+                message: "Fine, you?",
+                timestamp: "1437959751794"
+            }, {
+                user_name: "betty",
+                message: "About to go for a run.",
+                timestamp: "1437959761898"
+            }, {
+                user_name: "fred",
+                message: "Nice!",
+                timestamp: "1437959772737"
+            }]
+        };
+
         return {
             all: function() {
                 return chats;
+            },
+            allDetails: function() {
+                return chatSpecific;
             },
             remove: function(chat) {
                 chats.splice(chats.indexOf(chat), 1);
@@ -381,9 +409,9 @@
 
     .factory('socket', function socket($rootScope, StorageService) {
         var user = StorageService.getCurrentUser();
-        
+
         var baseUrl = 'http://localhost:8080/';
-        
+
         var socket = io.connect(baseUrl, {
             query: user._id
         });
