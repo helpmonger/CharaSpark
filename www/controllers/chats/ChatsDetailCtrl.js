@@ -17,7 +17,11 @@
         $scope.remove = function(chat) {
             ChatsService.remove(chat);
         };
-
+        
+        // get hard coded chat dialog for UI adjustment.
+        $scope.ChatsHistory = ChatsService.allDetails();
+        console.log('scope is', $scope);
+        
         $scope.chat = ChatsService.get($stateParams.chatId);
 
         var currUser = userInfo.user;

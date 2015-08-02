@@ -341,9 +341,9 @@
             face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
         }, {
             id: 1,
-            name: 'Max Lynx',
+            name: 'mzdu',
             lastText: 'Hey, it\'s me',
-            face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
+            face: 'https://avatars1.githubusercontent.com/u/1903316?v=3&s=460'
         }, {
             id: 2,
             name: 'Adam Bradleyson',
@@ -364,23 +364,23 @@
         var chatSpecific = {
             session: 0,
             messages: [{
-                user_name: "fred",
+                user_name: "mzdu",
                 message: "hello",
                 timestamp: "1437959711613"
             }, {
-                user_name: "betty",
+                user_name: "Daniel",
                 message: "hey how are you?",
                 timestamp: "1437959728420"
             }, {
-                user_name: "fred",
+                user_name: "mzdu",
                 message: "Fine, you?",
                 timestamp: "1437959751794"
             }, {
-                user_name: "betty",
-                message: "About to go for a run.",
+                user_name: "Daniel",
+                message: "A couple of weeks ago I came across this awesome angular-elastic directive377. I decided to integrate it into an app I am currently creating (coming out soon!). It works great with Ionic and adds that native feel to messaging similar to iMessage/Tinder. I've read that iMessage uses HTML/JS but I'm not sure on this though.",
                 timestamp: "1437959761898"
             }, {
-                user_name: "fred",
+                user_name: "mzdu",
                 message: "Nice!",
                 timestamp: "1437959772737"
             }]
@@ -391,7 +391,7 @@
                 return chats;
             },
             allDetails: function() {
-                return chatSpecific;
+                return chatSpecific.messages;
             },
             remove: function(chat) {
                 chats.splice(chats.indexOf(chat), 1);
