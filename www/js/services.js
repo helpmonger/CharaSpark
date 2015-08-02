@@ -391,7 +391,7 @@
                 return chats;
             },
             allDetails: function() {
-                return chatSpecific;
+                return chatSpecific.messages;
             },
             remove: function(chat) {
                 chats.splice(chats.indexOf(chat), 1);

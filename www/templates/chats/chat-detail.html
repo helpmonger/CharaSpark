@@ -16,9 +16,11 @@
     </p> -->
     
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="message in messages" type="item-text-wrap">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="message in ChatsHistory" type="item-text-wrap">
+        <!-- 
         <img ng-src="{{chat.face}}">
-        <h2>{{message.name}}</h2>
+         -->
+        <h2>{{message.user_name}}</h2>
         <p>{{message.message}}</p>
         <p>{{message.timestamp}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
