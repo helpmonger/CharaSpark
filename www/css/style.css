@@ -37,7 +37,7 @@ span.aborted, span.cancelled {
 	color: #D8000C;
 }
 
-/* CSS for background images */
+/* CSS for login page background images */
 
 .login-background {    
     background: url(../img/login.jpg);
@@ -54,6 +54,35 @@ span.aborted, span.cancelled {
     top: 0;
     /*position: relative;*/
 }
+
+/* CSS for login page buttons */
+  .button.button-charaspark {
+    border-color: #eb637a;
+    background-color: #f8f8f8;
+    color: #444; }
+    .button.button-charaspark:hover {
+      color: #444;
+      text-decoration: none; }
+    .button.button-charaspark.active, .button.button-charaspark.activated {
+      border-color: #a2a2a2;
+      background-color: #e5e5e5;
+      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
+    .button.button-charaspark.button-clear {
+      border-color: transparent;
+      background: none;
+      box-shadow: none;
+      color: #eb637a; }
+    .button.button-charaspark.button-icon {
+      border-color: transparent;
+      background: none; }
+    .button.button-charaspark.button-outline {
+      border-color: #eb637a;
+      background: transparent;
+      color: #eb637a; }
+      .button.button-charaspark.button-outline.active, .button.button-charaspark.button-outline.activated {
+        background-color: #eb637a;
+        box-shadow: none;
+        color: #fff; }
 
 /* CSS for introduction /slide page images */
 .transparent {
@@ -76,6 +105,8 @@ span.aborted, span.cancelled {
   right: 0;
   top: 0;
 }
+
+
 
 /* Fix modal backdrop for smaller devices 
 @media (max-width: 679px) {
