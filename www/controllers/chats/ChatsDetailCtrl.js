@@ -9,6 +9,8 @@
         userInfo
     ) {
 
+        $scope.messages = '';
+
         var to = '';
 
         console.log('in chats ctrl', userInfo);
@@ -49,7 +51,7 @@
                 msDate: new Date().getTime(),
                 message: draft.message,
                 name: currUser.user_name,
-                to: to === '' ? to : 'testuser'
+                to: to === '' ? 'testuser' : to
                 // channel: $scope.activeChannel
             });
             // console.log('after emit');
@@ -62,14 +64,23 @@
         });
 
         socket.on('update', function(msg) {
-            // console.log('user:joined');
-            $scope.messages.push(msg);
+            console.log('update msg', msg);
+            $scope.ChatsHistory.push({
+                            user_name: 'server',
+                            message: msg,
+                            timestamp: new Date().getTime()
+                        });
+        });
+
+            socket.on('send', function(msg) {
+            console.log('update msg', msg);
+            $scope.ChatsHistory.push(msg);
         });
 
         
-         socket.on('chatMsg', function(msg) {
-            // console.log('user:joined');
-            $scope.messages.push(msg);
+         socket.on('chatMsg', function(msgObj) {
+            console.log('chat msg', msgObj);
+            $scope.ChatsHistory.push(msgObj);
         });
   
 
