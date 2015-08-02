@@ -364,23 +364,23 @@
         var chatSpecific = {
             session: 0,
             messages: [{
-                user_name: "fred",
+                user_name: "mzdu",
                 message: "hello",
                 timestamp: "1437959711613"
             }, {
-                user_name: "betty",
+                user_name: "Daniel",
                 message: "hey how are you?",
                 timestamp: "1437959728420"
             }, {
-                user_name: "fred",
+                user_name: "mzdu",
                 message: "Fine, you?",
                 timestamp: "1437959751794"
             }, {
-                user_name: "betty",
-                message: "About to go for a run.",
+                user_name: "Daniel",
+                message: "A couple of weeks ago I came across this awesome angular-elastic directive377. I decided to integrate it into an app I am currently creating (coming out soon!). It works great with Ionic and adds that native feel to messaging similar to iMessage/Tinder. I've read that iMessage uses HTML/JS but I'm not sure on this though.",
                 timestamp: "1437959761898"
             }, {
-                user_name: "fred",
+                user_name: "mzdu",
                 message: "Nice!",
                 timestamp: "1437959772737"
             }]
