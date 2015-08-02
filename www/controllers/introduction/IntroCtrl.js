@@ -3,10 +3,10 @@
 myApp.controller('IntroCtrl', ['$scope', '$ionicModal', '$ionicSlideBoxDelegate', function ($scope, $ionicModal, $ionicSlideBoxDelegate) {
 		
   	$scope.aImages = [{
-      	'src' : '../../img/donation.jpg', 
+      	'src' : '../../img/introMakeAWish.jpg', 
       	'msg' : ''
     	}, {
-        'src' : '../../img/makeawish.jpg', 
+        'src' : '../../img/introDonation.jpg', 
         'msg' : ''
       }, { 
         'src' : '../../img/logo.png', 
