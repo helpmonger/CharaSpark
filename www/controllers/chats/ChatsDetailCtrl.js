@@ -6,7 +6,8 @@
         $stateParams,
         ChatsService,
         socket,
-        userInfo
+        userInfo,
+        UserService
     ) {
 
         console.log('in chats ctrl', userInfo);
@@ -19,6 +20,12 @@
         // get hard coded chat dialog for UI adjustment.
         $scope.ChatsHistory = ChatsService.allDetails();
         console.log('scope is', $scope);
+        
+        $scope.viewProfile = function(message){
+        	// for testing only
+        	UserService.get('55abdf9a5ab2b1e01ec07026');
+        	
+        };
         
         $scope.chat = ChatsService.get($stateParams.chatId);
 
