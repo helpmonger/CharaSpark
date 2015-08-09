@@ -25,9 +25,14 @@
         $scope.ChatsHistory = ChatsService.allDetails();
         console.log('scope is', $scope);
         
-        $scope.viewProfile = function(message){
+        $scope.viewProfile = function(userId){
         	// for testing only
-        	UserService.get('55abdf9a5ab2b1e01ec07026');
+        	
+        	var userId = '55bf68f7d6aa8c0e229c69bb';
+        	console.log("viewProfile activated");
+        	
+        	$state.go('tab.showProfile',{'userId': userId});
+        	
         	
         };
         

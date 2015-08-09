@@ -123,6 +123,10 @@ span.aborted, span.cancelled {
 
 */
 
+/* CSS for wishSummary vertical bar*/
+.colorbar-vertical {
+	width: 8px;
+}
 
 /* CSS for chats module */
 
