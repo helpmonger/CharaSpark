@@ -445,7 +445,7 @@
             },
             firstTimeUserCheck: function(){
                 //first screen - check if a user need to see the tutorial
-                console.log($localStorage['firstTime']);
+                //console.log($localStorage['firstTime']);
                 if ($localStorage['firstTime'] != "true") {
                     $localStorage['firstTime'] = "true";  
                     $state.go('intro');                 
