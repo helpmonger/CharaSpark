@@ -8,10 +8,8 @@ myApp.controller('IntroCtrl', ['$scope', '$ionicModal', '$ionicSlideBoxDelegate'
     	}, {
         'src' : '../../img/introDonation.jpg', 
         'msg' : ''
-      }, { 
-        'src' : '../../img/logo.png', 
-        'msg' : ''
-    }];
+      }
+    ];
   
     $ionicModal.fromTemplateUrl('image-modal.html', {
       scope: $scope,
