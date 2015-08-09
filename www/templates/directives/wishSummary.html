@@ -1,12 +1,57 @@
-<div class="item-content" ng-class="wish.wishStatus">
-<div style="float:left">
-	Wish title: {{wish.title}} <br /> 
-	Charity: {{wish._charity.name}} <br />
-	Amount: {{wish._donation.amount| currency}} <br/> 
-	Date: {{wish.createdDate|date: "short" }}
+<!-- <div class="item-content" ng-class="wish.wishStatus">
+
+<div class="row">
+  <div class="col col-90">
+  	<b><font size="5">{{wish.title}}</font></b> 	
 	
-</div>
-<div style="float:right">
+  		<div class="item item-text-wrap">
+    	Charity1: {{wish._charity.name}}
+  		</div>
+
+  	<div class="card item-text-wrap">
+	    <div class="item">
+	      Charity2: {{wish._charity.name}}
+	    </div>
+	</div>
+
+
+	<ion-item class="wrap">
+	  Charity3: {{wish._charity.name}}
+	</ion-item>
+
+	
+	Donation: {{wish._donation.amount| currency}} <br/> 
+	<p>Detail1: {{wish.description}}</p>
+
+	<div class="item item-text-wrap">
+    	Detail2: {{wish.description}}
+  		</div>
+  </div>
+  
+  <div class="col">
+  	{{wish.createdDate|date: "shortDate" }} <br />
     <span ng-class="wish.wishStatus">{{wish.wishStatus}}</span>
+  </div>
 </div>
+
+-->
+
+<div class="row">
+	  <div class="colorbar-vertical" ng-class="wish.wishStatus"> </div>
+
+  	  <div class="col col-67">
+  	  	<!--to wrap context <div class="item item-text-wrap">-->
+	    <b><font size="4">{{wish.title}}</font></b> <br/>
+	    <p>Charity: {{wish._charity.name}}<br/>
+	    Donation: {{wish._donation.amount| currency}}<br/>
+		<!--</div>-->
+	    Detail: {{wish.description}}</p>
+  	  </div>
+
+	  <div class="col">
+	  	{{wish.createdDate|date: "shortDate" }} <br />
+	    <span ng-class="wish.wishStatus">{{wish.wishStatus}}</span>
+	  </div>	  
 </div>
+
+

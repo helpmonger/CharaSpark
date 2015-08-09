@@ -6,8 +6,13 @@
         $stateParams,
         ChatsService,
         socket,
-        userInfo
+        userInfo,
+        UserService
     ) {
+
+        $scope.messages = '';
+
+        var to = '';
 
         console.log('in chats ctrl', userInfo);
 
@@ -15,7 +20,17 @@
         $scope.remove = function(chat) {
             ChatsService.remove(chat);
         };
-
+        
+        // get hard coded chat dialog for UI adjustment.
+        $scope.ChatsHistory = ChatsService.allDetails();
+        console.log('scope is', $scope);
+        
+        $scope.viewProfile = function(message){
+        	// for testing only
+        	UserService.get('55abdf9a5ab2b1e01ec07026');
+        	
+        };
+        
         $scope.chat = ChatsService.get($stateParams.chatId);
 
         var currUser = userInfo.user;
@@ -30,15 +45,6 @@
 
         //handle responses from server
 
-        socket.on('message:received', function messageReceived(message) {
-            console.log('server says: ', message.message);
-            //$scope.messages.push(message);
-        });
-
-        socket.on('user:joined', function(user) {
-            console.log(user.message);
-            // $scope.messages.push(user);
-        });
 
 
         //send message to server
@@ -48,14 +54,42 @@
                 return;
             }
             console.log('draft is: ', draft);
-            socket.emit('message:send', {
+            socket.emit('send', {
+                msDate: new Date().getTime(),
                 message: draft.message,
                 name: currUser.user_name,
+                to: to === '' ? 'testuser' : to
                 // channel: $scope.activeChannel
             });
             // console.log('after emit');
             $scope.input.message = '';
         };
+
+
+        socket.emit("joinserver", {
+            name: currUser.user_name
+        });
+
+        socket.on('update', function(msg) {
+            console.log('update msg', msg);
+            $scope.ChatsHistory.push({
+                            user_name: 'server',
+                            message: msg,
+                            timestamp: new Date().getTime()
+                        });
+        });
+
+            socket.on('send', function(msg) {
+            console.log('update msg', msg);
+            $scope.ChatsHistory.push(msg);
+        });
+
+        
+         socket.on('chatMsg', function(msgObj) {
+            console.log('chat msg', msgObj);
+            $scope.ChatsHistory.push(msgObj);
+        });
+  
 
 
     }); // end of ChatsCtrl
