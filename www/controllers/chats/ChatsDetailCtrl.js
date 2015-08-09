@@ -70,10 +70,21 @@
             // console.log('after emit');
             $scope.input.message = '';
             
+            keepKeyboardOpen();
             viewScroll.scrollBottom();
         };
-
-
+        
+        var footerBar = document.body.querySelector('#userMessagesView .bar-footer');
+        var scroller = document.body.querySelector('#userMessagesView .scroll-content');
+        var txtInput = angular.element(footerBar.querySelector('textarea'));
+        
+        function keepKeyboardOpen() {
+            txtInput.one('blur', function() {
+              txtInput[0].focus();
+            });
+          }
+        
+        
         socket.emit("joinserver", {
             name: currUser.user_name
         });
