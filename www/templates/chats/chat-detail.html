@@ -16,7 +16,7 @@
     </p> -->
     
 <!--       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="message in ChatsHistory" type="item-text-wrap"> -->
-      <div class="message-wrapper" ng-repeat="message in ChatsHistory" type="item-text-wrap">
+      <div class="message-wrapper" ng-repeat="message in ChatsHistory track by message.timestamp" type="item-text-wrap">
                 <div ng-if="message.user_name == 'David'">
                     <img class="profile-pic left" 
                           ng-src="{{message.face}}" ng-click="viewProfile(message._id)"/>

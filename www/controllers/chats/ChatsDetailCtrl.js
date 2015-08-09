@@ -48,6 +48,13 @@
         });
 
 
+        socket.emit("joinserver", {
+            name: currUser.user_name
+        });
+
+
+
+
         //handle responses from server
 
 
@@ -58,22 +65,24 @@
             if (!draft.message || draft.message == null || typeof draft == 'undefined' || draft.length == 0) {
                 return;
             }
-            console.log('draft is: ', draft);
-            socket.emit('send', {
+            
+
+            var chatMsg = {
                 msDate: new Date().getTime(),
                 message: draft.message,
                 name: currUser.user_name,
-                to: to === '' ? 'testuser' : to
+                to: $scope.chat.name
+                //to === '' ? 'testuser' : to
                 // channel: $scope.activeChannel
-            });
+            };
+
+            console.log('chatMsg is: ', chatMsg);
+
+            socket.emit('send', chatMsg);
             // console.log('after emit');
             $scope.input.message = '';
         };
 
-
-        socket.emit("joinserver", {
-            name: currUser.user_name
-        });
 
         socket.on('update', function(msg) {
             console.log('update msg', msg);
@@ -86,14 +95,22 @@
 
             socket.on('send', function(msg) {
             console.log('send msg', msg);
-            $scope.ChatsHistory.push(msg);
+            // $scope.ChatsHistory.push(msg);
+            FormatAndSendMessage(msg);
         });
 
         
-         socket.on('chatMsg', function(msgObj) {
-            console.log('chat msg', msgObj);
-            $scope.ChatsHistory.push(msgObj);
+         socket.on('chatMsg', function(msg) {
+            console.log('chat msg', msg);
+            FormatAndSendMessage(msg);
         });
+
+         function FormatAndSendMessage(msg){
+            msg.face = "https://avatars0.githubusercontent.com/u/1282474?v=3&s=460";
+            msg.user_name = currUser.user_name;
+            msg.timestamp = new Date().getTime();
+            $scope.ChatsHistory.push(msg);
+         }
   
 
 
