@@ -28,12 +28,14 @@ var myApp = angular.module('starter', ['ionic',
                 // org.apache.cordova.statusbar required
                 window.StatusBar.styleLightContent();
             }
+
         });
 
         $interval(function() {
             delete localStorage["location"];
             // delete all the required localStorage variables by specifying their keys
         }, 1000 * 60 * 1); //delets all location localStorage vars afer 1 minute
+       
     })
 
 .config(function($stateProvider, $urlRouterProvider, RestangularProvider, $ionicConfigProvider) {
@@ -389,5 +391,14 @@ var myApp = angular.module('starter', ['ionic',
     
         // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
+
+    //first screen - check if they need to see the tutorial
+    //the follwing works, but for logic reasons, put the code in services.js and AuthCtrl.js
+   /* if (window.localStorage['firstTime'] === "true") {
+        $urlRouterProvider.otherwise('/login');
+    } else {
+        window.localStorage['firstTime'] = "true";  
+        $urlRouterProvider.otherwise('/intro');                 
+    }*/
 
 });

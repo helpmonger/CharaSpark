@@ -6,7 +6,7 @@
         $state,
         StorageService) {
 
-        console.log('in login');
+        //console.log('in login');
         //if logged in, go to landing
         if (StorageService.getCurrentUser()) {
             console.log('redirecting to home...');
@@ -16,6 +16,8 @@
         }
 
         $scope.user = {};
+        
+        StorageService.firstTimeUserCheck();
 
         $scope.Login = function() {
             var promise = AuthService.login($scope.user);
