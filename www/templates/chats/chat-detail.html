@@ -9,7 +9,7 @@
           view-title="<i class='icon ion-chatbubble user-messages-top-icon'></i> <div class='msg-header-username'>{{toUser.username='mzdu'}}</div>">
 
 
-  <ion-content class="padding" has-bouncing="true" class="has-header has-footer">
+  <ion-content class="padding" has-bouncing="true" class="has-header has-footer" delegate-handle="userMessageScroll">
 <!--     <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
     <p>
       {{chat.lastText}}

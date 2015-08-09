@@ -4,6 +4,7 @@
     myApp.controller('ChatsDetailCtrl', function($scope,
         $state,
         $stateParams,
+        $ionicScrollDelegate,
         ChatsService,
         socket,
         userInfo,
@@ -11,9 +12,9 @@
     ) {
 
         $scope.messages = '';
-
+        var viewScroll = $ionicScrollDelegate.$getByHandle('userMessageScroll');
         var to = '';
-
+        
         console.log('in chats ctrl', userInfo);
 
         $scope.chats = ChatsService.all();
@@ -81,8 +82,25 @@
             socket.emit('send', chatMsg);
             // console.log('after emit');
             $scope.input.message = '';
+            
+            keepKeyboardOpen();
+            viewScroll.scrollBottom();
         };
-
+        
+        var footerBar = document.body.querySelector('#userMessagesView .bar-footer');
+        var scroller = document.body.querySelector('#userMessagesView .scroll-content');
+        var txtInput = angular.element(footerBar.querySelector('textarea'));
+        
+        function keepKeyboardOpen() {
+            txtInput.one('blur', function() {
+              txtInput[0].focus();
+            });
+          }
+        
+        
+        socket.emit("joinserver", {
+            name: currUser.user_name
+        });
 
         socket.on('update', function(msg) {
             console.log('update msg', msg);
