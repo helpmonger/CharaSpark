@@ -80,7 +80,7 @@
         });
 
             socket.on('send', function(msg) {
-            console.log('update msg', msg);
+            console.log('send msg', msg);
             $scope.ChatsHistory.push(msg);
         });
 
