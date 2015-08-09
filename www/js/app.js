@@ -307,8 +307,8 @@ var myApp = angular.module('starter', ['ionic',
                 return user;
             }
         } //end of resolve
-    })
-
+    })  
+    
     .state('tab.editprofile', {
         url: '/editprofile',
         views: {
@@ -363,6 +363,30 @@ var myApp = angular.module('starter', ['ionic',
                 }
             } //end of resolve
         })
+        
+    .state('tab.showProfile', {
+        url: '/account/:userId',
+        views: {
+            'tab-chats': {
+//                templateProvider: function($templateCache) {
+//                    // simplified, expecting that the cache is filled
+//                    // there should be some checking... and async $http loading if not found
+//                    return $templateCache.get('templates/account/showProfile.html');
+//                },
+            	templateUrl: 'templates/account/showProfile.html',
+                controller: 'ShowProfileCtrl'
+            }
+        },
+        // cache: false,
+        resolve: {
+            userInfo: function(StorageService) {
+                var user = StorageService.getCurrentUser();
+                console.log('resolved ', user);
+                return user;
+            }
+        } //end of resolve
+    })  
+    
         // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
 
