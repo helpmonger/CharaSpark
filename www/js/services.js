@@ -260,7 +260,7 @@
             face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
         }, {
             id: 1,
-            name: 'mzdu',
+            name: 'xxxman',
             lastText: 'Hey, it\'s me',
             face: 'https://avatars1.githubusercontent.com/u/1903316?v=3&s=460'
         }, {

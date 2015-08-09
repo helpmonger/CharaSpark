@@ -4,6 +4,7 @@
     myApp.controller('ChatsDetailCtrl', function($scope,
         $state,
         $stateParams,
+        $ionicScrollDelegate,
         ChatsService,
         socket,
         userInfo,
@@ -11,9 +12,9 @@
     ) {
 
         $scope.messages = '';
-
+        var viewScroll = $ionicScrollDelegate.$getByHandle('userMessageScroll');
         var to = '';
-
+        
         console.log('in chats ctrl', userInfo);
 
         $scope.chats = ChatsService.all();
@@ -68,6 +69,8 @@
             });
             // console.log('after emit');
             $scope.input.message = '';
+            
+            viewScroll.scrollBottom();
         };
 
 
