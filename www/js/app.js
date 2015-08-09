@@ -54,7 +54,7 @@ var myApp = angular.module('starter', ['ionic',
     $stateProvider
 
     //introduction page: make a wish
-        .state('intro', {
+    .state('intro', {
         url: '/intro',
         templateProvider: function($templateCache) {
             return $templateCache.get('templates/introduction/intro.html');
@@ -63,6 +63,7 @@ var myApp = angular.module('starter', ['ionic',
     })
 
     //landing page with intro and login options
+    /*
     .state('landing', {
         url: '/landing',
         templateProvider: function($templateCache) {
@@ -72,7 +73,7 @@ var myApp = angular.module('starter', ['ionic',
         },
         controller: 'LandingCtrl'
     })
-
+    */
 
     // Allows the user to login
     .state('login', {
@@ -363,6 +364,6 @@ var myApp = angular.module('starter', ['ionic',
             } //end of resolve
         })
         // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/landing');
+    $urlRouterProvider.otherwise('/login');
 
 });
