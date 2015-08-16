@@ -1,6 +1,16 @@
 <ion-view view-title="Chats">
   <ion-content>
     <ion-list>
+     <!-- 
+      <label class="item item-input">
+	    <i class="icon ion-search placeholder-icon"></i>
+	    <input type="text" placeholder="New Conversation">
+	   
+	    <i class="icon ion-android-person-add placeholder-icon"></i>
+	  
+	    
+	  </label>
+       -->
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
         <img ng-src="{{chat.face}}">
         <h2>{{chat.name}}</h2>

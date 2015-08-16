@@ -1,40 +1,68 @@
 
-    <ion-view>
-      <!--
+
+<ion-view>
+
+<ion-content class="padding" scroll="false">
+
+<div class="bar bar-header">
+  <h1 class="title">Introduction</h1>
+  <button class="button button-charaspark button-outline startapp" ng-click="goLogin()">Start App</button>
+</div>
+
+    <ion-slide-box pager-click = "navSlide(index)" show-pager="true" on-slide-changed="slideChanged(index)"> 
+      <ion-slide ng-repeat="oImage in aImages">
+        <img ng-src="{{oImage.src}}" class="fullscreen-image" />
+      </ion-slide>
+    </ion-slide-box>
+
+</ion-content>
+</ion-view>
+    <!--<ion-view>
+      
       <div class="bar bar-header bar-positive">
           <h1 class="title">Header</h1>
       </div>
-      -->
+      
       <ion-content class="has-header">
-          <div class="card">
+           <div class="card">
               
-              <!--<div class="item item-divider">
+              <div class="item item-divider">
                   Fullscreen images + Slide Box
               </div>
-              -->
+              
               <div class="item item-text-wrap">
                   <div class="button-bar">
                       <a class="button" ng-click="openModal()">Show images from start</a>
                   </div>
               </div>
-              <!--
+              
               <div class="item item-text-wrap">
                   <div class="button-bar">
                       <a class="button" ng-click="goToSlide(1)">Show second imagen</a>
                       <a class="button" ng-click="goToSlide(2)">Show third imagen</a>
                   </div>
               </div>
-              -->
           </div>
+      
+
+            <div class="item item-text-wrap">
+                  <div class="button-bar">
+                      <a class="button" ng-click="openModal()">Show images from start</a>
+                  </div>
+              </div>
+
 
           <script id="image-modal.html" type="text/ng-template">
+
+          
+          <script type="text/ng-template">
               <div class="modal image-modal transparent"> 
-                   <!--this will enable click and close image function ng-click="closeModal()"> -->
-                <ion-slide-box on-slide-changed="slideChanged(index)" 
+                   //this will enable click and close image function// ng-click="closeModal()">
+                <ion-slide-box on-slide-changed="slideChanged(index)"> 
                                show-pager="false">
                   <ion-slide ng-repeat="oImage in aImages">
                     <img ng-src="{{oImage.src}}" class="fullscreen-image" />
-                    <!--<p class="info">{{oImage.msg}}</p> -->
+                    <p class="info">{{oImage.msg}}</p>
                   </ion-slide>
                 </ion-slide-box>
               </div>
@@ -43,3 +71,4 @@
         </ion-content>
       
     </ion-view>
+  -->
