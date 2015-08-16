@@ -3,7 +3,7 @@
 
 <ion-view ion-title="CharaSpark">
 
- <ion-nav-title>
+    <ion-nav-title>
       <span>Make A Wish</span>
       <img src="./img/charaspark_logo_400.png" height="50%" style="float:left; margin-top: 13px">
     </ion-nav-title>
@@ -15,7 +15,7 @@
       </div>
     </div> -->
     <br>
-        <h3>Make A Difference Today</h3>
+        <h3 class="charaspark-color" align="center">Make A Difference Today</h3>
 
   <form name="wishForm" ng-submit="MakeAWish()" novalidate>
       
@@ -27,7 +27,7 @@
           <span class="error">Wish Title is required</span>
         </label>
 
-         <label class="item item-input">
+         <label class="item item-input item-stacked-label">
            <span class="input-label">Wish Detail</span>
            <input type="text" name="wishDesc" placeholder="Friendly and beautiful dog" ng-model="wish.description" required>
          </label>  
@@ -72,8 +72,8 @@
      
       </div> <!-- end of list -->
 
-       <button type="submit" class="button button-block button-positive" ng-disabled="wishForm.$invalid">
-         Make a Wish
+       <button type="submit" class="button button-charaspark button-outline" ng-disabled="wishForm.$invalid">
+         <b>Make a Wish</b>
       </button>
   </form>
 

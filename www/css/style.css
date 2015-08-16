@@ -132,6 +132,7 @@ label.item{
   color: #eb637a;
 }
 
+/*
 .bottombox{
   height: 50px;
   padding-bottom: 10px;
@@ -145,13 +146,20 @@ form.loginform{
 .icon.ion-ios-email-outline, .icon.ion-ios-locked-outline{
   color: #eb637a;
 }
+*/
 
+/* set placeholder text to the charaspark color
 input::-webkit-input-placeholder {
  color: #eb637a;
 }
+*/
 
 label.userpw{
   width:60%;
+}
+
+.charaspark-color{
+  color: #eb637a;
 }
 
 /* Fix modal backdrop for smaller devices 
