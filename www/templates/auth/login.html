@@ -6,14 +6,14 @@
 <form name="login" ng-submit="Login()" novalidate>
   <div class="list">
 
-  <label class="item item-input"> 
-      <span class="input-label">User Name</span>
-      <input name="username" type="text" placeholder="enter your username" ng-model="user.username" required>
-  </label>
-    
+    <label class="item item-input">
+      <i class="icon ion-ios-email-outline"></i>
+      <input name="username" type="text" placeholder="Username" ng-model="user.username" required>
+    </label>
+ 
      <label class="item item-input">
-       <span class="input-label">Password</span>
-       <input type="password" placeholder="enter your password" ng-model="user.password" required>
+      <i class="icon ion-ios-locked-outline"></i>
+       <input type="password" placeholder="Password" ng-model="user.password" required>
      </label> 
 
     <label class="item item-input" ng-show="error" >
@@ -28,30 +28,10 @@
     
     <label class="item item-input">
       <button type="button" class="button button-clear button-charaspark" ng-click="retrievePassword()">
-      Forgot password
+      <u>Forgot password?</u>
       </button>
     </label>
-
-    <label class="item item-input">
-      <button type="submit" class="button button-charaspark button-outline">
-        <b>Facebook Login</b>
-      </button>
-    </label>
-
-    <label class="item item-input">
-      <button type="submit" class="button button-charaspark button-outline">
-        <b>Gmail Login</b>
-      </button>
-    </label>
-
-    <label class="item item-input">
-       <button type="button" class="button button-clear button-charaspark" ng-click="register()">
-      Sign Up
-      </button>
-    </label>
-    
-
-    
+  
     <!-- <label class="item item-input">
      
     </label> -->
@@ -59,5 +39,28 @@
   </div>
 
 </form>
+
+   <div class="bottombox">
+      <hr/>
+
+      <label class="item item-input">
+      <button type="submit" class="button button-charaspark button-outline icon-left ion-social-facebook" >
+        <b>Sign in with Facebook</b>
+      </button>
+    </label>
+
+    <label class="item item-input">
+      <button type="submit" class="button button-charaspark button-outline icon-left ion-social-google">
+        <b>Sign in with Google</b>
+      </button>
+    </label>
+
+    <label class="item item-input">
+       <button type="button" class="button button-clear button-charaspark" ng-click="register()">
+      <u>New here? Sign up.</u>
+      </button>
+    </label>
+    </div>
+    
   </ion-content>
 </ion-view>
