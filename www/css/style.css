@@ -91,6 +91,9 @@ span.aborted, span.cancelled {
         color: #fff; 
       }
 
+.button.button-charaspark.button-outline.startapp{
+  width: auto;
+}
 /* CSS for introduction /slide page images */
 .transparent {
   background: transparent !important;
@@ -126,12 +129,26 @@ label.item{
 .dashline{
 	height: 5px;
 	width: 80%;
-	border-style: none none dotted;
+	border-style: none none dashed;
+  color: #eb637a;
 }
 
 .bottombox{
   height: 50px;
   padding-bottom: 10px;
+  margin-top: 60%;
+}
+
+form.loginform{
+  height:100%;
+}
+
+.icon.ion-ios-email-outline, .icon.ion-ios-locked-outline{
+  color: #eb637a;
+}
+
+input::-webkit-input-placeholder {
+ color: #eb637a;
 }
 
 /* Fix modal backdrop for smaller devices 
