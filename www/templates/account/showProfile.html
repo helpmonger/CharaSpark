@@ -1,0 +1,22 @@
+<ion-view view-title="ShowProfile">
+ <ion-nav-title>
+      <span>Account</span>
+      <img src="./img/charaspark_logo_400.png" height="50%" style="float:left; margin-top: 13px">
+    </ion-nav-title>
+
+  <ion-content>
+   <div class="list">
+
+       <!-- should show info here-->
+<ul class="list">
+    <li class="item" ng-model="user.user_name">Username: {{user.user_name}}</li>
+    <li class="item" ng-model="user.email">Email: {{user.email}}</li>
+    <li class="item">Total Donated: {{totalDonation | currency}}</li>
+</ul>
+
+
+</div> 
+  </ion-content>
+</ion-view>
+
+

@@ -1,6 +1,6 @@
-
+/*
 (function(){
-myApp.controller('IntroCtrl', ['$scope', '$ionicModal', '$ionicSlideBoxDelegate', function ($scope, $ionicModal, $ionicSlideBoxDelegate) {
+myApp.controller('IntroCtrl', ['$scope', '$ionicModal', '$ionicSlideBoxDelegate', function ($scope, $ionicModal, $ionicSlideBoxDelegate, $state) {
 		
   	$scope.aImages = [{
       	'src' : '../../img/introMakeAWish.jpg', 
@@ -8,10 +8,9 @@ myApp.controller('IntroCtrl', ['$scope', '$ionicModal', '$ionicSlideBoxDelegate'
     	}, {
         'src' : '../../img/introDonation.jpg', 
         'msg' : ''
-      }, { 
-        'src' : '../../img/logo.png', 
-        'msg' : ''
-    }];
+      }
+    ];
+  
   
     $ionicModal.fromTemplateUrl('image-modal.html', {
       scope: $scope,
@@ -41,11 +40,11 @@ myApp.controller('IntroCtrl', ['$scope', '$ionicModal', '$ionicSlideBoxDelegate'
     $scope.$on('modal.removed', function() {
       // Execute action
     });
-    /*
+    
     $scope.$on('modal.shown', function() {
       console.log('Modal is shown!');
     });
-    */
+    
 
     // Call this functions if you need to manually control the slides
     $scope.next = function() {
@@ -55,18 +54,48 @@ myApp.controller('IntroCtrl', ['$scope', '$ionicModal', '$ionicSlideBoxDelegate'
     $scope.previous = function() {
       $ionicSlideBoxDelegate.previous();
     };
-    /*
+    
   	$scope.goToSlide = function(index) {
       $scope.modal.show();
       $ionicSlideBoxDelegate.slide(index);
     }
-    */
+    
   
     // Called each time the slide changes
     $scope.slideChanged = function(index) {
       $scope.slideIndex = index;
+      if(index==1){$state.go('login');}
     };
   }
 ]);
+
+})();
+*/
+
+
+(function(){
+
+  myApp.controller('IntroCtrl', function ($scope, $ionicSlideBoxDelegate, $state) {
+      
+      $scope.aImages = [{
+          'src' : '../../img/introMakeAWish.jpg', 
+        }, {
+          'src' : '../../img/introDonation.jpg', 
+        }, {
+          'src' : '../../img/introDonation.jpg', 
+        }
+      ];
+
+      //click on the small round button on the buttom of the introduction, goes to the corresponding page
+      $scope.navSlide = function(index) {
+        $ionicSlideBoxDelegate.slide(index); //500ms transition
+        //$scope.modal.show();
+      }
+
+      $scope.goLogin = function(){
+        $state.go('login');
+      }
+
+    });
 
 })();

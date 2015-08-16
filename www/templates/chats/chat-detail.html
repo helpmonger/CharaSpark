@@ -9,17 +9,17 @@
           view-title="<i class='icon ion-chatbubble user-messages-top-icon'></i> <div class='msg-header-username'>{{toUser.username='mzdu'}}</div>">
 
 
-  <ion-content class="padding" has-bouncing="true" class="has-header has-footer">
+  <ion-content class="padding" has-bouncing="true" class="has-header has-footer" delegate-handle="userMessageScroll">
 <!--     <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
     <p>
       {{chat.lastText}}
     </p> -->
     
 <!--       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="message in ChatsHistory" type="item-text-wrap"> -->
-      <div class="message-wrapper" ng-repeat="message in ChatsHistory" type="item-text-wrap">
+      <div class="message-wrapper" ng-repeat="message in ChatsHistory track by message.timestamp" type="item-text-wrap">
                 <div ng-if="message.user_name == 'David'">
                     <img class="profile-pic left" 
-                          ng-src="{{message.face}}" ng-click="viewProfile(message)"/>
+                          ng-src="{{message.face}}" ng-click="viewProfile(message._id)"/>
       
                       <div class="chat-bubble left">
 <!--                           <div class="message" ng-bind-html="message.text | nl2br" autolinker> -->  
@@ -38,7 +38,7 @@
                   <div ng-if="message.user_name != 'David'">
                     
                        <img class="profile-pic right" 
-                          ng-src="{{message.face}}" ng-click="viewProfile(message)"/>
+                          ng-src="{{message.face}}" ng-click="viewProfile(message._id)"/>
                     
                       <div class="chat-bubble right">
                           <div class="message" >      
