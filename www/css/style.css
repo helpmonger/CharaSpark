@@ -123,9 +123,15 @@ label.item{
   border: none;
 }
 
+.dashline{
+	height: 5px;
+	width: 80%;
+	border-style: none none dotted;
+}
+
 .bottombox{
-  margin-bottom: 0px;
-  position: absolute;
+  height: 50px;
+  margin-top: 100px;
 }
 
 /* Fix modal backdrop for smaller devices 
