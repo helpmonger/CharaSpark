@@ -61,7 +61,7 @@ span.aborted, span.cancelled {
     background-color: #f8f8f8;
     color: #444; 
     border-radius: 25px;
-    width: 100%;
+    width: 60%;
     margin: 0 auto;}
     .button.button-charaspark:hover {
       color: #444;
@@ -121,7 +121,6 @@ span.aborted, span.cancelled {
 /*CSS for transparent background for list items on login page*/
 label.item{
   background-color:rgba(0,0,0,0) !important; 
-  width: 60%;
   margin: 0 auto;
   border: none;
 }
@@ -149,6 +148,10 @@ form.loginform{
 
 input::-webkit-input-placeholder {
  color: #eb637a;
+}
+
+label.userpw{
+  width:60%;
 }
 
 /* Fix modal backdrop for smaller devices 
