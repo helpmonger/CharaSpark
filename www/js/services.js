@@ -255,7 +255,7 @@
         // Some fake testing data
         var chats = [{
             id: 0,
-            name: 'davidhe',
+            name: 'davidhee',
             lastText: 'You on your way?',
             face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
         }, {
