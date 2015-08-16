@@ -131,7 +131,7 @@ label.item{
 
 .bottombox{
   height: 50px;
-  margin-top: 100px;
+  padding-bottom: 10px;
 }
 
 /* Fix modal backdrop for smaller devices 
