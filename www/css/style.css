@@ -61,7 +61,7 @@ span.aborted, span.cancelled {
     background-color: #f8f8f8;
     color: #444; 
     border-radius: 25px;
-    width: 100%;
+    width: 60%;
     margin: 0 auto;}
     .button.button-charaspark:hover {
       color: #444;
@@ -91,6 +91,9 @@ span.aborted, span.cancelled {
         color: #fff; 
       }
 
+.button.button-charaspark.button-outline.startapp{
+  width: auto;
+}
 /* CSS for introduction /slide page images */
 .transparent {
   background: transparent !important;
@@ -118,7 +121,6 @@ span.aborted, span.cancelled {
 /*CSS for transparent background for list items on login page*/
 label.item{
   background-color:rgba(0,0,0,0) !important; 
-  width: 60%;
   margin: 0 auto;
   border: none;
 }
@@ -126,12 +128,30 @@ label.item{
 .dashline{
 	height: 5px;
 	width: 80%;
-	border-style: none none dotted;
+	border-style: none none dashed;
+  color: #eb637a;
 }
 
 .bottombox{
   height: 50px;
   padding-bottom: 10px;
+  margin-top: 60%;
+}
+
+form.loginform{
+  height:100%;
+}
+
+.icon.ion-ios-email-outline, .icon.ion-ios-locked-outline{
+  color: #eb637a;
+}
+
+input::-webkit-input-placeholder {
+ color: #eb637a;
+}
+
+label.userpw{
+  width:60%;
 }
 
 /* Fix modal backdrop for smaller devices 
